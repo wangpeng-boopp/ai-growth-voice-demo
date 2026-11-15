@@ -2144,7 +2144,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #growth-voice-complete .gp-start-shortcuts{gap:10px;margin-bottom:12px}
 #growth-voice-complete .gp-start-shortcuts button{min-height:48px;background:#f6f8fc;border-color:transparent;font-size:16px}
 #growth-voice-complete .gp-typing-box textarea{min-height:76px;max-height:min(26dvh,156px);resize:none}
-#growth-voice-complete .gp-input-send{min-height:48px;flex-basis:48px}
+#growth-voice-complete .gp-input-send{min-height:48px;min-width:48px;flex-basis:auto;white-space:nowrap}
 #growth-voice-complete .gp-chip{min-height:48px;font-size:16px}
 #growth-voice-complete .gp-text{min-height:48px}
 #growth-voice-complete .gp-nav{flex-shrink:0;padding:6px 16px 8px;background:var(--gp-paper)}
@@ -2283,7 +2283,7 @@ function createProductUI(ctx) {
       if(u.contexts)delete u.contexts[next.key];
       const fresh=JSON.parse(JSON.stringify(initial));
       for(const key of scopedKeys)u[key]=restored &amp;&amp; key in restored?restored[key]:fresh[key];
-      if(!restored &amp;&amp; next.customerId){u.need=ctx.contextNeedFor(next.customerId,next.sourceRecordId,next.taskId);u.productId=mentioned(u.need)[0]?.id || &#x27;&#x27;;u.selectionReady=Boolean(u.need);}
+      if(!restored &amp;&amp; next.customerId){u.need=ctx.contextNeedFor(next.customerId,next.sourceRecordId,next.taskId);u.productId=currentProducts(u.need).items[0]?.id || &#x27;&#x27;;u.selectionReady=Boolean(u.need);}
       u.origin=next;s.productId=u.productId;
     }
     refreshConfirmed(next);
@@ -2354,8 +2354,32 @@ function createProductUI(ctx) {
     const aliases={&#x27;zhi20&#x27;:/脂\s*20/i,&#x27;kb-antang&#x27;:/氨糖/,&#x27;kuihuosu-yuyou&#x27;:/鱼油/,&#x27;kids-calcium&#x27;:/儿童.*钙|小孩.*钙/,&#x27;adult-calcium&#x27;:/成人.*钙/,&#x27;q10&#x27;:/q\s*10|辅酶/i,&#x27;t18&#x27;:/t\s*18|双舱/i,&#x27;kb-probiotics&#x27;:/益生菌/,&#x27;nad-ergothioneine&#x27;:/nad|麦角硫因/i};
     return products.filter(item=&gt;aliases[item.id].test(String(text || &#x27;&#x27;)));
   };
+  function currentProducts(text){
+    // Demonstration-only reading of explicit choices; historical mentions stay in the record.
+    const source=String(text||&#x27;&#x27;),excluded=new Set(),seen=new Map();let selected=null;
+    for(const part of source.split(/[，,。；;\n]/)){
+      const afterNo=part.match(/(?:不看|不选|不讲|不考虑|不需要|不要|不是|先别推荐)(.+)/);
+      const beforeNo=part.match(/^(.+?)(?:都|也)?(?:先|暂时|这次)?(?:不看|不选|不讲|不考虑|不需要|不要)(?:了|啦|吧)?$/);
+      const denied=mentioned(afterNo?.[1]||beforeNo?.[1]||&#x27;&#x27;);
+      for(const item of denied)excluded.add(item.id);
+      if(denied.length)continue;
+      for(const item of mentioned(part))seen.set(item.id,item);
+      const choice=part.match(/(?:只(?:想|要)?(?:了解|知道|看看?|讲|选|问|比较|对比)|(?:现在|这次|目前)(?:只)?(?:想|要)?(?:了解|看看?|讲|选|问)|想(?:先)?(?:了解|知道|看看?))(.+)/);
+      if(choice){const items=mentioned(choice[1]);if(items.length)selected=/^(?:和|与|跟)/.test(choice[1])&amp;&amp;/不同|区别|比较|对比/.test(choice[1])?[...seen.values()]:items;}
+    }
+    const items=(selected||mentioned(source)).filter(item=&gt;!excluded.has(item.id));
+    return {items,exclusive:Boolean(selected),excluded:[...excluded]};
+  }
   const phrase = p =&gt; `${p.name}在参考资料里是${p.form}，${p.specification}${p.flavor?`，${p.flavor}`:&#x27;&#x27;}。${p.preparation.includes(&#x27;待核&#x27;)?&#x27;具体使用方式，我先核对您手上的包装。&#x27;:`使用准备是${p.preparation}，具体用量仍看现售包装。`}`;
   const easyPhrase=p=&gt;{const form=/固体饮料/.test(p.form)?&#x27;袋装粉状饮品&#x27;:/液体营养饮/.test(p.form)?&#x27;袋装液体饮品&#x27;:p.form;return `${p.name}的参考资料写的是${form}${p.flavor?&#x27;，&#x27;+p.flavor:&#x27;&#x27;}。${p.preparation.includes(&#x27;待核&#x27;)?&#x27;怎么使用，我先核对您手里的包装。&#x27;:p.preparation+&#x27;，具体用量我再按您手里的包装核对。&#x27;}`;};
+  const currentRequest=need=&gt;String(need||&#x27;&#x27;).match(/当前需求：([^。；\n]+)/)?.[1]||&#x27;&#x27;;
+  const isComparisonRequest=need=&gt;/比较|对比|区别|不同/.test(currentRequest(need));
+  function comparisonPhrase(ids,brief=false){
+    const items=ids.map(id=&gt;get(id));
+    const sameForm=items.every(item=&gt;item.form===items[0].form);
+    const details=items.map(item=&gt;`${item.name}：${sameForm?&#x27;&#x27;:item.form+&#x27;；&#x27;}${item.flavor?item.flavor+&#x27;；&#x27;:&#x27;&#x27;}参考配料含${brief?item.ingredients.split(&#x27;、&#x27;).slice(0,2).join(&#x27;、&#x27;)+&#x27;等&#x27;:item.ingredients}。`);
+    return details.join(&#x27;\n\n&#x27;)+`\n\n${sameForm?&#x27;这几款都是&#x27;+items[0].form+&#x27;，但配料不同。&#x27;:&#x27;&#x27;}具体适用和用法仍按现售包装核对，不只凭名称或包装判断。`;
+  }
   function draftContext(need=selectionContext()) {
     const fact=label=&gt;String(need||&#x27;&#x27;).match(new RegExp(label+&#x27;：([^。；\\n]+)&#x27;))?.[1]||&#x27;&#x27;;
     const who=fact(&#x27;使用对象&#x27;),budget=fact(&#x27;预算&#x27;),when=fact(&#x27;购买安排&#x27;),request=fact(&#x27;当前需求&#x27;),preparation=fact(&#x27;准备条件&#x27;);
@@ -2364,7 +2388,7 @@ function createProductUI(ctx) {
   function intro(p=current()) {
     const preface=draftContext();
     if(!products.some(item=&gt;item.id===u.productId)&amp;&amp;!u.introCompareIds?.length)return u.introDraft||preface||&#x27;先把这次最想了解的问题讲清楚，再核对需要的资料。&#x27;;
-    if(u.introCompareIds?.length&gt;1){const ps=u.introCompareIds.map(id=&gt;get(id));const descriptions=ps.map(item=&gt;u.introMode===&#x27;detail&#x27;?`${phrase(item)}参考配料包含${item.ingredients}。`:`${item.name}：${item.preparation.includes(&#x27;待核&#x27;)?item.form:item.preparation}${item.flavor?&#x27;，&#x27;+item.flavor:&#x27;&#x27;}。`);return `${preface?preface+&#x27;\n\n&#x27;:&#x27;&#x27;}${descriptions.join(&#x27;\n\n&#x27;)}\n\n先把这些不同讲清楚，适用对象和用量按现售包装核对。${u.introMode===&#x27;wechat&#x27;?&#x27;您最关心哪一点？我接着讲。&#x27;:&#x27;&#x27;}`;}
+    if(u.introCompareIds?.length&gt;1){if(isComparisonRequest(selectionContext()))return `${preface?preface+&#x27;\n\n&#x27;:&#x27;&#x27;}${comparisonPhrase(u.introCompareIds)}`;const ps=u.introCompareIds.map(id=&gt;get(id));const descriptions=ps.map(item=&gt;u.introMode===&#x27;detail&#x27;?`${phrase(item)}参考配料包含${item.ingredients}。`:`${item.name}：${item.preparation.includes(&#x27;待核&#x27;)?item.form:item.preparation}${item.flavor?&#x27;，&#x27;+item.flavor:&#x27;&#x27;}。`);return `${preface?preface+&#x27;\n\n&#x27;:&#x27;&#x27;}${descriptions.join(&#x27;\n\n&#x27;)}\n\n先把这些不同讲清楚，适用对象和用量按现售包装核对。${u.introMode===&#x27;wechat&#x27;?&#x27;您最关心哪一点？我接着讲。&#x27;:&#x27;&#x27;}`;}
     const short = u.introMode===&#x27;detail&#x27;?phrase(p):easyPhrase(p);
     const lead = u.audience===&#x27;family&#x27; ? &#x27;这份先讲清楚，方便您和家人一起看。&#x27; : u.audience===&#x27;group&#x27; ? &#x27;先说大家最容易弄混的一点：&#x27; : &#x27;&#x27;;
     const close = u.introMode===&#x27;wechat&#x27; ? &#x27;\n\n还有哪一点需要我讲清楚？我接着说。&#x27; : u.introMode===&#x27;detail&#x27; ? `\n\n参考配料包含${p.ingredients}。${p.note}。如果您关心价格、适合谁或怎么搭配，我会先核对有效资料再回答。` : &#x27;&#x27;;
@@ -2438,9 +2462,13 @@ function createProductUI(ctx) {
     if(later||/先不买|暂时不买|这次不买|今天不买|现在不买|先不下单/.test(said)){
       timing=later?later[1]:&#x27;现在先不买&#x27;;need=need.replace(/(?:今天|现在|这次|马上)(?:想|准备|打算)?(?:买|购买|下单)/g,timing);appendFact(&#x27;购买安排&#x27;,timing);understood=true;factsChanged=true;
     }
+    const stopComparing=/不(?:再|用)?(?:比较|对比)|先别(?:比较|对比)/.test(said);
+    const compareIntent=!stopComparing&amp;&amp;/比较|对比|有什么不同|有什么区别|有啥不同|有啥区别|哪些不同|哪些区别|什么区别|哪里不同|差在哪|怎么选/.test(said);
+    if(compareIntent)request=&#x27;先比较这几款的区别&#x27;;
     if(/只(?:想|是|要)?(?:了解|问|看|讲).{0,8}(?:用法|怎么用|使用|包装)|先(?:了解|讲清).{0,6}(?:用法|怎么用|使用)/.test(said))request=&#x27;先讲清使用方法&#x27;;
     if(/不(?:要|再)推荐|先别推荐|不买别的/.test(said))request=&#x27;先解决当前问题，暂不推荐其他产品&#x27;;
     if(/不(?:想|要|方便)冲泡|不用冲泡|只要开袋即饮/.test(said))request=&#x27;不想冲泡，先了解准备方式&#x27;;
+    else if(/(?:只(?:想|要)?|主要|先).{0,12}(?:方便|便携|冲泡|准备|携带)|(?:怎么|如何)准备|准备起来(?:麻不麻烦|麻烦不麻烦)/.test(said))request=&#x27;先讲清准备和携带方式&#x27;;
     if(request){appendFact(&#x27;当前需求&#x27;,request);understood=true;factsChanged=true;}
     const heatQuestion=/热水/.test(need+&#x27; &#x27;+draft)||!origin&amp;&amp;s.view===&#x27;selection&#x27;&amp;&amp;/热水/.test(selectionResult().question||&#x27;&#x27;);
     const heatUncertain=/不知道|不确定|未确认|还没确认|有没有|是否|能不能|可不可以|方不方便|热水[吗？?]/.test(said);
@@ -2461,10 +2489,13 @@ function createProductUI(ctx) {
     const only=said.match(/只(?:看|讲|选|比较|对比)([^。；]+)/);
     const compare=said.match(/(?:比较|对比)([^。；]+)/);
     const productOnly=/^(?:脂\s*20|成人液体钙|儿童液体钙|(?:葵活素复合)?鱼油|(?:辅酶)?Q10|(?:KB新型)?氨糖|T18(?:双舱饮)?|(?:KB肠道)?益生菌|(?:NAD\+)?麦角硫因(?:胶囊)?)(?:这款|就好|吧)?[。！!]?$/i.test(said);
-    const direct=negative&amp;&amp;(mentioned(negative[1]).length||/这款|那款/.test(negative[1]))?{before:mentioned(negative[1]),after:negative[2],replaceAll:Boolean(only)||/这款|那款/.test(negative[1])}:swap&amp;&amp;(!objectChange&amp;&amp;!money&amp;&amp;!goalChange||mentioned(swap[2]).length)?{before:mentioned(swap[1]||&#x27;&#x27;),after:swap[2],replaceAll:!swap[1]||Boolean(only)}:only&amp;&amp;!request?{before:[],after:only[1],replaceAll:true}:compare?{before:[],after:compare[1],replaceAll:true}:productOnly?{before:[],after:said,replaceAll:true}:null;
+    const choice=currentProducts(said);
+    let direct=negative&amp;&amp;(mentioned(negative[1]).length||/这款|那款/.test(negative[1]))?{before:mentioned(negative[1]),after:negative[2],replaceAll:Boolean(only)||/这款|那款/.test(negative[1])}:swap&amp;&amp;(!objectChange&amp;&amp;!money&amp;&amp;!goalChange||mentioned(swap[2]).length)?{before:mentioned(swap[1]||&#x27;&#x27;),after:swap[2],replaceAll:!swap[1]||Boolean(only)}:only&amp;&amp;mentioned(only[1]).length?{before:[],after:only[1],replaceAll:true}:compare&amp;&amp;!stopComparing&amp;&amp;mentioned(compare[1]).length?{before:[],after:compare[1],replaceAll:true}:compareIntent&amp;&amp;mentioned(said).length&gt;1?{before:[],after:said,replaceAll:true}:productOnly?{before:[],after:said,replaceAll:true}:null;
+    if(choice.exclusive&amp;&amp;choice.items.length)direct={before:[],after:said,targets:choice.items,replaceAll:true};
+    else if(choice.excluded.length&amp;&amp;!direct){const remaining=choice.items.length?choice.items:ids.filter(id=&gt;!choice.excluded.includes(id)).map(id=&gt;get(id));direct={before:[],after:said,targets:remaining,replaceAll:true};}
     if(rangeChanged&amp;&amp;!direct&amp;&amp;!understood)return fail(&#x27;这次是改使用的人、产品，还是客户现在的想法？&#x27;);
     if(direct||rangeChanged){
-      const targets=direct?mentioned(direct.after):ids.map(id=&gt;get(id));if(!targets.length)return fail(&#x27;想换成哪款产品？说完整名称就好。&#x27;);
+      const targets=direct?(direct.targets||currentProducts(direct.after).items):ids.map(id=&gt;get(id));if(!targets.length)return fail(&#x27;这次还想了解哪款产品？说完整名称就好。&#x27;);
       if(direct){const removed=direct.before.map(p=&gt;p.id);ids=[...new Set([...(direct.replaceAll?[]:ids.filter(id=&gt;!removed.includes(id))),...targets.map(p=&gt;p.id)])];}
       if(ids.length&gt;3)return fail(&#x27;这次先比较哪两到三款？&#x27;);
       const names=ids.map(id=&gt;get(id).name).join(&#x27;和&#x27;);let replaced=false;
@@ -2476,15 +2507,16 @@ function createProductUI(ctx) {
       if(ids.length===1)need=need.replace(/这两款|这两种|两款|两种/g,&#x27;这款&#x27;).replace(/比较|对比/g,&#x27;了解&#x27;).replace(/(?:之间)?的区别/g,&#x27;的说明&#x27;);
       appendFact(&#x27;本次产品&#x27;,names);productsChanged=true;understood=true;factsChanged=true;
     }else if(/换成|换为|改看|改讲/.test(said)&amp;&amp;!objectChange&amp;&amp;!money&amp;&amp;!goalChange&amp;&amp;!timing&amp;&amp;!shorter&amp;&amp;!casual)return fail(&#x27;想换成哪款产品？说完整名称就好。&#x27;);
+    if(stopComparing&amp;&amp;!request||ids.length===1&amp;&amp;(!request||/比较|对比|区别|不同/.test(request))&amp;&amp;(isComparisonRequest(originalNeed)||compareIntent)){request=ids.length===1?&#x27;先讲清这款产品&#x27;:&#x27;先讲清这次的问题&#x27;;appendFact(&#x27;当前需求&#x27;,request);understood=true;factsChanged=true;}
     if(!understood)return fail(&#x27;这次是改使用的人、产品，还是客户现在的想法？&#x27;);
     const preserve=draft.split(/[。！？\n]+/).filter(line=&gt;/周[一二三四五六日天]|明天|今晚|后天|约好|答应|已发/.test(line)&amp;&amp;!mentioned(line).length&amp;&amp;!/购买|下单|成交/.test(line));
-    if(productsChanged||!draft){draft=ids.length?ids.map(id=&gt;easyPhrase(get(id))).join(&#x27;\n\n&#x27;):&#x27;我先确认这次最想了解的问题，再按已经知道的情况准备。&#x27;;if(preserve.length)draft+=&#x27;\n\n&#x27;+preserve.join(&#x27;。&#x27;)+&#x27;。&#x27;;}
+    if(productsChanged||request||!draft){draft=ids.length?(ids.length&gt;1&amp;&amp;isComparisonRequest(need)?comparisonPhrase(ids):ids.map(id=&gt;easyPhrase(get(id))).join(&#x27;\n\n&#x27;)):&#x27;我先确认这次最想了解的问题，再按已经知道的情况准备。&#x27;;if(preserve.length)draft+=&#x27;\n\n&#x27;+preserve.join(&#x27;。&#x27;)+&#x27;。&#x27;;}
     if(newObject&amp;&amp;!draft.includes(newObject))draft=`这次是给${newObject===&#x27;自己&#x27;?&#x27;您自己&#x27;:&#x27;您&#x27;+newObject}了解。`+draft;
     if(budget){draft=draft.replace(/先按[^。\n]+的预算看，价格需要核对当前资料。\s*/g,&#x27;&#x27;).replace(/预算[：:\s]*(?:是|只有|最多)?(?:\d+(?:\.\d+)?|[一二两三四五六七八九十百千]+)\s*(?:元|块)(?:以内|左右)?/g,&#x27;预算&#x27;+budget);draft=`先按${budget}的预算看，价格需要核对当前资料。\n\n`+draft;}
     if(timing){draft=draft.replace(/购买安排是[^。]+，这次先把问题讲清楚。\s*|这次先了解，不急着买。\s*/g,&#x27;&#x27;).replace(/(?:今天|现在|这次|马上)(?:就|可以)?(?:买|购买|下单)/g,&#x27;先了解&#x27;);draft=`${timing===&#x27;现在先不买&#x27;?&#x27;这次先了解，不急着买。&#x27;:&#x27;购买安排是&#x27;+timing+&#x27;，这次先把问题讲清楚。&#x27;}\n\n`+draft;}
     if(request){draft=draft.replace(/^(?:先讲清使用方法|先解决当前问题，暂不推荐其他产品|不想冲泡，先了解准备方式)。\s*/,&#x27;&#x27;).replace(/您是想了解怎么使用，还是想先比较不同产品？/g,&#x27;这次先讲清使用方法。&#x27;);draft=request+&#x27;。\n\n&#x27;+draft;}
     if(preparation){const line=`实际使用的地方${preparation}。`;draft=draft.replace(/[^。！？\n]*热水[^。！？\n]*[？?]/g,line).replace(/实际使用的地方(?:没有热水|不方便用热水|有热水)。/g,line);}
-    if(shorter){const parts=draft.split(/(?&lt;=[。！？])/).map(x=&gt;x.trim()).filter(Boolean);if(ids.length&gt;1){const lead=parts.filter(line=&gt;!mentioned(line).length&amp;&amp;/这次是给|预算|先了解|购买安排|使用方法|实际使用/.test(line));draft=[...lead,...ids.map(id=&gt;{const item=get(id);return `${item.name}：${item.preparation}${item.flavor?&#x27;，&#x27;+item.flavor:&#x27;&#x27;}。`;})].join(&#x27;\n&#x27;);}else draft=parts.slice(0,Math.min(parts.length,3)).join(&#x27;&#x27;);if(ids.length&amp;&amp; !/待核|核对|包装/.test(draft))draft+=&#x27;\n具体用法仍按现售包装核对。&#x27;;if(preserve.length&amp;&amp;!preserve.every(line=&gt;draft.includes(line)))draft+=&#x27;\n&#x27;+preserve.join(&#x27;。&#x27;)+&#x27;。&#x27;;}
+    if(shorter){const parts=draft.split(/(?&lt;=[。！？])/).map(x=&gt;x.trim()).filter(Boolean);if(ids.length&gt;1){const lead=parts.filter(line=&gt;!mentioned(line).length&amp;&amp;/这次是给|预算|先了解|购买安排|使用方法|实际使用/.test(line));draft=[...lead,...(isComparisonRequest(need)?[comparisonPhrase(ids,true)]:ids.map(id=&gt;{const item=get(id);return `${item.name}：${item.preparation}${item.flavor?&#x27;，&#x27;+item.flavor:&#x27;&#x27;}。`;}))].join(&#x27;\n&#x27;);}else draft=parts.slice(0,Math.min(parts.length,3)).join(&#x27;&#x27;);if(ids.length&amp;&amp; !/待核|核对|包装/.test(draft))draft+=&#x27;\n具体用法仍按现售包装核对。&#x27;;if(preserve.length&amp;&amp;!preserve.every(line=&gt;draft.includes(line)))draft+=&#x27;\n&#x27;+preserve.join(&#x27;。&#x27;)+&#x27;。&#x27;;}
     if(casual)draft=draft.replace(/参考资料写的是/g,&#x27;资料里写的是&#x27;).replace(/具体使用方式/g,&#x27;怎么用&#x27;).replace(/请您/g,&#x27;您&#x27;);
     const contextLines=draftContext(need).split(&#x27;\n&#x27;).filter(line=&gt;line&amp;&amp;!draft.includes(line));if(contextLines.length)draft=contextLines.join(&#x27;\n&#x27;)+&#x27;\n\n&#x27;+draft;
     const topic=ids.length?ids.map(id=&gt;get(id).name).join(&#x27;和&#x27;):from.topic||request||&#x27;这次沟通&#x27;;
@@ -2519,11 +2551,16 @@ function createProductUI(ctx) {
     const active=(u.activeProductIds||[]).filter(id=&gt;products.some(p=&gt;p.id===id));
     if(active.length&gt;1)return {kind:&#x27;compare&#x27;,heading:&#x27;就看这几款的不同&#x27;,body:&#x27;按这次确定的范围比较形态、准备方式和资料，不默认一起使用。&#x27;,ids:active,next:&#x27;准备怎么讲&#x27;};
     if(active.length===1)return {kind:&#x27;explain&#x27;,heading:&#x27;这次先讲这一款&#x27;,body:easyPhrase(get(active[0])),ids:active,next:&#x27;准备怎么讲&#x27;};
+    const choice=currentProducts(t),named=choice.items;
+    if(choice.exclusive||choice.excluded.length){
+      if(named.length===1)return {kind:&#x27;explain&#x27;,heading:&#x27;这次先讲这一款&#x27;,body:easyPhrase(named[0]),ids:[named[0].id],next:&#x27;准备怎么讲&#x27;};
+      if(named.length&gt;1)return {kind:&#x27;compare&#x27;,heading:&#x27;就看这几款的不同&#x27;,body:&#x27;按这次想了解的产品比较，先不看的产品不带入讲解。&#x27;,ids:named.map(item=&gt;item.id),next:&#x27;准备怎么讲&#x27;};
+      return {kind:&#x27;hold&#x27;,heading:&#x27;这次先不选品&#x27;,body:&#x27;先不看的产品已经排除，等客户确定想了解哪款再继续。&#x27;,ids:[],next:&#x27;准备一句确认&#x27;,question:&#x27;这次您还想了解哪款，还是先不看产品？&#x27;};
+    }
     if (/买过|已买|已购买|已有|已经有|已经买|家里有|手里有|两盒|2盒|还有.{0,6}(?:盒|袋|瓶|产品)/.test(t) || u.clarified===&#x27;existing&#x27;) {
       const owned=mentioned(t)[0];
       return owned?{kind:&#x27;existing&#x27;,heading:&#x27;先把已有的用明白&#x27;,body:&#x27;客户已经有产品，这次先回答使用问题，不另推一款。&#x27;,ids:[owned.id],next:&#x27;准备使用说明&#x27;}:{kind:&#x27;hold&#x27;,heading:&#x27;先确认手里是哪一款&#x27;,body:&#x27;已经有产品，就先解决使用问题。还不知道产品名称，不替客户猜成某一款。&#x27;,ids:[],next:&#x27;准备一句确认&#x27;,question:&#x27;您手里的是哪一款？拍一下包装或告诉我名字，我按那一款来说明。&#x27;};
     }
-    const named=mentioned(t);
     if(named.length===1&amp;&amp;/包装|独立|小袋|准备|冲调|冲泡|使用|用法|怎么用/.test(t))return {kind:&#x27;explain&#x27;,heading:&#x27;先讲清这款怎么准备&#x27;,body:easyPhrase(named[0]),ids:[named[0].id],next:&#x27;准备怎么讲&#x27;};
     if (/钙|不用冲|不想冲|液体/.test(t) || u.clarified===&#x27;convenience&#x27;) return {kind:&#x27;compare&#x27;,heading:&#x27;先把两款的不同讲清楚&#x27;,body:&#x27;两款参考资料都写开袋即饮，不能只凭“不用冲泡”选其中一款。先看对象与标签，不把儿童款当作更温和。&#x27;,ids:[&#x27;adult-calcium&#x27;,&#x27;kids-calcium&#x27;],next:&#x27;看两款不同&#x27;};
     if (/鱼油|Q10|q10|辅酶/.test(t)) return {kind:&#x27;compare&#x27;,heading:&#x27;先比较，不替客户直接定&#x27;,body:&#x27;两款包装相近，配料不同。不能从胶囊外形或名称判断谁更适合，也不默认一起用。&#x27;,ids:[&#x27;kuihuosu-yuyou&#x27;,&#x27;q10&#x27;],next:&#x27;看两款不同&#x27;};
@@ -2541,7 +2578,7 @@ function createProductUI(ctx) {
   function openReply() {
     enterContext();
     const result=selectionResult();
-    const knownIds=new Set([...mentioned(selectionContext()).map(p=&gt;p.id),...(u.activeProductIds || [])]);
+    const knownIds=new Set([...currentProducts(selectionContext()).items.map(p=&gt;p.id),...(u.activeProductIds || [])]);
     const needsInput=[&#x27;need&#x27;,&#x27;needFix&#x27;].some(key=&gt;[&#x27;typing&#x27;,&#x27;recording&#x27;].includes(u.entryModes?.[key]));
     const ready=!needsInput&amp;&amp;[&#x27;explain&#x27;,&#x27;existing&#x27;,&#x27;compare&#x27;].includes(result.kind)&amp;&amp;result.ids.length&gt;0&amp;&amp;result.ids.every(id=&gt;knownIds.has(id));
     if(ready){act(&#x27;product-selection-next&#x27;);return true;}
@@ -2995,18 +3032,20 @@ function createLearningUI(ctx) {
     const p=L.practice;
     const recipient=knownRecipient(p);
     const compare=(p.productId||(p.introCompareIds||[]).length)?(p.introCompareIds||[]).length&gt;1:/两款|比较|区别|对比/.test(p.customerNeed+&#x27; &#x27;+p.topic);
-    const practical=/怕麻烦|冲泡|准备|便携|带到|单位|方便/.test(p.customerNeed||&#x27;&#x27;);
+    const latestRequest=(p.customerNeed||&#x27;&#x27;).match(/当前需求：([^。；\n]+)/)?.[1]||&#x27;&#x27;;
+    const explicitCompare=compare&amp;&amp;/比较|对比|区别|不同/.test(latestRequest);
+    const practical=!explicitCompare&amp;&amp;/怕麻烦|冲泡|准备|便携|带到|单位|方便|携带/.test(latestRequest||p.customerNeed||&#x27;&#x27;);
     const next=recipient?(practical?&#x27;我先把您在意的准备方式讲清楚，没确认的内容再核对。&#x27;:&#x27;我先把您这次问到的内容讲清楚，没确认的地方再核对。&#x27;):&#x27;先确认一下，这次是您自己了解，还是给家里人？&#x27;;
     if(p.report)return {
       questions:[recipient?.relation?`这是给我${recipient.relation}做的，能直接看我的报告吗？`:&#x27;这次测评做完了，结果要怎么看？&#x27;,p.difficulty===&#x27;challenge&#x27;?&#x27;看完报告，能不能直接给个结论？&#x27;:&#x27;下一步可以做什么？&#x27;,&#x27;我先看看，还没确定什么时候继续。&#x27;],
       answers:[recipient?.relation?`这次是${recipient.label}的测评，报告和成员需要对应，不能拿您的报告代替。`:recipient?.kind===&#x27;self&#x27;?&#x27;这次就看您本人的这份结果，先把您最想了解的那一点说清楚。&#x27;:&#x27;我们接着这次测评看，先把您最想了解的问题整理出来。&#x27;,&#x27;有依据的内容可以说明，专业健康结论需要对应专业服务解释；家人的资料还需要对方授权。&#x27;,&#x27;好，先不安排完成时间。您准备好以后，我们再接着处理。&#x27;],
       point:&#x27;先分清成员与授权，再解释可以做什么。&#x27;,avoid:&#x27;别把家人关系当成已经授权。&#x27;};
-    if(p.service)return {
+    if(p.service&amp;&amp;!explicitCompare)return {
       questions:[`我家里已经有${p.productName}，只是想知道怎么准备。`,p.difficulty===&#x27;challenge&#x27;?&#x27;你以前不是说过用量吗？怎么现在又要看包装？&#x27;:&#x27;具体怎么用，能直接告诉我吗？&#x27;,&#x27;说明发我就行，这阵子不想买新的。&#x27;],
       answers:[`明白，先看您手里${p.productName}的说明，这次只解决准备问题。`,&#x27;我先核对对应包装说明，确定的步骤直接讲，不清楚的地方查清再告诉您。&#x27;,&#x27;好，我只整理对应使用说明，先不推荐新品。有需要您再告诉我。&#x27;],
       point:&#x27;接住“只想知道怎么用”，不要重新变成促购。&#x27;,avoid:&#x27;不要凭旧资料补水量、用量或回访周期。&#x27;};
     return {
-      questions:[`我想了解${p.productName}，${practical?&#x27;主要想知道准备起来麻不麻烦。&#x27;:&#x27;但还没想好要不要买。&#x27;}`,p.difficulty===&#x27;challenge&#x27;?&#x27;你说这么多，能不能直接保证效果？&#x27;:compare?&#x27;两款到底差在哪？&#x27;:&#x27;这一款要怎么准备？&#x27;,&#x27;先发一段简单的说明吧。&#x27;],
+      questions:[`我想了解${p.productName}，${explicitCompare?&#x27;主要想知道它们有什么不同。&#x27;:practical?&#x27;主要想知道准备起来麻不麻烦。&#x27;:&#x27;但还没想好要不要买。&#x27;}`,p.difficulty===&#x27;challenge&#x27;?&#x27;你说这么多，能不能直接保证效果？&#x27;:explicitCompare?&#x27;这些不同里，哪些已经有资料依据？&#x27;:compare?&#x27;两款到底差在哪？&#x27;:&#x27;这一款要怎么准备？&#x27;,&#x27;先发一段简单的说明吧。&#x27;],
       answers:[p.introDraft||`可以，先把${p.productName}讲清楚。${next}`,`${p.difficulty===&#x27;challenge&#x27;?&#x27;我不能替您保证效果。&#x27;:&#x27;&#x27;}${compare?&#x27;我先按形态、准备方式和适用说明比较。&#x27;:&#x27;&#x27;}${next}`,&#x27;好，我把已经核对的关键内容写短一点，未知的地方标出来，您方便时看。&#x27;],
       point:recipient?&#x27;接着已经知道的需要讲，不重复问使用对象。&#x27;:&#x27;只确认会改变回答的信息，再给有依据的说明。&#x27;,avoid:&#x27;不要仅按品名判断效果，或默认客户已决定购买。&#x27;};
   }
@@ -3371,7 +3410,8 @@ const currentTask=()=&gt;s.tasks.find(t=&gt;t.id===s.taskId);
 const activeTasks=(id)=&gt;s.tasks.filter(t=&gt;(!id||t.customerId===id)&amp;&amp;t.status===&#x27;待办&#x27;&amp;&amp;!customer(t.customerId)?.archived);
 const prepKey=()=&gt;s.taskId||s.selectedId;
 function showNotice(text){s.notice=text;}
-function save(){
+let inputDraftEcho=&#x27;&#x27;;
+function save(preserveInput=false){
  if(!window.openai?.setWidgetState)return;
  const data=workCopy(s);delete data.flowUndo;delete data.resume;data.notice=&#x27;&#x27;;data.history=data.history.slice(-5);
  // Pending snapshots already contain these inputs; avoid serializing a second cache.
@@ -3383,6 +3423,8 @@ function save(){
  const payload={modelContent:{prototype:&#x27;语音优先完整场景演示&#x27;,scenario:s.scenario,page:s.view},privateContent:{growthComplete:data}};
  if(new TextEncoder().encode(JSON.stringify(payload)).length&gt;15000){data.history=[];data.learning.practiceHistory=(data.learning.practiceHistory||[]).slice(0,1);data.customers.forEach(c=&gt;{c.records=c.records.filter((r,i)=&gt;i&lt;2||referenced.has(r.id)).map(({raw,...record})=&gt;record);});}
  if(new TextEncoder().encode(JSON.stringify(payload)).length&gt;15500)return;
+ // The host echoes saved state; draft writes must not rebuild the focused input.
+ inputDraftEcho=preserveInput?JSON.stringify(payload):&#x27;&#x27;;
  window.openai.setWidgetState(payload).catch(()=&gt;{});
 }
 function capture(){const input=root.querySelector(&#x27;[data-field=&quot;inputText&quot;]&#x27;);if(input)s.inputText=input.value;const fix=root.querySelector(&#x27;[data-field=&quot;prepCorrection&quot;]&#x27;);if(fix)s.prepCorrection=fix.value;const prep=root.querySelector(&#x27;[data-field=&quot;prepDraft&quot;]&#x27;);if(prep)s.prepDraft=prep.value;const practice=root.querySelector(&#x27;[data-field=&quot;practice-input&quot;]&#x27;);if(practice&amp;&amp;s.learning.practice)s.learning.practice.input=practice.value;const edit=root.querySelector(&#x27;[data-field=&quot;editValue&quot;]&#x27;);if(edit&amp;&amp;s.edit)s.edit.value=edit.value;const inline=root.querySelector(&#x27;[data-field=&quot;inlineValue&quot;]&#x27;);if(inline&amp;&amp;s.inlineEdit)s.inlineEdit.value=inline.value;const family=root.querySelector(&#x27;[data-field=&quot;family-input&quot;]&#x27;);if(family&amp;&amp;s.familyDraft)s.familyDraft.text=family.value;productUI.capture?.();learningUI.capture?.();}
@@ -3713,12 +3755,12 @@ function renderInputDock(){
  inputDock.innerHTML=`${state===&#x27;idle&#x27;?`&lt;div class=&quot;gp-start-shortcuts&quot;&gt;${chip(&#x27;查产品&#x27;,&#x27;browse-products&#x27;)}${chip(&#x27;陪我练一句&#x27;,&#x27;free-practice&#x27;)}&lt;/div&gt;`:&#x27;&#x27;}&lt;div class=&quot;gp-input-bar&quot;&gt;${state===&#x27;idle&#x27;?composeSide(&#x27;材料&#x27;,&#x27;attachments&#x27;,&#x27;plus&#x27;):&#x27;&#x27;}&lt;button type=&quot;button&quot; class=&quot;gp-talk-main${state===&#x27;result&#x27;||completed?&#x27; gp-talk-secondary&#x27;:&#x27;&#x27;} cursor-interaction&quot; data-action=&quot;compose-speak&quot;&gt;${icon(&#x27;mic&#x27;)}&lt;span&gt;${completed?&#x27;再记一件事&#x27;:state===&#x27;result&#x27;?(s.inlineEdit?&#x27;说出正确内容&#x27;:&#x27;补充或改一句&#x27;):&#x27;点一下，说情况&#x27;}&lt;/span&gt;&lt;/button&gt;${state===&#x27;result&#x27;&amp;&amp;s.inlineEdit?&#x27;&#x27;:composeSide(&#x27;打字&#x27;,&#x27;compose-type&#x27;,&#x27;keyboard&#x27;)}&lt;/div&gt;`;
 }
 function dockPageVoiceEntry(){
- if(!inputDock.hidden||![&#x27;products&#x27;,&#x27;selection&#x27;,&#x27;compare&#x27;,&#x27;introduction&#x27;,&#x27;prepare&#x27;,&#x27;practice&#x27;,&#x27;practice-result&#x27;,&#x27;practice-settings&#x27;].includes(s.view))return;
+ if(!inputDock.hidden||![&#x27;products&#x27;,&#x27;selection&#x27;,&#x27;compare&#x27;,&#x27;introduction&#x27;,&#x27;prepare&#x27;,&#x27;practice&#x27;,&#x27;practice-result&#x27;,&#x27;practice-settings&#x27;,&#x27;lesson&#x27;].includes(s.view))return;
  const entries=[...main.querySelectorAll(&#x27;.gp-voice-entry&#x27;)].filter(entry=&gt;!entry.closest(&#x27;details&#x27;)&amp;&amp;!entry.closest(&#x27;[hidden]&#x27;));
  if(entries.length!==1)return;
  const entry=entries[0],controls=[];
  let following=entry.nextElementSibling;
- while(following?.matches(&#x27;[data-action=&quot;product-correction-cancel&quot;], [data-action=&quot;prep-edit&quot;], [data-action=&quot;practice-correction-cancel&quot;], [data-action=&quot;practice-pause&quot;], [data-action=&quot;practice-input-close&quot;]&#x27;)){controls.push(following);following=following.nextElementSibling;}
+ while(following?.matches(&#x27;[data-action=&quot;product-correction-cancel&quot;], [data-action=&quot;prep-edit&quot;], [data-action=&quot;practice-correction-cancel&quot;], [data-action=&quot;practice-pause&quot;], [data-action=&quot;practice-input-close&quot;], [data-action=&quot;learn-rec-pause&quot;]&#x27;)){controls.push(following);following=following.nextElementSibling;}
  inputDock.hidden=false;inputDock.append(entry);
  if(controls.length){const actions=document.createElement(&#x27;div&#x27;);actions.className=&#x27;gp-inline-actions&#x27;;actions.append(...controls);inputDock.append(actions);}
 }
@@ -3755,15 +3797,17 @@ function renderCore(){const c=customer();const task=currentTask();
  if(s.view===&#x27;customers&#x27;){let list=s.customers.filter(x=&gt;s.filter===&#x27;已归档&#x27;?x.archived:!x.archived);if(s.filter===&#x27;待跟进&#x27;)list=list.filter(x=&gt;activeTasks(x.id).length);if(s.filter===&#x27;服务中&#x27;)list=list.filter(x=&gt;x.stage===&#x27;服务中&#x27;);const q=s.customerSearch.trim();if(q)list=list.filter(x=&gt;(x.name+x.relation+x.need).includes(q));return `&lt;div class=&quot;gp-inline&quot;&gt;${top(&#x27;我的客户&#x27;)}&lt;button class=&quot;gp-icon cursor-interaction&quot; data-action=&quot;customer-add&quot; aria-label=&quot;添加客户&quot;&gt;${icon(&#x27;plus&#x27;)}&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;gp-search&quot;&gt;${icon(&#x27;search&#x27;)}&lt;input class=&quot;gp-input&quot; data-field=&quot;customerSearch&quot; aria-label=&quot;查找客户&quot; placeholder=&quot;姓名或你记得的事&quot; value=&quot;${h(s.customerSearch)}&quot;&gt;&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${[&#x27;全部&#x27;,&#x27;待跟进&#x27;,&#x27;服务中&#x27;].map(f=&gt;chip(f,&#x27;filter&#x27;,f,s.filter===f)).join(&#x27;&#x27;)}&lt;/div&gt;${list.length?list.map(x=&gt;{const pending=pendingWork(x.id),count=activeTasks(x.id).length;return row(x.name,[x.relation,pending?.label,count?count+&#x27;件待办&#x27;:pending?&#x27;&#x27;:x.stage].filter(Boolean).join(&#x27; · &#x27;),&#x27;open-customer&#x27;,x.id);}).join(&#x27;&#x27;):`&lt;p class=&quot;gp-panel&quot;&gt;${q?&#x27;没有找到，试试换个称呼。&#x27;:&#x27;还没有客户，先说一位就可以。&#x27;}&lt;/p&gt;`}${btn(&#x27;查看待办&#x27;,&#x27;tasks&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;名单管理&lt;/summary&gt;${row(&#x27;带入已有名单&#x27;,&#x27;先整理，再确认重复项&#x27;,&#x27;import&#x27;)}${row(&#x27;已归档客户&#x27;,&#x27;需要时可以恢复&#x27;,&#x27;filter&#x27;,&#x27;已归档&#x27;)}&lt;/details&gt;`;}
  if(s.view===&#x27;customer-add&#x27;)return `${top(&#x27;把这位客户的情况说给我&#x27;,&#x27;名字、怎么认识、聊过什么，知道多少说多少。&#x27;)}${btn(`${icon(&#x27;mic&#x27;)} 说一段话`,&#x27;new-customer-voice&#x27;)}${row(&#x27;带入已有名单&#x27;,&#x27;使用名单示例或选择文件&#x27;,&#x27;import&#x27;)}`;
  if(s.view===&#x27;customer&#x27;){
-  if(!c)return top(&#x27;还没有客户&#x27;);const ts=activeTasks(c.id),next=ts[0],pending=pendingWork(c.id);
-  const preparationRecord=next?.sourceRecordId||s.sourceRecordId||c.records[0]?.id||&#x27;&#x27;,preparationTask=next?.id||preparedTaskFor(c.id,preparationRecord);
-  const currentPreparation=contextChangeFor(c.id,preparationRecord,preparationTask),currentNeed=(currentPreparation?.need||c.need).replace(/(?:使用对象|本次产品)：[^。；\n]*[。；]?/g,&#x27;&#x27;).replace(/给自己(?=想|了解|用)/g,&#x27;自己&#x27;).trim();
+  if(!c)return top(&#x27;还没有客户&#x27;);const ts=activeTasks(c.id),preparationRecord=c.records[0]?.id||&#x27;&#x27;,next=ts.find(t=&gt;(t.sourceRecordId||&#x27;&#x27;)===preparationRecord),pending=pendingWork(c.id);
+  const preparationTask=next?.id||preparedTaskFor(c.id,preparationRecord);
+  const currentPreparation=contextChangeFor(c.id,preparationRecord,preparationTask),currentNeed=(currentPreparation?.need||c.need||c.records[0]?.text||&#x27;&#x27;).replace(/(?:使用对象|本次产品)：[^。；\n]*[。；]?/g,&#x27;&#x27;).replace(/给自己(?=想|了解|用)/g,&#x27;自己&#x27;).trim();
   const nextTitle=currentPreparation?.topic?&#x27;正在准备：&#x27;+currentPreparation.topic:next?.title||&#x27;&#x27;;
   const hasPreparedDraft=Boolean(preparedDraftFor(c.id,preparationRecord,preparationTask));
-  const sameRecord=!next?pendingWork(c.id,preparedTaskFor(c.id,s.sourceRecordId),s.sourceRecordId):null;
-  const continuingPreparation=sameRecord&amp;&amp;([&#x27;prepare&#x27;,&#x27;practice&#x27;].includes(sameRecord.kind)||sameRecord.kind===&#x27;product&#x27;&amp;&amp;[&#x27;selection&#x27;,&#x27;compare&#x27;,&#x27;introduction&#x27;].includes(sameRecord.core.view));
-  const related=next?pendingWork(c.id,next.id,next.sourceRecordId||c.records[0]?.id||&#x27;&#x27;):continuingPreparation?sameRecord:null;
-  const nextBlock=(next?`&lt;section class=&quot;gp-panel&quot;&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(next.appointment)}&lt;/p&gt;&lt;h3&gt;${h(nextTitle)}&lt;/h3&gt;${btn(related?h(related.label):next.kind===&#x27;内部准备&#x27;?&#x27;看相关产品&#x27;:hasPreparedDraft?&#x27;接着用准备稿&#x27;:&#x27;准备怎么讲&#x27;,related?&#x27;resume&#x27;:&#x27;customer-next&#x27;,related?.key||next.id,&#x27;secondary&#x27;)}${btn(&#x27;查看安排&#x27;,&#x27;open-task&#x27;,next.id,&#x27;text&#x27;)}&lt;/section&gt;${ts.length&gt;1?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;其他 ${ts.length-1} 件待办&lt;/summary&gt;${ts.slice(1).map(t=&gt;row(t.title,t.appointment,&#x27;open-task&#x27;,t.id)).join(&#x27;&#x27;)}&lt;/details&gt;`:&#x27;&#x27;}`:related?btn(h(related.label),&#x27;resume&#x27;,related.key,&#x27;secondary&#x27;):btn(hasPreparedDraft?&#x27;接着用准备稿&#x27;:&#x27;准备下次沟通&#x27;,&#x27;prepare&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;))+(pending&amp;&amp;pending.key!==related?.key?continueLine(pending,false,true):&#x27;&#x27;);
+  const related=next?pendingWork(c.id,next.id,preparationRecord):pendingWork(c.id,undefined,preparationRecord);
+  const otherTasks=ts.filter(t=&gt;t!==next),otherPending=pending&amp;&amp;pending.key!==related?.key?pending:null;
+  const currentPending=otherPending?.scope.sourceRecordId===preparationRecord?otherPending:null;
+  const olderPending=otherPending&amp;&amp;!currentPending?otherPending:null;
+  const otherWork=otherTasks.length||olderPending?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;其他安排&lt;/summary&gt;${otherTasks.map(t=&gt;row(t.title,t.appointment,&#x27;open-task&#x27;,t.id)).join(&#x27;&#x27;)}${continueLine(olderPending,false,true)}&lt;/details&gt;`:&#x27;&#x27;;
+  const nextBlock=(next?`&lt;section class=&quot;gp-panel&quot;&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(next.appointment)}&lt;/p&gt;&lt;h3&gt;${h(nextTitle)}&lt;/h3&gt;${btn(related?h(related.label):next.kind===&#x27;内部准备&#x27;?&#x27;看相关产品&#x27;:hasPreparedDraft?&#x27;接着用准备稿&#x27;:&#x27;准备怎么讲&#x27;,related?&#x27;resume&#x27;:&#x27;customer-next&#x27;,related?.key||next.id,&#x27;secondary&#x27;)}${btn(&#x27;查看安排&#x27;,&#x27;open-task&#x27;,next.id,&#x27;text&#x27;)}&lt;/section&gt;`:related?btn(h(related.label),&#x27;resume&#x27;,related.key,&#x27;secondary&#x27;):btn(hasPreparedDraft?&#x27;接着用准备稿&#x27;:&#x27;准备这次沟通&#x27;,&#x27;prepare&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;))+continueLine(currentPending,false,true)+otherWork;
   const detail=s.customerSection===&#x27;记录&#x27;?(c.records.map(r=&gt;row(r.title,`${r.when} · ${r.text}`,&#x27;open-record&#x27;,r.id)).join(&#x27;&#x27;)||&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;还没有记录。&lt;/p&gt;&#x27;):s.customerSection===&#x27;资料&#x27;?`${row(&#x27;基本资料&#x27;,c.relation,&#x27;customer-info&#x27;)}${row(&#x27;家人、测评与报告&#x27;,&#x27;&#x27;,&#x27;family&#x27;)}${row(&#x27;产品资料&#x27;,&#x27;&#x27;,&#x27;customer-products&#x27;)}${row(&#x27;这位客户的经验&#x27;,&#x27;&#x27;,&#x27;customer-experience&#x27;)}`:`&lt;p class=&quot;gp-summary&quot;&gt;${h(currentNeed)}&lt;/p&gt;${c.records.length?btn(&#x27;复盘这次沟通&#x27;,&#x27;customer-review-latest&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${c.purchase?`&lt;p class=&quot;gp-quiet&quot;&gt;${h(c.purchase)}&lt;/p&gt;`:&#x27;&#x27;}${c.waiting?&#x27;&lt;p class=&quot;gp-status&quot;&gt;资料已发，等待回复&lt;/p&gt;&#x27;:&#x27;&#x27;}${c.pauseSales?&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;暂不推荐新品&lt;/p&gt;&#x27;:&#x27;&#x27;}${nextBlock}`;
   return `&lt;div class=&quot;gp-person&quot;&gt;&lt;span class=&quot;gp-avatar&quot;&gt;${h(c.name.slice(0,1))}&lt;/span&gt;&lt;div&gt;&lt;h2&gt;${h(c.name)}&lt;/h2&gt;&lt;small&gt;${h(c.relation)} · ${h(c.stage)}&lt;/small&gt;&lt;/div&gt;&lt;button class=&quot;gp-icon cursor-interaction&quot; data-action=&quot;customer-more&quot; aria-label=&quot;客户的更多操作&quot;&gt;${icon(&#x27;ellipsis&#x27;)}&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${[&#x27;近况&#x27;,&#x27;记录&#x27;,&#x27;资料&#x27;].map(x=&gt;chip(x,&#x27;customer-section&#x27;,x,s.customerSection===x)).join(&#x27;&#x27;)}&lt;/div&gt;${detail}`;
  }
@@ -3957,7 +4001,7 @@ function coreAct(action,value){const c=customer(),t=currentTask();
   if(e.type===&#x27;defer&#x27;)t.reminder=value;
   back();showNotice(e.type===&#x27;defer&#x27;?&#x27;提醒已改，客户约定不变。&#x27;:&#x27;已改好&#x27;);return true;
  }
- if(action===&#x27;prepare&#x27;){if([&#x27;task&#x27;,&#x27;review-record&#x27;].includes(s.view))s.sourceRecordId=s.view===&#x27;review-record&#x27;?(s.recordId||c.records[0]?.id||&#x27;&#x27;):(t?.sourceRecordId||c.records[0]?.id||&#x27;&#x27;);if(!s.taskId)s.taskId=preparedTaskFor(c.id,s.sourceRecordId);if(!preparedDraftFor(c.id,s.sourceRecordId,s.taskId)){s.standalone=false;productUI.openReply();}else beginPrepare();return true;}
+ if(action===&#x27;prepare&#x27;){if(s.view===&#x27;customer&#x27;){s.sourceRecordId=c.records[0]?.id||&#x27;&#x27;;s.recordId=s.sourceRecordId;s.taskId=preparedTaskFor(c.id,s.sourceRecordId);s.prepDraft=&#x27;&#x27;;}else if([&#x27;task&#x27;,&#x27;review-record&#x27;].includes(s.view))s.sourceRecordId=s.view===&#x27;review-record&#x27;?(s.recordId||c.records[0]?.id||&#x27;&#x27;):(t?.sourceRecordId||c.records[0]?.id||&#x27;&#x27;);if(!s.taskId)s.taskId=preparedTaskFor(c.id,s.sourceRecordId);if(!preparedDraftFor(c.id,s.sourceRecordId,s.taskId)){s.standalone=false;productUI.openReply();}else beginPrepare();return true;}
  if(action===&#x27;prep-save&#x27;){capture();returnToCustomerRecord({customerId:c.id,taskId:s.taskId,recordId:s.sourceRecordId||&#x27;&#x27;,draft:s.prepDraft});return true;}
  if(action===&#x27;prep-edit&#x27;){if(s.prepFullEditing&amp;&amp;s.prepBeforeEdit!==undefined){s.prepDraft=s.prepBeforeEdit;keepPreparedDraft({customerId:c.id,taskId:s.taskId,recordId:s.sourceRecordId,draft:s.prepDraft});}s.prepEditing=false;s.prepEditMode=&#x27;voice&#x27;;s.prepCorrection=&#x27;&#x27;;s.prepFullEditing=false;delete s.prepBeforeEdit;s.copyReady=false;return true;}
  if(action===&#x27;prep-speak&#x27;){if(!s.prepCorrection)s.prepCorrection=&#x27;客户改口了，这次只想知道怎么用，先不买。&#x27;;s.prepEditing=true;s.prepFullEditing=false;s.prepEditMode=&#x27;recording&#x27;;return true;}
@@ -4028,9 +4072,15 @@ renderCore=function(){if(s.view===&#x27;customer-update&#x27;){const c=customer(
  }
  return originalRenderCore();};
 root.addEventListener(&#x27;click&#x27;,e=&gt;{const b=e.target.closest(&#x27;[data-action]&#x27;);if(!b||!root.contains(b)||b.disabled)return;const action=b.dataset.action,value=b.dataset.value||&#x27;&#x27;;capture();const before=describeWork(action===&#x27;practice-adopt&#x27;);if(leaveWorkActions.has(action))rememberWork();else if(before&amp;&amp;s.pendingWork)delete s.pendingWork[before.key];if(action===&#x27;update-free&#x27;){startVoice(&#x27;custom&#x27;,s.selectedId);}else if(!coreAct(action,value)&amp;&amp;!productUI.act(action,value))learningUI.act(action,value);finishPending(action,before);renderApp();save();});
-root.addEventListener(&#x27;input&#x27;,e=&gt;{if(e.target.matches(&#x27;[data-field=&quot;inputText&quot;]&#x27;))s.inputText=e.target.value;if(e.target.matches(&#x27;[data-field=&quot;prepDraft&quot;]&#x27;))s.prepDraft=e.target.value;if(e.target.matches(&#x27;[data-field=&quot;practice-input&quot;]&#x27;)&amp;&amp;s.learning.practice)s.learning.practice.input=e.target.value;if(e.target.matches(&#x27;[data-field=&quot;customerSearch&quot;]&#x27;)){const pos=e.target.selectionStart;s.customerSearch=e.target.value;renderApp();const q=root.querySelector(&#x27;[data-field=&quot;customerSearch&quot;]&#x27;);q?.focus();q?.setSelectionRange(pos,pos);}});
+root.addEventListener(&#x27;input&#x27;,e=&gt;{
+ if(!e.target.matches(&#x27;[data-field]&#x27;))return;
+ capture();
+ if(e.target.matches(&#x27;[data-field=&quot;customerSearch&quot;]&#x27;)){const pos=e.target.selectionStart;s.customerSearch=e.target.value;renderApp();const q=root.querySelector(&#x27;[data-field=&quot;customerSearch&quot;]&#x27;);q?.focus();q?.setSelectionRange(pos,pos);}
+ // Capture editable draft fields only; their submit actions still apply changes.
+ save(true);
+});
 root.addEventListener(&#x27;change&#x27;,e=&gt;{if(e.target.matches(&#x27;[data-local-file]&#x27;)){s.attachmentName=e.target.files?.[0]?.name||&#x27;&#x27;;renderApp();return;}if(e.target.matches(&#x27;[data-demo]&#x27;)){capture();rememberWork();s.scenario=e.target.value;s.notice=&#x27;&#x27;;s.history=[];s.tab=&#x27;assistant&#x27;;s.inputText=&#x27;&#x27;;s.voicePaused=true;s.voicePlaying=false;if(s.scenario===&#x27;newcomer&#x27;){s.identity=&#x27;待完善&#x27;;s.view=&#x27;identity&#x27;;}else if(s.scenario===&#x27;ka&#x27;)s.view=&#x27;ka&#x27;;else{s.view=&#x27;home&#x27;;if(s.scenario===&#x27;family&#x27;||s.scenario===&#x27;sale&#x27;)s.selectedId=&#x27;chen&#x27;;if(s.scenario===&#x27;change&#x27;)s.selectedId=&#x27;wang&#x27;;s.standalone=true;}renderApp();save();}});
-window.addEventListener(&#x27;openai:set_globals&#x27;,e=&gt;{if(e.detail?.globals?.widgetState){restore(e.detail.globals.widgetState);renderApp();}});
+window.addEventListener(&#x27;openai:set_globals&#x27;,e=&gt;{const state=e.detail?.globals?.widgetState;if(state){if(inputDraftEcho&amp;&amp;JSON.stringify(state)===inputDraftEcho)return;restore(state);renderApp();}});
 renderApp();
 
 })();
