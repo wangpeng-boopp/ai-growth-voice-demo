@@ -2178,6 +2178,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  #growth-voice-complete .gp-talk-main svg{width:22px;height:22px}
  #growth-voice-complete .gp-typing-box{padding:8px;gap:5px}
 }
+#growth-voice-complete *{font-family:inherit}
 &lt;/style&gt;
 &lt;script&gt;
 (() =&gt; {
@@ -2596,9 +2597,9 @@ function createProductUI(ctx) {
     }
     if(view===&#x27;compare&#x27;) {
       const choices=selectedProducts();const editing=correcting(&#x27;needFix&#x27;);
-      return title(choices.length===1?&#x27;这次讲这一款&#x27;:&#x27;放在一起看&#x27;)+
-        (!choices.length?note(&#x27;选两款或三款，放在一起看。&#x27;):choices.length===1?`${editing?`&lt;p&gt;${h(choices[0].name)} · ${h(choices[0].preparation)}&lt;/p&gt;`:row(choices[0].name,choices[0].preparation,&#x27;product-open&#x27;,choices[0].id)+btn(&#x27;准备怎么讲&#x27;,&#x27;product-introduction&#x27;,choices[0].id)}`:`&lt;p class=&quot;gp-summary&quot;&gt;${h(choices.some(item=&gt;item.id===&#x27;adult-calcium&#x27;)&amp;&amp;choices.some(item=&gt;item.id===&#x27;kids-calcium&#x27;)?&#x27;两款都不用冲泡，主要看口味、配料和适用说明。&#x27;:&#x27;先看形态和准备方式；包装相近，不代表适合同一个人。&#x27;)}&lt;/p&gt;${choices.map(item=&gt;`&lt;div class=&quot;gp-result&quot;&gt;&lt;h3&gt;${h(item.name)}&lt;/h3&gt;&lt;p&gt;${h(item.flavor || item.form)} · ${h(item.preparation)}&lt;/p&gt;${!editing?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;规格、配料和详情&lt;/summary&gt;&lt;p&gt;${h(item.specification)}&lt;/p&gt;&lt;p&gt;${h(item.ingredients)}&lt;/p&gt;&lt;p&gt;${h(item.note)}&lt;/p&gt;${btn(&#x27;单独讲这一款&#x27;,&#x27;product-introduction&#x27;,item.id,&#x27;text&#x27;)}&lt;/details&gt;`:&#x27;&#x27;}&lt;/div&gt;`).join(&#x27;&#x27;)}${!editing?btn(&#x27;准备怎么讲&#x27;,&#x27;product-compare-intro&#x27;):&#x27;&#x27;}`)+
-        correctionControl(&#x27;needFix&#x27;)+(!editing?`&lt;details ${!choices.length?&#x27;open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;更换比较的产品&lt;/summary&gt;&lt;div class=&quot;gp-chips&quot;&gt;${products.map(item=&gt;chip(item.name,&#x27;product-compare-toggle&#x27;,item.id,(u.compareIds || []).includes(item.id))).join(&#x27;&#x27;)}&lt;/div&gt;&lt;/details&gt;`+sourceRow():&#x27;&#x27;);
+      return title(choices.length===1?&#x27;再选一款比较&#x27;:&#x27;放在一起看&#x27;)+
+        (!choices.length?note(&#x27;选两款或三款，放在一起看。&#x27;):choices.length===1?`${editing?`&lt;p&gt;${h(choices[0].name)} · ${h(choices[0].preparation)}&lt;/p&gt;`:row(choices[0].name,choices[0].preparation,&#x27;product-open&#x27;,choices[0].id)+btn(&#x27;只讲这一款&#x27;,&#x27;product-introduction&#x27;,choices[0].id,&#x27;text&#x27;)}`:`&lt;p class=&quot;gp-summary&quot;&gt;${h(choices.some(item=&gt;item.id===&#x27;adult-calcium&#x27;)&amp;&amp;choices.some(item=&gt;item.id===&#x27;kids-calcium&#x27;)?&#x27;两款都不用冲泡，主要看口味、配料和适用说明。&#x27;:&#x27;先看形态和准备方式；包装相近，不代表适合同一个人。&#x27;)}&lt;/p&gt;${choices.map(item=&gt;`&lt;div class=&quot;gp-result&quot;&gt;&lt;h3&gt;${h(item.name)}&lt;/h3&gt;&lt;p&gt;${h(item.flavor || item.form)} · ${h(item.preparation)}&lt;/p&gt;${!editing?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;规格、配料和详情&lt;/summary&gt;&lt;p&gt;${h(item.specification)}&lt;/p&gt;&lt;p&gt;${h(item.ingredients)}&lt;/p&gt;&lt;p&gt;${h(item.note)}&lt;/p&gt;${btn(&#x27;单独讲这一款&#x27;,&#x27;product-introduction&#x27;,item.id,&#x27;text&#x27;)}&lt;/details&gt;`:&#x27;&#x27;}&lt;/div&gt;`).join(&#x27;&#x27;)}${!editing?btn(&#x27;准备怎么讲&#x27;,&#x27;product-compare-intro&#x27;):&#x27;&#x27;}`)+
+        (!editing?`&lt;details ${choices.length&lt;2?&#x27;open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;${choices.length&lt;2?&#x27;选择比较产品&#x27;:&#x27;更换比较的产品&#x27;}&lt;/summary&gt;&lt;div class=&quot;gp-chips&quot;&gt;${products.map(item=&gt;chip(item.name,&#x27;product-compare-toggle&#x27;,item.id,(u.compareIds || []).includes(item.id))).join(&#x27;&#x27;)}&lt;/div&gt;&lt;/details&gt;`:&#x27;&#x27;)+correctionControl(&#x27;needFix&#x27;)+(!editing?sourceRow():&#x27;&#x27;);
     }
     if(view===&#x27;introduction&#x27;) {
       const draft=u.introDraft || intro(p);const editing=correcting(&#x27;introFix&#x27;);
@@ -2686,7 +2687,7 @@ function createProductUI(ctx) {
       case &#x27;product-selection-compare&#x27;:openCompare(selectionResult().ids);break;
       case &#x27;product-intro-compare&#x27;:openCompare(u.introCompareIds);break;
       case &#x27;product-compare-add&#x27;: {
-        const id=get(value).id;openCompare([id,...(u.compareIds || []).filter(x=&gt;x!==id)].slice(0,3));break;
+        const id=get(value).id;openCompare([id]);break;
       }
       case &#x27;product-compare-toggle&#x27;:
         if(!Array.isArray(u.compareBaseIds))settleCompare();
@@ -2706,7 +2707,7 @@ function createProductUI(ctx) {
       case &#x27;product-keep&#x27;: rememberIntro();u.introEdited=true;showNotice(&#x27;这段介绍已保留在演示中。&#x27;);break;
       case &#x27;product-adopt&#x27;:{rememberIntro();const origin=u.origin||scopeNow();if(origin.customerId){if(addToPrep(u.introDraft))ctx.returnToCustomerRecord({customerId:origin.customerId,taskId:origin.taskId,recordId:origin.sourceRecordId||&#x27;&#x27;});}else go(&#x27;introduction&#x27;);break;}
       case &#x27;product-demo&#x27;: case &#x27;product-practice&#x27;: {
-        rememberIntro();const origin=u.origin || scopeNow();const chosen=products.find(item=&gt;item.id===u.productId);s.practiceContext={customerId:origin.customerId,taskId:origin.taskId,sourceRecordId:origin.sourceRecordId||&#x27;&#x27;,customerNeed:selectionContext()||customer()?.need||&#x27;&#x27;,standalone:origin.standalone,topic:u.introCompareIds?.length&gt;1?u.introCompareIds.map(id=&gt;get(id).name).join(&#x27;和&#x27;):chosen?.name||selectionContext()||&#x27;这次沟通&#x27;,productId:chosen?.id||&#x27;&#x27;,introCompareIds:[...(u.introCompareIds||[])],returnView:&#x27;introduction&#x27;,goal:action===&#x27;product-demo&#x27;?&#x27;先看一次产品讲解示范&#x27;:&#x27;把这次的问题讲清楚&#x27;,introDraft:u.introDraft,mode:action===&#x27;product-demo&#x27;?&#x27;demo&#x27;:&#x27;practice&#x27;};go(&#x27;practice&#x27;);break;
+        rememberIntro();const origin=u.origin || scopeNow();const chosen=products.find(item=&gt;item.id===u.productId);s.practiceContext={customerId:origin.customerId,taskId:origin.taskId,sourceRecordId:origin.sourceRecordId||&#x27;&#x27;,customerNeed:selectionContext()||customer()?.need||&#x27;&#x27;,standalone:origin.standalone,topic:u.introCompareIds?.length&gt;1?u.introCompareIds.map(id=&gt;get(id).name).join(&#x27;和&#x27;):chosen?.name||selectionContext()||&#x27;这次沟通&#x27;,productId:chosen?.id||&#x27;&#x27;,introCompareIds:[...(u.introCompareIds||[])],returnView:&#x27;introduction&#x27;,goal:action===&#x27;product-demo&#x27;?&#x27;先看一次产品讲解示范&#x27;:&#x27;把这次的问题讲清楚&#x27;,introDraft:u.introDraft,mode:action===&#x27;product-demo&#x27;?&#x27;demo&#x27;:&#x27;practice&#x27;,restartFinished:action===&#x27;product-practice&#x27;};go(&#x27;practice&#x27;);break;
       }
       case &#x27;product-sources&#x27;:
         if(s.view===&#x27;knowledge-feedback&#x27;){if(s.history.at(-1)?.view===&#x27;sources&#x27;)back();else{s.view=&#x27;sources&#x27;;s.notice=&#x27;&#x27;;}}
@@ -2958,17 +2959,18 @@ function createLearningUI(ctx) {
   }
   function startPractice(force=false){
     const pc=latestPracticeContext(s.practiceContext||{});s.practiceContext=pc;
+    const restartFinished=Boolean(pc.restartFinished);delete pc.restartFinished;
     const requestedMode=pc.mode===&#x27;demo&#x27;||pc.demonstration===true?&#x27;demo&#x27;:&#x27;practice&#x27;;
     const compareIds=compareProductIds(pc);
     const need=pc.customerNeed||(pc.customerId?customer(pc.customerId)?.need:&#x27;&#x27;)||&#x27;&#x27;;
     const sourceRecordId=contextRecordId(pc);
     const signature=practiceSignature(pc);
-    if(L.practice&amp;&amp;!force&amp;&amp;(!L.practice.owner||L.practice.owner===workOwner())&amp;&amp;L.practice.signature===signature){captureOrigin();return;}
+    if(L.practice&amp;&amp;!force&amp;&amp;!(restartFinished&amp;&amp;L.practice.finished)&amp;&amp;(!L.practice.owner||L.practice.owner===workOwner())&amp;&amp;L.practice.signature===signature){captureOrigin();return;}
     rememberPractice();
     if(!force){
       const cached=L.practiceDrafts.find(item=&gt;item.key===practiceKey(pc))?.work;
       const saved=cached?.practice;
-      if(saved&amp;&amp;cached.owner===workOwner()&amp;&amp;saved.customerNeed===need&amp;&amp;(saved.productId||&#x27;&#x27;)===(pc.productId||&#x27;&#x27;)&amp;&amp;(saved.introCompareIds||[]).join(&#x27;|&#x27;)===compareIds.join(&#x27;|&#x27;)&amp;&amp;(!pc.introDraft||saved.introDraft===pc.introDraft)){
+      if(saved&amp;&amp;!(restartFinished&amp;&amp;saved.finished)&amp;&amp;cached.owner===workOwner()&amp;&amp;saved.customerNeed===need&amp;&amp;(saved.productId||&#x27;&#x27;)===(pc.productId||&#x27;&#x27;)&amp;&amp;(saved.introCompareIds||[]).join(&#x27;|&#x27;)===compareIds.join(&#x27;|&#x27;)&amp;&amp;(!pc.introDraft||saved.introDraft===pc.introDraft)){
         restorePractice(cached);if(requestedMode===&#x27;demo&#x27;)L.practice.mode=&#x27;demo&#x27;;return;
       }
     }
@@ -3164,7 +3166,7 @@ function createLearningUI(ctx) {
       const canContinue=Boolean(spoken)&amp;&amp;p.round&gt;0&amp;&amp;p.round&lt;3;
       const heading=title(own?&#x27;我刚才这样说&#x27;:p.role===&#x27;customer&#x27;?&#x27;服务商参考说法&#x27;:p.revision?&#x27;更新后的讲解稿&#x27;:p.introDraft?&#x27;原来的讲解稿&#x27;:&#x27;参考说法&#x27;,practiceSubtitle(p));
       if(p.correctionOpen)return heading+correctionInput(p)+previousTurns(p)+returnButton();
-      return heading+(own?`&lt;p&gt;${h(x.point)}&lt;/p&gt;`:p.role===&#x27;seller&#x27;?quiet(p.revision?&#x27;按新情况更新，还没重新接话。&#x27;:&#x27;还没有本轮发言。&#x27;):&#x27;&#x27;)+panel(`&lt;p class=&quot;gp-message&quot;&gt;${h(takeaway())}&lt;/p&gt;`)+(canUse?btn(p.customerId?&#x27;用这段，回原记录&#x27;:&#x27;用这段，回到讲解&#x27;,&#x27;practice-adopt&#x27;):btn(spoken?&#x27;再练一次&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;))+correctionInput(p)+previousTurns(p)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;其他练习&lt;/summary&gt;${quiet(x.avoid)}${canContinue?btn(&#x27;接着练下一句&#x27;,&#x27;practice-continue&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${canUse?btn(own?&#x27;从头再练&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${btn(&#x27;以前的练习&#x27;,&#x27;practice-history&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${canUse?returnButton():&#x27;&#x27;}&lt;/details&gt;`+(canUse?&#x27;&#x27;:returnButton());
+      return heading+(own?`&lt;p&gt;${h(x.point)}&lt;/p&gt;`:p.role===&#x27;seller&#x27;?quiet(p.revision?&#x27;按新情况更新，还没重新接话。&#x27;:&#x27;还没有本轮发言。&#x27;):&#x27;&#x27;)+panel(`&lt;p class=&quot;gp-message&quot;&gt;${h(takeaway())}&lt;/p&gt;`)+(canUse?btn(p.customerId?&#x27;用这段，回原记录&#x27;:&#x27;用这段，回到讲解&#x27;,&#x27;practice-adopt&#x27;):btn(spoken?&#x27;再练一次&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;))+returnButton()+correctionInput(p)+previousTurns(p)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;其他练习&lt;/summary&gt;${quiet(x.avoid)}${canContinue?btn(&#x27;接着练下一句&#x27;,&#x27;practice-continue&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${canUse?btn(own?&#x27;从头再练&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${btn(&#x27;以前的练习&#x27;,&#x27;practice-history&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;`;
     }
     if(view===&#x27;practice-history&#x27;)return title(&#x27;我的练习&#x27;,`${L.practiceHistory.length}次示例记录`)+(L.practiceHistory.length?L.practiceHistory.map((p,i)=&gt;row(`${practiceName(p)} · ${p.topic}`,`${p.role===&#x27;seller&#x27;?&#x27;我来接话&#x27;:&#x27;我当客户&#x27;} · ${p.goal}`,&#x27;practice-open-history&#x27;,i)).join(&#x27;&#x27;):quiet(&#x27;练过的内容会留在这里，随时可以回看。&#x27;))+btn(&#x27;练一段新的&#x27;,&#x27;practice-new&#x27;);
     if(view===&#x27;growth&#x27;)return title(&#x27;接下来练什么&#x27;)+panel(`&lt;h2 class=&quot;gp-sub&quot;&gt;${h(L.plan.goal)}&lt;/h2&gt;&lt;p&gt;${h(L.plan.paused?&#x27;已暂停&#x27;:L.plan.pace)}&lt;/p&gt;`)+btn(L.plan.paused?&#x27;恢复，练一次&#x27;:&#x27;就练这个&#x27;,&#x27;learn-plan-start&#x27;)+`&lt;details ${L.planInputOpen?&#x27;open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;gp-label&quot;&gt;调整安排&lt;/summary&gt;${planInput()}&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;直接选一项&lt;/summary&gt;&lt;div class=&quot;gp-chips&quot;&gt;${[&#x27;把产品讲得清楚&#x27;,&#x27;先听懂客户需求&#x27;,&#x27;更自然地回应顾虑&#x27;,&#x27;做好成交后服务&#x27;].map(x=&gt;chip(x,&#x27;learn-plan-goal&#x27;,x,L.plan.goal===x)).join(&#x27;&#x27;)}&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${[&#x27;有空练一次&#x27;,&#x27;下次沟通前练&#x27;,&#x27;先学相关课程&#x27;].map(x=&gt;chip(x,&#x27;learn-plan-pace&#x27;,x,L.plan.pace===x)).join(&#x27;&#x27;)}&lt;/div&gt;&lt;/details&gt;${L.plan.paused?&#x27;&#x27;:btn(&#x27;先暂停&#x27;,&#x27;learn-plan-pause&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;`;
@@ -3968,7 +3970,7 @@ function coreAct(action,value){const c=customer(),t=currentTask();
  if(action===&#x27;prep-copy&#x27;){capture();s.prepEditing=false;s.copyReady=true;return true;}
  if(action===&#x27;customer-products&#x27;){capture();s.standalone=false;s.sourceRecordId=s.sourceRecordId||c.records[0]?.id||&#x27;&#x27;;productUI.enterContext?.();go(&#x27;products&#x27;);return true;}
  if(action===&#x27;browse-products&#x27;){s.standalone=true;s.taskId=&#x27;&#x27;;productUI.enterContext?.();go(&#x27;products&#x27;);return true;}
- if(action===&#x27;customer-practice&#x27;||action===&#x27;demo-practice&#x27;){capture();s.sourceRecordId=s.sourceRecordId||s.recordId||c.records[0]?.id||&#x27;&#x27;;const origin=preparationContext();s.practiceContext={...origin,topic:origin.topic||origin.customerNeed,introDraft:s.view===&#x27;prepare&#x27;?s.prepDraft:&#x27;&#x27;,returnView:s.view,goal:&#x27;先回应眼前的问题&#x27;,demonstration:action===&#x27;demo-practice&#x27;};go(&#x27;practice&#x27;);return true;}
+ if(action===&#x27;customer-practice&#x27;||action===&#x27;demo-practice&#x27;){capture();s.sourceRecordId=s.sourceRecordId||s.recordId||c.records[0]?.id||&#x27;&#x27;;const origin=preparationContext();s.practiceContext={...origin,topic:origin.topic||origin.customerNeed,introDraft:s.view===&#x27;prepare&#x27;?s.prepDraft:&#x27;&#x27;,returnView:s.view,goal:&#x27;先回应眼前的问题&#x27;,demonstration:action===&#x27;demo-practice&#x27;,restartFinished:action===&#x27;customer-practice&#x27;};go(&#x27;practice&#x27;);return true;}
  if(action===&#x27;free-practice&#x27;){s.standalone=true;s.taskId=&#x27;&#x27;;s.practiceContext={customerId:&#x27;&#x27;,topic:&#x27;客户想比较产品&#x27;,returnView:&#x27;home&#x27;,goal:&#x27;问清需要再介绍&#x27;};go(&#x27;practice&#x27;);return true;}
  if(action===&#x27;review-record&#x27;){if(s.sourceRecordId&amp;&amp;c.records.some(r=&gt;r.id===s.sourceRecordId))s.recordId=s.sourceRecordId;go(action);return true;}
  if(action===&#x27;customer-experience&#x27;){s.experienceRecord=c.records.find(r=&gt;r.id===s.recordId)||c.records[0];s.sourceRecordId=s.experienceRecord?.id||&#x27;&#x27;;s.practiceContext={customerId:c.id,sourceRecordId:s.sourceRecordId,customerNeed:c.need,topic:c.need,returnView:&#x27;customer&#x27;};go(&#x27;experience&#x27;);return true;}
