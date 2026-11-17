@@ -3121,7 +3121,7 @@ function createProductUI(ctx) {
       return title(&#x27;准备产品讲解&#x27;)+`&lt;div class=&quot;gp-product-heading&quot;&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(u.introCompareIds?.length&gt;1?u.introCompareIds.map(id=&gt;get(id).name).join(&#x27; · &#x27;):products.find(item=&gt;item.id===u.productId)?.name||&#x27;这次沟通&#x27;)}&lt;/p&gt;${!editing&amp;&amp;!u.editingIntro?(u.introCompareIds?.length&gt;1?btn(&#x27;比较 / 换产品&#x27;,&#x27;product-intro-compare&#x27;,&#x27;&#x27;,&#x27;text&#x27;):btn(&#x27;比较 / 换产品&#x27;,&#x27;product-compare-add&#x27;,p.id,&#x27;text&#x27;)):&#x27;&#x27;}&lt;/div&gt;`+
         (!editing&amp;&amp;!u.editingIntro?relatedCaseCard(relatedCaseContext(&#x27;&#x27;,scopeNow()),true):&#x27;&#x27;)+
         (u.editingIntro?&#x27;&#x27;:u.introCopyReady&amp;&amp;!editing?`&lt;textarea class=&quot;gp-input&quot; data-field=&quot;product-copy&quot; rows=&quot;6&quot; readonly aria-label=&quot;可复制的讲解稿&quot;&gt;${h(draft)}&lt;/textarea&gt;`:`&lt;p class=&quot;gp-message&quot;&gt;${h(draft)}&lt;/p&gt;`)+
-        (!editing&amp;&amp;!u.editingIntro?`&lt;div class=&quot;gp-prep-actions&quot;&gt;${btn(u.introCopyReady?&#x27;重新选中文字&#x27;:&#x27;选中文字&#x27;,&#x27;product-copy&#x27;)}${btn(&#x27;我练一句&#x27;,&#x27;product-practice&#x27;,p.id,&#x27;secondary&#x27;)}&lt;/div&gt;`+(u.introCopyReady?note(&#x27;文字已选中，可以长按复制。&#x27;):&#x27;&#x27;)+(customer()&amp;&amp;!directReturn?btn(&#x27;回原记录&#x27;,&#x27;product-adopt&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;):&#x27;&#x27;)+
+        (!editing&amp;&amp;!u.editingIntro?`&lt;div class=&quot;gp-prep-actions&quot;&gt;${btn(u.introCopyReady?&#x27;重新选中文字&#x27;:&#x27;选中文字&#x27;,&#x27;product-copy&#x27;)}${btn(&#x27;我练一句&#x27;,&#x27;product-practice&#x27;,p.id,&#x27;secondary&#x27;)}&lt;/div&gt;`+(u.introCopyReady?note(&#x27;文字已选中，可以长按复制。&#x27;):&#x27;&#x27;)+btn(&#x27;没弄懂，先学一下&#x27;,&#x27;product-learn&#x27;,p.id,&#x27;text&#x27;)+(customer()&amp;&amp;!directReturn?btn(&#x27;回原记录&#x27;,&#x27;product-adopt&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;):&#x27;&#x27;)+
         (!u.editingIntro?correctionControl(&#x27;introFix&#x27;):&#x27;&#x27;)+
         (!editing?`&lt;details${u.editingIntro?&#x27; open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;其他讲法与示范&lt;/summary&gt;${u.editingIntro?field(&#x27;product-intro&#x27;,draft,&#x27;&#x27;,5)+btn(&#x27;保存修改&#x27;,&#x27;product-edit-toggle&#x27;,&#x27;&#x27;,&#x27;text&#x27;):btn(&#x27;编辑整段文字&#x27;,&#x27;product-edit-toggle&#x27;,&#x27;&#x27;,&#x27;text&#x27;)+btn(&#x27;先看示范&#x27;,&#x27;product-demo&#x27;,p.id,&#x27;text&#x27;)+`&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;简单讲&#x27;,&#x27;product-intro-mode&#x27;,&#x27;short&#x27;,u.introMode===&#x27;short&#x27;)}${chip(&#x27;微信文字版&#x27;,&#x27;product-intro-mode&#x27;,&#x27;wechat&#x27;,u.introMode===&#x27;wechat&#x27;)}${chip(&#x27;讲详细点&#x27;,&#x27;product-intro-mode&#x27;,&#x27;detail&#x27;,u.introMode===&#x27;detail&#x27;)}${chip(&#x27;给家人讲&#x27;,&#x27;product-audience&#x27;,&#x27;family&#x27;,u.audience===&#x27;family&#x27;)}${chip(&#x27;给客户讲&#x27;,&#x27;product-audience&#x27;,&#x27;customer&#x27;,u.audience===&#x27;customer&#x27;)}${chip(&#x27;加句开场白&#x27;,&#x27;product-rephrase&#x27;)}&lt;/div&gt;`}&lt;/details&gt;`:&#x27;&#x27;)+(!editing&amp;&amp;!u.editingIntro?sourceRow():&#x27;&#x27;);
     }
@@ -3275,6 +3275,575 @@ function createProductUI(ctx) {
 
 function createLearningUI(ctx) {
   const {s,h,icon,btn,row,chip,go,back,showNotice}=ctx;
+  const learningContent={
+  &quot;kb-probiotics&quot;: {
+    &quot;source&quot;: &quot;复合益生菌课件第18–23、26–28页；蔓越莓复合益生菌课件第2–8、11–12、15页。现售标签与个体适用待核。&quot;,
+    &quot;units&quot;: [
+      [
+        &quot;菌多，不等于更适合&quot;,
+        &quot;两份培训的菌株和关注点不同：普通复合益生菌围绕肠道，蔓越莓复合益生菌围绕女性私护微生态。比较时先看要了解什么，不只看菌数。&quot;,
+        &quot;“两款的菌株和培训重点不同。您想先了解哪方面？不能只按菌多菌少来选。”&quot;
+      ],
+      [
+        &quot;同叫益生菌，也不能随便互换&quot;,
+        &quot;名字相似，不代表配方或适用条件相同。现有资料没有确认两款可以互换，也没有证明必须一起用。&quot;,
+        &quot;“先不用多买。我们先看您的问题，再核对对应产品说明，不能因为都叫益生菌就换着用。”&quot;
+      ]
+    ],
+    &quot;questions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;菌.*多|菌.*少|菌数|菌量|哪个.*好&quot;,
+        &quot;question&quot;: &quot;菌更多就更好吗？&quot;,
+        &quot;answer&quot;: &quot;不能只凭菌量判断。两份培训的菌株和关注点不同，先看客户想了解什么，再比较对应产品资料。&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;互换|代替|替换|一样|一起|搭配|蔓越莓|区别&quot;,
+        &quot;question&quot;: &quot;都是益生菌，能互换或一起用吗？&quot;,
+        &quot;answer&quot;: &quot;名字相似不代表配方相同。现有资料没有确认可以互换或必须一起使用，先把客户想了解的问题说清楚。&quot;
+      }
+    ],
+    &quot;misconceptions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;菌.{0,8}(越多越好|多.{0,4}(更好|最好|更有效|效果好))|更多.{0,4}(肯定|一定).{0,3}好&quot;,
+        &quot;body&quot;: &quot;“菌多”还不能推出“更适合”。先比较客户想了解的方向和对应菌株。&quot;,
+        &quot;sample&quot;: &quot;“两款的菌株和培训重点不同，不能只比数量。您想先了解哪方面？”&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;(可以|能|直接|随便).{0,3}(互换|换着|代替)|一起.{0,5}(更全面|效果更好)|都要买&quot;,
+        &quot;body&quot;: &quot;资料没有确认互换或组合更好，先去掉这句结论。&quot;,
+        &quot;sample&quot;: &quot;“先看您这次的问题，是否能换用或搭配，还要核对对应说明。”&quot;
+      }
+    ],
+    &quot;practice&quot;: {
+      &quot;questions&quot;: [
+        &quot;都是益生菌，是不是菌越多越好？&quot;,
+        &quot;那两款一起用，是不是更全面？&quot;,
+        &quot;我先不买了，把区别弄懂再说。&quot;
+      ],
+      &quot;answers&quot;: [
+        &quot;两款的菌株和培训重点不同，不能只按菌数选。您想先了解哪方面？&quot;,
+        &quot;现有资料没有确认必须搭配。先弄清这次的问题，再看对应说明。&quot;,
+        &quot;可以，先了解清楚。还有哪一点想问，我接着解释。&quot;
+      ],
+      &quot;point&quot;: &quot;讲清比较的依据，保留不买的选择。&quot;,
+      &quot;avoid&quot;: &quot;只按菌数下结论，或把不同产品说成必须搭配。&quot;
+    },
+    &quot;quiz&quot;: [
+      [
+        &quot;客户说“菌越多越好”，怎么接？&quot;,
+        [
+          &quot;先看客户问题，再比较菌株和依据&quot;,
+          &quot;认可菌越多就越好&quot;
+        ],
+        0,
+        &quot;数量不能单独决定哪款适合。&quot;
+      ],
+      [
+        &quot;两款都叫益生菌，能直接互换吗？&quot;,
+        [
+          &quot;可以，名称一样&quot;,
+          &quot;还要看配方和对应说明&quot;
+        ],
+        1,
+        &quot;同一类别不等于同一配方或适用条件。&quot;
+      ]
+    ],
+    &quot;retry&quot;: [
+      [
+        &quot;比较两款益生菌，先看什么？&quot;,
+        [
+          &quot;菌数谁大&quot;,
+          &quot;客户想了解什么，以及对应菌株和资料&quot;
+        ],
+        1,
+        &quot;先分清比较目的。&quot;
+      ],
+      [
+        &quot;客户问“两款一起用更全面吗”，怎样答？&quot;,
+        [
+          &quot;资料没确认，先核对对应说明&quot;,
+          &quot;推荐一起买&quot;
+        ],
+        0,
+        &quot;不同不等于必须搭配。&quot;
+      ]
+    ]
+  },
+  &quot;adult-calcium&quot;: {
+    &quot;source&quot;: &quot;骨骼健康课件第17–20、44页。第26页香精与第30–31页骨肽名称有待核口径，不作为本轮答案。&quot;,
+    &quot;units&quot;: [
+      [
+        &quot;补钙和关节问题，先分清&quot;,
+        &quot;课件分别介绍儿童成长营养、成人骨骼营养与关节养护。都属于骨健康，讲解重点也不相同。&quot;,
+        &quot;“液体钙和氨糖，培训讲的重点不同。您这次想了解日常补充，还是在问已经出现的不舒服？”&quot;
+      ],
+      [
+        &quot;先问清，不按年龄直接选&quot;,
+        &quot;“年纪大”“走楼梯不舒服”还不能说明原因。先分清客户在问产品信息还是身体问题，不直接给一套组合。&quot;,
+        &quot;“我先听清您最想了解什么。如果只是问这盒怎么用，我们就看这盒的说明。”&quot;
+      ]
+    ],
+    &quot;questions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;氨糖|关节|膝盖|楼梯|一样|区别&quot;,
+        &quot;question&quot;: &quot;液体钙和氨糖，讲的是一回事吗？&quot;,
+        &quot;answer&quot;: &quot;课件把液体钙放在骨骼营养、氨糖放在关节养护来介绍。不能把这两个重点混成一个效果承诺，也不能只凭不舒服直接选品。&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;妈妈|老人|年纪|年龄|推荐|选哪|怎么吃|用法&quot;,
+        &quot;question&quot;: &quot;客户只说年纪大，该先问什么？&quot;,
+        &quot;answer&quot;: &quot;先分清是在了解日常营养，还是想问已有不适。若只问手里这盒的用法，就看对应说明，不必重新收集一整套背景。&quot;
+      }
+    ],
+    &quot;misconceptions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;(年纪大|老人|膝盖|关节).{0,12}(就选|就买|肯定缺钙|就是缺钙|必须补)|补钙.{0,6}(治|解决).{0,5}(疼|不舒服)&quot;,
+        &quot;body&quot;: &quot;年龄或一句不舒服，不能直接推出缺钙或该选哪款。先分清客户到底在问什么。&quot;,
+        &quot;sample&quot;: &quot;“您这次主要想了解日常补充，还是想问走楼梯不舒服这件事？”&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;(钙|氨糖).{0,5}(一样|都一样|必须一起|一起更好)&quot;,
+        &quot;body&quot;: &quot;课件里的讲解重点不同，不能据此说可以互换或必须一起用。&quot;,
+        &quot;sample&quot;: &quot;“先看您要了解的具体问题，再查对应产品资料。”&quot;
+      }
+    ],
+    &quot;practice&quot;: {
+      &quot;questions&quot;: [
+        &quot;补钙和关节养护，是一回事吗？&quot;,
+        &quot;液体钙和氨糖不都是管骨头的吗？&quot;,
+        &quot;我只是想知道手里这盒怎么用。&quot;
+      ],
+      &quot;answers&quot;: [
+        &quot;课件里的讲解重点不同。先分清您想了解日常营养，还是已经出现的不舒服，不把两种问题混在一起。&quot;,
+        &quot;课件里的讲解重点不同，不能把它们说成一样或保证能解决同一个问题。&quot;,
+        &quot;明白，就看您手里这款的对应说明，不用重新讲背景。&quot;
+      ],
+      &quot;point&quot;: &quot;问一个能分清问题的关键点，客户改口后及时跟上。&quot;,
+      &quot;avoid&quot;: &quot;按年龄、膝盖不舒服直接定产品。&quot;
+    },
+    &quot;quiz&quot;: [
+      [
+        &quot;客户替妈妈问“补钙，走楼梯也不舒服”，先做什么？&quot;,
+        [
+          &quot;直接推荐钙加氨糖&quot;,
+          &quot;分清她在问日常营养还是已有不适&quot;
+        ],
+        1,
+        &quot;先分清问题，不把不适直接变成选品依据。&quot;
+      ],
+      [
+        &quot;客户改口“只问这盒怎么用”，接下来？&quot;,
+        [
+          &quot;看这盒的对应说明&quot;,
+          &quot;继续问完整健康情况&quot;
+        ],
+        0,
+        &quot;跟着客户当前问题走，不重复收集背景。&quot;
+      ]
+    ],
+    &quot;retry&quot;: [
+      [
+        &quot;只有“年纪大”这条信息，能定哪款吗？&quot;,
+        [
+          &quot;不能，还要分清当前问题&quot;,
+          &quot;能，按年龄选&quot;
+        ],
+        0,
+        &quot;年龄不能代替具体需要。&quot;
+      ],
+      [
+        &quot;客户只问手里产品的使用说明，需要重填背景吗？&quot;,
+        [
+          &quot;需要&quot;,
+          &quot;不需要，先看对应产品说明&quot;
+        ],
+        1,
+        &quot;只补会影响当前回答的信息。&quot;
+      ]
+    ]
+  },
+  &quot;kuihuosu-yuyou&quot;: {
+    &quot;source&quot;: &quot;心脑血管系列课件第23、32–33页。用于学习比较方法，现售标签、用量和个体适用待核。&quot;,
+    &quot;units&quot;: [
+      [
+        &quot;比较含量，先看单位&quot;,
+        &quot;数字可能指整粒重量、某种成分，或几粒合计。只有成分和份量对齐，才能比较，不能看到数字大就说更好。&quot;,
+        &quot;“先看两边写的是什么成分、按几粒计算。只比包装上的大数字，还比不清。”&quot;
+      ],
+      [
+        &quot;鱼油和Q10，不因同类就一起买&quot;,
+        &quot;课件里的配方不同。放在同一门课，不代表能互换，也不代表每个人都需要一起买。&quot;,
+        &quot;“两款的配方不同。您想比较哪一点？我们先把这个问题说清楚。”&quot;
+      ]
+    ],
+    &quot;questions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;含量|单位|每粒|两粒|数字|更多|哪个.*好|成分&quot;,
+        &quot;question&quot;: &quot;包装上数字更大的，就更好吗？&quot;,
+        &quot;answer&quot;: &quot;先看数字指整粒重量还是某种成分，再看是每粒还是多粒合计。两边口径没对齐，不能直接比大小。&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;Q10|q10|辅酶|重复|互换|一起|搭配|区别&quot;,
+        &quot;question&quot;: &quot;鱼油和Q10是不是重复？&quot;,
+        &quot;answer&quot;: &quot;资料里的配方不同。不能因为放在同一门课，就认为可以互换或必须一起买。先回答客户想比较的具体问题。&quot;
+      }
+    ],
+    &quot;misconceptions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;数字.{0,5}(越大越好|大.{0,3}就好)|含量.{0,5}(越高越好|高.{0,3}更好)|整粒.{0,6}(就是|等于).{0,5}(EPA|DHA|成分)|rTG.{0,8}吸收率&quot;,
+        &quot;body&quot;: &quot;先把成分、份量或比例的含义分清，别用一个大数字替产品下结论。&quot;,
+        &quot;sample&quot;: &quot;“先看两边写的是什么成分、按几粒计算，再按相同口径比较。”&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;(鱼油|Q10|辅酶).{0,8}(可以互换|都一样|必须一起)|一起.{0,5}效果更好&quot;,
+        &quot;body&quot;: &quot;配方不同不等于可以互换，也不等于必须一起用。&quot;,
+        &quot;sample&quot;: &quot;“您想比较哪一点？先看对应资料，不急着多买。”&quot;
+      }
+    ],
+    &quot;practice&quot;: {
+      &quot;questions&quot;: [
+        &quot;另一款数字更大，是不是更划算？&quot;,
+        &quot;这款鱼油和Q10一起买是不是更好？&quot;,
+        &quot;那我先不比较了，等找到包装再说。&quot;
+      ],
+      &quot;answers&quot;: [
+        &quot;先看两边的数字指什么成分、按几粒计算，口径相同才能比较。&quot;,
+        &quot;不能直接这样判断。先看您想了解的问题和对应产品资料。&quot;,
+        &quot;可以，等有资料再看。这次先把已经知道的讲清楚。&quot;
+      ],
+      &quot;point&quot;: &quot;比较同一成分与份量，不为守住某款而硬说更好。&quot;,
+      &quot;avoid&quot;: &quot;直接比较大数字，或默认配套更好。&quot;
+    },
+    &quot;quiz&quot;: [
+      [
+        &quot;两款包装含量数字不同，先看什么？&quot;,
+        [
+          &quot;数字谁大&quot;,
+          &quot;成分是什么，按几粒计算&quot;
+        ],
+        1,
+        &quot;先统一比较口径。&quot;
+      ],
+      [
+        &quot;鱼油和Q10同属一门课，说明什么？&quot;,
+        [
+          &quot;一定要搭配&quot;,
+          &quot;仍需分别看配方与对应依据&quot;
+        ],
+        1,
+        &quot;课程分类不等于使用结论。&quot;
+      ]
+    ],
+    &quot;retry&quot;: [
+      [
+        &quot;整粒重量能直接当有效成分含量吗？&quot;,
+        [
+          &quot;不能，要看具体标注&quot;,
+          &quot;可以，数字一样用&quot;
+        ],
+        0,
+        &quot;不同数字代表不同内容。&quot;
+      ],
+      [
+        &quot;客户资料不齐、暂不比较，要怎样接？&quot;,
+        [
+          &quot;尊重暂停，等资料齐再看&quot;,
+          &quot;催他先买组合&quot;
+        ],
+        0,
+        &quot;没有资料不替客户下结论。&quot;
+      ]
+    ]
+  },
+  &quot;kids-calcium&quot;: {
+    &quot;source&quot;: &quot;骨骼健康课件第17–20、44页。第26页香精与第30–31页骨肽名称有待核口径，不作为本轮答案。&quot;,
+    &quot;units&quot;: [
+      [
+        &quot;儿童款和成人款，先看不同&quot;,
+        &quot;课件分别介绍儿童成长营养和成人骨骼营养。不能凭名称说儿童款更温和，也不能默认给成人换用。&quot;,
+        &quot;“两款的配方与培训重点不同，不能只凭儿童款这个名字判断更温和。先看给谁了解和对应说明。”&quot;
+      ],
+      [
+        &quot;先问清，不按年龄直接选&quot;,
+        &quot;“年纪大”“走楼梯不舒服”还不能说明原因。先分清客户在问产品信息还是身体问题，不直接给一套组合。&quot;,
+        &quot;“我先听清您最想了解什么。如果只是问这盒怎么用，我们就看这盒的说明。”&quot;
+      ]
+    ],
+    &quot;questions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;儿童|成人|温和|一样|区别&quot;,
+        &quot;question&quot;: &quot;儿童液体钙是不是更温和，成人也能换用？&quot;,
+        &quot;answer&quot;: &quot;儿童款的名字不能证明更温和。两款的配方和适用说明分别看，不能只凭名字决定成人可以换用。&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;妈妈|老人|年纪|年龄|推荐|选哪|怎么吃|用法&quot;,
+        &quot;question&quot;: &quot;客户只说年纪大，该先问什么？&quot;,
+        &quot;answer&quot;: &quot;先分清是在了解日常营养，还是想问已有不适。若只问手里这盒的用法，就看对应说明，不必重新收集一整套背景。&quot;
+      }
+    ],
+    &quot;misconceptions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;儿童.{0,8}(更温和|更安全|成人.{0,3}(能用|随便用))&quot;,
+        &quot;body&quot;: &quot;不能凭“儿童款”这个名称判断更温和或成人可以换用。&quot;,
+        &quot;sample&quot;: &quot;“两款的配方和适用说明分别看，名称本身不能作判断。”&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;(年纪大|老人|膝盖|关节).{0,12}(就选|就买|肯定缺钙|就是缺钙|必须补)|补钙.{0,6}(治|解决).{0,5}(疼|不舒服)&quot;,
+        &quot;body&quot;: &quot;年龄或一句不舒服，不能直接推出缺钙或该选哪款。先分清客户到底在问什么。&quot;,
+        &quot;sample&quot;: &quot;“您这次主要想了解日常补充，还是想问走楼梯不舒服这件事？”&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;(钙|氨糖).{0,5}(一样|都一样|必须一起|一起更好)&quot;,
+        &quot;body&quot;: &quot;课件里的讲解重点不同，不能据此说可以互换或必须一起用。&quot;,
+        &quot;sample&quot;: &quot;“先看您要了解的具体问题，再查对应产品资料。”&quot;
+      }
+    ],
+    &quot;practice&quot;: {
+      &quot;questions&quot;: [
+        &quot;儿童液体钙是不是更温和，成人也能换用？&quot;,
+        &quot;液体钙和氨糖不都是管骨头的吗？&quot;,
+        &quot;我只是想知道手里这盒怎么用。&quot;
+      ],
+      &quot;answers&quot;: [
+        &quot;儿童款的名字不能证明更温和。两款的配方和适用说明分别看，不能只凭名字决定成人可以换用。&quot;,
+        &quot;课件里的讲解重点不同，不能把它们说成一样或保证能解决同一个问题。&quot;,
+        &quot;明白，就看您手里这款的对应说明，不用重新讲背景。&quot;
+      ],
+      &quot;point&quot;: &quot;问一个能分清问题的关键点，客户改口后及时跟上。&quot;,
+      &quot;avoid&quot;: &quot;按年龄、膝盖不舒服直接定产品。&quot;
+    },
+    &quot;quiz&quot;: [
+      [
+        &quot;儿童款是不是自然比成人款更温和？&quot;,
+        [
+          &quot;是，名称已经说明&quot;,
+          &quot;不能凭名称判断，要看对应资料&quot;
+        ],
+        1,
+        &quot;产品名称不能替代配方和适用说明。&quot;
+      ],
+      [
+        &quot;客户改口“只问这盒怎么用”，接下来？&quot;,
+        [
+          &quot;看这盒的对应说明&quot;,
+          &quot;继续问完整健康情况&quot;
+        ],
+        0,
+        &quot;跟着客户当前问题走，不重复收集背景。&quot;
+      ]
+    ],
+    &quot;retry&quot;: [
+      [
+        &quot;成人想换用儿童款，先看什么？&quot;,
+        [
+          &quot;对应配方和适用说明&quot;,
+          &quot;只要名字有儿童就行&quot;
+        ],
+        0,
+        &quot;先查资料，不凭名称确定适用。&quot;
+      ],
+      [
+        &quot;客户只问手里产品的使用说明，需要重填背景吗？&quot;,
+        [
+          &quot;需要&quot;,
+          &quot;不需要，先看对应产品说明&quot;
+        ],
+        1,
+        &quot;只补会影响当前回答的信息。&quot;
+      ]
+    ]
+  },
+  &quot;kb-antang&quot;: {
+    &quot;source&quot;: &quot;骨骼健康课件第17–20、44页。第26页香精与第30–31页骨肽名称有待核口径，不作为本轮答案。&quot;,
+    &quot;units&quot;: [
+      [
+        &quot;补钙和关节问题，先分清&quot;,
+        &quot;课件分别介绍儿童成长营养、成人骨骼营养与关节养护。都属于骨健康，讲解重点也不相同。&quot;,
+        &quot;“液体钙和氨糖，培训讲的重点不同。您这次想了解日常补充，还是在问已经出现的不舒服？”&quot;
+      ],
+      [
+        &quot;先问清，不按年龄直接选&quot;,
+        &quot;“年纪大”“走楼梯不舒服”还不能说明原因。先分清客户在问产品信息还是身体问题，不直接给一套组合。&quot;,
+        &quot;“我先听清您最想了解什么。如果只是问这盒怎么用，我们就看这盒的说明。”&quot;
+      ]
+    ],
+    &quot;questions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;氨糖|关节|膝盖|楼梯|一样|区别&quot;,
+        &quot;question&quot;: &quot;液体钙和氨糖，讲的是一回事吗？&quot;,
+        &quot;answer&quot;: &quot;课件把液体钙放在骨骼营养、氨糖放在关节养护来介绍。不能把这两个重点混成一个效果承诺，也不能只凭不舒服直接选品。&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;妈妈|老人|年纪|年龄|推荐|选哪|怎么吃|用法&quot;,
+        &quot;question&quot;: &quot;客户只说年纪大，该先问什么？&quot;,
+        &quot;answer&quot;: &quot;先分清是在了解日常营养，还是想问已有不适。若只问手里这盒的用法，就看对应说明，不必重新收集一整套背景。&quot;
+      }
+    ],
+    &quot;misconceptions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;(年纪大|老人|膝盖|关节).{0,12}(就选|就买|肯定缺钙|就是缺钙|必须补)|补钙.{0,6}(治|解决).{0,5}(疼|不舒服)&quot;,
+        &quot;body&quot;: &quot;年龄或一句不舒服，不能直接推出缺钙或该选哪款。先分清客户到底在问什么。&quot;,
+        &quot;sample&quot;: &quot;“您这次主要想了解日常补充，还是想问走楼梯不舒服这件事？”&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;(钙|氨糖).{0,5}(一样|都一样|必须一起|一起更好)&quot;,
+        &quot;body&quot;: &quot;课件里的讲解重点不同，不能据此说可以互换或必须一起用。&quot;,
+        &quot;sample&quot;: &quot;“先看您要了解的具体问题，再查对应产品资料。”&quot;
+      }
+    ],
+    &quot;practice&quot;: {
+      &quot;questions&quot;: [
+        &quot;补钙和关节养护，是一回事吗？&quot;,
+        &quot;液体钙和氨糖不都是管骨头的吗？&quot;,
+        &quot;我只是想知道手里这盒怎么用。&quot;
+      ],
+      &quot;answers&quot;: [
+        &quot;课件里的讲解重点不同。先分清您想了解日常营养，还是已经出现的不舒服，不把两种问题混在一起。&quot;,
+        &quot;课件里的讲解重点不同，不能把它们说成一样或保证能解决同一个问题。&quot;,
+        &quot;明白，就看您手里这款的对应说明，不用重新讲背景。&quot;
+      ],
+      &quot;point&quot;: &quot;问一个能分清问题的关键点，客户改口后及时跟上。&quot;,
+      &quot;avoid&quot;: &quot;按年龄、膝盖不舒服直接定产品。&quot;
+    },
+    &quot;quiz&quot;: [
+      [
+        &quot;客户替妈妈问“补钙，走楼梯也不舒服”，先做什么？&quot;,
+        [
+          &quot;直接推荐钙加氨糖&quot;,
+          &quot;分清她在问日常营养还是已有不适&quot;
+        ],
+        1,
+        &quot;先分清问题，不把不适直接变成选品依据。&quot;
+      ],
+      [
+        &quot;客户改口“只问这盒怎么用”，接下来？&quot;,
+        [
+          &quot;看这盒的对应说明&quot;,
+          &quot;继续问完整健康情况&quot;
+        ],
+        0,
+        &quot;跟着客户当前问题走，不重复收集背景。&quot;
+      ]
+    ],
+    &quot;retry&quot;: [
+      [
+        &quot;只有“年纪大”这条信息，能定哪款吗？&quot;,
+        [
+          &quot;不能，还要分清当前问题&quot;,
+          &quot;能，按年龄选&quot;
+        ],
+        0,
+        &quot;年龄不能代替具体需要。&quot;
+      ],
+      [
+        &quot;客户只问手里产品的使用说明，需要重填背景吗？&quot;,
+        [
+          &quot;需要&quot;,
+          &quot;不需要，先看对应产品说明&quot;
+        ],
+        1,
+        &quot;只补会影响当前回答的信息。&quot;
+      ]
+    ]
+  },
+  &quot;q10&quot;: {
+    &quot;source&quot;: &quot;心脑血管系列课件第23、32–33页。用于学习比较方法，现售标签、用量和个体适用待核。&quot;,
+    &quot;units&quot;: [
+      [
+        &quot;Q10和鱼油，不是一个配方&quot;,
+        &quot;课件分别介绍Q10复配产品与复合鱼油。放在同一门课，不代表是同一种东西，更不能直接说谁能代替谁。&quot;,
+        &quot;“两款的配方不同。您是想比较成分，还是已经有一个具体问题？我们先讲清这一点。”&quot;
+      ],
+      [
+        &quot;整粒规格，不等于Q10含量&quot;,
+        &quot;包装数字可能指整粒重量，也可能指某种成分。介绍时说清数字代表什么，没核对的成分含量不补一个数。&quot;,
+        &quot;“这个数字先看是不是整粒规格。Q10具体含多少，要看对应成分标注。”&quot;
+      ]
+    ],
+    &quot;questions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;含量|单位|每粒|两粒|数字|更多|哪个.*好|成分&quot;,
+        &quot;question&quot;: &quot;包装上数字更大的，就更好吗？&quot;,
+        &quot;answer&quot;: &quot;先看数字指整粒重量还是某种成分，再看是每粒还是多粒合计。两边口径没对齐，不能直接比大小。&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;Q10|q10|辅酶|重复|互换|一起|搭配|区别&quot;,
+        &quot;question&quot;: &quot;鱼油和Q10是不是重复？&quot;,
+        &quot;answer&quot;: &quot;资料里的配方不同。不能因为放在同一门课，就认为可以互换或必须一起买。先回答客户想比较的具体问题。&quot;
+      }
+    ],
+    &quot;misconceptions&quot;: [
+      {
+        &quot;pattern&quot;: &quot;数字.{0,5}(越大越好|大.{0,3}就好)|含量.{0,5}(越高越好|高.{0,3}更好)|整粒.{0,6}(就是|等于).{0,5}(EPA|DHA|成分)|rTG.{0,8}吸收率&quot;,
+        &quot;body&quot;: &quot;先把成分、份量或比例的含义分清，别用一个大数字替产品下结论。&quot;,
+        &quot;sample&quot;: &quot;“先看两边写的是什么成分、按几粒计算，再按相同口径比较。”&quot;
+      },
+      {
+        &quot;pattern&quot;: &quot;(鱼油|Q10|辅酶).{0,8}(可以互换|都一样|必须一起)|一起.{0,5}效果更好&quot;,
+        &quot;body&quot;: &quot;配方不同不等于可以互换，也不等于必须一起用。&quot;,
+        &quot;sample&quot;: &quot;“您想比较哪一点？先看对应资料，不急着多买。”&quot;
+      }
+    ],
+    &quot;practice&quot;: {
+      &quot;questions&quot;: [
+        &quot;另一款数字更大，是不是更划算？&quot;,
+        &quot;这款鱼油和Q10一起买是不是更好？&quot;,
+        &quot;那我先不比较了，等找到包装再说。&quot;
+      ],
+      &quot;answers&quot;: [
+        &quot;先看两边的数字指什么成分、按几粒计算，口径相同才能比较。&quot;,
+        &quot;不能直接这样判断。先看您想了解的问题和对应产品资料。&quot;,
+        &quot;可以，等有资料再看。这次先把已经知道的讲清楚。&quot;
+      ],
+      &quot;point&quot;: &quot;比较同一成分与份量，不为守住某款而硬说更好。&quot;,
+      &quot;avoid&quot;: &quot;直接比较大数字，或默认配套更好。&quot;
+    },
+    &quot;quiz&quot;: [
+      [
+        &quot;鱼油和Q10同属一门课，说明什么？&quot;,
+        [
+          &quot;一定要搭配&quot;,
+          &quot;仍需分别看配方与对应依据&quot;
+        ],
+        1,
+        &quot;课程分类不等于使用结论。&quot;
+      ],
+      [
+        &quot;两款包装含量数字不同，先看什么？&quot;,
+        [
+          &quot;数字谁大&quot;,
+          &quot;成分是什么，按几粒计算&quot;
+        ],
+        1,
+        &quot;先统一比较口径。&quot;
+      ]
+    ],
+    &quot;retry&quot;: [
+      [
+        &quot;Q10和鱼油能因为在同一课里就互换吗？&quot;,
+        [
+          &quot;不能，要分别看配方和说明&quot;,
+          &quot;可以，属于同一类&quot;
+        ],
+        0,
+        &quot;课程分类不是互换依据。&quot;
+      ],
+      [
+        &quot;整粒重量能直接当有效成分含量吗？&quot;,
+        [
+          &quot;不能，要看具体标注&quot;,
+          &quot;可以，数字一样用&quot;
+        ],
+        0,
+        &quot;不同数字代表不同内容。&quot;
+      ]
+    ],
+    &quot;unitQuestions&quot;: [
+      1,
+      0
+    ]
+  }
+};
   const chapters=[
     {id:&#x27;list&#x27;,title:&#x27;认识客户&#x27;,original:&#x27;列名单及名单分析&#x27;,units:[
       [&#x27;先从认识的人开始&#x27;,&#x27;想到谁，就先记下谁。说清怎么认识、聊过什么即可，其他信息以后自然补充。&#x27;,&#x27;“王姐是跳舞认识的，最近问过两款产品的区别。”&#x27;],
@@ -3338,6 +3907,12 @@ function createLearningUI(ctx) {
       [`介绍${p.name}时，哪一句有资料依据？`,[`${p.form}，参考规格为${p.specification}`,&#x27;适合所有人，效果都一样&#x27;],0,&#x27;知道包装和规格，还不能说“所有人都适合”或保证效果。&#x27;],
       [&#x27;客户问具体用量，现售说明还没有核实，怎样回答？&#x27;,[&#x27;按以前记住的数字直接回答&#x27;,&#x27;核对客户手里的对应包装，再确认用量&#x27;],1,&#x27;旧培训资料不能代替客户手里这一版的有效使用说明。&#x27;]
     ]);
+  }
+  for(const [productId,pack] of Object.entries(learningContent)){
+    const ci=chapters.findIndex(c=&gt;c.productId===productId);
+    if(ci&lt;0)continue;
+    chapters[ci].units=pack.units;chapters[ci].source=pack.source;
+    if(pack.quiz)quizzes[ci]=pack.quiz;
   }
   chapters.push({id:&#x27;family-basics&#x27;,category:&#x27;family&#x27;,title:&#x27;家人的资料与测评&#x27;,source:&#x27;原七步课程的建档与测评内容，按家庭场景整理；专业健康课件待补。&#x27;,units:[
       [&#x27;家人拿报告来问，先接住问题&#x27;,&#x27;客户拿来母亲的测评报告，担心标红的一项。先确认报告对应母亲、她是否同意查看，再记下最担心的问题；已有资料不用重问。&#x27;,&#x27;“这是您母亲的这份报告。我先确认她同意我们一起查看，再把您最担心的这一项记下来。”&#x27;],
@@ -3452,6 +4027,7 @@ function createLearningUI(ctx) {
   }
   function changedQuestion(index){
     const p=(ctx.products||[]).find(item=&gt;item.id===chapter().productId);
+    const changed=learningContent[p?.id]?.retry?.[index];if(changed)return changed;
     if(!p)return quizzes[L.ci][index];
     return index===0?[`客户问“${p.name}是不是全家都能用”，资料只明确了形态和规格，怎样回答？`,[&#x27;有形态和规格，就可以说全家适用&#x27;,`先说明${p.form}等已知信息，适用条件另按有效说明核对`],1,&#x27;知道产品是什么，不等于已经确认所有人的适用条件。&#x27;]:[`客户手里的${p.name}包装与旧培训不同，具体用量以什么为准？`,[&#x27;先核对手里这版的有效包装说明&#x27;,&#x27;仍按上次培训记住的数字&#x27;],0,&#x27;先核对当前对应资料，不能把记住旧数字当作依据。&#x27;];
   }
@@ -3481,7 +4057,7 @@ function createLearningUI(ctx) {
   const contextTaskId=pc=&gt;Object.prototype.hasOwnProperty.call(pc||{},&#x27;taskId&#x27;)?(pc.taskId||&#x27;&#x27;):(pc?.customerId&amp;&amp;(s.tasks||[]).some(t=&gt;t.id===s.taskId&amp;&amp;t.customerId===pc.customerId)?s.taskId:&#x27;&#x27;);
   const contextRecordId=pc=&gt;pc?.customerId?(Object.prototype.hasOwnProperty.call(pc,&#x27;sourceRecordId&#x27;)?(pc.sourceRecordId||&#x27;&#x27;):(s.selectedId===pc.customerId?s.sourceRecordId||&#x27;&#x27;:&#x27;&#x27;)):&#x27;&#x27;;
   const compareProductIds=pc=&gt;[...new Set((pc?.introCompareIds||[]).filter(id=&gt;(ctx.products||[]).some(p=&gt;p.id===id)))];
-  function practiceSignature(pc){return [pc.track||&#x27;customer&#x27;,pc.partnerScene||&#x27;&#x27;,pc.trainingCase||&#x27;&#x27;,pc.subject||&#x27;&#x27;,pc.recipient||&#x27;&#x27;,pc.reportMemberId||&#x27;&#x27;,pc.customerId||&#x27;&#x27;,contextTaskId(pc),contextRecordId(pc),pc.customerNeed||(pc.customerId?customer(pc.customerId)?.need:&#x27;&#x27;)||&#x27;&#x27;,pc.productId||&#x27;&#x27;,compareProductIds(pc).join(&#x27;,&#x27;),pc.topic||&#x27;&#x27;,pc.goal||&#x27;&#x27;,pc.returnView||&#x27;learning&#x27;,pc.mode===&#x27;demo&#x27;||pc.demonstration===true?&#x27;demo&#x27;:&#x27;practice&#x27;,pc.introDraft||&#x27;&#x27;,lifecycleKey(pc.lifecycle),pc.studyOrigin?.customerId||&#x27;&#x27;,pc.studyOrigin?.taskId||&#x27;&#x27;,pc.studyOrigin?.sourceRecordId||&#x27;&#x27;,pc.studyOrigin?.view||&#x27;&#x27;].join(&#x27;|&#x27;);}
+  function practiceSignature(pc){return [pc.track||&#x27;customer&#x27;,pc.partnerScene||&#x27;&#x27;,pc.trainingCase||&#x27;&#x27;,pc.subject||&#x27;&#x27;,pc.recipient||&#x27;&#x27;,pc.reportMemberId||&#x27;&#x27;,pc.customerId||&#x27;&#x27;,contextTaskId(pc),contextRecordId(pc),pc.customerNeed||(pc.customerId?customer(pc.customerId)?.need:&#x27;&#x27;)||&#x27;&#x27;,pc.productId||&#x27;&#x27;,compareProductIds(pc).join(&#x27;,&#x27;),pc.topic||&#x27;&#x27;,pc.goal||&#x27;&#x27;,pc.returnView||&#x27;learning&#x27;,pc.mode===&#x27;demo&#x27;||pc.demonstration===true?&#x27;demo&#x27;:&#x27;practice&#x27;,pc.introDraft||&#x27;&#x27;,lifecycleKey(pc.lifecycle),pc.studyOrigin?.customerId||&#x27;&#x27;,pc.studyOrigin?.taskId||&#x27;&#x27;,pc.studyOrigin?.sourceRecordId||&#x27;&#x27;,pc.studyOrigin?.view||&#x27;&#x27;,JSON.stringify(pc.studyOrigin?.learningFocus||null)].join(&#x27;|&#x27;);}
   function practiceOrigin(p){return {track:p.track||&#x27;customer&#x27;,partnerScene:p.partnerScene||&#x27;&#x27;,trainingCase:p.trainingCase||&#x27;&#x27;,subject:p.subject||&#x27;&#x27;,recipient:p.recipient||&#x27;&#x27;,reportMemberId:p.reportMemberId||&#x27;&#x27;,customerId:p.customerId||&#x27;&#x27;,taskId:p.taskId||&#x27;&#x27;,sourceRecordId:p.sourceRecordId||&#x27;&#x27;,customerNeed:p.customerNeed||&#x27;&#x27;,productId:p.productId||&#x27;&#x27;,introCompareIds:[...(p.introCompareIds||[])],introDraft:p.introDraft||&#x27;&#x27;,studyDraft:p.studyDraft||&#x27;&#x27;,studyDraftBase:p.studyDraftBase||&#x27;&#x27;,topic:p.topic||&#x27;&#x27;,goal:p.goal||&#x27;&#x27;,returnView:p.returnView||&#x27;learning&#x27;,courseIndex:p.courseIndex,unitIndex:p.unitIndex,studyOrigin:p.studyOrigin?copy(p.studyOrigin):null,lifecycle:p.lifecycle?{...p.lifecycle}:null};}
   const copy=value=&gt;value==null?value:JSON.parse(JSON.stringify(value));
   const workOwner=()=&gt;JSON.stringify([s.profileName||&#x27;&#x27;,s.scenario===&#x27;ka&#x27;?&#x27;ka&#x27;:&#x27;service&#x27;]);
@@ -3489,7 +4065,7 @@ function createLearningUI(ctx) {
   const workScope=value=&gt;({customerId:value?.customerId||&#x27;&#x27;,taskId:value?.taskId||&#x27;&#x27;,sourceRecordId:value?.sourceRecordId||&#x27;&#x27;});
   const practiceScope=value=&gt;workScope(value?.studyOrigin?.customerId?value.studyOrigin:value);
   const sameScope=(a,b)=&gt;[&#x27;customerId&#x27;,&#x27;taskId&#x27;,&#x27;sourceRecordId&#x27;].every(k=&gt;(a?.[k]||&#x27;&#x27;)===(b?.[k]||&#x27;&#x27;));
-  const practiceKey=value=&gt;JSON.stringify([workOwner(),value.track||&#x27;customer&#x27;,value.partnerScene||&#x27;&#x27;,value.trainingCase||&#x27;&#x27;,value.customerId||&#x27;&#x27;,contextTaskId(value),contextRecordId(value),value.topic||value.goal||(value.customerId?customer(value.customerId)?.need:&#x27;&#x27;)||&#x27;把产品讲清楚&#x27;,value.returnView||&#x27;learning&#x27;,value.courseIndex??&#x27;&#x27;,value.unitIndex??&#x27;&#x27;,value.studyOrigin?.customerId||&#x27;&#x27;,value.studyOrigin?.taskId||&#x27;&#x27;,value.studyOrigin?.sourceRecordId||&#x27;&#x27;,value.studyOrigin?.view||&#x27;&#x27;]);
+  const practiceKey=value=&gt;JSON.stringify([workOwner(),value.track||&#x27;customer&#x27;,value.partnerScene||&#x27;&#x27;,value.trainingCase||&#x27;&#x27;,value.customerId||&#x27;&#x27;,contextTaskId(value),contextRecordId(value),value.topic||value.goal||(value.customerId?customer(value.customerId)?.need:&#x27;&#x27;)||&#x27;把产品讲清楚&#x27;,value.returnView||&#x27;learning&#x27;,value.courseIndex??&#x27;&#x27;,value.unitIndex??&#x27;&#x27;,value.studyOrigin?.customerId||&#x27;&#x27;,value.studyOrigin?.taskId||&#x27;&#x27;,value.studyOrigin?.sourceRecordId||&#x27;&#x27;,value.studyOrigin?.view||&#x27;&#x27;,value.studyOrigin?.learningFocus||null]);
   function pausedPractice(value){
     const p=copy(value);
     p.recording=false;p.paused=false;p.heard=false;
@@ -3628,7 +4204,7 @@ function createLearningUI(ctx) {
       p.previousTopic=before.topic;p.revisionStart=(p.turns||[]).length;p.round=0;
       p.revision=Math.max((p.revision||0)+1,knownRevision);p.draft=&#x27;&#x27;;p.heard=false;p.recording=false;p.paused=false;p.correctionQuestion=&#x27;&#x27;;p.finished=false;p.saved=false;
     }
-    Object.assign(p,practiceOrigin(latest));p.introCompareIds=compareProductIds(p);
+    Object.assign(p,practiceOrigin(latest));p.studyFeedback=null;p.introCompareIds=compareProductIds(p);
     if(p.returnView===&#x27;lesson&#x27;&amp;&amp;Number.isInteger(p.courseIndex)){L.ci=p.courseIndex;L.ui=p.unitIndex||0;}
     p.name=isPartner(p)?&#x27;新伙伴&#x27;:p.customerId?customer(p.customerId)?.name||p.name:&#x27;练习客户&#x27;;
     const products=ctx.products||[],product=products.find(item=&gt;item.id===p.productId);
@@ -3685,16 +4261,23 @@ function createLearningUI(ctx) {
   }
   function openLearningPractice(track=&#x27;customer&#x27;,scene=&#x27;newcomer&#x27;,fromLesson=false){
     if(fromLesson)syncStudyContext();
-    const ownDraft=fromLesson?String(L.recitation?.text||&#x27;&#x27;).trim():&#x27;&#x27;;
-    if(fromLesson&amp;&amp;!ownDraft&amp;&amp;ctx.resumeCourse?.(L.ci,L.origin,&#x27;practice&#x27;,L.ui))return;
+    const questionFocus=fromLesson?studyQuestion().turns.at(-1)?.answer?.learningFocus:null;
+    const sameQuestion=!questionFocus||L.recitation?.learningFocus?.question===questionFocus.question;
+    const ownDraft=fromLesson&amp;&amp;sameQuestion?String(L.recitation?.text||&#x27;&#x27;).trim():&#x27;&#x27;;
+    if(fromLesson&amp;&amp;!ownDraft&amp;&amp;!questionFocus&amp;&amp;ctx.resumeCourse?.(L.ci,L.origin,&#x27;practice&#x27;,L.ui))return;
     rememberPractice();
     const partner=track===&#x27;partner&#x27;,family=fromLesson&amp;&amp;chapter().category===&#x27;family&#x27;,course=chapter();
-    const studyOrigin=fromLesson&amp;&amp;L.origin?copy(L.origin):null;
+    const studyOrigin=fromLesson?copy(L.origin||{view:&#x27;learning&#x27;}):null;
+    if(studyOrigin&amp;&amp;course.productId){
+      const last=studyQuestion().turns.at(-1);
+      const focus=last?.answer?.learningFocus;
+      studyOrigin.learningFocus=focus?{...copy(focus),productId:course.productId,customerNeed:studyOrigin.customerNeed||&#x27;&#x27;,selection:[...(studyOrigin.introCompareIds||[])]}:null;
+    }
     const bound=Boolean(!partner&amp;&amp;studyOrigin?.customerId),scope=bound?workScope(studyOrigin):{customerId:&#x27;&#x27;,taskId:&#x27;&#x27;,sourceRecordId:&#x27;&#x27;};
     const settings=partnerScenes[scene]||partnerScenes.newcomer;
     let context={track,partnerScene:partner?scene:&#x27;&#x27;,trainingCase:partner&amp;&amp;scene===&#x27;rules&#x27;?&#x27;policy:zhi20:direct&#x27;:family&amp;&amp;!bound?&#x27;family-report&#x27;:&#x27;&#x27;,...scope,reportMemberId:bound?studyOrigin.reportMemberId||&#x27;&#x27;:&#x27;&#x27;,productId:!partner&amp;&amp;fromLesson&amp;&amp;course.productId?course.productId:&#x27;&#x27;,introCompareIds:bound?[...(studyOrigin.introCompareIds||[])]:[],customerNeed:bound?ctx.contextNeedFor(scope.customerId,scope.sourceRecordId,scope.taskId):family?&#x27;客户带来母亲的报告，想了解标红的一项和下一步服务&#x27;:&#x27;&#x27;,topic:partner?settings.name:family?&#x27;家人报告，下一步怎么办&#x27;:fromLesson?course.title+&#x27; · &#x27;+unit()[0]:&#x27;把产品讲清楚&#x27;,goal:partner?settings.goal:family?&#x27;分清成员、问题和下一步服务&#x27;:&#x27;把产品讲清楚&#x27;,introDraft:!partner&amp;&amp;fromLesson&amp;&amp;course.productId?unit()[2].replace(/[“”]/g,&#x27;&#x27;):&#x27;&#x27;,returnView:fromLesson?&#x27;lesson&#x27;:&#x27;learning&#x27;,courseIndex:fromLesson?L.ci:undefined,unitIndex:fromLesson?L.ui:undefined,studyOrigin,mode:partner||family&amp;&amp;!bound?&#x27;demo&#x27;:&#x27;practice&#x27;};
     context=latestPracticeContext(context);
-    if(!partner&amp;&amp;ownDraft&amp;&amp;!explicitCorrection(ownDraft)&amp;&amp;context.lifecycle?.canPrepare!==false&amp;&amp;(!course.productId||context.productId===course.productId)){
+    if(!partner&amp;&amp;ownDraft&amp;&amp;learnerRecitationFeedback(ownDraft).canUse&amp;&amp;!explicitCorrection(ownDraft)&amp;&amp;context.lifecycle?.canPrepare!==false&amp;&amp;(!course.productId||context.productId===course.productId)){
       context.studyDraft=ownDraft;context.studyDraftBase=studyDraftBase(context);context.introDraft=ownDraft;
       if(context.studyOrigin)context.studyOrigin.introDraft=ownDraft;
     }
@@ -3833,6 +4416,40 @@ function createLearningUI(ctx) {
   function explicitCoachingRequest(text){
     return /^(?:我(?:刚才|总是|一开口|一讲|一说)?(?:就)?(?:讲|说)(?:得)?太多|我(?:有点|还是)?不敢开口|我(?:有点|还是)?怕(?:说|讲)错|我(?:刚才)?(?:把)?知识(?:讲|说|答)?错了?|我(?:刚才)?(?:讲|说|答)错(?:了)?(?:知识|成分|用法)|(?:这次|我想)(?:先)?练(?:开口|简短|短一点|核对知识|核对资料|先听))/.test(String(text||&#x27;&#x27;).trim());
   }
+  function learningPracticePack(p){
+    if(isPartner(p)||p.returnView!==&#x27;lesson&#x27;||lifecycleScript(p)||p.report)return null;
+    const course=chapters[p.courseIndex];
+    if(course?.category!==&#x27;products&#x27;)return null;
+    // Never carry a product comparison explanation into an unrelated selection.
+    const ids=p.introCompareIds||[];
+    if(ids.length&gt;1&amp;&amp;!ids.every(id=&gt;[&#x27;adult-calcium&#x27;,&#x27;kids-calcium&#x27;].includes(id))&amp;&amp;!ids.every(id=&gt;[&#x27;kuihuosu-yuyou&#x27;,&#x27;q10&#x27;].includes(id)))return null;
+    return learningContent[p.productId]||null;
+  }
+  function learningPracticeScript(p){
+    const pack=learningPracticePack(p);if(!pack)return null;
+    const x=copy(pack.practice),focus=p.studyOrigin?.learningFocus;
+    const ids=p.introCompareIds||[];
+    if(ids.length&gt;1&amp;&amp;ids.every(id=&gt;[&#x27;adult-calcium&#x27;,&#x27;kids-calcium&#x27;].includes(id)))return {
+      questions:[&#x27;两款液体钙，都不用冲泡，差别在哪里？&#x27;,&#x27;儿童款是不是更温和，成人也能随便换用？&#x27;,&#x27;我先了解区别，还没决定买。&#x27;],
+      answers:[&#x27;两款参考资料都写开袋即饮，口味、配料和适用说明分别看，不能只凭不用冲泡来选。&#x27;,&#x27;儿童款这个名称不能证明更温和，也不能直接推出成人能换用，要看对应产品说明。&#x27;,&#x27;可以，先把区别讲清楚，不把了解产品当成购买决定。&#x27;],
+      point:&#x27;用同一维度讲清两款差别，沿用已有使用对象。&#x27;,avoid:&#x27;不把儿童款说成更温和或可随意换用。&#x27;};
+    const current=focus&amp;&amp;focus.productId===p.productId&amp;&amp;(focus.customerNeed||&#x27;&#x27;)===(p.studyOrigin?.customerNeed||&#x27;&#x27;)&amp;&amp;(focus.selection||[]).join(&#x27;|&#x27;)===(p.introCompareIds||[]).join(&#x27;|&#x27;);
+    if(!current&amp;&amp;pack.unitQuestions?.[p.unitIndex||0]===1){
+      [x.questions[0],x.questions[1]]=[x.questions[1],x.questions[0]];
+      [x.answers[0],x.answers[1]]=[x.answers[1],x.answers[0]];
+    }
+    if(current){
+      x.questions[0]=focus.question;x.answers[0]=focus.answer;
+      if(focus.questionIndex===1||x.questions[1]===focus.question){x.questions[1]=pack.practice.questions[0];x.answers[1]=pack.practice.answers[0];}
+    }
+    return x;
+  }
+  function learningPracticeDraft(p){
+    return currentTurns(p).find(t=&gt;t.who===&#x27;me&#x27;)?.text||p.studyDraft||p.introDraft||&#x27;&#x27;;
+  }
+  function learningPracticeFeedback(p,text=learningPracticeDraft(p)){
+    return learningPracticePack(p)&amp;&amp;text?learnerRecitationFeedback(text,chapters[p.courseIndex],p.unitIndex||0):null;
+  }
   function script(){
     const p=L.practice;
     if(isPartner(p)){
@@ -3853,6 +4470,7 @@ function createLearningUI(ctx) {
         point:&#x27;让伙伴敢开口：先示范，再试一句，只改一个点。&#x27;,avoid:&#x27;不要让新人先背完整资料，或用保证效果来增强信心。&#x27;};
     }
     const lifecycle=lifecycleScript(p);if(lifecycle)return lifecycle;
+    const learningScript=learningPracticeScript(p);if(learningScript)return learningScript;
     if(p.trainingCase===&#x27;family-report&#x27;)return {
       questions:[&#x27;这是我妈妈的测评报告，有一项标红了，接下来怎么办？&#x27;,&#x27;她同意我们一起看，就是想知道这项是不是说明生病了。&#x27;,&#x27;那你先帮我把问题整理好，能安排什么时候再确认一下？&#x27;],
       answers:[&#x27;这次看的是您母亲的报告。我先确认她同意我们一起查看，再把最担心的这一项和问题记下来。&#x27;,&#x27;单看标红还不能下结论。我会把这份报告和您母亲想问的问题放在一起，接着请专业人员解释，不直接推荐药物或产品。&#x27;,&#x27;好，报告和待问问题一起保留在您母亲这次记录里。您和母亲什么时候方便继续？确认后再记下约定。&#x27;],
@@ -3924,7 +4542,7 @@ function createLearningUI(ctx) {
     }
     if(updated.returnView===&#x27;lesson&#x27;&amp;&amp;updated.studyOrigin)updated.studyOrigin={...updated.studyOrigin,...workScope(updated),customerNeed:updated.customerNeed,productId:updated.productId,introCompareIds:[...(updated.introCompareIds||[])],introDraft:updated.introDraft,topic:updated.topic};
     const changedProduct=productSelectionChanged(origin,updated);if(changedProduct)retainPreviousInput(p,unfinished);
-    Object.assign(p,updated);
+    Object.assign(p,updated);p.studyFeedback=null;
     p.name=p.customerId?customer(p.customerId)?.name||p.name:&#x27;练习客户&#x27;;
     p.introCompareIds=compareProductIds(p);
     const products=(ctx.products||[]),product=products.find(x=&gt;x.id===p.productId);
@@ -3950,13 +4568,13 @@ function createLearningUI(ctx) {
     const p=L.practice;
     if(!p)return;
     p.finished=true;p.recording=false;
-    const record={...practiceOrigin(p),historyId:p.historyId||&#x27;practice-&#x27;+Date.now(),name:p.name,role:p.role,difficulty:p.difficulty,turns:currentTurns(p).length,answer:currentTurns(p).filter(t=&gt;t.who===&#x27;me&#x27;).map(t=&gt;t.text).slice(-1)[0]||&#x27;&#x27;,previousAnswer:[...(p.priorTurns||[]),...(p.turns||[]).slice(0,p.revisionStart||0)].filter(t=&gt;t.who===&#x27;me&#x27;).map(t=&gt;t.text).slice(-1)[0]||&#x27;&#x27;,previousTopic:p.previousTopic||&#x27;&#x27;,revision:p.revision||0,reference:script().answers.join(&#x27; &#x27;)};
+    const record={...practiceOrigin(p),historyId:p.historyId||&#x27;practice-&#x27;+Date.now(),name:p.name,role:p.role,difficulty:p.difficulty,turns:currentTurns(p).length,answer:p.role===&#x27;seller&#x27;&amp;&amp;learningPracticePack(p)?learningPracticeDraft(p):currentTurns(p).filter(t=&gt;t.who===&#x27;me&#x27;).map(t=&gt;t.text).slice(-1)[0]||&#x27;&#x27;,previousAnswer:[...(p.priorTurns||[]),...(p.turns||[]).slice(0,p.revisionStart||0)].filter(t=&gt;t.who===&#x27;me&#x27;).map(t=&gt;t.text).slice(-1)[0]||&#x27;&#x27;,previousTopic:p.previousTopic||&#x27;&#x27;,revision:p.revision||0,reference:script().answers.join(&#x27; &#x27;)};
     const previous=L.practiceHistory.findIndex(item=&gt;item.historyId===record.historyId);
     if(previous&lt;0)L.practiceHistory.unshift(record);else L.practiceHistory[previous]=record;
     L.practiceHistory=L.practiceHistory.slice(0,8);p.historyId=record.historyId;p.saved=true;
     s.view=&#x27;practice-result&#x27;;s.notice=&#x27;&#x27;;
   }
-  function takeaway(){const p=L.practice;const spoken=p.role===&#x27;seller&#x27;?currentTurns(p).filter(t=&gt;t.who===&#x27;me&#x27;).at(-1)?.text:&#x27;&#x27;;return spoken||p.draft||p.introDraft||script().answers[p.service||p.report||practiceCoaching(p)?0:1];}
+  function takeaway(){const p=L.practice;if(p.role===&#x27;seller&#x27;&amp;&amp;learningPracticePack(p)){const draft=learningPracticeDraft(p);if(draft)return draft;}const spoken=p.role===&#x27;seller&#x27;?currentTurns(p).filter(t=&gt;t.who===&#x27;me&#x27;).at(-1)?.text:&#x27;&#x27;;return spoken||p.draft||p.introDraft||script().answers[p.service||p.report||practiceCoaching(p)?0:1];}
   function focusedFeedback(p){
     const text=currentTurns(p).filter(t=&gt;t.who===&#x27;me&#x27;).map(t=&gt;t.text).join(&#x27; &#x27;),x=script();
     if(p.role===&#x27;customer&#x27;)return {point:isPartner(p)?&#x27;把伙伴最担心的一点说具体，带教者才能给出有用的示范。&#x27;:&#x27;把这次最关心的问题说具体。&#x27;,example:x.answers[0]};
@@ -3993,6 +4611,8 @@ function createLearningUI(ctx) {
       }
       return {point:x.point,example:x.answers[0]};
     }
+    const learningFeedback=learningPracticeFeedback(p);
+    if(learningFeedback)return {point:learningFeedback.canUse?learningPracticePack(p).practice.point:learningFeedback.body,example:learningFeedback.sample};
     const coaching=practiceCoaching(p);
     if(coaching){
       if(/保证|一定有效|所有人都|任何人都/.test(text)&amp;&amp;!/不(?:能|会)?保证|不能保证|不一定|不是所有|并非所有/.test(text))return {point:&#x27;先把没有依据的保证收回来，再按已确认的资料回应这一个问题。&#x27;,example:x.answers[0]};
@@ -4081,8 +4701,8 @@ function createLearningUI(ctx) {
     const q=studyQuestion();delete q.movedTo;q.origin=copy(L.origin);q.scope=workScope(L.origin);q.beforeChange=before;q.beforeChanges=beforeChanges;
     q.recitation=null;q.draft=&#x27;&#x27;;q.turns=[];q.active=true;q.pending=oldPending;q.mode=&#x27;voice&#x27;;q.updatedAt=Date.now();
     const advice=L.origin.customerId?ctx.lifecycleAdvice(L.origin.customerId,s.sourceRecordId,s.taskId):null;
-    const answer=advice?.canPrepare===false?`${advice.title}。可以继续学习，这次不追加主动联系。`:advice?.draft||next.introDraft||unit()[2].replace(/[“”]/g,&#x27;&#x27;);
-    q.turns.push({question:request||&#x27;接着当前客户情况&#x27;,answer:{text:answer,title:unit()[0],excerpt:unit()[1],source:chapterSource(chapter())}});
+    const answer=advice?.canPrepare===false?`${advice.title}。可以继续学习，这次不追加主动联系。`:learningContent[chapter().productId]?unit()[1]:advice?.draft||next.introDraft||unit()[2].replace(/[“”]/g,&#x27;&#x27;);
+    q.turns.push({question:request||&#x27;接着学&#x27;+chapter().title,answer:{text:answer,title:unit()[0],excerpt:unit()[1],source:chapterSource(chapter())}});
     L.questionFocus=q.id;if(oldQ.id!==q.id)oldQ.movedTo=q.id;
     s.notice=&#x27;&#x27;;
   }
@@ -4115,8 +4735,11 @@ function createLearningUI(ctx) {
     const u=chapter().units[studyUnitIndex()],p=(ctx.products||[]).find(x=&gt;x.id===chapter().productId),previous=q.turns.at(-1)?.question||&#x27;&#x27;;
     const text=String(question),topic=/^(那|再|还是|简单|短一点|换个)/.test(text)?previous+&#x27;。&#x27;+text:text;
     const scope=workScope(L.origin),person=scope.customerId?customer(scope.customerId):null,questionQuiz=q.quiz||L.quiz;
-    let answer=&#x27;&#x27;;
+    const pack=learningContent[p?.id];
+    const matched=pack?.questions?.find(item=&gt;new RegExp(item.pattern,&#x27;i&#x27;).test(text))||pack?.questions?.find(item=&gt;new RegExp(item.pattern,&#x27;i&#x27;).test(topic));
+    let answer=&#x27;&#x27;,learningFocus=null;
     if(s.view===&#x27;quiz&#x27;&amp;&amp;questionQuiz&amp;&amp;!questionQuiz.checked&amp;&amp;questionQuiz.phase!==&#x27;review&#x27;&amp;&amp;questionQuiz.phase!==&#x27;retry&#x27;)answer=&#x27;先按自己的理解选一句。提交后可以一起看错在哪里，这里不会替你选择或修改成绩。&#x27;;
+    else if(matched){answer=matched.answer;learningFocus={question:matched.question,answer:matched.answer,questionIndex:pack.questions.indexOf(matched)};}
     else if(person&amp;&amp;(/客户|她|他|实际情况|怎么接|怎么回复/.test(topic)||topic.includes(person.name))){
       const advice=ctx.lifecycleAdvice?.(person.id,scope.sourceRecordId,scope.taskId);
       const guide=ctx.communicationGuide?.(person,scope.sourceRecordId,scope.taskId,undefined,p?.id);
@@ -4126,12 +4749,13 @@ function createLearningUI(ctx) {
     else if(p&amp;&amp;/成分|配料/.test(topic))answer=`${p.name}的参考配料包括${p.ingredients.split(&#x27;、&#x27;).slice(0,2).join(&#x27;、&#x27;)}等。先解释客户问到的部分；成分名称本身不能证明对谁有效。现售配料仍以对应包装为准。`;
     else if(/暂不买|不买|拒绝|不联系|不要联系/.test(topic)&amp;&amp;chapter().category===&#x27;sales&#x27;)answer=&#x27;暂不购买和不愿继续联系要分开看。客户还想问，就只回答现有问题；已经明确不愿联系，就停下。仍获许可的原约定也要单独保留，不能一概取消。&#x27;;
     else if(/怎么讲|示范|举例|例子|口语/.test(topic))answer=u[2].replace(/[“”]/g,&#x27;&#x27;);
+    else if(pack)answer=u[1];
     else if(p)answer=`这一节先记住：${studyUnitIndex()===0?`${p.name}是${p.form}${p.flavor?&#x27;，参考口味是&#x27;+p.flavor:&#x27;&#x27;}。包装和规格是已经有资料的内容，谁能用、用多少还要另核对。`:`先确认客户手里是哪版包装，再看怎么准备。参考资料写的是${p.preparation}，具体步骤和用量以现售说明为准。`}`;
     else if(chapter().category===&#x27;family&#x27;)answer=&#x27;先分清报告属于谁、对方是否愿意共享、具体想问哪一点。标红或分数只是报告里的信息，不能直接当成诊断或购买理由。&#x27;+(/下一步|交接/.test(u[0])?&#x27;把同一位成员的报告和问题一起接到专业解释，时间和方式按真实约定记录。&#x27;:&#x27;&#x27;);
     else if(chapter().category===&#x27;team&#x27;)answer=studyUnitIndex()&gt;=2?u[1]:&#x27;先听伙伴卡在哪，再示范一句，请他用自己的话说一次。反馈时只改一个具体问题，不要求一次背完整套。&#x27;;
     else answer=u[1]+&#x27; 可以这样说：&#x27;+u[2].replace(/[“”]/g,&#x27;&#x27;);
     if(/短一点|简单一点|少一点/.test(text))answer=answer.split(/(?&lt;=[。！？])/).slice(0,2).join(&#x27;&#x27;);
-    return {text:answer,source:chapterSource(chapter()),excerpt:u[1],title:u[0]};
+    return {text:answer,source:chapterSource(chapter()),excerpt:u[1],title:u[0],learningFocus};
   }
   function renderStudyQuestion(){
     const q=studyQuestion(),last=q.turns.at(-1),active=q.active;
@@ -4181,12 +4805,14 @@ function createLearningUI(ctx) {
     const search=field(&#x27;learn-search&#x27;);if(search)L.search=search.value;
   }
   // Local demonstration feedback; it does not grade an exam or certify knowledge.
-  function learnerRecitationFeedback(text=L.recitation?.text||&#x27;&#x27;){
-    const spoken=String(text).trim(),course=chapter(),product=(ctx.products||[]).find(p=&gt;p.id===course.productId);
-    const sample=String(unit()[2]||&#x27;&#x27;).replace(/[“”]/g,&#x27;&#x27;);
+  function learnerRecitationFeedback(text=L.recitation?.text||&#x27;&#x27;,course=chapter(),unitIndex=L.ui){
+    const spoken=String(text).trim(),product=(ctx.products||[]).find(p=&gt;p.id===course.productId);
+    const sample=String(course.units[unitIndex]?.[2]||course.units[0][2]||&#x27;&#x27;).replace(/[“”]/g,&#x27;&#x27;);
     const assertions=spoken.split(/[，,。；;！!？?\n]/).filter(line=&gt;line&amp;&amp;!/不能|不可|不保证|无法保证|不等于|不是|未确认|还没确认|待核|先核对|需要核对|要核对|还要确认/.test(line)).join(&#x27;。&#x27;);
     if(/适合所有人|人人都能|全家都能|所有人都能|保证(?:有效|效果|瘦|减|治|回本)|一定(?:有效|能瘦|能减|能治|回本)|肯定(?:有效|能瘦|能减|能治)|包治|治愈|替代药物/.test(assertions))return {title:&#x27;先改这一点&#x27;,body:&#x27;这段把适用范围或效果说得太满。先删掉这个保证，只讲本节有依据的内容。&#x27;,sample,canUse:false};
     if(course.category!==&#x27;team&#x27;&amp;&amp;/(?:每天|每日|一次|每次).{0,8}(?:\d+|[一二两三四五六七八九十]+)\s*(?:粒|片|袋|克|毫升)|\d+(?:\.\d+)?\s*(?:元|块钱)|(?:吃|用|喝).{0,6}(?:\d+|[一二两三四五六七八九十]+)天.{0,6}(?:瘦|减|见效)/.test(assertions))return {title:&#x27;先核对这一句&#x27;,body:&#x27;这段出现了价格、用量或效果数字。先查对应的有效说明，未确认前不要把数字讲给客户。&#x27;,sample,canUse:false};
+    const misconception=learningContent[course.productId]?.misconceptions?.find(item=&gt;new RegExp(item.pattern,&#x27;i&#x27;).test(assertions));
+    if(misconception)return {title:&#x27;先改这一句&#x27;,body:misconception.body,sample:misconception.sample||sample,canUse:false};
     if(product&amp;&amp;(/固体饮料/.test(product.form)&amp;&amp;/开袋即饮|不用冲泡|直接喝/.test(assertions)||/开袋即饮/.test(product.preparation)&amp;&amp;/必须冲泡|一定要冲泡|需要冲泡/.test(assertions)))return {title:&#x27;使用方式先改一下&#x27;,body:`${product.name}的参考资料写的是${product.preparation}。把刚才不同的说法改掉，实际用法仍按现售包装核对。`,sample,canUse:false};
     if(course.category===&#x27;family&#x27;&amp;&amp;/标红就是|分数.{0,5}(?:证明|说明).{0,5}(?:病|缺)|按(?:分数|报告).{0,6}(?:买|推荐)|直接诊断/.test(assertions))return {title:&#x27;先改这一点&#x27;,body:&#x27;报告标记还不能直接说明疾病或该买什么。先说清是谁的报告、最担心什么，再接专业解释。&#x27;,sample,canUse:false};
     if(spoken.length&lt;10)return {title:&#x27;再接着说一句&#x27;,body:&#x27;先用自己的话说出这节最想让客户明白的一点；不用把整节课背下来。&#x27;,sample,canUse:false};
@@ -4201,8 +4827,8 @@ function createLearningUI(ctx) {
     const feedback=learnerRecitationFeedback(rec.text),origin=L.origin,person=origin?.customerId?customer(origin.customerId):null;
     const advice=person?ctx.lifecycleAdvice?.(person.id,origin.sourceRecordId||&#x27;&#x27;,origin.taskId||&#x27;&#x27;):null;
     const canUse=feedback.canUse&amp;&amp;chapter().category!==&#x27;team&#x27;&amp;&amp;person&amp;&amp;!person.archived&amp;&amp;!person.contactStopped&amp;&amp;advice?.canPrepare!==false&amp;&amp;(!origin.sourceRecordId||person.records?.some(r=&gt;r.id===origin.sourceRecordId));
-    const guided=[&#x27;family&#x27;,&#x27;team&#x27;].includes(chapter().category),practiceLabel=guided?(chapter().category===&#x27;team&#x27;?(L.ui===0?&#x27;练带新人&#x27;:L.ui===1?&#x27;练给反馈&#x27;:&#x27;练解释规则&#x27;):&#x27;练报告回访&#x27;):&#x27;练习客户问答&#x27;;
-    return panel(`&lt;h2 class=&quot;gp-section-title&quot;&gt;${h(feedback.title)}&lt;/h2&gt;&lt;p&gt;${h(feedback.body)}&lt;/p&gt;`)+(canUse?btn(&#x27;存为准备稿，回&#x27;+person.name,&#x27;learn-rec-use&#x27;):&#x27;&#x27;)+btn(practiceLabel,guided?&#x27;learn-scenario-practice&#x27;:&#x27;learn-product-practice&#x27;,&#x27;&#x27;,canUse?&#x27;secondary&#x27;:&#x27;primary&#x27;)+btn(&#x27;再讲一次&#x27;,&#x27;learn-recite&#x27;,&#x27;&#x27;,&#x27;text&#x27;)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;我刚才怎么讲的&lt;/summary&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(rec.text)}&lt;/p&gt;${btn(rec.playing?&#x27;暂停回听&#x27;:&#x27;回听示例&#x27;,&#x27;learn-rec-play&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;看一句参考说法&lt;/summary&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(feedback.sample)}&lt;/p&gt;&lt;/details&gt;`;
+    const guided=[&#x27;family&#x27;,&#x27;team&#x27;].includes(chapter().category),practiceLabel=guided?(chapter().category===&#x27;team&#x27;?(L.ui===0?&#x27;练带新人&#x27;:L.ui===1?&#x27;练给反馈&#x27;:&#x27;练解释规则&#x27;):&#x27;练报告回访&#x27;):&#x27;练客户追问&#x27;;
+    return panel(`&lt;h2 class=&quot;gp-section-title&quot;&gt;${h(feedback.title)}&lt;/h2&gt;&lt;p&gt;${h(feedback.body)}&lt;/p&gt;${!feedback.canUse?`&lt;p class=&quot;gp-message&quot;&gt;${h(feedback.sample)}&lt;/p&gt;`:&#x27;&#x27;}`)+(!feedback.canUse?btn(&#x27;改这一句&#x27;,&#x27;learn-rec-type&#x27;):&#x27;&#x27;)+btn(practiceLabel,guided?&#x27;learn-scenario-practice&#x27;:&#x27;learn-product-practice&#x27;,&#x27;&#x27;,feedback.canUse?&#x27;primary&#x27;:&#x27;secondary&#x27;)+(canUse?btn(&#x27;存为准备稿，回&#x27;+person.name,&#x27;learn-rec-use&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;):&#x27;&#x27;)+(feedback.canUse?btn(&#x27;再讲一次&#x27;,&#x27;learn-recite&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;我刚才怎么讲的&lt;/summary&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(rec.text)}&lt;/p&gt;${btn(rec.playing?&#x27;暂停回听&#x27;:&#x27;回听示例&#x27;,&#x27;learn-rec-play&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;看一句参考说法&lt;/summary&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(feedback.sample)}&lt;/p&gt;&lt;/details&gt;`;
   }
   function studyReturn(){return s.view===&#x27;lesson&#x27;&amp;&amp;L.origin?.customerId&amp;&amp;(L.recitation||studyQuestion().active)?{label:customer(L.origin.customerId)?.name||&#x27;原客户&#x27;,action:&#x27;learn-return&#x27;}:null;}
   function render(view){
@@ -4239,7 +4865,7 @@ function createLearningUI(ctx) {
       if(!question.active)content+=renderRecitation();
       if(!question.active&amp;&amp;(!rec||rec.phase===&#x27;review&#x27;))content+=btn(L.ui+1&lt;chapter().units.length?&#x27;下一节&#x27;:chapter().productId?&#x27;知识测验&#x27;:&#x27;做章节考试&#x27;,&#x27;learn-next&#x27;,&#x27;&#x27;,&#x27;text&#x27;);
       if(!question.active&amp;&amp;rec?.phase===&#x27;review&#x27;)content+=btn(&#x27;还有不明白的，问一下&#x27;,&#x27;learn-product-question&#x27;,&#x27;&#x27;,&#x27;text&#x27;);
-      if(!question.active&amp;&amp;!rec)content+=`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;情境对练&lt;/summary&gt;${guided?btn(chapter().category===&#x27;team&#x27;?(L.ui===0?&#x27;练带新人&#x27;:L.ui===1?&#x27;练给反馈&#x27;:&#x27;练解释规则&#x27;):&#x27;练报告回访&#x27;,&#x27;learn-scenario-practice&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;):btn(&#x27;练习客户问答&#x27;,&#x27;learn-product-practice&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;)}&lt;/details&gt;`;
+      if(!question.active&amp;&amp;!rec)content+=`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;情境对练&lt;/summary&gt;${guided?btn(chapter().category===&#x27;team&#x27;?(L.ui===0?&#x27;练带新人&#x27;:L.ui===1?&#x27;练给反馈&#x27;:&#x27;练解释规则&#x27;):&#x27;练报告回访&#x27;,&#x27;learn-scenario-practice&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;):btn(&#x27;练客户追问&#x27;,&#x27;learn-product-practice&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;)}&lt;/details&gt;`;
       content+=returnButton();
       if(question.active)content+=lessonReference;
       if(policyLesson)content+=`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;${L.ui===2?&#x27;两款金额与积分&#x27;:&#x27;看看具体怎么算&#x27;}&lt;/summary&gt;&lt;p&gt;${h(u[1])}&lt;/p&gt;&lt;/details&gt;`;
@@ -4260,7 +4886,7 @@ function createLearningUI(ctx) {
         }
         if(q.complete){
           const result=L.examResults[chapter().id]||{},passed=productStatus(chapter().productId).passed;
-          return title(passed?&#x27;示例测验已通过&#x27;:&#x27;还有错题待复习&#x27;,chapter().title)+panel(`&lt;p&gt;首次答对 ${result.firstCorrect??0} / ${items.length} 题${q.repaired.length?`，补学后答对 ${q.repaired.length} 项`:&#x27;&#x27;}。&lt;/p&gt;${quiet(&#x27;这是本次示例测验结果，不代表正式销售资格或实战达标。&#x27;)}`)+btn(&#x27;打开讲解练习&#x27;,&#x27;learn-product-practice&#x27;)+btn(&#x27;回这款产品课程&#x27;,&#x27;learn-course&#x27;,L.ci,&#x27;text&#x27;)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;错题复习&lt;/summary&gt;${q.weak.length?q.weak.map(i=&gt;row(chapter().units[Math.min(i,chapter().units.length-1)][0],q.repaired.includes(i)?&#x27;补学后已答对&#x27;:&#x27;待补学&#x27;,&#x27;learn-quiz-supplement&#x27;,i)).join(&#x27;&#x27;):quiet(&#x27;本次示例题未出现错题。&#x27;)}${btn(&#x27;再测一次&#x27;,&#x27;learn-quiz&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;`+returnButton();
+          return title(passed?&#x27;示例测验已通过&#x27;:&#x27;还有错题待复习&#x27;,chapter().title)+panel(`&lt;p&gt;首次答对 ${result.firstCorrect??0} / ${items.length} 题${q.repaired.length?`，补学后答对 ${q.repaired.length} 项`:&#x27;&#x27;}。&lt;/p&gt;${quiet(&#x27;这是本次示例测验结果，不代表正式销售资格或实战达标。&#x27;)}`)+btn(&#x27;练客户追问&#x27;,&#x27;learn-product-practice&#x27;)+btn(&#x27;回这款产品课程&#x27;,&#x27;learn-course&#x27;,L.ci,&#x27;text&#x27;)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;错题复习&lt;/summary&gt;${q.weak.length?q.weak.map(i=&gt;row(chapter().units[Math.min(i,chapter().units.length-1)][0],q.repaired.includes(i)?&#x27;补学后已答对&#x27;:&#x27;待补学&#x27;,&#x27;learn-quiz-supplement&#x27;,i)).join(&#x27;&#x27;):quiet(&#x27;本次示例题未出现错题。&#x27;)}${btn(&#x27;再测一次&#x27;,&#x27;learn-quiz&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;`+returnButton();
         }
       }
       if(q.complete){const correct=q.answers.filter((a,i)=&gt;a===items[i][2]).length;
@@ -4287,6 +4913,7 @@ function createLearningUI(ctx) {
         const index=Math.min(p.round,2),asCustomer=p.role===&#x27;customer&#x27;;
         return content+panel(`&lt;span class=&quot;gp-eyebrow&quot;&gt;${decisionOnly?&#x27;当前情况&#x27;:isPartner(p)?(asCustomer?&#x27;带教者&#x27;:&#x27;伙伴&#x27;):(asCustomer?&#x27;服务商&#x27;:&#x27;客户&#x27;)}&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(asCustomer?x.answers[index]:x.questions[index])}&lt;/p&gt;&lt;span class=&quot;gp-eyebrow&quot;&gt;${decisionOnly?&#x27;可以这样处理&#x27;:asCustomer?(isPartner(p)?&#x27;伙伴可以这样问&#x27;:&#x27;客户可以这样问&#x27;):&#x27;可以这样回应&#x27;}&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(asCustomer?x.questions[index]:x.answers[index])}&lt;/p&gt;`)+btn(p.input||currentTurns(p).length&amp;&amp;!p.finished?&#x27;继续练习&#x27;:&#x27;换我来试&#x27;,&#x27;practice-begin&#x27;)+`&lt;div class=&quot;gp-actions&quot;&gt;${btn(p.heard?&#x27;暂停示范&#x27;:&#x27;听示范&#x27;,&#x27;practice-listen&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/div&gt;`+(p.heard?quiet(&#x27;示范播放中&#x27;):&#x27;&#x27;)+practiceOptions(p)+returnButton();
       }
+      if(p.studyFeedback)content+=panel(`&lt;h2 class=&quot;gp-section-title&quot;&gt;${h(p.studyFeedback.title)}&lt;/h2&gt;&lt;p&gt;${h(p.studyFeedback.body)}&lt;/p&gt;`);
       content+=panel(`&lt;span class=&quot;gp-eyebrow&quot;&gt;${decisionOnly?&#x27;当前情况&#x27;:&#x27;AI扮演&#x27;+h(otherRole(p))}&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(p.role===&#x27;customer&#x27;?x.answers[Math.min(p.round,2)]:x.questions[Math.min(p.round,2)])}&lt;/p&gt;`)+practiceInput(p);
       if(p.recording||p.inputMode===&#x27;typing&#x27;)return content+btn(&#x27;先收起&#x27;,&#x27;practice-input-close&#x27;,&#x27;&#x27;,&#x27;text&#x27;);
       return content+`&lt;div class=&quot;gp-actions&quot;&gt;${btn(&#x27;示范一下&#x27;,&#x27;practice-view-demo&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${currentTurns(p).some(t=&gt;t.who===&#x27;me&#x27;)?btn(&#x27;练到这里&#x27;,&#x27;practice-finish&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}&lt;/div&gt;`+previousTurns(p)+practiceOptions(p)+returnButton();
@@ -4299,7 +4926,7 @@ function createLearningUI(ctx) {
       if(!L.practice)return title(&#x27;还没有练习记录&#x27;)+btn(&#x27;开始练习&#x27;,&#x27;practice-start&#x27;);
       refreshPracticeContext();
       const p=L.practice,x=script();const spoken=currentTurns(p).filter(t=&gt;t.who===&#x27;me&#x27;).at(-1)?.text||&#x27;&#x27;,own=p.role===&#x27;seller&#x27;?spoken:&#x27;&#x27;;
-      const canUse=p.role===&#x27;seller&#x27;&amp;&amp;(p.customerId||p.returnView===&#x27;introduction&#x27;)&amp;&amp;p.lifecycle?.canPrepare!==false;
+      const canUse=p.role===&#x27;seller&#x27;&amp;&amp;(p.customerId||p.returnView===&#x27;introduction&#x27;)&amp;&amp;p.lifecycle?.canPrepare!==false&amp;&amp;learningPracticeFeedback(p)?.canUse!==false;
       const canContinue=Boolean(spoken)&amp;&amp;p.round&gt;0&amp;&amp;p.round&lt;3;
       if(isPartner(p)||p.trainingCase===&#x27;family-report&#x27;){
         const feedback=focusedFeedback(p),fromLesson=p.returnView===&#x27;lesson&#x27;;
@@ -4307,12 +4934,12 @@ function createLearningUI(ctx) {
         const policyDone=feedback.covered&amp;&amp;p.returnView===&#x27;knowledge&#x27;,policyLessonDone=feedback.covered&amp;&amp;fromLesson;
         return title(feedback.covered?&#x27;关键点已提到&#x27;:spoken?&#x27;这次先改一处&#x27;:&#x27;先看一句示范&#x27;,practiceSubtitle(p))+panel(`&lt;p&gt;${h(feedback.point)}&lt;/p&gt;&lt;span class=&quot;gp-eyebrow&quot;&gt;下次可以这样说&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(feedback.example)}&lt;/p&gt;`)+(policyDone?btn(&#x27;回刚才的问题&#x27;,&#x27;learn-return&#x27;):policyLessonDone?btn(&#x27;做章节练习&#x27;,&#x27;learn-practice-quiz&#x27;):btn(spoken?&#x27;再练一次&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;))+(policyLessonDone?returnButton():fromLesson?btn(&#x27;做章节练习&#x27;,&#x27;learn-practice-quiz&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;)+btn(&#x27;回这节课&#x27;,&#x27;learn-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):policyDone?&#x27;&#x27;:returnButton())+(canContinue?btn(&#x27;接着练下一句&#x27;,&#x27;practice-continue&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;)+previousTurns(p)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;换一种练法&lt;/summary&gt;${policyDone||policyLessonDone?btn(&#x27;再练一次&#x27;,&#x27;practice-retry&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${quiet(x.avoid)}${practiceOptions(p)}${correctionInput(p)}&lt;/details&gt;`;
       }
-      const heading=title(own?&#x27;我刚才这样说&#x27;:p.role===&#x27;customer&#x27;?&#x27;服务商参考说法&#x27;:p.revision?&#x27;更新后的讲解稿&#x27;:p.introDraft?&#x27;原来的讲解稿&#x27;:&#x27;参考说法&#x27;,practiceSubtitle(p));
+      const heading=title(own?(learningPracticePack(p)?&#x27;这次准备好的说法&#x27;:&#x27;我刚才这样说&#x27;):p.role===&#x27;customer&#x27;?&#x27;服务商参考说法&#x27;:p.revision?&#x27;更新后的讲解稿&#x27;:p.introDraft?&#x27;原来的讲解稿&#x27;:&#x27;参考说法&#x27;,practiceSubtitle(p));
       if(p.correctionOpen)return title(&#x27;修改这次练习&#x27;,practiceSubtitle(p))+correctionInput(p)+previousTurns(p)+returnButton();
       const finishedLesson=Boolean(spoken&amp;&amp;p.returnView===&#x27;lesson&#x27;),studyCustomer=p.studyOrigin?.customerId,studyName=studyCustomer?customer(studyCustomer)?.name||&#x27;客户&#x27;:&#x27;&#x27;;
       const primary=finishedLesson?(studyCustomer?btn(canUse?&#x27;存为准备稿，回&#x27;+studyName:&#x27;回&#x27;+studyName+&#x27;的原记录&#x27;,canUse?&#x27;practice-adopt&#x27;:&#x27;practice-return-source&#x27;):btn(&#x27;返回课程&#x27;,&#x27;learn-return&#x27;)):canUse?btn(p.customerId?&#x27;用这段，回原记录&#x27;:&#x27;用这段，回到讲解&#x27;,&#x27;practice-adopt&#x27;):btn(spoken?&#x27;再练一次&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;);
       const leave=finishedLesson?(studyCustomer?btn(&#x27;回课程继续学&#x27;,&#x27;learn-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;):canUse&amp;&amp;p.customerId?btn(&#x27;不用这段，回原记录&#x27;,&#x27;learn-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):returnButton();
-      const feedback=focusedFeedback(p),reference=own&amp;&amp;practiceCoaching(p)&amp;&amp;feedback.example!==own?`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;参考说法&lt;/summary&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(feedback.example)}&lt;/p&gt;&lt;/details&gt;`:&#x27;&#x27;;
+      const feedback=focusedFeedback(p),reference=own&amp;&amp;(practiceCoaching(p)||learningPracticePack(p))&amp;&amp;feedback.example!==own?`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;参考说法&lt;/summary&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(feedback.example)}&lt;/p&gt;&lt;/details&gt;`:&#x27;&#x27;;
       return heading+(own?`&lt;p&gt;${h(feedback.point)}&lt;/p&gt;`:p.role===&#x27;seller&#x27;?quiet(p.revision?&#x27;参考说法已按新情况更新，可以再试说一次。&#x27;:&#x27;你还没试说，下面是参考说法。&#x27;):&#x27;&#x27;)+panel(`&lt;p class=&quot;gp-message&quot;&gt;${h(takeaway())}&lt;/p&gt;`)+reference+primary+leave+correctionInput(p)+previousTurns(p)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;其他练习&lt;/summary&gt;${quiet(x.avoid)}${canContinue?btn(&#x27;接着练下一句&#x27;,&#x27;practice-continue&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${canUse||finishedLesson?btn(own?&#x27;再练一次&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${btn(&#x27;以前的练习&#x27;,&#x27;practice-history&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;`;
     }
     if(view===&#x27;practice-history&#x27;)return title(&#x27;我的练习&#x27;,`${L.practiceHistory.length}次示例记录`)+(L.practiceHistory.length?L.practiceHistory.map((p,i)=&gt;row(`${p.studyOrigin?.customerId?ctx.customerLabel(p.studyOrigin.customerId):practiceName(p)} · ${p.topic}`,`${roleLabel(p)} · ${p.goal}`,&#x27;practice-open-history&#x27;,i)).join(&#x27;&#x27;):quiet(&#x27;练过的内容会留在这里，随时可以回看。&#x27;))+btn(&#x27;练一段新的&#x27;,&#x27;practice-new&#x27;);
@@ -4369,13 +4996,13 @@ function createLearningUI(ctx) {
       L.ci=/售后|用法|使用|已有|回访/.test(topic)?6:/测评|报告|家人/.test(topic)?2:/贵|考虑|顾虑/.test(topic)?5:4;L.ui=0;L.recitation=null;go(&#x27;lesson&#x27;);
     }
     else if(action===&#x27;learn-return&#x27;)backToWork();
-    else if(action===&#x27;learn-recite&#x27;){studyQuestion().active=false;L.recitation={phase:&#x27;recording&#x27;,paused:false,text:L.recitation?.text||&#x27;&#x27;,playing:false,feedback:false,updatedAt:Date.now()};}
-    else if(action===&#x27;learn-rec-type&#x27;)L.recitation={phase:&#x27;typing&#x27;,paused:false,text:L.recitation?.text||&#x27;&#x27;,playing:false,feedback:false,updatedAt:Date.now()};
+    else if(action===&#x27;learn-recite&#x27;){studyQuestion().active=false;L.recitation={phase:&#x27;recording&#x27;,paused:false,text:L.recitation?.text||&#x27;&#x27;,learningFocus:copy(studyQuestion().turns.at(-1)?.answer?.learningFocus||null),playing:false,feedback:false,updatedAt:Date.now()};}
+    else if(action===&#x27;learn-rec-type&#x27;)L.recitation={phase:&#x27;typing&#x27;,paused:false,text:L.recitation?.text||&#x27;&#x27;,learningFocus:copy(studyQuestion().turns.at(-1)?.answer?.learningFocus||null),playing:false,feedback:false,updatedAt:Date.now()};
     else if(action===&#x27;learn-rec-pause&#x27;)L.recitation.paused=!L.recitation.paused;
     else if(action===&#x27;learn-rec-stop&#x27;){if(!(L.recitation?.text||&#x27;&#x27;).trim()){showNotice(&#x27;先试着说一句。&#x27;);return true;}if(applyStudyCorrection(L.recitation.text)||syncStudyContext())return true;L.recitation.phase=&#x27;review&#x27;;L.recitation.feedback=true;L.recitation.updatedAt=Date.now();}
     else if(action===&#x27;learn-rec-play&#x27;)L.recitation.playing=!L.recitation.playing;
     else if(action===&#x27;learn-rec-feedback&#x27;){if((L.recitation?.text||&#x27;&#x27;).trim()){L.recitation.phase=&#x27;review&#x27;;L.recitation.feedback=true;}}
-    else if(action===&#x27;learn-rec-example&#x27;){L.recitation={phase:&#x27;typing&#x27;,paused:false,text:String(unit()[2]||&#x27;&#x27;).replace(/[“”]/g,&#x27;&#x27;),playing:false,feedback:false,updatedAt:Date.now()};}
+    else if(action===&#x27;learn-rec-example&#x27;){L.recitation={phase:&#x27;typing&#x27;,paused:false,text:String(unit()[2]||&#x27;&#x27;).replace(/[“”]/g,&#x27;&#x27;),learningFocus:copy(studyQuestion().turns.at(-1)?.answer?.learningFocus||null),playing:false,feedback:false,updatedAt:Date.now()};}
     else if(action===&#x27;learn-rec-use&#x27;){
       if(syncStudyContext())return true;
       const origin=L.origin,person=origin?.customerId?customer(origin.customerId):null,feedback=learnerRecitationFeedback();
@@ -4531,10 +5158,13 @@ function createLearningUI(ctx) {
         if(applyPracticeRequest(input)){p.input=&#x27;&#x27;;p.inputMode=&#x27;voice&#x27;;p.recording=false;}
         return true;
       }
+      const learningFeedback=p.role===&#x27;seller&#x27;?learningPracticeFeedback(p,input):null;
+      if(learningFeedback?.canUse===false&amp;&amp;!(p.round&gt;0&amp;&amp;learningFeedback.title===&#x27;再接着说一句&#x27;)){p.studyFeedback=learningFeedback;p.input=input;p.inputMode=&#x27;typing&#x27;;p.recording=false;return true;}
+      p.studyFeedback=null;
       if(p.role===&#x27;seller&#x27;)p.turns.push({who:&#x27;customer&#x27;,text:script().questions[Math.min(p.round,2)]});
       p.turns.push({who:&#x27;me&#x27;,text:input});p.input=&#x27;&#x27;;p.inputMode=&#x27;voice&#x27;;p.recording=false;p.round++;
       if(p.role===&#x27;customer&#x27;&amp;&amp;p.round&lt;3)p.turns.push({who:&#x27;demo&#x27;,text:script().answers[Math.min(p.round,2)]});
-      if(p.round&gt;=3||p.role===&#x27;seller&#x27;&amp;&amp;(p.customerId||p.returnView===&#x27;introduction&#x27;))finishPractice();
+      if(p.round&gt;=3||p.role===&#x27;seller&#x27;&amp;&amp;!learningPracticePack(p)&amp;&amp;(p.customerId||p.returnView===&#x27;introduction&#x27;))finishPractice();
     }
     else if(action===&#x27;practice-finish&#x27;)finishPractice();
     else if(action===&#x27;practice-continue&#x27;){
@@ -4546,6 +5176,7 @@ function createLearningUI(ctx) {
     else if(action===&#x27;practice-adopt&#x27;){
       refreshPracticeContext();
       const p=L.practice;const draft=takeaway();
+      if(learningPracticeFeedback(p,draft)?.canUse===false){showNotice(&#x27;先改好刚才那一句，再存为准备稿。&#x27;);return true;}
       if(p.lifecycle?.canPrepare===false){backToWork();return true;}
       if(p.customerId){ctx.returnToCustomerRecord({customerId:p.customerId,taskId:p.taskId||&#x27;&#x27;,recordId:p.sourceRecordId||L.origin?.sourceRecordId||&#x27;&#x27;,draft});}
       else if(p.returnView===&#x27;introduction&#x27;){s.standalone=true;s.taskId=&#x27;&#x27;;s.practiceReturn={customerId:&#x27;&#x27;,taskId:&#x27;&#x27;,sourceRecordId:&#x27;&#x27;,customerNeed:p.customerNeed||&#x27;&#x27;,productId:p.productId||&#x27;&#x27;,introCompareIds:[...(p.introCompareIds||[])],introDraft:draft};go(&#x27;introduction&#x27;);}
