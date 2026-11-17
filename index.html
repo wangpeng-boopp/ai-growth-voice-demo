@@ -2057,9 +2057,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       &lt;option value=&quot;products&quot;&gt;新品选品与讲解&lt;/option&gt;
       &lt;option value=&quot;newcomer&quot;&gt;新人第一次使用&lt;/option&gt;
       &lt;option value=&quot;ka&quot;&gt;KA查看共性问题&lt;/option&gt;
-      &lt;option value=&quot;benefit-gap&quot;&gt;这月补贴 · 还差一项&lt;/option&gt;
-      &lt;option value=&quot;benefit-met&quot;&gt;这月补贴 · 可以提高&lt;/option&gt;
-      &lt;option value=&quot;benefit-check&quot;&gt;这月补贴 · 待核对&lt;/option&gt;
     &lt;/select&gt;
   &lt;/label&gt;
 &lt;/div&gt;
@@ -2271,6 +2268,68 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #growth-voice-complete .gp-course-icon{color:var(--gp-accent);display:flex;margin-bottom:3px}
 #growth-voice-complete .gp-course-icon svg{width:24px;height:24px}
 @media(max-width:380px){#growth-voice-complete .gp-home .gp-title{font-size:26px}#growth-voice-complete .gp-course-grid{gap:10px}#growth-voice-complete .gp-course-tile{padding:14px 12px;min-height:132px}#growth-voice-complete .gp-course-tile strong{font-size:18px}}
+#growth-voice-complete .gp-related-case{margin:22px 0 8px;border-top:1px solid var(--gp-line);padding-top:16px}
+#growth-voice-complete .gp-related-case&gt;.gp-quiet{margin:0}
+#growth-voice-complete .gp-case-story{margin:20px 0}
+#growth-voice-complete .gp-case-story p{line-height:1.75}
+
+/* Reading hierarchy: text explains, outlined controls act, blue is the main action. */
+#growth-voice-complete .gp-title{font-size:26px;font-weight:700;line-height:1.4;margin:2px 0 16px}
+#growth-voice-complete .gp-sub{font-size:16px;line-height:1.6;margin:4px 0 20px}
+#growth-voice-complete .gp-section-title{font-size:18px;font-weight:600;line-height:1.5;margin:24px 0 10px}
+#growth-voice-complete .gp-summary{font-size:18px;line-height:1.7;margin:16px 0}
+#growth-voice-complete .gp-message{font-size:18px;line-height:1.7;padding:16px;margin:14px 0}
+#growth-voice-complete .gp-panel&gt;.gp-message{padding:0;margin:8px 0 0;background:transparent;border-radius:0}
+#growth-voice-complete .gp-panel&gt;.gp-section-title:first-child{margin-top:0}
+#growth-voice-complete button.gp-text{border:1px solid var(--gp-line);border-radius:11px;color:#184baf;background:var(--gp-paper);padding:10px 14px;font-size:16px;font-weight:500;line-height:1.5;min-height:46px;margin:6px 0}
+#growth-voice-complete .gp-inline-actions{gap:10px}
+#growth-voice-complete .gp-inline-actions&gt;.gp-text{flex:1;margin:0}
+#growth-voice-complete .gp-secondary{background:var(--gp-paper);border:1px solid #a7bee5;color:#184baf}
+#growth-voice-complete .gp-row strong{font-weight:600}
+#growth-voice-complete .gp-row&gt;svg{color:var(--gp-accent);width:20px}
+#growth-voice-complete .gp-main details&gt;summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--gp-line);padding:14px 2px;margin:0;min-height:48px;color:#36516f;font-size:16px;font-weight:500;line-height:1.5;cursor:pointer}
+#growth-voice-complete .gp-main details&gt;summary::-webkit-details-marker{display:none}
+#growth-voice-complete .gp-main details&gt;summary::after{content:&#x27;&#x27;;width:8px;height:8px;border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:rotate(45deg);flex-shrink:0;margin:0 6px 4px}
+#growth-voice-complete .gp-main details[open]&gt;summary::after{transform:rotate(225deg);margin-bottom:-3px}
+#growth-voice-complete .gp-main details&gt;summary&gt;svg{display:none}
+#growth-voice-complete .gp-main details&gt;summary+*{margin-top:8px}
+#growth-voice-complete .gp-memo-history{border-top:0;padding-top:0}
+#growth-voice-complete .gp-next-card{padding:18px 0 4px;margin:18px 0;border-top:1px solid var(--gp-line)}
+#growth-voice-complete .gp-next-card&gt;.gp-quiet{margin:0 0 7px}
+#growth-voice-complete .gp-next-card&gt;h3{font-size:21px;line-height:1.5;font-weight:600}
+#growth-voice-complete .gp-next-card&gt;details{margin:10px 0 0}
+#growth-voice-complete .gp-next-card&gt;details&gt;summary{border:0;font-size:15px;padding:10px 2px}
+#growth-voice-complete .gp-speech{font-size:19px;line-height:1.75;margin:18px 0;padding:18px;background:var(--gp-soft);border-radius:16px}
+#growth-voice-complete .gp-question{font-size:16px;line-height:1.6;color:var(--gp-ink);padding:11px 14px;background:var(--gp-highlight);border-radius:14px 14px 4px 14px;margin:16px 0 18px 24px;white-space:pre-wrap}
+#growth-voice-complete .gp-answer{font-size:18px;line-height:1.75;white-space:pre-wrap;margin:16px 0 20px}
+#growth-voice-complete .gp-identity-status{margin:22px 0 24px}
+#growth-voice-complete .gp-identity-status&gt;div{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px;border-bottom:1px solid var(--gp-line)}
+#growth-voice-complete .gp-identity-status strong{display:flex;align-items:center;gap:6px;font-size:16px;font-weight:500}
+#growth-voice-complete .gp-identity-status strong[data-complete=true]{color:#184baf}
+#growth-voice-complete .gp-identity-status svg{width:18px;height:18px}
+#growth-voice-complete .gp-case-overview{margin:18px 0 22px;font-size:19px;line-height:1.75}
+#growth-voice-complete .gp-case-actions{margin:18px 0 24px}
+#growth-voice-complete .gp-case-actions&gt;.gp-text{width:100%;margin-top:10px}
+#growth-voice-complete .gp-case-story{margin:12px 0}
+#growth-voice-complete .gp-case-story&gt;.gp-section-title:first-child{margin-top:0}
+#growth-voice-complete .gp-lesson-key{padding:0 0 16px;margin:16px 0;font-size:18px;line-height:1.75;border-bottom:1px solid var(--gp-line)}
+#growth-voice-complete .gp-lesson-example{margin:14px 0 18px;padding:14px 16px;border-radius:14px;background:var(--gp-soft)}
+#growth-voice-complete .gp-lesson-example&gt;.gp-eyebrow{color:var(--gp-muted);margin:0 0 8px}
+#growth-voice-complete .gp-lesson-example&gt;p:last-child{font-size:18px;line-height:1.7}
+@media(max-width:380px){#growth-voice-complete .gp-title{font-size:24px}#growth-voice-complete .gp-inline-actions{gap:8px}}
+
+#growth-voice-complete .gp-prep-actions{display:flex;gap:10px;align-items:stretch;margin:16px 0 12px}
+#growth-voice-complete .gp-prep-actions&gt;.gp-button{flex:1;width:auto;min-width:0;margin:0;padding:12px 8px;font-size:17px;line-height:1.5}
+
+#growth-voice-complete .gp-add-customer{flex-shrink:0;white-space:nowrap;margin:0;padding:9px 12px}
+#growth-voice-complete .gp-add-customer svg{width:18px;height:18px}
+#growth-voice-complete .gp-learning-heading{margin-bottom:14px}
+#growth-voice-complete .gp-learning-heading .gp-title{margin:0}
+#growth-voice-complete .gp-learning-heading&gt;.gp-text{margin:0;flex-shrink:0}
+#growth-voice-complete .gp-learning-search{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+#growth-voice-complete .gp-learning-search&gt;.gp-text{margin:0;padding:10px 12px;min-width:0}
+#growth-voice-complete .gp-course-tile{min-height:116px;padding:14px}
+#growth-voice-complete .gp-next-card:first-child{margin-top:10px;border-top:0;padding-top:0}
 &lt;/style&gt;
 &lt;script&gt;
 (async () =&gt; {
@@ -2327,19 +2386,15 @@ function policyAnswer(question,previous=null){
     c.topic=&#x27;annual&#x27;;
     return answer(&#x27;年度服务补贴还要看“达标月份数”和“本人年度进货积分”，不能拿年度销售额直接乘比例。\n初／中级：至少6次、15万积分；高／资深：至少8次、20万积分；执行／荣誉：至少9次、22.5万积分。&#x27;,&#x27;政策第9页：对应比例为3%、4%、6%、7%、9%、11%；按规定的适用月份等条件计算，另有扣减及发放条件。第10页“年度额外特别补贴”是另一套规则，不能混用。&#x27;);
   }
-  if(/月度管理|管理补贴/.test(q)||c.topic===&#x27;monthly-management&#x27;&amp;&amp;/个人|本人|自己|积分|够|还差|抵扣/.test(q)){
-    c.topic=&#x27;monthly-management&#x27;;const points=policyPoints(q,&#x27;(?:个人|本人|自己)&#x27;);if(points!==null)c.own=points;
-    const progress=c.own==null?&#x27;&#x27;:`\n按您说的本人${c.own.toLocaleString(&#x27;zh-CN&#x27;)}积分，${c.own&gt;=25000?&#x27;达到这一项门槛，其他资格仍需核对&#x27;:`这项还差${(25000-c.own).toLocaleString(&#x27;zh-CN&#x27;)}积分`}。`;
-    return answer(&#x27;月度管理补贴：本人当月进货积分须达到2.5万，不能用直属渠道积分抵扣。&#x27;+progress+&#x27;\n5%和10%的计算基数是对应董事的市场补贴金额，不是销售额或积分。&#x27;,&#x27;政策第8页。只比较所提供的积分，不据此确认实际补贴资格或到账金额。&#x27;);
+  if(/月度管理|管理补贴/.test(q)||c.topic===&#x27;monthly-management&#x27;&amp;&amp;/个人|本人|自己|积分|抵扣/.test(q)){
+    c.topic=&#x27;monthly-management&#x27;;delete c.own;delete c.direct;
+    return answer(&#x27;月度管理补贴：政策列明本人当月进货积分须达到2.5万，不能用直属渠道积分抵扣。\n5%和10%的计算基数是对应董事的市场补贴金额，不是销售额或积分。&#x27;,&#x27;政策第8页。这里只解释资料中的规则，不核算个人达标情况或应得金额。&#x27;);
   }
-  if((/月度|月补|中级|初级|高级|资深|执行|荣誉|个人.*积分|本人.*积分|直属.*积分/.test(q)||c.topic===&#x27;monthly&#x27;&amp;&amp;/还差|抵扣/.test(q))&amp;&amp;!/年度|年终/.test(q)){
-    c.topic=&#x27;monthly&#x27;;
+  if((/月度|月补|中级|初级|高级|资深|执行|荣誉|个人.*积分|本人.*积分|直属.*积分/.test(q)||c.topic===&#x27;monthly&#x27;&amp;&amp;/条件|抵扣/.test(q))&amp;&amp;!/年度|年终/.test(q)){
+    c.topic=&#x27;monthly&#x27;;delete c.own;delete c.direct;
     const rank=companyPolicy.ranks.find(r=&gt;q.includes(r[0]))||companyPolicy.ranks.find(r=&gt;r[0]===c.rank)||null;if(rank)c.rank=rank[0];
-    if(!rank)return answer(&#x27;月度服务补贴分六级，先看本人进货积分和直属渠道进货积分。您想了解哪一级？&#x27;,&#x27;政策第7页。六级均列本人当月2.5万积分；另有抵扣及其他资格条件，销售额不能直接替代积分。&#x27;,{followups:[&#x27;中级月度服务补贴还差多少？&#x27;,&#x27;高级月度服务补贴怎么考核？&#x27;]});
-    const own=policyPoints(q,&#x27;(?:个人|本人|自己)&#x27;),direct=policyPoints(q,&#x27;直属(?:渠道)?&#x27;);
-    if(own!==null)c.own=own;if(direct!==null)c.direct=direct;
-    const describe=(n,min,label)=&gt;n==null?`${label}实际积分还没提供。`:`${label}${n.toLocaleString(&#x27;zh-CN&#x27;)}积分，${n&gt;=min?&#x27;达到这一项列明门槛&#x27;:`按本项门槛还差${(min-n).toLocaleString(&#x27;zh-CN&#x27;)}积分`}。`;
-    return answer(`${rank[0]}月度服务补贴：本人2.5万、直属${rank[1].toLocaleString(&#x27;zh-CN&#x27;)}积分。\n${describe(c.own,25000,&#x27;本人&#x27;)}${describe(c.direct,rank[1],&#x27;直属&#x27;)}\n这里只比较已说出的积分，不能据此确认已获资格或实际补贴。`,`政策第7页：${rank[0]}列明直属比例${rank[2]}%。本人积分存在可抵扣条款，但抵扣细则及其他条件尚需核实；当前不自动抵扣，也不把比例直接乘销售额。`,{followups:[&#x27;本人3万积分，直属6万积分，按中级还差多少？&#x27;]});
+    if(!rank)return answer(&#x27;月度服务补贴分六级，分别规定本人进货积分和直属渠道进货积分。您想了解哪一级？&#x27;,&#x27;政策第7页。这里解释政策资料，不查询或计算个人进度。&#x27;,{followups:[&#x27;中级月度服务补贴有哪些条件？&#x27;,&#x27;高级月度服务补贴怎么考核？&#x27;]});
+    return answer(`${rank[0]}月度服务补贴：政策列明本人2.5万、直属${rank[1].toLocaleString(&#x27;zh-CN&#x27;)}进货积分。\n进货积分与客户销售额是不同口径，还要核对适用身份及其他条件。`,`政策第7页：${rank[0]}列明直属比例${rank[2]}%。本人积分存在可抵扣条款；具体适用条件以有效政策为准，不用比例直接乘销售额，也不据此判断个人资格。`,{followups:[&#x27;年度服务补贴怎么考核？&#x27;,&#x27;月度管理补贴有什么不同？&#x27;]});
   }
   if(/脂\s*20/i.test(q)&amp;&amp;/T\s*18/i.test(q)&amp;&amp;/比较|区别|差哪|差别|哪个|多少钱/.test(q)){
     if(!c.route)return answer(&#x27;先按同一条路线比较：是首次做分销、直接成为董事，还是已有分销商升级？&#x27;,&#x27;三种路线的投入不同，先确认一项即可。&#x27;,{followups:[&#x27;脂20和T18直接升董事，分别多少钱？&#x27;,&#x27;我已经是分销，脂20和T18升董事分别多少钱？&#x27;]});
@@ -2375,63 +2430,143 @@ function policyPracticeScript(code){
   return {questions:[`我想了解${p.name}，${route===&#x27;upgrade&#x27;?&#x27;我已经是分销商，升董事还要多少？&#x27;:route===&#x27;distributor&#x27;?&#x27;先做分销要准备多少钱？&#x27;:&#x27;直接成为董事要准备多少？&#x27;}`,&#x27;那这些钱是不是全部都算进货积分？&#x27;,&#x27;卖完差价就是净赚的钱吗？你能保证回本吗？&#x27;],answers:[policyPlanText(c).replace(/\n/g,&#x27; &#x27;)+&#x27; 还要按公司要求完成申请和签约。&#x27;,p.points?`这条政策列明${p.points.toLocaleString(&#x27;zh-CN&#x27;)}进货积分，不能把全部付款直接换成积分，也不能把它当成客户销售额。`:&#x27;这条首购安排先说明金额与数量；不能自行把付款按1元1积分换算。&#x27;,&#x27;不能保证。销售收入减进货款只是未扣费差额，费用、税费、退货和未售库存还要另看。实际赚多少取决于真实销售和成本。&#x27;],point:&#x27;把进货款、数量、积分和未扣费差额分别说清楚。&#x27;,avoid:&#x27;不把进货或账面差额说成已经取得资格、实际净利润或保证收益。&#x27;};
 }
 
-// Personal figures are fixed demonstration records, shared by the profile and assistant.
-function personalBusiness(){
- if(!s.personalBusiness)s.personalBusiness={period:&#x27;month&#x27;,year:2026,month:11,targets:{...(s.productUI?.businessContext?.targets||{})},mode:&#x27;voice&#x27;,draft:&#x27;&#x27;,open:false};
- s.personalBusiness.targets=s.personalBusiness.targets||{};return s.personalBusiness;
+// Personal sales and settlement records are outside this training/tool prototype.
+function isPersonalBusinessQuestion(question){
+ const q=String(question||&#x27;&#x27;).trim();
+ if(/(?:政策|课程|培训|知识|资料|讲解|教我|解释).{0,8}(?:是什么|怎么|如何|区别|规定)|(?:什么是|如何解释|怎么讲清).{0,8}(?:收入|销售额|积分|补贴)/.test(q)&amp;&amp;!/我的|本人实际|我本月|我今年|还差多少|我的目标/.test(q))return false;
+ return /收入明细|未结算|待结算|已到账|到账收入|累计收入|我的收入|汇款中|(?:这笔|那笔|\d[\d,]*元).{0,8}(?:到账|结算|打款|汇款)|(?:本月|今年|去年|上月|这个月|我的|本人|个人|团队).{0,8}(?:销售额|销售数据|销售情况|卖货金额|业绩|收入|赚了|卖了|卖多少|销量)|销售目标|月目标|年目标|个人目标|(?:我|本人).{0,6}(?:离董事|离升董|还差|积分|权益进度|补贴进度)|我的.{0,8}(?:补贴|奖励|游学|购车|权益)|(?:补贴|奖励).{0,8}(?:多拿|多赚|还差|进度)|(?:本人|个人|自己|直属(?:渠道)?).{0,4}[\d一二两三四五六七八九十百千万.,，]+.{0,3}积分|(?:销售额|营业额|成交额|卖货金额).{0,5}(?:多少|怎么算|多少了)/.test(q);
 }
-function incomeDemoEntries(key){
- const november=[{date:&#x27;2026-11-16&#x27;,name:&#x27;公司结算&#x27;,amount:800,status:&#x27;未结算&#x27;},{date:&#x27;2026-11-15&#x27;,name:&#x27;公司结算&#x27;,amount:1200,status:&#x27;已到账&#x27;},{date:&#x27;2026-11-05&#x27;,name:&#x27;公司结算&#x27;,amount:2000,status:&#x27;已到账&#x27;}];
- const october=[{date:&#x27;2026-10-25&#x27;,name:&#x27;公司结算&#x27;,amount:4100,status:&#x27;已到账&#x27;}],september=[{date:&#x27;2026-09-25&#x27;,name:&#x27;公司结算&#x27;,amount:2800,status:&#x27;已到账&#x27;}];
- return key===&#x27;2026-11&#x27;?november:key===&#x27;2026-10&#x27;?october:key===&#x27;2026-09&#x27;?september:key===&#x27;2026&#x27;?[...november,...october,...september,{date:&#x27;2026年1—8月&#x27;,name:&#x27;已到账汇总&#x27;,amount:28100,status:&#x27;已到账&#x27;}]:[];
+function personalDataUnavailable(){return {kind:&#x27;unavailable&#x27;,text:&#x27;这一版先提供培训和AI工具，暂不查询个人销售、收入或补贴进度。公司政策可以继续按资料了解。&#x27;};}
+function clearRetiredPersonalState(state){
+ if(!state||typeof state!==&#x27;object&#x27;)return;
+ delete state.personalBusiness;
+ if(state.view===&#x27;income-details&#x27;){state.view=&#x27;profile&#x27;;state.tab=&#x27;profile&#x27;;}
+ if(String(state.scenario||&#x27;&#x27;).startsWith(&#x27;benefit-&#x27;))state.scenario=&#x27;first&#x27;;
+ if(Array.isArray(state.history))state.history=state.history.map(x=&gt;x.view===&#x27;income-details&#x27;?{...x,view:&#x27;profile&#x27;}:x);
+ const clean=u=&gt;{
+  if(!u||typeof u!==&#x27;object&#x27;)return;
+  const retired=[&#x27;business&#x27;,&#x27;benefit&#x27;].includes(u.lastKnowledgeKind);
+  if(Array.isArray(u.knowledgeMessages))u.knowledgeMessages=u.knowledgeMessages.filter(m=&gt;![&#x27;business&#x27;,&#x27;benefit&#x27;].includes(m?.answer?.kind)&amp;&amp;!(m?.answer?.kind===&#x27;policy&#x27;&amp;&amp;isPersonalBusinessQuestion(m.question)));
+  delete u.businessContext;
+  if(retired){u.lastKnowledgeKind=&#x27;&#x27;;if(isPersonalBusinessQuestion(u.knowledgeQuestion)||/^(?:那)?(?:今年|本月|上个月|还差多少|什么时候到账)[呢？?。]*$/.test(u.knowledgeQuestion||&#x27;&#x27;))u.knowledgeQuestion=&#x27;&#x27;;}
+  if(u.policyContext){delete u.policyContext.own;delete u.policyContext.direct;}
+ };
+ clean(state.productUI);
+ for(const u of Object.values(state.productUI?.contexts||{}))clean(u);
+ for(const work of Object.values(state.pendingWork||{})){
+  clean(work.module?.state);
+  if(work.core?.view===&#x27;income-details&#x27;)work.core.view=&#x27;profile&#x27;;
+  if(Array.isArray(work.core?.history))work.core.history=work.core.history.map(x=&gt;x.view===&#x27;income-details&#x27;?{...x,view:&#x27;profile&#x27;}:x);
+ }
 }
-function businessDemoData(key){
- const data={&#x27;2026-11&#x27;:{gross:18600,refund:600},&#x27;2026-10&#x27;:{gross:24200,refund:1200},&#x27;2026-09&#x27;:{gross:17400,refund:400},&#x27;2026&#x27;:{gross:237600,refund:4600}}[key];
- if(!data)return null;const entries=incomeDemoEntries(key);
- return {...data,entries,received:entries.filter(x=&gt;x.status===&#x27;已到账&#x27;).reduce((n,x)=&gt;n+x.amount,0),pending:entries.filter(x=&gt;x.status===&#x27;未结算&#x27;).reduce((n,x)=&gt;n+x.amount,0)};
+// Small, explicitly fictional material for the local interaction prototype.
+// These examples are not customer outcomes or a connection to the company case library.
+const relatedCaseExamples = [
+ {id:&#x27;busy-preparation&#x27;,title:&#x27;上班忙，担心准备太麻烦&#x27;,reason:&#x27;同样在意准备条件和能否坚持&#x27;,
+  situation:&#x27;一位上班族想了解产品，但担心早上来不及准备，也怕买了以后放着不用。&#x27;,
+  action:&#x27;先说明上班地点的准备条件，再对照手中包装，把需要做的步骤讲清楚。没有承诺一定能坚持。&#x27;,
+  outcome:&#x27;在这个模拟故事里，对方弄清了准备步骤，愿意先看简短说明，尚未决定购买。&#x27;,
+  difference:&#x27;工作环境、生活习惯和产品可能不同，参考的是了解顾虑的方法。&#x27;},
+ {id:&#x27;compare-calcium&#x27;,title:&#x27;两款液体钙，先弄清给谁了解&#x27;,reason:&#x27;同样在比较两款产品、确认使用对象&#x27;,
+  situation:&#x27;一位客户看到成人款和儿童款，替家人询问，却还没说明具体给谁。&#x27;,
+  action:&#x27;先问清对象和最想了解的问题，再按资料比较配料、规格与准备方式，没有凭名称判断适用。&#x27;,
+  outcome:&#x27;在这个模拟故事里，双方明确了了解对象和待核问题，没有当场决定选哪款。&#x27;,
+  difference:&#x27;若当前客户已说明给谁，就沿用已有信息；适用性仍需核对有效资料。&#x27;},
+ {id:&#x27;use-question&#x27;,title:&#x27;买过以后，仍有一步不会准备&#x27;,reason:&#x27;同样需要把使用问题问清楚&#x27;,
+  situation:&#x27;一位客户买过产品，也听过说明，但实际准备时仍有一步不清楚。&#x27;,
+  action:&#x27;请对方指出具体卡在哪一步，对照手中包装逐项解释，先处理使用问题，没有转去推荐新品。&#x27;,
+  outcome:&#x27;在这个模拟故事里，只确认了其中一步，其余疑问仍留待核实，没有把讲过当成全部解决。&#x27;,
+  difference:&#x27;产品版本和卡住的步骤可能不同，不能照搬用法，也不代表实际使用效果。&#x27;}
+];
+function isRelatedCaseRequest(text){return /案例|相似经历|类似经历|别人.{0,8}(?:怎么处理|怎么解决|怎样处理)/.test(String(text||&#x27;&#x27;));}
+function hasRelatedCaseTopic(text){return /上班|早餐|单位|忙|麻烦|坚持|冲泡|冲调|准备方式|怎么准备|不会准备|不会用|买过|已买|未解决|没解决|不清楚|液体钙|两款.*钙|鱼油|Q10|辅酶|氨糖|益生菌|T18|疾病|血糖|血压|治疗|疗效|减重|减肥/i.test(String(text||&#x27;&#x27;));}
+function relatedCaseContext(question=&#x27;&#x27;,origin=null,previous=[]){
+ let base=origin||{customerId:s.standalone?&#x27;&#x27;:s.selectedId,sourceRecordId:s.sourceRecordId||s.recordId||&#x27;&#x27;,taskId:s.taskId||&#x27;&#x27;};
+ let named=s.customers.filter(c=&gt;!c.archived&amp;&amp;String(question).includes(c.name));
+ if(!named.length&amp;&amp;previous.at(-1)?.answer?.caseAmbiguous)named=s.customers.filter(c=&gt;!c.archived&amp;&amp;previous.at(-1).question.includes(c.name));
+ let specific=named.length&gt;1?named.filter(c=&gt;c.relation&amp;&amp;(String(question).includes(c.relation)||String(question).includes(c.relation.replace(/^(?:老|新)/,&#x27;&#x27;)))):named;
+ if(!specific.length&amp;&amp;named.some(c=&gt;c.id===base.customerId))specific=named.filter(c=&gt;c.id===base.customerId);
+ if(named.length&gt;1&amp;&amp;specific.length!==1)return {customerId:&#x27;&#x27;,sourceRecordId:&#x27;&#x27;,taskId:&#x27;&#x27;,need:&#x27;&#x27;,question,ambiguous:named.map(c=&gt;c.relation+&#x27;的&#x27;+c.name)};
+ if(specific.length===1&amp;&amp;specific[0].id!==base.customerId)base={customerId:specific[0].id,sourceRecordId:specific[0].records[0]?.id||&#x27;&#x27;,taskId:&#x27;&#x27;};
+ const last=previous.at(-1),lastCase=last?.answer?.caseMatch?.context||last?.answer?.caseContext;
+ if(!named.length&amp;&amp;lastCase)base=lastCase;
+ const person=s.customers.find(c=&gt;c.id===base.customerId&amp;&amp;!c.archived);
+ const record=person?.records.find(r=&gt;r.id===base.sourceRecordId);
+ const task=s.tasks.find(t=&gt;t.id===base.taskId&amp;&amp;t.customerId===person?.id);
+ const changed=person?contextChangeFor(person.id,record?.id||&#x27;&#x27;,task?.id||&#x27;&#x27;):null;
+ const need=person?(changed?.need||record?.text||person.need||&#x27;&#x27;):(hasRelatedCaseTopic(question)?question:base.need||lastCase?.need||[...previous].reverse().find(m=&gt;m.answer?.kind!==&#x27;case&#x27;&amp;&amp;!isPersonalBusinessQuestion(m.question))?.question||&#x27;&#x27;);
+ const productIds=changed&amp;&amp;Object.prototype.hasOwnProperty.call(changed,&#x27;productId&#x27;)?(changed.introCompareIds?.length?[...changed.introCompareIds]:changed.productId?[changed.productId]:[]):base.productIds??null;
+ const prior=lastCase||base,scopeChanged=prior.need!==undefined&amp;&amp;(prior.need!==need||JSON.stringify(prior.productIds??null)!==JSON.stringify(productIds));
+ return {customerId:person?.id||&#x27;&#x27;,sourceRecordId:record?.id||&#x27;&#x27;,taskId:task?.id||&#x27;&#x27;,customerName:person?customerLabel(person.id):&#x27;&#x27;,need,productIds,question:String(question||&#x27;&#x27;),topic:hasRelatedCaseTopic(question)?String(question):!named.length&amp;&amp;!scopeChanged?(lastCase?.topic||base.topic||&#x27;&#x27;):&#x27;&#x27;,stopped:Boolean(person?.contactStopped||record?.outcome===&#x27;no-contact&#x27;),waiting:Boolean(person?.waiting||record?.outcome===&#x27;wait&#x27;)};
+}
+function matchRelatedCase(context){
+ if(context.stopped)return null;
+ const q=context.question||&#x27;&#x27;,background=context.need||&#x27;&#x27;;
+ const original=hasRelatedCaseTopic(q)?q:context.topic||background;
+ const latestChoice=[...original.matchAll(/(?:换成|改成|只看|只想了解|现在看)([^。；\n]+)/g)].at(-1)?.[1];
+ const text=latestChoice||original;
+ if(/疾病|血糖|血压|治疗|疗效|减重|减肥/.test(text))return null;
+ let id=&#x27;&#x27;;
+ if(/不会用|未解决|没解决|仍.{0,6}(?:疑问|问题)|还.{0,6}(?:不会|不懂)|买过|已买|已购买|已经有|到货/.test(text))id=&#x27;use-question&#x27;;
+ else if(/液体钙|两款.*钙|成人.*儿童/.test(text)&amp;&amp;(context.productIds?context.productIds.length===2&amp;&amp;context.productIds.includes(&#x27;adult-calcium&#x27;)&amp;&amp;context.productIds.includes(&#x27;kids-calcium&#x27;):/两款液体钙|两款.*钙|成人液体钙.*儿童液体钙|儿童液体钙.*成人液体钙/.test(text)))id=&#x27;compare-calcium&#x27;;
+ else if(/上班|早餐|单位|忙|麻烦|坚持|冲泡|冲调|准备方式|怎么准备/.test(text))id=&#x27;busy-preparation&#x27;;
+ return relatedCaseExamples.find(item=&gt;item.id===id)||null;
+}
+function relatedCaseCard(context){
+ if(context.stopped||context.waiting)return &#x27;&#x27;;
+ const item=matchRelatedCase(context);if(!item)return &#x27;&#x27;;
+ return btn(&#x27;看相关案例 · 模拟&#x27;,&#x27;case-preview&#x27;,JSON.stringify({caseId:item.id,context}),&#x27;text&#x27;);
+}
+function relatedCaseAnswer(question,origin,previous=[]){
+ const context=relatedCaseContext(question,origin,previous),item=matchRelatedCase(context);
+ if(context.ambiguous)return {kind:&#x27;case&#x27;,text:&#x27;您说的是&#x27;+context.ambiguous.join(&#x27;，还是&#x27;)+&#x27;？说一下关系就可以，不需要重说其他背景。&#x27;,caseAmbiguous:true};
+ if(context.stopped)return {kind:&#x27;case&#x27;,caseContext:context,text:&#x27;这位客户已要求停止联系，这次不准备主动发送案例。可以保留原记录，等对方主动提出新的问题。&#x27;};
+ if(!item)return {kind:&#x27;case&#x27;,caseContext:context,text:context.need?&#x27;目前的模拟案例没有与这次问题对应的内容，先不套用其他人的经历。&#x27;:&#x27;想找哪类案例？说说对方最关心或犹豫的一点就可以。&#x27;};
+ return {kind:&#x27;case&#x27;,text:`可参考“${item.title}”。`,caseMatch:{caseId:item.id,context}};
+}
+function openRelatedCaseQuestion(text){
+ const named=s.customers.filter(c=&gt;!c.archived&amp;&amp;text.includes(c.name));
+ const specific=named.length&gt;1?named.filter(c=&gt;c.relation&amp;&amp;text.includes(c.relation)):named;
+ const person=specific.length===1?specific[0]:!named.length&amp;&amp;s.voiceScope?s.customers.find(c=&gt;c.id===s.voiceScope&amp;&amp;!c.archived):null;
+ s.standalone=!person;s.selectedId=person?.id||s.selectedId;s.sourceRecordId=person?.records[0]?.id||&#x27;&#x27;;s.recordId=s.sourceRecordId;s.taskId=&#x27;&#x27;;
+ productUI.enterContext?.();s.freshCaseQuestion=true;s.knowledgeQuestion=text;go(&#x27;knowledge&#x27;);
+ if([&#x27;input&#x27;,&#x27;voice&#x27;].includes(s.history.at(-1)?.view))s.history.pop();
+ s.inputText=&#x27;&#x27;;s.voiceOriginal=&#x27;&#x27;;s.tab=&#x27;assistant&#x27;;
+}
+function renderRelatedCasePreview(){
+ const preview=s.casePreview,item=relatedCaseExamples.find(x=&gt;x.id===preview?.caseId);
+ if(!item)return `${top(&#x27;案例暂时找不到了&#x27;)}${btn(&#x27;回到刚才的内容&#x27;,&#x27;back&#x27;)}`;
+ const context=preview.context||{},person=s.customers.find(c=&gt;c.id===context.customerId&amp;&amp;!c.archived);
+ const stopped=Boolean(context.customerId&amp;&amp;(!person||person.contactStopped));
+ const marker=&#x27;模拟案例｜非真实客户成果&#x27;;
+ const brief={
+  &#x27;busy-preparation&#x27;:&#x27;先弄清在哪里准备，再按包装说明讲步骤，不催着购买。&#x27;,
+  &#x27;compare-calcium&#x27;:&#x27;先确认给谁了解，再比较两款资料；已说过的信息不用重问。&#x27;,
+  &#x27;use-question&#x27;:&#x27;先问卡在哪一步，对照包装解释，不把未解决的问题当成已解决。&#x27;
+ }[item.id];
+ const text=`${marker}\n${item.title}\n\n${item.situation}\n${item.action}\n${item.outcome}\n\n${item.difference}`;
+ const story=`&lt;section class=&quot;gp-case-story&quot;&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;当时的情况&lt;/h2&gt;&lt;p&gt;${h(item.situation)}&lt;/p&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;怎样处理&lt;/h2&gt;&lt;p&gt;${h(item.action)}&lt;/p&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;后续情况&lt;/h2&gt;&lt;p&gt;${h(item.outcome)}&lt;/p&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(item.difference)}&lt;/p&gt;&lt;/section&gt;`;
+ return `${context.customerName?`&lt;p class=&quot;gp-eyebrow&quot;&gt;客户：${h(context.customerName)}&lt;/p&gt;`:&#x27;&#x27;}${top(item.title)}&lt;p class=&quot;gp-status&quot;&gt;${marker}&lt;/p&gt;${preview.copyReady?`&lt;textarea class=&quot;gp-input&quot; rows=&quot;8&quot; readonly data-copy-ready aria-label=&quot;可复制的模拟案例&quot;&gt;${h(text)}&lt;/textarea&gt;`:`&lt;p class=&quot;gp-case-overview&quot;&gt;${h(brief)}&lt;/p&gt;`}&lt;div class=&quot;gp-case-actions&quot;&gt;${stopped?&#x27;&lt;p class=&quot;gp-panel&quot;&gt;这位客户当前不宜主动联系，先保留原记录。&lt;/p&gt;&#x27;:btn(preview.copyReady?&#x27;重新选中文字&#x27;:&#x27;选中文字&#x27;,&#x27;case-copy&#x27;)}${context.customerId?btn(&#x27;回原记录&#x27;,&#x27;case-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}&lt;/div&gt;&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;查看完整案例&lt;/summary&gt;${story}&lt;/details&gt;${context.need?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;已带入的客户背景&lt;/summary&gt;&lt;p&gt;${h(context.need)}&lt;/p&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(item.reason)}&lt;/p&gt;&lt;/details&gt;`:&#x27;&#x27;}`;
+}
+function relatedCaseAct(action,value){
+ if(action===&#x27;case-preview&#x27;){
+  let preview;try{preview=JSON.parse(value);}catch{return true;}
+  if(!relatedCaseExamples.some(x=&gt;x.id===preview.caseId))return true;
+  const person=s.customers.find(c=&gt;c.id===preview.context?.customerId&amp;&amp;!c.archived);
+  if(preview.context?.customerId&amp;&amp;!person){showNotice(&#x27;原客户暂时找不到了，先回到客户备忘。&#x27;);return true;}
+  const fresh=relatedCaseContext(preview.context?.question||&#x27;&#x27;,preview.context);
+  if(fresh.need!==preview.context?.need){fresh.question=&#x27;&#x27;;fresh.topic=&#x27;&#x27;;}
+  const current=matchRelatedCase(fresh);
+  if(!current){showNotice(fresh.stopped?&#x27;客户已要求停止联系，先保留原记录。&#x27;:&#x27;情况已更新，当前没有对应的模拟案例。&#x27;);return true;}
+  s.casePreview={caseId:current.id,context:fresh,copyReady:false};go(&#x27;case-preview&#x27;);return true;
+ }
+ if(action===&#x27;case-copy&#x27;){if(s.casePreview)s.casePreview.copyReady=true;return true;}
+ if(action===&#x27;case-return&#x27;){
+  const origin=s.casePreview?.context;if(origin?.customerId)returnToCustomerRecord({customerId:origin.customerId,recordId:origin.sourceRecordId,taskId:origin.taskId});else back();return true;
+ }
+ return false;
 }
 
-function businessKey(b){return b.period===&#x27;year&#x27;?String(b.year):`${b.year}-${String(b.month).padStart(2,&#x27;0&#x27;)}`;}
-function businessPeriod(b){return b.period===&#x27;year&#x27;?`${b.year}年累计`:`${b.year}年${b.month}月`;}
-function businessMoney(n){return Number(n).toLocaleString(&#x27;zh-CN&#x27;)+&#x27;元&#x27;;}
-function benefitProgress(){
- const m=personalBusiness(),which=[&#x27;gap&#x27;,&#x27;met&#x27;,&#x27;check&#x27;].includes(m.benefitCase)?m.benefitCase:&#x27;gap&#x27;;
- return {which,identityPending:s.identity!==&#x27;已办好&#x27;&amp;&amp;!m.benefitDemo,own:25000,direct:which===&#x27;check&#x27;?null:which===&#x27;met&#x27;?65000:58000,required:65000,period:&#x27;2026年11月&#x27;,title:&#x27;中级档 · 月度服务补贴&#x27;,estimate:{basis:10000,before:1400,after:1600,extra:200}};
-}
-function benefitProgressAnswer(question,follow=false){
- const q=String(question||&#x27;&#x27;).trim();
- const mentionedAmount=q.match(/(\d[\d,]*)\s*元/);if(mentionedAmount&amp;&amp;Number(mentionedAmount[1].replaceAll(&#x27;,&#x27;,&#x27;&#x27;))!==200&amp;&amp;/到账|结算|汇款|打款/.test(q))return null;
- if(/月度管理|管理补贴|年度服务补贴|年度特别|脂\s*20|T18|分销|加盟|首购|直升|董事价|高级档|资深档|执行档|荣誉档/.test(q))return null;
- if(isPersonalBusinessQuestion(q)&amp;&amp;!/积分|权益|补贴|比例|这笔|这项|16%|14%/.test(q)&amp;&amp;!(follow&amp;&amp;/这200元|这笔预计/.test(q)))return null;
- const explicit=/补贴.{0,8}(?:多拿|多得|增加)|我的.{0,5}(?:游学|购车)|6\s*[+＋]\s*2|权益进度|政策进度|本月权益|下一档|中级档|我的.{0,6}(?:权益|补贴|积分)|(?:我|这次|本月).{0,10}(?:补贴|积分).{0,8}(?:还差|够|达标|满足|条件)|(?:还差|缺).{0,5}积分/.test(q);
- const continuation=follow&amp;&amp;!/销售目标|个人目标|月目标|年目标|产品|脂20|T18|退货怎么办/.test(q)&amp;&amp;/还差|还缺|缺什么|条件|核对|核实|什么意思|怎么算|比例|百分点|2%|百分之|多赚|再卖|卖够|卖出|奖励|车|旅游|游学|到账|收入|销售额|积分|补贴|达标|任务|进货|买|取消|今年|上个月|董事|晋级|升级|多拿|拿多少|这项|这笔|提高|补齐|什么记录|200|怎么来的|多出|汇款|打款/.test(q);
- if(!explicit&amp;&amp;!continuation)return null;
- const d=benefitProgress(),source=&#x27;6+2服务商经营政策2026版 · 第7页；模拟情况：&#x27;+({gap:&#x27;缺一项&#x27;,met:&#x27;条件齐全&#x27;,check:&#x27;待核&#x27;})[d.which];
- const detail=&#x27;2026年11月董事服务商模拟数据：本人进货积分25,000／25,000；直属渠道&#x27;+(d.direct===null?&#x27;待核／要求65,000&#x27;:d.direct.toLocaleString(&#x27;zh-CN&#x27;)+&#x27;／65,000&#x27;)+&#x27;积分，身份及其他要求在本例已核。初级直属市场补贴比例14%，中级16%。进货积分不等于客户销售额或付款额，达标不等于已到账；正式资格与金额以公司核算为准。&#x27;;
- const calculation=&#x27;同一笔模拟计算金额10,000元：14%对应1,400元，16%对应1,600元，相差200元。这是比例提高带来的差额，不是从客户销售额或进货积分换算；未加入已到账或未结算记录。&#x27;;
- const reply=text=&gt;({kind:&#x27;benefit&#x27;,benefitCase:d.which,text,source,detail:detail+(d.which===&#x27;check&#x27;?&#x27; 当前条件待核，不计算增量。&#x27;:calculation)});
- if(d.identityPending)return {...reply(&#x27;这项月度服务补贴适用于董事服务商。当前身份办理尚未完成，不能据此判断您符合条件；先查看身份与办理，原记录仍保留。&#x27;),detail:&#x27;当前身份尚未核实，不据此确认个人补贴资格。底部三种权益情境可以单独体验董事服务商示例，不会更改本人的身份办理状态。&#x27;,link:&#x27;identity&#x27;,label:&#x27;查看身份与办理&#x27;};
- if(/购车|买车|有车|奖励.*车|车.*奖励/.test(q))return {...reply(&#x27;购车补贴另看按政策计算的累计服务及管理补贴、董事身份、购车及发票等条件。不是再卖一定金额就送车；当前没有对应个人记录，不能计算还差多少。&#x27;),source:&#x27;6+2服务商经营政策2026版 · 第15页；个人进度为模拟数据&#x27;,detail:&#x27;政策按指定补贴累计60万、120万、300万元对应购车补贴10万、20万、50万元，排除年度特别补贴，另受政策期间、购车期间和此前是否享受等条件约束。本例未模拟该项申请或发放。&#x27;};
- if(/旅游|游学/.test(q))return {...reply(&#x27;首次达到年度中级，可对应1个游学名额；年度高级对应2个。单月条件齐全不等于年度达标。其他旅游奖励另有条件，当前个人年度资格待核。&#x27;),source:&#x27;6+2服务商经营政策2026版 · 第9、12—14页；个人进度为模拟数据&#x27;,detail:&#x27;年度中级还需对应月度资格次数、个人年度进货积分等条件；游学名额不能当作到账收入。此处只说明政策，不代为确认奖励资格。&#x27;};
- if(/年度|今年|全年|上个月|上月|去年/.test(q))return reply(&#x27;这张权益进度展示2026年11月的模拟月度条件。其他月份和年度资格记录尚未提供，不能从本月情况推算；年度达标次数与累计积分要另行核对。&#x27;);
- if(/是不是.{0,5}(?:董事|升董)|成为董事|身份|永久|晋级|升级|升董/.test(q))return reply(&#x27;这里展示的是董事服务商的本月补贴档位，不是新取得董事身份，也不是永久升级。董事申请、月度补贴、年度奖励分别核对。&#x27;);
- if(/安排|任务|进货|买|补货/.test(q)&amp;&amp;!/积分/.test(q))return reply(&#x27;权益进度只帮助您了解条件，不会生成卖货、进货或客户联系任务。客户安排仍以实际沟通中确认的约定为准。&#x27;);
- if(/销售额|销售收入|卖了|再卖|卖够|卖出|付款|钱换|一元|1元/.test(q))return reply(&#x27;进货积分不是卖货金额，也不是到账收入。不能把卖出的18,000元当成18,000积分，或直接乘16%算收入。&#x27;);
- if(/比例|百分点|2%|百分之|怎么算|怎么来的/.test(q))return reply(d.which===&#x27;check&#x27;?&#x27;这项条件还待核，暂不计算能多拿多少。先确认本月进货积分是否满足要求。&#x27;:&#x27;按同一笔10,000元模拟计算：原来1,400元，提高后1,600元，预计多拿200元。这个金额还没有计入收入。&#x27;);
- if(/多(?:拿|赚|得)|多收|增加.*(?:钱|收入)|能拿多少/.test(q)&amp;&amp;!/到账|结算|汇款|打款|发放/.test(q))return reply(d.which===&#x27;check&#x27;?&#x27;这项条件还没核对齐，暂不估计能多拿多少钱。&#x27;:d.which===&#x27;met&#x27;?&#x27;按同一笔模拟计算金额，预计多拿200元。条件已满足，金额仍需核算，没有计入收入。&#x27;:&#x27;满足条件后，这项补贴预计多拿200元。本例还差一项进货积分，200元只是模拟测算。&#x27;);
- if(/到账|结算|赚|收入|能拿|拿到|发放|汇款|打款/.test(q))return reply(d.which===&#x27;check&#x27;?&#x27;这项还待核，没有确认增加的金额。&#x27;:&#x27;这200元只是预计增加的补贴，还未计入收入，也未发起打款。&#x27;);
- if(d.which===&#x27;met&#x27;)return reply(&#x27;条件已经满足。按同一笔模拟计算金额，这项补贴预计多拿200元，尚未计入收入。&#x27;);
- if(d.which===&#x27;check&#x27;)return reply(&#x27;还要核对本月进货积分是否达到65,000。记录没核实前，不能确定这项补贴能否提高。&#x27;);
- return reply(&#x27;满足条件后，这项补贴预计多拿200元。本例还差7,000进货积分，不是要再卖7,000元。&#x27;);
-}
-function goalAmount(text){
- const clean=String(text).replace(/[元块,，\s]/g,&#x27;&#x27;);const arabic=clean.match(/^(\d+(?:\.\d+)?)(万|千)?$/);if(arabic)return Number(arabic[1])*(arabic[2]===&#x27;万&#x27;?10000:arabic[2]===&#x27;千&#x27;?1000:1);
- if(!/^[零〇一二两三四五六七八九十百千万]+$/.test(clean))return NaN;
- const digits={&#x27;零&#x27;:0,&#x27;〇&#x27;:0,&#x27;一&#x27;:1,&#x27;二&#x27;:2,&#x27;两&#x27;:2,&#x27;三&#x27;:3,&#x27;四&#x27;:4,&#x27;五&#x27;:5,&#x27;六&#x27;:6,&#x27;七&#x27;:7,&#x27;八&#x27;:8,&#x27;九&#x27;:9};let total=0,section=0,num=0;
- for(const c of clean){if(c in digits)num=digits[c];else if(c===&#x27;万&#x27;){total+=(section+num)*10000;section=0;num=0;}else{section+=(num||1)*({&#x27;十&#x27;:10,&#x27;百&#x27;:100,&#x27;千&#x27;:1000}[c]);num=0;}}
- return total+section+num;
-}
-function isPersonalBusinessQuestion(q){return /[\d,]+元.{0,6}(?:到账|结算|打款|汇款)|收入明细|汇款中|打款|卖货金额|未结算|销售额|销售目标|月目标|年目标|个人目标|已到账|到账收入|待结算|累计收入|我的收入|(?:本月|今年|上月|这个月).{0,5}(?:收入|赚了|卖了)|(?:我|本人).{0,5}(?:赚了|离董事|离升董)|(?:升董|升董事|晋级).{0,5}(?:还差|条件|进度)/.test(q)&amp;&amp;!/(?:如果|假设).*(?:卖完|卖出)|这批.*赚|加盟.*投入/.test(q);}
 function createProductUI(ctx) {
   const {s, h, btn, row, chip, go, back, showNotice, save, renderApp, root} = ctx;
   // A local interaction prototype. These are reference facts, not current sales promises.
@@ -2552,7 +2687,7 @@ function createProductUI(ctx) {
         if(change){u.activeProductIds=(change.introCompareIds?.length?change.introCompareIds:change.productId?[change.productId]:[]).filter(id=&gt;products.some(p=&gt;p.id===id));u.productId=u.activeProductIds[0]||&#x27;&#x27;;u.introCompareIds=u.activeProductIds.length&gt;1?[...u.activeProductIds]:[];u.compareIds=[...u.activeProductIds];settleCompare(u.compareIds);s.productId=u.productId;}
       }
     }
-    if(s.selectionPrompt){u.need=s.selectionPrompt;u.clarified=&#x27;&#x27;;u.selectionReady=true;s.selectionPrompt=&#x27;&#x27;;}
+    if(s.selectionPrompt){u.need=s.selectionPrompt;u.clarified=&#x27;&#x27;;u.activeProductIds=[];u.selectionReady=true;s.selectionPrompt=&#x27;&#x27;;}
     if(s.knowledgeQuestion){const question=s.knowledgeQuestion;u.knowledgeMessages.push({question,answer:knowledgeAnswer(question)});u.knowledgeQuestion=&#x27;&#x27;;s.knowledgeQuestion=&#x27;&#x27;;}
     if(s.contentRequest){
       const request=s.contentRequest;
@@ -2587,13 +2722,13 @@ function createProductUI(ctx) {
     const [fieldName,stateKey]=entryFields[key];
     const prefix=&#x27;product-entry-&#x27;+key,paused=Boolean(u.entryPaused?.[key]&amp;&amp;u.entryModes?.[key]===&#x27;recording&#x27;);
     const heatAnswer=key===&#x27;needFix&#x27;&amp;&amp;heatAnswerMode();
-    return ctx.voiceEntry({mode:u.entryModes?.[key]||&#x27;voice&#x27;,paused,field:fieldName,value:u[stateKey]||&#x27;&#x27;,voiceAction:prefix+&#x27;-voice&#x27;,typeAction:prefix+&#x27;-type&#x27;,sendAction:prefix+&#x27;-send&#x27;,finishAction:prefix+(paused?&#x27;-voice&#x27;:&#x27;-send&#x27;),sendLabel:heatAnswer?&#x27;补充&#x27;:key.endsWith(&#x27;Fix&#x27;)?&#x27;保存修改&#x27;:key===&#x27;query&#x27;?&#x27;查找&#x27;:key===&#x27;feedback&#x27;?&#x27;记下来&#x27;:&#x27;发送&#x27;,finishLabel:paused?&#x27;继续说&#x27;:heatAnswer?&#x27;说完了，补充&#x27;:key===&#x27;feedback&#x27;?&#x27;说完了，记下来&#x27;:key.endsWith(&#x27;Fix&#x27;)?&#x27;说完了，改成这样&#x27;:&#x27;说完了&#x27;,label,placeholder,rows,secondary:!heatAnswer&amp;&amp;(key===&#x27;needFix&#x27;||key===&#x27;introFix&#x27;)});
+    return ctx.voiceEntry({mode:u.entryModes?.[key]||&#x27;voice&#x27;,paused,field:fieldName,value:u[stateKey]||&#x27;&#x27;,voiceAction:prefix+&#x27;-voice&#x27;,typeAction:prefix+&#x27;-type&#x27;,sendAction:prefix+&#x27;-send&#x27;,finishAction:prefix+(paused?&#x27;-voice&#x27;:&#x27;-send&#x27;),sendLabel:heatAnswer?&#x27;补充&#x27;:key.endsWith(&#x27;Fix&#x27;)?&#x27;保存修改&#x27;:key===&#x27;query&#x27;?&#x27;查找&#x27;:key===&#x27;feedback&#x27;?&#x27;记下来&#x27;:&#x27;发送&#x27;,finishLabel:paused?&#x27;继续说&#x27;:heatAnswer?&#x27;说完了，补充&#x27;:key===&#x27;feedback&#x27;?&#x27;说完了，记下来&#x27;:key.endsWith(&#x27;Fix&#x27;)?&#x27;说完了，改成这样&#x27;:&#x27;说完了&#x27;,label,placeholder,rows,secondary:!heatAnswer&amp;&amp;(key===&#x27;needFix&#x27;||key===&#x27;introFix&#x27;||key===&#x27;question&#x27;&amp;&amp;s.view===&#x27;product&#x27;)});
   }
   function voiceSample(key) {
     if(key===&#x27;query&#x27;)return &#x27;成人液体钙和儿童液体钙有什么区别？&#x27;;
     if(key===&#x27;need&#x27;)return customer()?.need||&#x27;给自己用，想了解液体钙，平时不方便冲泡。&#x27;;
     if(key===&#x27;needFix&#x27;)return heatAnswerMode()?&#x27;单位没有热水，只有冷水。&#x27;:&#x27;不是自己用，是给女儿，其他不变。&#x27;;
-    if(key===&#x27;question&#x27;)return u.lastKnowledgeKind===&#x27;benefit&#x27;?({gap:&#x27;这200元怎么算的？&#x27;,met:&#x27;这200元已到账了吗？&#x27;,check:&#x27;要核对哪项积分？&#x27;})[benefitProgress().which]:u.lastKnowledgeKind===&#x27;business&#x27;?&#x27;那今年呢？&#x27;:`${get(u.knowledgeProductId||current().id).name}怎么给客户讲得简单一点？`;
+    if(key===&#x27;question&#x27;)return u.lastKnowledgeKind===&#x27;policy&#x27;?(u.policyContext?.product?&#x27;这条加盟政策的投入和积分怎么区分？&#x27;:u.policyContext?.topic===&#x27;annual&#x27;?&#x27;年度服务补贴怎么考核？&#x27;:u.policyContext?.topic===&#x27;monthly-management&#x27;?&#x27;月度管理补贴的规则是什么？&#x27;:&#x27;月度服务补贴有哪些条件？&#x27;):`${get(u.knowledgeProductId||current().id).name}怎么给客户讲得简单一点？`;
     if(key===&#x27;feedback&#x27;)return `${get(u.sourceProductId||current().id).name}现在换了新包装，规格需要核对。`;
     if(key===&#x27;introFix&#x27;)return &#x27;这次先不买，只了解怎么用，其他不变。&#x27;;
     return `${current().name}：${easyPhrase(current())}\n想了解哪一点，可以告诉我。`;
@@ -2627,7 +2762,11 @@ function createProductUI(ctx) {
   const phrase = p =&gt; `${p.name}在参考资料里是${p.form}，${p.specification}${p.flavor?`，${p.flavor}`:&#x27;&#x27;}。${p.preparation.includes(&#x27;待核&#x27;)?&#x27;具体使用方式，我先核对您手上的包装。&#x27;:`使用准备是${p.preparation}，具体用量仍看现售包装。`}`;
   const easyPhrase=p=&gt;{const form=/固体饮料/.test(p.form)?&#x27;袋装粉状饮品&#x27;:/液体营养饮/.test(p.form)?&#x27;袋装液体饮品&#x27;:p.form;return `${p.name}的参考资料写的是${form}${p.flavor?&#x27;，&#x27;+p.flavor:&#x27;&#x27;}。${p.preparation.includes(&#x27;待核&#x27;)?&#x27;怎么使用，我先核对您手里的包装。&#x27;:p.preparation+&#x27;，具体用量我再按您手里的包装核对。&#x27;}`;};
   const currentRequest=need=&gt;String(need||&#x27;&#x27;).match(/当前需求：([^。；\n]+)/)?.[1]||&#x27;&#x27;;
-  const isComparisonRequest=need=&gt;/比较|对比|区别|不同/.test(currentRequest(need));
+  const isComparisonRequest=need=&gt;{
+    const request=currentRequest(need),source=request||String(need||&#x27;&#x27;);
+    if(!request&amp;&amp;/(?:不用|不再|不想|不需要|先别|暂不|不)(?:比较|对比)/.test(source))return false;
+    return /比较|对比|区别|不同|怎么选|如何选|选哪/.test(source);
+  };
   function comparisonPhrase(ids,brief=false){
     const items=ids.map(id=&gt;get(id));
     const sameForm=items.every(item=&gt;item.form===items[0].form);
@@ -2637,7 +2776,7 @@ function createProductUI(ctx) {
   function draftContext(need=selectionContext()) {
     const fact=label=&gt;String(need||&#x27;&#x27;).match(new RegExp(label+&#x27;：([^。；\\n]+)&#x27;))?.[1]||&#x27;&#x27;;
     const who=fact(&#x27;使用对象&#x27;),budget=fact(&#x27;预算&#x27;),when=fact(&#x27;购买安排&#x27;),request=fact(&#x27;当前需求&#x27;),preparation=fact(&#x27;准备条件&#x27;);
-    return [who?`这次是给${who===&#x27;自己&#x27;?&#x27;您自己&#x27;:&#x27;您&#x27;+who}了解。`:&#x27;&#x27;,budget?`先按${budget}的预算看，价格需要核对当前资料。`:&#x27;&#x27;,when?(when===&#x27;现在先不买&#x27;?&#x27;这次先了解，不急着买。&#x27;:`购买安排是${when}，这次先把问题讲清楚。`):&#x27;&#x27;,preparation?`实际使用的地方${preparation}。`:&#x27;&#x27;,request?request+&#x27;。&#x27;:&#x27;&#x27;].filter(Boolean).join(&#x27;\n&#x27;);
+    return [who?`这次是给${who===&#x27;自己&#x27;?&#x27;您自己&#x27;:&#x27;您&#x27;+who}了解。`:&#x27;&#x27;,budget?`先按${budget}的预算看，价格需要核对当前资料。`:&#x27;&#x27;,when?(when===&#x27;现在先不买&#x27;?&#x27;这次先了解，不急着买。&#x27;:`购买安排是${when}，这次先把问题讲清楚。`):&#x27;&#x27;,preparation?`实际使用的地方${preparation}。`:&#x27;&#x27;,request&amp;&amp;!/^(先讲清这款产品|先讲清这次的问题)$/.test(request)?request+&#x27;。&#x27;:&#x27;&#x27;].filter(Boolean).join(&#x27;\n&#x27;);
   }
   function intro(p=current()) {
     const preface=draftContext();
@@ -2714,7 +2853,7 @@ function createProductUI(ctx) {
     let understood=false,factsChanged=false,productsChanged=false,newObject=&#x27;&#x27;,budget=&#x27;&#x27;,timing=&#x27;&#x27;,request=&#x27;&#x27;,preparation=&#x27;&#x27;;
     const appendFact=(label,value)=&gt;{const line=new RegExp(label+&#x27;：[^。；\\n]*[。；]?&#x27;,&#x27;g&#x27;);need=need.replace(line,&#x27;&#x27;).trim();need+=(need&amp;&amp;!/[。；\n]$/.test(need)?&#x27;。&#x27;:&#x27;&#x27;)+label+&#x27;：&#x27;+value+&#x27;。&#x27;;};
     let objectChange=said.match(/不是(?:给)?(?:她|他)?(自己|本人|女儿|儿子|妈妈|母亲|爸爸|父亲|孙子|孙女)(?:用|了解)?[，,\s]*(?:而是|是)(?:给)?(?:她|他)?(自己|本人|女儿|儿子|妈妈|母亲|爸爸|父亲|孙子|孙女)/)||said.match(/(自己|本人|女儿|儿子|妈妈|母亲|爸爸|父亲|孙子|孙女)(?:用)?[，,\s]*(?:改成|换成)(?:给)?(自己|本人|女儿|儿子|妈妈|母亲|爸爸|父亲|孙子|孙女)/);
-    if(!objectChange){const stated=said.match(/(?:说错了?[，,\s]*是|是给|是她|是他)(?:给)?(?:她|他)?(自己|本人|女儿|儿子|妈妈|母亲|爸爸|父亲|孙子|孙女)(?:用|了解)?/);if(stated){const positive=need.replace(/不是给[^，,。；]+/g,&#x27;&#x27;);const old=positive.match(/使用对象：([^。；\n]+)/)?.[1]||positive.match(/自己|本人|女儿|儿子|妈妈|母亲|爸爸|父亲|孙子|孙女/)?.[0]||&#x27;&#x27;;objectChange=[&#x27;&#x27;,old,stated[1]];}}
+    if(!objectChange){const stated=said.match(/(?:说错了?[，,\s]*是|是给|是她|是他|(?:^|[，,。；]\s*)(?:这次|现在)?(?:改成|换成|换回|改为))(?:给)?(?:她|他)?(自己|本人|女儿|儿子|妈妈|母亲|爸爸|父亲|孙子|孙女)(?:用|了解)?/);if(stated){const positive=need.replace(/不是给[^，,。；]+/g,&#x27;&#x27;);const old=positive.match(/使用对象：([^。；\n]+)/)?.[1]||positive.match(/自己|本人|女儿|儿子|妈妈|母亲|爸爸|父亲|孙子|孙女/)?.[0]||&#x27;&#x27;;objectChange=[&#x27;&#x27;,old,stated[1]];}}
     if(objectChange){
       const old=objectChange[1],to=objectChange[2];newObject=to===&#x27;本人&#x27;?&#x27;自己&#x27;:to;
       const oldWords=/自己|本人/.test(old)?&#x27;(?:她|他)?(?:自己|本人)&#x27;:old;
@@ -2781,7 +2920,7 @@ function createProductUI(ctx) {
     if(newObject&amp;&amp;!draft.includes(newObject))draft=`这次是给${newObject===&#x27;自己&#x27;?&#x27;您自己&#x27;:&#x27;您&#x27;+newObject}了解。`+draft;
     if(budget){draft=draft.replace(/先按[^。\n]+的预算看，价格需要核对当前资料。\s*/g,&#x27;&#x27;).replace(/预算[：:\s]*(?:是|只有|最多)?(?:\d+(?:\.\d+)?|[一二两三四五六七八九十百千]+)\s*(?:元|块)(?:以内|左右)?/g,&#x27;预算&#x27;+budget);draft=`先按${budget}的预算看，价格需要核对当前资料。\n\n`+draft;}
     if(timing){draft=draft.replace(/购买安排是[^。]+，这次先把问题讲清楚。\s*|这次先了解，不急着买。\s*/g,&#x27;&#x27;).replace(/(?:今天|现在|这次|马上)(?:就|可以)?(?:买|购买|下单)/g,&#x27;先了解&#x27;);draft=`${timing===&#x27;现在先不买&#x27;?&#x27;这次先了解，不急着买。&#x27;:&#x27;购买安排是&#x27;+timing+&#x27;，这次先把问题讲清楚。&#x27;}\n\n`+draft;}
-    if(request){draft=draft.replace(/^(?:先讲清使用方法|先解决当前问题，暂不推荐其他产品|不想冲泡，先了解准备方式)。\s*/,&#x27;&#x27;).replace(/您是想了解怎么使用，还是想先比较不同产品？/g,&#x27;这次先讲清使用方法。&#x27;);draft=request+&#x27;。\n\n&#x27;+draft;}
+    if(request&amp;&amp;!/^(先讲清这款产品|先讲清这次的问题)$/.test(request)){draft=draft.replace(/^(?:先讲清使用方法|先解决当前问题，暂不推荐其他产品|不想冲泡，先了解准备方式)。\s*/,&#x27;&#x27;).replace(/您是想了解怎么使用，还是想先比较不同产品？/g,&#x27;这次先讲清使用方法。&#x27;);draft=request+&#x27;。\n\n&#x27;+draft;}
     if(preparation){const line=`实际使用的地方${preparation}。`;draft=draft.replace(/[^。！？\n]*热水[^。！？\n]*[？?]/g,line).replace(/实际使用的地方(?:没有热水|不方便用热水|有热水)。/g,line);}
     if(shorter){const parts=draft.split(/(?&lt;=[。！？])/).map(x=&gt;x.trim()).filter(Boolean);if(ids.length&gt;1){const lead=parts.filter(line=&gt;!mentioned(line).length&amp;&amp;/这次是给|预算|先了解|购买安排|使用方法|实际使用/.test(line));draft=[...lead,...(isComparisonRequest(need)?[comparisonPhrase(ids,true)]:ids.map(id=&gt;{const item=get(id);return `${item.name}：${item.preparation}${item.flavor?&#x27;，&#x27;+item.flavor:&#x27;&#x27;}。`;}))].join(&#x27;\n&#x27;);}else draft=parts.slice(0,Math.min(parts.length,3)).join(&#x27;&#x27;);if(ids.length&amp;&amp; !/待核|核对|包装/.test(draft))draft+=&#x27;\n具体用法仍按现售包装核对。&#x27;;if(preserve.length&amp;&amp;!preserve.every(line=&gt;draft.includes(line)))draft+=&#x27;\n&#x27;+preserve.join(&#x27;。&#x27;)+&#x27;。&#x27;;}
     if(casual)draft=draft.replace(/参考资料写的是/g,&#x27;资料里写的是&#x27;).replace(/具体使用方式/g,&#x27;怎么用&#x27;).replace(/请您/g,&#x27;您&#x27;);
@@ -2870,84 +3009,13 @@ function createProductUI(ctx) {
     if(changed||last?.kind!==&#x27;product&#x27;||last?.productId!==productId){const question=`${get(productId).name}先了解哪几点？`;u.knowledgeMessages.push({question,answer:knowledgeAnswer(question)});}
     go(&#x27;knowledge&#x27;);return true;
   }
-  function businessAnswer(question) {
-    const q=String(question||&#x27;&#x27;).trim();
-    if(/退货|退款/.test(q)&amp;&amp;/怎么办|怎么处理|如何|流程|申请|办理|找谁|不同意|不配合/.test(q))return null;
-    const explicit=isPersonalBusinessQuestion(q)||/业绩|销售(?:额|情况|数据|怎么样|多少|目标|完成|统计|怎么(?:算|计算|统计))|(?:月|年|个人|本人|我的|团队).{0,6}销售|(?:本月|这个月|今年|去年|上月|上个月|\d+月|20\d{2}年).{0,6}卖了?多少|营收|营业额|成交额|个人目标|月目标|年目标|升.*董事|晋级|升职|董事|收入|赚了|到账|待结算/.test(q);
-    const follow=u.lastKnowledgeKind===&#x27;business&#x27;&amp;&amp;/今年|去年|本月|这个月|上个月|\d+月|\d{4}年|团队|(?:只看|看看|看下|看一下)(?:我的|本人|个人)|^(?:那)?(?:我的|本人|个人)[呢？?。]*$|目标|还差|差多少|完成|怎么算|怎么计算|怎么统计|(?:退款|退货).{0,4}(?:多少|金额|算不算|计入)|(?:多少|扣除).{0,4}(?:退款|退货)/.test(q);
-    const entryFollow=u.lastKnowledgeKind===&#x27;business&#x27;&amp;&amp;u.businessContext?.incomeEntry&amp;&amp;!mentioned(q).length&amp;&amp;!/产品|吃|喝|用法|学习|课程|考试|对练|客户/.test(q)&amp;&amp;(/这笔|那笔|(?:什么时候|哪天|几号|何时).{0,3}(?:到账|结算|打款|汇款)/.test(q)||/^(?:那|那是|它是|请问)?(?:什么时候|哪天|几号|何时)(?:的|呢)?[？?。]*$/.test(q));
-    if(!explicit&amp;&amp;!follow&amp;&amp;!entryFollow)return null;
-    const previous=u.businessContext||{period:&#x27;month&#x27;,year:2026,month:11,scope:&#x27;personal&#x27;,targets:{}};
-    const b={...previous};delete b.targets;const mine=personalBusiness();
-    if(/团队|团队业绩/.test(q))b.scope=&#x27;team&#x27;;
-    if(/只看我|本人|个人|我自己|我的/.test(q))b.scope=&#x27;personal&#x27;;
-    const year=q.match(/(20\d{2})年/),month=q.match(/(?:^|\D)(1[0-2]|[1-9])月/);
-    if(/今年|年度|年销售|年目标|全年/.test(q)){b.period=&#x27;year&#x27;;b.year=2026;}
-    if(/去年/.test(q)){b.period=&#x27;year&#x27;;b.year=2025;}
-    if(year){b.year=Number(year[1]);if(!month)b.period=&#x27;year&#x27;;}
-    if(/本月|这个月|当月|月销售|月目标/.test(q)){b.period=&#x27;month&#x27;;b.year=2026;b.month=11;}
-    if(/上个月|上月/.test(q)){b.period=&#x27;month&#x27;;b.year=2026;b.month=10;}
-    if(month){b.period=&#x27;month&#x27;;b.month=Number(month[1]);if(!year)b.year=2026;}
-    const key=b.period===&#x27;year&#x27;?String(b.year):`${b.year}-${String(b.month).padStart(2,&#x27;0&#x27;)}`;
-    if(key!==businessKey(previous))delete b.incomeEntry;
-    const hypothetical=/如果|假设|怎么样|合适吗|能做到吗|可以吗|能不能|是不是|[？?]/.test(q);
-    const target=q.match(/(?:目标|想做到|想完成)(?:改成|改为|设为|设成|定为|定成|是|为|到)?\s*([\d.零〇一二两三四五六七八九十百千万]+(?:万|千)?)/);
-    const goalDirective=/(?:目标)(?:改成|改为|设为|设成|定为|定成|是)|(?:设置|设定|修改|调整).{0,6}目标|想做到|想完成/.test(q);
-    const incomeGoal=/收入|赚|到账|利润/.test(q)&amp;&amp;/目标|想做到|想完成/.test(q);
-    const denyGoalChange=/(?:别|不要|不用|不想|不需要|先不|暂不|不)(?:再)?(?:把|将)?(?:.{0,6}目标)?(?:改|调|取消|清除)|(?:别|不要|不用|不想|不需要)(?:再)?(?:把|将)?(?:.{0,6}目标)?(?:设|定)|目标.{0,3}(?:别|不要|不用)(?:改|调|设|定|取消|清除)/.test(q);
-    const cancelGoal=!hypothetical&amp;&amp;!denyGoalChange&amp;&amp;/(?:取消|清除).{0,6}目标|(?:先不设|暂不设|不设|不要)(?:置)?(?:个人|销售|本月|年度|这个)?目标|目标(?:先不设|暂不设|不设|取消|清除)/.test(q);
-    if(b.scope===&#x27;personal&#x27;&amp;&amp;!hypothetical&amp;&amp;!denyGoalChange&amp;&amp;!incomeGoal){const previousGoal=mine.targets[key];if(cancelGoal)delete mine.targets[key];else if(target&amp;&amp;goalDirective){const amount=goalAmount(target[1]);if(Number.isFinite(amount)&amp;&amp;amount&gt;=0)mine.targets[key]=amount;}if(previousGoal!==mine.targets[key]){mine.answer=null;mine.question=&#x27;&#x27;;if(s.view!==&#x27;profile&#x27;)mine.open=false;}}
-    u.businessContext=b;u.lastKnowledgeKind=&#x27;business&#x27;;
-    const period=b.period===&#x27;year&#x27;?`${b.year}年累计`:`${b.year}年${b.month}月`;
-    const scope=b.scope===&#x27;team&#x27;?&#x27;团队&#x27;:&#x27;本人&#x27;;
-    const source=`模拟经营数据 · ${scope} · ${period} · 截至2026年11月16日`;
-    if(/董事|晋级|升职|升董/.test(q))return {kind:&#x27;business&#x27;,text:&#x27;个人销售目标与升董条件分开看。现有政策资料区分产品、当前身份及申请签约等条件；还没有您的正式资格和考核记录，暂不能判断是否达标或还差多少。&#x27;,source,detail:&#x27;身份办理完成不代表自动升董。正式条件、适用政策及个人达标情况须由公司确认，本演示不设固定升级门槛。&#x27;};
-    if(b.scope===&#x27;team&#x27;)return {kind:&#x27;business&#x27;,text:`${period}的团队数据尚未提供，暂时不能计算团队销售或目标差额。可以接着说“只看我的”。`,source};
-    const data=businessDemoData(key);
-    if(!data)return {kind:&#x27;business&#x27;,text:`目前没有${period}的个人销售数据，不能把它当成零销售。演示中可查看2026年9—11月和2026年累计。`,source};
-    const money=n=&gt;n.toLocaleString(&#x27;zh-CN&#x27;)+&#x27;元&#x27;;
-    const net=data.gross-data.refund,goal=mine.targets[key],hasGoal=Number.isFinite(goal),gap=hasGoal?Math.max(0,goal-net):0;
-    const calculation=`已支付${money(data.gross)} − 已退款${money(data.refund)} = ${money(net)}。未支付订单不计入。`;
-    const income=/收入|赚了|到账|待结算|未结算|汇款|打款/.test(q)||b.subject===&#x27;income&#x27;&amp;&amp;!/销售|卖货|目标|退款|退货|董事|升董|晋级/.test(q);
-    b.subject=income?&#x27;income&#x27;:&#x27;sales&#x27;;u.businessContext=b;
-    if(b.fromMy&amp;&amp;b.scope===&#x27;personal&#x27;&amp;&amp;!/如果|假设|比较|对比|相比/.test(q)){
-      mine.period=b.period;mine.year=b.year;mine.month=b.month;mine.scope=&#x27;personal&#x27;;mine.subject=b.subject;
-    }
-    if(incomeGoal)return {kind:&#x27;business&#x27;,text:`收入目标与销售目标不同，这次没有修改销售目标。当前演示支持设定销售目标；${period}已到账收入为${money(data.received)}。`,source};
-    if(denyGoalChange&amp;&amp;/目标/.test(q))return {kind:&#x27;business&#x27;,text:`没有修改${period}的销售目标。${hasGoal?`仍为${money(goal)}。`:&#x27;仍未设置。&#x27;}`,source};
-    if(/销售|卖货|卖了|营业额|成交额/.test(q)&amp;&amp;/收入|赚|到账/.test(q))return {kind:&#x27;business&#x27;,text:`${period}，客户销售额${money(net)}；您的已到账收入${money(data.received)}，另有${money(data.pending)}待结算。销售额不是您赚到的钱，待结算也还未到账。`,source,detail:calculation+&#x27; 收入按另一份模拟结算记录展示，未扣个人经营费用，不等于净利润。&#x27;};
-    const askedAmounts=[...q.matchAll(/(\d[\d,]*(?:\.\d+)?)\s*(?:元|块)/g)].map(x=&gt;Number(x[1].replaceAll(&#x27;,&#x27;,&#x27;&#x27;)));
-    const entryReply=r=&gt;({kind:&#x27;business&#x27;,text:r.status===&#x27;已到账&#x27;?`${r.date}这笔${money(r.amount)}已到账。`:`${r.date}这笔${money(r.amount)}还没结算；发放时间待确认。`,source,detail:&#x27;按当前期间的模拟明细回答。未结算不代表正在汇款；预计增加的补贴没有列入明细。&#x27;});
-    const continuingEntry=income&amp;&amp;entryFollow&amp;&amp;!askedAmounts.length&amp;&amp;!/合计|总共|一共|累计|收入|已到账多少|还有多少|未结算|待结算/.test(q);
-    const currentEntry=continuingEntry&amp;&amp;b.incomeEntry?data.entries.find(x=&gt;x.date===b.incomeEntry.date&amp;&amp;x.amount===b.incomeEntry.amount):null;
-    if(currentEntry)return entryReply(currentEntry);
-    delete b.incomeEntry;
-    if(income&amp;&amp;askedAmounts.length===1&amp;&amp;/到账|结算|打款|汇款|哪天|几号|何时/.test(q)){const amount=askedAmounts[0],matches=data.entries.filter(x=&gt;x.amount===amount);if(matches.length===1){const r=matches[0];b.incomeEntry={date:r.date,amount:r.amount};return entryReply(r);}if(matches.length&gt;1)return {kind:&#x27;business&#x27;,text:`这段期间有多笔${money(amount)}，请再说一下日期，我帮您核对。`,source};if(amount===data.received)return {kind:&#x27;business&#x27;,text:`${money(amount)}是${period}的已到账合计，不是一笔汇款。`,source};return {kind:&#x27;business&#x27;,text:`${period}的明细里没找到${money(amount)}这笔记录。可以再说一下日期或金额。`,source};}
-    if(income&amp;&amp;/汇款|打款|什么时候|多久到账/.test(q))return {kind:&#x27;business&#x27;,text:data.pending?`明细里的${money(data.pending)}还没结算，没有发起打款，不能称为汇款中。发放时间尚未确认。`:&#x27;这段期间的模拟记录均已到账，没有未结算或汇款中的款项。&#x27;,source,detail:&#x27;收入明细与首页使用同一份模拟记录；没有接入真实结算或银行回执。&#x27;};
-    if(income&amp;&amp;/未结算|待结算/.test(q)&amp;&amp;!/已到账|已经到账|分别|总共/.test(q))return {kind:&#x27;business&#x27;,text:`${period}，还有${money(data.pending)}未结算，未计入已到账收入。`,source,detail:&#x27;按模拟公司结算记录展示，不用客户销售额或进货积分推算收入。&#x27;};
-    if(income)return {kind:&#x27;business&#x27;,text:`${period}，已到账收入${money(data.received)}。${/未结算|待结算|分别|总共/.test(q)?`另有${money(data.pending)}未结算，未计入到账收入。`:&#x27;&#x27;}`,source,detail:`另有${money(data.pending)}未结算。模拟公司结算与到账记录，独立于客户销售额；未扣个人经营费用，不能当作净利润或保证收益。年度未结算是当前尚未结算金额，不重复累加各月余额。`};
-    if(cancelGoal)return {kind:&#x27;business&#x27;,text:`已取消${period}的销售目标。销售记录仍保留，不会据此新增客户联系安排。`,source};
-    if(target&amp;&amp;(hypothetical||!goalDirective))return {kind:&#x27;business&#x27;,text:`这里只讨论目标，没有修改。${period}客户销售为${money(net)}；要设定时直接说“目标设为${target[1]}”即可。`,source};
-    if(/怎么算|怎么计算|怎么统计|口径/.test(q))return {kind:&#x27;business&#x27;,text:calculation+&#x27; 这是演示计算方式，实际以公司确认为准。&#x27;,source};
-    if(/退款|退货/.test(q)&amp;&amp;!/目标|还差|完成/.test(q))return {kind:&#x27;business&#x27;,text:`${period}已退款${money(data.refund)}，已从支付金额中扣除；扣除后本人销售为${money(net)}。`,source,detail:calculation};
-    if(/卖货金额|销售额|卖了多少/.test(q)&amp;&amp;!/目标|还差|完成/.test(q))return {kind:&#x27;business&#x27;,text:`${period}，卖货金额${money(net)}，已扣除退款。`,source,detail:calculation};
-    return {kind:&#x27;business&#x27;,text:`${period}，客户销售${money(net)}。\n${hasGoal?`您设置的销售目标${money(goal)}，${gap&gt;0?`还差${money(gap)}`:`已达到${net&gt;goal?&#x27;，超出&#x27;+money(net-goal):&#x27;&#x27;}`}。`:&#x27;尚未设置销售目标，需要时可以直接说一个金额。&#x27;}`,source,detail:calculation+&#x27; 这是模拟客户销售数据，不是个人收入、进货款或公司晋级业绩。&#x27;};
-  }
-  function answerMyBusiness(question){
-    const mine=personalBusiness(),previous=u.businessContext,kind=u.lastKnowledgeKind;
-    const benefit=benefitProgressAnswer(question,mine.subject===&#x27;benefit&#x27;);if(benefit){mine.subject=&#x27;benefit&#x27;;return benefit;}
-    u.businessContext={period:mine.period,year:mine.year,month:mine.month,scope:mine.scope||&#x27;personal&#x27;,subject:mine.subject||&#x27;sales&#x27;};u.lastKnowledgeKind=&#x27;business&#x27;;
-    const answer=businessAnswer(question)||{kind:&#x27;business&#x27;,text:&#x27;可以问销售、已到账收入、个人目标或身份条件。直接说“本月目标设为3万”也可以。&#x27;,source:&#x27;模拟经营数据&#x27;};
-    const next=u.businessContext;mine.period=next.period;mine.year=next.year;mine.month=next.month;mine.scope=next.scope;mine.subject=next.subject||&#x27;sales&#x27;;
-    u.businessContext=previous;u.lastKnowledgeKind=kind;return answer;
-  }
+  function answerMyBusiness(){return personalDataUnavailable();}
   function knowledgeAnswer(question) {
     const q=String(question || &#x27;&#x27;);
-    const benefit=benefitProgressAnswer(q,u.lastKnowledgeKind===&#x27;benefit&#x27;);if(benefit){u.lastKnowledgeKind=&#x27;benefit&#x27;;return benefit;}
-    if(isPersonalBusinessQuestion(q)){const own=businessAnswer(q);if(own)return own;}
+    if(isRelatedCaseRequest(q)||u.lastKnowledgeKind===&#x27;case&#x27;&amp;&amp;u.knowledgeMessages.at(-1)?.answer?.caseAmbiguous){u.lastKnowledgeKind=&#x27;case&#x27;;const previous=s.freshCaseQuestion?[]:u.knowledgeMessages;s.freshCaseQuestion=false;return relatedCaseAnswer(q,scopeNow(),previous);}
+    if(isPersonalBusinessQuestion(q)||(u.lastKnowledgeKind===&#x27;personal-data-unavailable&#x27;&amp;&amp;/^(?:那)?(?:今年|本月|上个月|还差多少|什么时候到账)[呢？?。]*$/.test(q.trim()))){u.lastKnowledgeKind=&#x27;personal-data-unavailable&#x27;;return personalDataUnavailable();}
     const policy=policyAnswer(q,u.lastKnowledgeKind===&#x27;policy&#x27;?u.policyContext:null);
     if(policy){u.policyContext=policy.context;u.lastKnowledgeKind=&#x27;policy&#x27;;return policy;}
-    const business=businessAnswer(q);if(business)return business;
     if(/退货|退款/.test(q)&amp;&amp;/怎么办|怎么处理|如何|流程|申请|办理|找谁|不同意|不配合/.test(q)){u.lastKnowledgeKind=&#x27;policy&#x27;;return {text:&#x27;先了解客户为什么要退，以及是否还有未解决的使用问题。公司的退货条件、办理入口和退款时限还没有有效资料，不能先承诺退款结果；这部分需要核对当前售后规则。&#x27;,link:&#x27;knowledge-pending&#x27;,label:&#x27;记下待确认的问题&#x27;};}
     const matches=mentioned(q);
     const p=matches[0] || (u.lastKnowledgeKind===&#x27;product&#x27;&amp;&amp;u.knowledgeProductId?get(u.knowledgeProductId):null) || (/钙/.test(q)?current():null);
@@ -2985,13 +3053,12 @@ function createProductUI(ctx) {
       const relevant=mentioned(selectionContext());
       const front=q?list:relevant.length?relevant:products.filter(item=&gt;[&#x27;zhi20&#x27;,&#x27;adult-calcium&#x27;,&#x27;kids-calcium&#x27;].includes(item.id));
       const rest=products.filter(item=&gt;!front.some(p=&gt;p.id===item.id));
+      const visibleProducts=q?front:[...front,...rest];
       const productRow=item=&gt;row(item.name,item.flavor || item.form,&#x27;product-open&#x27;,item.id);
       return title(&#x27;产品资料&#x27;)+
-        (!entering&amp;&amp;customer()?`&lt;p class=&quot;gp-summary&quot;&gt;${h(selectionContext())}&lt;/p&gt;${btn(&#x27;按客户情况选产品&#x27;,&#x27;product-selection&#x27;)}`:&#x27;&#x27;)+
+        (!entering?btn(customer()?&#x27;按客户情况选产品&#x27;:&#x27;按情况选产品&#x27;,&#x27;product-selection&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;):&#x27;&#x27;)+
         voiceEntry(&#x27;query&#x27;,&#x27;说产品名或问题&#x27;,&#x27;例如：两款液体钙有什么区别？&#x27;,2)+(!entering&amp;&amp;q?`&lt;p class=&quot;gp-quiet&quot;&gt;${h(u.query)}&lt;/p&gt;`:&#x27;&#x27;)+
-        (!entering?`&lt;div&gt;${front.length?front.map(productRow).join(&#x27;&#x27;):note(&#x27;没有找到，换个称呼试试。&#x27;)}&lt;/div&gt;`:&#x27;&#x27;)+
-        (!entering&amp;&amp;!q?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;全部产品 · 9款&lt;/summary&gt;${rest.map(productRow).join(&#x27;&#x27;)}&lt;/details&gt;`:&#x27;&#x27;)+
-        (!entering&amp;&amp;!customer()?row(&#x27;不知道选什么&#x27;,&#x27;说说给谁用、最在意什么&#x27;,&#x27;product-selection&#x27;):&#x27;&#x27;);
+        (!entering?`&lt;div&gt;${visibleProducts.length?visibleProducts.map(productRow).join(&#x27;&#x27;):note(&#x27;没有找到，换个称呼试试。&#x27;)}&lt;/div&gt;`:&#x27;&#x27;);
     }
     if(view===&#x27;product&#x27;) {u.knowledgeProductId=p.id;u.lastKnowledgeKind=&#x27;product&#x27;;return title(p.name)+
       `&lt;p class=&quot;gp-summary&quot;&gt;${h(p.form)}${p.flavor?`，${h(p.flavor)}`:&#x27;&#x27;}。&lt;/p&gt;&lt;p&gt;${h(p.preparation===&#x27;用法待核&#x27;?&#x27;具体用法待核对包装。&#x27;:p.preparation)}&lt;/p&gt;`+
@@ -3015,9 +3082,10 @@ function createProductUI(ctx) {
     }
     if(view===&#x27;compare&#x27;) {
       const choices=selectedProducts();const editing=correcting(&#x27;needFix&#x27;);
-      return title(choices.length===1?&#x27;再选一款比较&#x27;:&#x27;比较产品&#x27;)+
-        (!choices.length?note(&#x27;选两款或三款，放在一起看。&#x27;):choices.length===1?`${editing?`&lt;p&gt;${h(choices[0].name)} · ${h(choices[0].preparation)}&lt;/p&gt;`:row(choices[0].name,choices[0].preparation,&#x27;product-open&#x27;,choices[0].id)+btn(&#x27;只讲这一款&#x27;,&#x27;product-introduction&#x27;,choices[0].id,&#x27;text&#x27;)}`:`&lt;p class=&quot;gp-summary&quot;&gt;${h(choices.some(item=&gt;item.id===&#x27;adult-calcium&#x27;)&amp;&amp;choices.some(item=&gt;item.id===&#x27;kids-calcium&#x27;)?&#x27;两款都不用冲泡，主要看口味、配料和适用说明。&#x27;:&#x27;先看形态和准备方式；包装相近，不代表适合同一个人。&#x27;)}&lt;/p&gt;${choices.map(item=&gt;`&lt;div class=&quot;gp-result&quot;&gt;&lt;h3&gt;${h(item.name)}&lt;/h3&gt;&lt;p&gt;${h(item.flavor || item.form)} · ${h(item.preparation)}&lt;/p&gt;${!editing?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;规格、配料和详情&lt;/summary&gt;&lt;p&gt;${h(item.specification)}&lt;/p&gt;&lt;p&gt;${h(item.ingredients)}&lt;/p&gt;&lt;p&gt;${h(item.note)}&lt;/p&gt;${btn(&#x27;单独讲这一款&#x27;,&#x27;product-introduction&#x27;,item.id,&#x27;text&#x27;)}&lt;/details&gt;`:&#x27;&#x27;}&lt;/div&gt;`).join(&#x27;&#x27;)}${!editing?btn(&#x27;准备讲解&#x27;,&#x27;product-compare-intro&#x27;):&#x27;&#x27;}`)+
-        (!editing?`&lt;details ${choices.length&lt;2?&#x27;open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;${choices.length&lt;2?&#x27;选择比较产品&#x27;:&#x27;更换比较的产品&#x27;}&lt;/summary&gt;&lt;div class=&quot;gp-chips&quot;&gt;${products.map(item=&gt;chip(item.name,&#x27;product-compare-toggle&#x27;,item.id,(u.compareIds || []).includes(item.id))).join(&#x27;&#x27;)}&lt;/div&gt;&lt;/details&gt;`:&#x27;&#x27;)+correctionControl(&#x27;needFix&#x27;)+(!editing?sourceRow():&#x27;&#x27;);
+      const picker=!editing?`&lt;details ${choices.length&lt;2?&#x27;open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;${choices.length===1?&#x27;换产品或加一款比较&#x27;:choices.length?&#x27;更换比较的产品&#x27;:&#x27;选择比较产品&#x27;}&lt;/summary&gt;&lt;div class=&quot;gp-chips&quot;&gt;${products.map(item=&gt;chip(item.name,&#x27;product-compare-toggle&#x27;,item.id,(u.compareIds || []).includes(item.id))).join(&#x27;&#x27;)}&lt;/div&gt;&lt;/details&gt;`:&#x27;&#x27;;
+      const selected=!choices.length?note(&#x27;选择要了解的产品。&#x27;):choices.length===1?(editing?`&lt;p&gt;${h(choices[0].name)} · ${h(choices[0].preparation)}&lt;/p&gt;`:row(choices[0].name,choices[0].preparation,&#x27;product-open&#x27;,choices[0].id)+btn(&#x27;准备讲解&#x27;,&#x27;product-introduction&#x27;,choices[0].id)):`&lt;p class=&quot;gp-summary&quot;&gt;${h(choices.some(item=&gt;item.id===&#x27;adult-calcium&#x27;)&amp;&amp;choices.some(item=&gt;item.id===&#x27;kids-calcium&#x27;)?&#x27;两款都不用冲泡，主要看口味、配料和适用说明。&#x27;:&#x27;先看形态和准备方式；包装相近，不代表适合同一个人。&#x27;)}&lt;/p&gt;${choices.map(item=&gt;`&lt;div class=&quot;gp-result&quot;&gt;&lt;h3&gt;${h(item.name)}&lt;/h3&gt;&lt;p&gt;${h(item.flavor || item.form)} · ${h(item.preparation)}&lt;/p&gt;${!editing?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;规格、配料和详情&lt;/summary&gt;&lt;p&gt;${h(item.specification)}&lt;/p&gt;&lt;p&gt;${h(item.ingredients)}&lt;/p&gt;&lt;p&gt;${h(item.note)}&lt;/p&gt;${btn(&#x27;单独讲这一款&#x27;,&#x27;product-introduction&#x27;,item.id,&#x27;text&#x27;)}&lt;/details&gt;`:&#x27;&#x27;}&lt;/div&gt;`).join(&#x27;&#x27;)}${!editing?btn(&#x27;准备讲解&#x27;,&#x27;product-compare-intro&#x27;):&#x27;&#x27;}`;
+      return title(choices.length===1?&#x27;本次产品&#x27;:&#x27;比较产品&#x27;)+(choices.length===1?selected+picker:picker+selected)+
+        correctionControl(&#x27;needFix&#x27;)+(!editing?sourceRow():&#x27;&#x27;);
     }
     if(view===&#x27;introduction&#x27;) {
       const draft=u.introDraft || intro(p);const editing=correcting(&#x27;introFix&#x27;);
@@ -3026,19 +3094,23 @@ function createProductUI(ctx) {
       if(customer()&amp;&amp;!u.editingIntro)addToPrep(draft);
       return title(&#x27;准备产品讲解&#x27;)+`&lt;div class=&quot;gp-product-heading&quot;&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(u.introCompareIds?.length&gt;1?u.introCompareIds.map(id=&gt;get(id).name).join(&#x27; · &#x27;):products.find(item=&gt;item.id===u.productId)?.name||&#x27;这次沟通&#x27;)}&lt;/p&gt;${!editing&amp;&amp;!u.editingIntro?(u.introCompareIds?.length&gt;1?btn(&#x27;比较 / 换产品&#x27;,&#x27;product-intro-compare&#x27;,&#x27;&#x27;,&#x27;text&#x27;):btn(&#x27;比较 / 换产品&#x27;,&#x27;product-compare-add&#x27;,p.id,&#x27;text&#x27;)):&#x27;&#x27;}&lt;/div&gt;`+
         (u.editingIntro?&#x27;&#x27;:u.introCopyReady&amp;&amp;!editing?`&lt;textarea class=&quot;gp-input&quot; data-field=&quot;product-copy&quot; rows=&quot;6&quot; readonly aria-label=&quot;可复制的讲解稿&quot;&gt;${h(draft)}&lt;/textarea&gt;`:`&lt;p class=&quot;gp-message&quot;&gt;${h(draft)}&lt;/p&gt;`)+
+        (!editing&amp;&amp;!u.editingIntro?`&lt;div class=&quot;gp-prep-actions&quot;&gt;${btn(u.introCopyReady?&#x27;重新选中文字&#x27;:&#x27;选中文字&#x27;,&#x27;product-copy&#x27;)}${btn(&#x27;我练一句&#x27;,&#x27;product-practice&#x27;,p.id,&#x27;secondary&#x27;)}&lt;/div&gt;`+(u.introCopyReady?note(&#x27;文字已选中，可以长按复制。&#x27;):&#x27;&#x27;)+(customer()&amp;&amp;!directReturn?btn(&#x27;回原记录&#x27;,&#x27;product-adopt&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;):&#x27;&#x27;)+
+        (!editing&amp;&amp;!u.editingIntro?relatedCaseCard(relatedCaseContext(&#x27;&#x27;,scopeNow())):&#x27;&#x27;)+
         (!u.editingIntro?correctionControl(&#x27;introFix&#x27;):&#x27;&#x27;)+
-        (!editing&amp;&amp;!u.editingIntro?btn(u.introCopyReady?&#x27;重新选中文字&#x27;:&#x27;选中文字&#x27;,&#x27;product-copy&#x27;)+(u.introCopyReady?note(&#x27;文字已选中，可以长按复制。&#x27;):&#x27;&#x27;)+`&lt;div class=&quot;gp-actions&quot;&gt;${btn(&#x27;我练一句&#x27;,&#x27;product-practice&#x27;,p.id,&#x27;text&#x27;)}${customer()&amp;&amp;!directReturn?btn(&#x27;回原记录&#x27;,&#x27;product-adopt&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}&lt;/div&gt;`:&#x27;&#x27;)+
         (!editing?`&lt;details${u.editingIntro?&#x27; open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;其他讲法与示范&lt;/summary&gt;${u.editingIntro?field(&#x27;product-intro&#x27;,draft,&#x27;&#x27;,5)+btn(&#x27;保存修改&#x27;,&#x27;product-edit-toggle&#x27;,&#x27;&#x27;,&#x27;text&#x27;):btn(&#x27;编辑整段文字&#x27;,&#x27;product-edit-toggle&#x27;,&#x27;&#x27;,&#x27;text&#x27;)+btn(&#x27;先看示范&#x27;,&#x27;product-demo&#x27;,p.id,&#x27;text&#x27;)+`&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;简单讲&#x27;,&#x27;product-intro-mode&#x27;,&#x27;short&#x27;,u.introMode===&#x27;short&#x27;)}${chip(&#x27;微信文字版&#x27;,&#x27;product-intro-mode&#x27;,&#x27;wechat&#x27;,u.introMode===&#x27;wechat&#x27;)}${chip(&#x27;讲详细点&#x27;,&#x27;product-intro-mode&#x27;,&#x27;detail&#x27;,u.introMode===&#x27;detail&#x27;)}${chip(&#x27;给家人讲&#x27;,&#x27;product-audience&#x27;,&#x27;family&#x27;,u.audience===&#x27;family&#x27;)}${chip(&#x27;给客户讲&#x27;,&#x27;product-audience&#x27;,&#x27;customer&#x27;,u.audience===&#x27;customer&#x27;)}${chip(&#x27;加句开场白&#x27;,&#x27;product-rephrase&#x27;)}&lt;/div&gt;`}&lt;/details&gt;`:&#x27;&#x27;)+(!editing&amp;&amp;!u.editingIntro?sourceRow():&#x27;&#x27;);
     }
     if(view===&#x27;knowledge&#x27;) {
       const messages=u.knowledgeMessages || [];
       const message=m=&gt;{
-        const a=m.answer,productSource=a.kind===&#x27;product&#x27;&amp;&amp;a.link===&#x27;product-sources&#x27;;
+        const a=m.answer;
+        if(a.kind===&#x27;case&#x27;)return `&lt;p class=&quot;gp-question&quot;&gt;${h(m.question)}&lt;/p&gt;&lt;p class=&quot;gp-answer&quot;&gt;${h(a.text)}&lt;/p&gt;${a.caseMatch?`&lt;p class=&quot;gp-status&quot;&gt;模拟案例 · 非真实客户成果&lt;/p&gt;${btn(&#x27;预览案例&#x27;,&#x27;case-preview&#x27;,JSON.stringify(a.caseMatch),&#x27;secondary&#x27;)}`:&#x27;&#x27;}`;
+        const productSource=a.kind===&#x27;product&#x27;&amp;&amp;a.link===&#x27;product-sources&#x27;;
         const source=a.kind===&#x27;policy&#x27;?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;算式与依据&lt;/summary&gt;${note(a.source)}${a.detail?`&lt;p&gt;${h(a.detail)}&lt;/p&gt;`:&#x27;&#x27;}&lt;/details&gt;`:productSource?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;资料依据&lt;/summary&gt;${note(a.source||&#x27;当前产品参考资料&#x27;)}${btn(&#x27;查看完整资料&#x27;,a.link,a.productId||&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;`:(a.kind===&#x27;business&#x27;||a.kind===&#x27;benefit&#x27;)?`${a.kind===&#x27;benefit&#x27;?&#x27;&#x27;:note((a.source||&#x27;模拟经营数据&#x27;).replace(/^模拟经营数据.*(?=截至)/,&#x27;模拟数据 · &#x27;))}&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;${a.kind===&#x27;benefit&#x27;?&#x27;查看具体条件&#x27;:&#x27;数据怎么算&#x27;}&lt;/summary&gt;${a.source?note(a.source):&#x27;&#x27;}${a.detail?`&lt;p&gt;${h(a.detail)}&lt;/p&gt;`:&#x27;&#x27;}&lt;/details&gt;`:(a.source?note(a.source):&#x27;&#x27;);
-        return `&lt;p class=&quot;gp-quiet&quot;&gt;${h(m.question)}&lt;/p&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(a.text)}&lt;/p&gt;${source}${!productSource&amp;&amp;a.link&amp;&amp;a.label?btn(a.label,a.link,a.link===&#x27;knowledge-pending&#x27;?m.question:a.example||a.productId||&#x27;&#x27;,&#x27;secondary&#x27;):&#x27;&#x27;}${a.followups?.length?`&lt;div class=&quot;gp-chips&quot;&gt;${a.followups.map(q=&gt;chip(q,&#x27;knowledge-example&#x27;,q)).join(&#x27;&#x27;)}&lt;/div&gt;`:&#x27;&#x27;}`;
+        return `&lt;p class=&quot;gp-question&quot;&gt;${h(m.question)}&lt;/p&gt;&lt;p class=&quot;gp-answer&quot;&gt;${h(a.text)}&lt;/p&gt;${source}${!productSource&amp;&amp;a.link&amp;&amp;a.label?btn(a.label,a.link,a.link===&#x27;knowledge-pending&#x27;?m.question:a.example||a.productId||&#x27;&#x27;,&#x27;secondary&#x27;):&#x27;&#x27;}${a.followups?.length?`&lt;div class=&quot;gp-chips&quot;&gt;${a.followups.map(q=&gt;chip(q,&#x27;knowledge-example&#x27;,q)).join(&#x27;&#x27;)}&lt;/div&gt;`:&#x27;&#x27;}`;
       };
-      return (u.lastKnowledgeKind===&#x27;business&#x27;?&#x27;&lt;h1 class=&quot;gp-title&quot;&gt;随时问&lt;/h1&gt;&#x27;:title(u.studyReturn&amp;&amp;u.knowledgeProductId?get(u.knowledgeProductId).name+&#x27; · 追问&#x27;:&#x27;随时问&#x27;))+
+      return (u.lastKnowledgeKind===&#x27;case&#x27;?`${messages.at(-1)?.answer?.caseMatch?.context?.customerName?`&lt;p class=&quot;gp-eyebrow&quot;&gt;客户：${h(messages.at(-1).answer.caseMatch.context.customerName)}&lt;/p&gt;`:&#x27;&#x27;}&lt;h1 class=&quot;gp-title&quot;&gt;随时问&lt;/h1&gt;`:u.lastKnowledgeKind===&#x27;business&#x27;?&#x27;&lt;h1 class=&quot;gp-title&quot;&gt;随时问&lt;/h1&gt;&#x27;:title(u.studyReturn&amp;&amp;u.knowledgeProductId?get(u.knowledgeProductId).name+&#x27; · 追问&#x27;:&#x27;随时问&#x27;))+
         (messages.length?`${messages.length&gt;1?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;前面问过的 ${messages.length-1} 条&lt;/summary&gt;${messages.slice(0,-1).map(message).join(&#x27;&#x27;)}&lt;/details&gt;`:&#x27;&#x27;}${message(messages[messages.length-1])}`:!u.entryModes?.question||u.entryModes.question===&#x27;voice&#x27;?`&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;产品怎么讲&#x27;,&#x27;knowledge-example&#x27;,&#x27;脂20是什么？&#x27;)}${chip(&#x27;公司政策&#x27;,&#x27;knowledge-example&#x27;,&#x27;服务商权益和费用怎么查？&#x27;)}${chip(&#x27;工具怎么用&#x27;,&#x27;knowledge-example&#x27;,&#x27;怎么给客户发测评？&#x27;)}&lt;/div&gt;`:&#x27;&#x27;)+
+        (messages.length&amp;&amp;messages.at(-1).answer.kind===&#x27;product&#x27;&amp;&amp;!u.entryModes?.question?.match(/typing|recording/)?relatedCaseCard(relatedCaseContext(messages.at(-1).question,scopeNow())):&#x27;&#x27;)+
         voiceEntry(&#x27;question&#x27;,messages.length?&#x27;接着问一句&#x27;:&#x27;说说想问什么&#x27;,&#x27;直接说你的问题…&#x27;,2)+
         (u.studyReturn?btn(u.studyReturn.view===&#x27;quiz&#x27;?&#x27;继续答题&#x27;:&#x27;回原课程继续&#x27;,&#x27;knowledge-study-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;);
     }
@@ -3172,7 +3244,7 @@ function createProductUI(ctx) {
     const answer=policyAnswer(question,{product,route:route||&#x27;&#x27;});
     if(answer){u.policyContext=answer.context;u.lastKnowledgeKind=&#x27;policy&#x27;;u.knowledgeQuestion=&#x27;&#x27;;u.knowledgeMessages.push({question,answer});}
   }
-  return {products,render,act,capture,enterContext,applyCorrection,snapshotWork,restoreWork,openReply,openStudyQuestion,resumePolicyQuestion,answerMyBusiness};
+  return {products,mentioned,render,act,capture,enterContext,applyCorrection,snapshotWork,restoreWork,openReply,openStudyQuestion,resumePolicyQuestion,answerMyBusiness};
 }
 
 function createLearningUI(ctx) {
@@ -3375,7 +3447,7 @@ function createLearningUI(ctx) {
   const roleLabel=p=&gt;isPartner(p)?(p.role===&#x27;customer&#x27;?&#x27;我当伙伴&#x27;:&#x27;我来带伙伴&#x27;):(p.role===&#x27;customer&#x27;?&#x27;我当客户&#x27;:&#x27;我来接话&#x27;);
   const otherRole=p=&gt;isPartner(p)?(p.role===&#x27;customer&#x27;?&#x27;带教者&#x27;:&#x27;伙伴&#x27;):(p.role===&#x27;customer&#x27;?&#x27;服务商&#x27;:&#x27;客户&#x27;);
   const practiceName=p=&gt;p.customerId?(ctx.customerLabel?.(p.customerId)||p.name):p.name;
-  const practiceSubtitle=p=&gt;[p.customerId?&#x27;客户：&#x27;+practiceName(p):p.studyOrigin?.customerId?&#x27;客户：&#x27;+(ctx.customerLabel?.(p.studyOrigin.customerId)||customer(p.studyOrigin.customerId)?.name):&#x27;&#x27;,p.pendingPolicy?`${companyPolicy.products[p.pendingPolicy.product]?.name||&#x27;这款产品&#x27;} · 先确认身份`:p.topic||p.productName].filter(Boolean).join(&#x27; · &#x27;);
+  const practiceSubtitle=p=&gt;[p.customerId?&#x27;客户：&#x27;+practiceName(p):p.studyOrigin?.customerId?&#x27;客户：&#x27;+(ctx.customerLabel?.(p.studyOrigin.customerId)||customer(p.studyOrigin.customerId)?.name):&#x27;&#x27;,p.pendingPolicy?`${companyPolicy.products[p.pendingPolicy.product]?.name||&#x27;这款产品&#x27;} · 先确认身份`:(/^(先回应眼前这一个问题|把产品讲清楚|准备沟通)$/.test(p.topic||&#x27;&#x27;)?p.productName:p.topic||p.productName)].filter(Boolean).join(&#x27; · &#x27;);
   const contextTaskId=pc=&gt;Object.prototype.hasOwnProperty.call(pc||{},&#x27;taskId&#x27;)?(pc.taskId||&#x27;&#x27;):(pc?.customerId&amp;&amp;(s.tasks||[]).some(t=&gt;t.id===s.taskId&amp;&amp;t.customerId===pc.customerId)?s.taskId:&#x27;&#x27;);
   const contextRecordId=pc=&gt;pc?.customerId?(Object.prototype.hasOwnProperty.call(pc,&#x27;sourceRecordId&#x27;)?(pc.sourceRecordId||&#x27;&#x27;):(s.selectedId===pc.customerId?s.sourceRecordId||&#x27;&#x27;:&#x27;&#x27;)):&#x27;&#x27;;
   const compareProductIds=pc=&gt;[...new Set((pc?.introCompareIds||[]).filter(id=&gt;(ctx.products||[]).some(p=&gt;p.id===id)))];
@@ -3905,11 +3977,11 @@ function createLearningUI(ctx) {
     return current.length||before.length?`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;回看练习&lt;/summary&gt;${messages(current)}${current.length&amp;&amp;before.length?&#x27;&lt;p class=&quot;gp-label&quot;&gt;此前内容&lt;/p&gt;&#x27;:&#x27;&#x27;}${messages(before)}&lt;/details&gt;`:&#x27;&#x27;;
   }
   function practiceInput(p){
-    return (p.correctionQuestion?`&lt;p class=&quot;gp-warning&quot; role=&quot;alert&quot;&gt;${h(p.correctionQuestion)}&lt;/p&gt;`:&#x27;&#x27;)+ctx.voiceEntry({mode:p.recording?&#x27;recording&#x27;:p.inputMode||&#x27;voice&#x27;,field:&#x27;practice-input&#x27;,value:p.input||&#x27;&#x27;,voiceAction:&#x27;practice-record&#x27;,typeAction:&#x27;practice-type&#x27;,sendAction:&#x27;practice-submit&#x27;,finishAction:&#x27;practice-stop&#x27;,label:isPartner(p)?(p.role===&#x27;customer&#x27;?&#x27;说出伙伴的顾虑&#x27;:&#x27;接一句，陪伙伴往下练&#x27;):[&#x27;wait&#x27;,&#x27;no-contact&#x27;].includes(p.lifecycle?.kind)?&#x27;说说下一步怎么做&#x27;:p.role===&#x27;customer&#x27;?&#x27;问一句，或说哪里要改&#x27;:&#x27;接句话，或说哪里要改&#x27;,placeholder:isPartner(p)?&#x27;我会这样跟伙伴说…&#x27;:p.role===&#x27;customer&#x27;?&#x27;说出客户的问题，或说“改成…”&#x27;:&#x27;我会这样说… / 刚才说错了…&#x27;,paused:p.paused})+(p.recording?btn(p.paused?&#x27;继续&#x27;:&#x27;暂停&#x27;,&#x27;practice-pause&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;);
+    return (p.correctionQuestion?`&lt;p class=&quot;gp-warning&quot; role=&quot;alert&quot;&gt;${h(p.correctionQuestion)}&lt;/p&gt;`:&#x27;&#x27;)+ctx.voiceEntry({mode:p.recording?&#x27;recording&#x27;:p.inputMode||&#x27;voice&#x27;,field:&#x27;practice-input&#x27;,value:p.input||&#x27;&#x27;,voiceAction:&#x27;practice-record&#x27;,typeAction:&#x27;practice-type&#x27;,sendAction:&#x27;practice-submit&#x27;,finishAction:&#x27;practice-stop&#x27;,label:isPartner(p)?(p.role===&#x27;customer&#x27;?&#x27;说出伙伴的顾虑&#x27;:&#x27;说一句回应&#x27;):[&#x27;wait&#x27;,&#x27;no-contact&#x27;].includes(p.lifecycle?.kind)?&#x27;说说下一步怎么做&#x27;:p.role===&#x27;customer&#x27;?&#x27;说一句提问&#x27;:&#x27;说一句回应&#x27;,placeholder:isPartner(p)?&#x27;我会这样跟伙伴说…&#x27;:p.role===&#x27;customer&#x27;?&#x27;说出客户的问题，或说“改成…”&#x27;:&#x27;我会这样说… / 刚才说错了…&#x27;,paused:p.paused})+(p.recording?btn(p.paused?&#x27;继续&#x27;:&#x27;暂停&#x27;,&#x27;practice-pause&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;);
   }
   function practiceOptions(p,open=false){
     const goals=isPartner(p)?Object.entries(partnerScenes).map(([id,item])=&gt;chip(item.name,&#x27;practice-partner-scene&#x27;,id,(p.partnerScene||&#x27;newcomer&#x27;)===id)).join(&#x27;&#x27;):(lifecycleKinds.has(p.lifecycle?.kind)?[p.lifecycle.goal||p.lifecycle.title]:[&#x27;先听清问题，再讲清楚&#x27;,&#x27;把产品讲短一点&#x27;,&#x27;回应顾虑&#x27;,&#x27;做好使用指导&#x27;]).map(x=&gt;chip(x,&#x27;practice-goal&#x27;,x,p.goal===x)).join(&#x27;&#x27;);
-    return `&lt;details ${open?&#x27;open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;gp-label&quot;&gt;调整练习&lt;/summary&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(p.goal)}&lt;/p&gt;&lt;div class=&quot;gp-chips&quot;&gt;${goals}&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;普通&#x27;,&#x27;practice-difficulty&#x27;,&#x27;standard&#x27;,p.difficulty===&#x27;standard&#x27;)}${chip(&#x27;难一点&#x27;,&#x27;practice-difficulty&#x27;,&#x27;challenge&#x27;,p.difficulty===&#x27;challenge&#x27;)}&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${chip(isPartner(p)?&#x27;我来带伙伴&#x27;:&#x27;我来接话&#x27;,&#x27;practice-role&#x27;,&#x27;seller&#x27;,p.role===&#x27;seller&#x27;)}${chip(isPartner(p)?&#x27;我当伙伴&#x27;:&#x27;我当客户&#x27;,&#x27;practice-role&#x27;,&#x27;customer&#x27;,p.role===&#x27;customer&#x27;)}&lt;/div&gt;&lt;/details&gt;`;
+    return `&lt;details ${open?&#x27;open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;gp-label&quot;&gt;换情境、角色或难度&lt;/summary&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(p.goal)}&lt;/p&gt;&lt;div class=&quot;gp-chips&quot;&gt;${goals}&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;普通&#x27;,&#x27;practice-difficulty&#x27;,&#x27;standard&#x27;,p.difficulty===&#x27;standard&#x27;)}${chip(&#x27;难一点&#x27;,&#x27;practice-difficulty&#x27;,&#x27;challenge&#x27;,p.difficulty===&#x27;challenge&#x27;)}&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${chip(isPartner(p)?&#x27;我来带伙伴&#x27;:&#x27;我来接话&#x27;,&#x27;practice-role&#x27;,&#x27;seller&#x27;,p.role===&#x27;seller&#x27;)}${chip(isPartner(p)?&#x27;我当伙伴&#x27;:&#x27;我当客户&#x27;,&#x27;practice-role&#x27;,&#x27;customer&#x27;,p.role===&#x27;customer&#x27;)}&lt;/div&gt;&lt;/details&gt;`;
   }
   function syncPracticeOptions(){
     const p=L.practice;
@@ -4090,7 +4162,7 @@ function createLearningUI(ctx) {
     return {title:&#x27;接着听对方怎么说&#x27;,body:course.category===&#x27;team&#x27;?&#x27;先让伙伴试着接一句，再针对他卡住的地方帮助。&#x27;:course.category===&#x27;family&#x27;?&#x27;接着确认对方最想了解的问题，不急着替他下结论。&#x27;:&#x27;这段先保留。讲完留出时间听客户回应，再决定要不要继续展开。&#x27;,sample,canUse:true};
   }
   function renderRecitation(){
-    const rec=L.recitation;if(!rec)return btn(&#x27;听我讲一遍&#x27;,&#x27;learn-recite&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;);
+    const rec=L.recitation;if(!rec)return btn(&#x27;听我讲一遍&#x27;,&#x27;learn-recite&#x27;);
     if(rec.phase!==&#x27;review&#x27;)return ctx.voiceEntry({mode:rec.phase,field:&#x27;learn-recitation&#x27;,value:rec.text||&#x27;&#x27;,voiceAction:&#x27;learn-recite&#x27;,typeAction:&#x27;learn-rec-type&#x27;,sendAction:&#x27;learn-rec-stop&#x27;,finishAction:&#x27;learn-rec-stop&#x27;,sendLabel:&#x27;查看建议&#x27;,finishLabel:&#x27;说完了，查看建议&#x27;,label:&#x27;用自己的话讲一遍&#x27;,placeholder:&#x27;按平时跟客户说话的方式讲…&#x27;,paused:rec.paused})+(rec.phase===&#x27;recording&#x27;?btn(rec.paused?&#x27;继续&#x27;:&#x27;暂停&#x27;,&#x27;learn-rec-pause&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;)+(!(rec.text||&#x27;&#x27;).trim()?btn(&#x27;用示例试讲&#x27;,&#x27;learn-rec-example&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;);
     const feedback=learnerRecitationFeedback(rec.text),origin=L.origin,person=origin?.customerId?customer(origin.customerId):null;
     const advice=person?ctx.lifecycleAdvice?.(person.id,origin.sourceRecordId||&#x27;&#x27;,origin.taskId||&#x27;&#x27;):null;
@@ -4104,10 +4176,10 @@ function createLearningUI(ctx) {
       L.origin=null;
       const done=L.done.length,query=L.search.trim();
       const results=L.searchApplied&amp;&amp;query?chapters.map((c,i)=&gt;({c,i})).filter(({c})=&gt;[c.title,categoryName(c.category),...c.units.flat()].join(&#x27; &#x27;).toLowerCase().includes(query.toLowerCase())):[];
-      const search=`&lt;div class=&quot;gp-learning-search&quot;&gt;&lt;div class=&quot;gp-search&quot;&gt;${icon(&#x27;search&#x27;)}&lt;input class=&quot;gp-input&quot; data-field=&quot;learn-search&quot; aria-label=&quot;搜索课程或产品&quot; placeholder=&quot;搜课程或产品，如鱼油、测评&quot; value=&quot;${h(L.search)}&quot;&gt;&lt;/div&gt;&lt;button type=&quot;button&quot; class=&quot;gp-text cursor-interaction&quot; data-action=&quot;learn-search&quot;&gt;搜索&lt;/button&gt;&lt;/div&gt;`;
+      const search=`&lt;div class=&quot;gp-learning-search&quot;&gt;&lt;div class=&quot;gp-search&quot;&gt;${icon(&#x27;search&#x27;)}&lt;input class=&quot;gp-input&quot; data-field=&quot;learn-search&quot; aria-label=&quot;搜索课程或产品&quot; placeholder=&quot;搜索课程或产品&quot; value=&quot;${h(L.search)}&quot;&gt;&lt;/div&gt;&lt;button type=&quot;button&quot; class=&quot;gp-text cursor-interaction&quot; data-action=&quot;learn-search&quot;&gt;搜索&lt;/button&gt;&lt;/div&gt;`;
       const courses=L.searchApplied&amp;&amp;query?`&lt;div class=&quot;gp-inline&quot;&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;搜索结果&lt;/h2&gt;${btn(&#x27;看全部课程&#x27;,&#x27;learn-search-clear&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/div&gt;${results.length?results.map(({c,i})=&gt;row(c.title,courseEntryHint(i,null)||categoryName(c.category)+&#x27; · &#x27;+c.units.length+&#x27;节&#x27;,&#x27;learn-course&#x27;,i)).join(&#x27;&#x27;):quiet(&#x27;暂时没找到，试试产品名或“测评”“用法”等关键词。&#x27;)}`:`&lt;div class=&quot;gp-course-grid&quot;&gt;${categories.map(c=&gt;`&lt;button type=&quot;button&quot; class=&quot;gp-course-tile cursor-interaction&quot; data-action=&quot;learn-category&quot; data-value=&quot;${c.id}&quot;&gt;&lt;span class=&quot;gp-course-icon&quot;&gt;${icon(c.icon)}&lt;/span&gt;&lt;strong&gt;${c.name}&lt;/strong&gt;&lt;small&gt;${c.subtitle}&lt;/small&gt;&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;`;
       const continuation=pendingStudyQuestions()||ctx.studyContinueLine?.()||(done?row(&#x27;继续学习&#x27;,`${chapter().title} · ${unit()[0]}`,&#x27;learn-resume&#x27;):&#x27;&#x27;);
-      return title(&#x27;学习&#x27;)+search+(L.searchApplied&amp;&amp;query?&#x27;&#x27;:continuation)+courses+(L.searchApplied&amp;&amp;query?&#x27;&#x27;:row(&#x27;陪我练一段&#x27;,&#x27;练客户沟通，也练带伙伴&#x27;,&#x27;practice-start&#x27;))+
+      return `&lt;div class=&quot;gp-inline gp-learning-heading&quot;&gt;${title(&#x27;学习&#x27;)}${btn(&#x27;练一练&#x27;,&#x27;practice-start&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/div&gt;`+search+(L.searchApplied&amp;&amp;query?&#x27;&#x27;:continuation)+courses+
         `&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;学习记录和安排&lt;/summary&gt;${row(&#x27;我的学习记录&#x27;,`已学 ${done} / ${totalUnits} 节`,&#x27;learn-history&#x27;)}${row(&#x27;接下来想练什么&#x27;,L.plan.paused?&#x27;已暂停&#x27;:L.plan.goal,&#x27;learn-growth&#x27;)}${row(&#x27;沟通示例&#x27;,&#x27;&#x27;,&#x27;learn-experience&#x27;)}&lt;/details&gt;`;
     }
     if(view===&#x27;learning-category&#x27;){
@@ -4126,7 +4198,7 @@ function createLearningUI(ctx) {
       const policyLesson=chapter().id===&#x27;team-basics&#x27;&amp;&amp;L.ui&gt;=2;
       const brief=policyLesson?(L.ui===2?&#x27;先问清产品和现有身份，再算这次要投入多少。进货款、数量和积分分开说。&#x27;:&#x27;卖货差额还没扣费用、税费和退货；没卖出的库存也不是到账收入。补贴要另看条件。&#x27;):u[1];
       const demo=policyLesson&amp;&amp;L.ui===2?&#x27;“你想了解脂20还是T18？现在已经是分销商了吗？我们按你这次的情况算。”&#x27;:u[2];
-      const question=studyQuestion(),busy=question.active||Boolean(rec),lessonText=`&lt;p&gt;${h(brief)}&lt;/p&gt;`+panel(`&lt;span class=&quot;gp-eyebrow&quot;&gt;${chapter().category===&#x27;team&#x27;?&#x27;对伙伴，可以这样说&#x27;:&#x27;可以这样说&#x27;}&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(demo)}&lt;/p&gt;`);
+      const question=studyQuestion(),busy=question.active||Boolean(rec),lessonText=`&lt;p class=&quot;gp-lesson-key&quot;&gt;${h(brief)}&lt;/p&gt;&lt;section class=&quot;gp-lesson-example&quot;&gt;&lt;p class=&quot;gp-eyebrow&quot;&gt;${chapter().category===&#x27;team&#x27;?&#x27;对伙伴这样说&#x27;:&#x27;示范说法&#x27;}&lt;/p&gt;&lt;p&gt;${h(demo)}&lt;/p&gt;&lt;/section&gt;`;
       const lessonReference=`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;回看这节内容&lt;/summary&gt;${lessonText}${quiet(chapterSource(chapter()))}&lt;/details&gt;`;
       let content=title(u[0],`${chapter().title} · 第${L.ui+1}节${L.origin?.customerId?&#x27; · &#x27;+ctx.customerLabel(L.origin.customerId):&#x27;&#x27;}`)+(question.active?&#x27;&#x27;:busy?lessonReference:lessonText);
       if(!rec||question.active)content+=renderStudyQuestion();
@@ -4174,14 +4246,14 @@ function createLearningUI(ctx) {
       const subtitle=practiceSubtitle(p);
       const decisionOnly=[&#x27;wait&#x27;,&#x27;no-contact&#x27;,&#x27;purchase-recorded&#x27;].includes(p.lifecycle?.kind);
       const heading=isPartner(p)?(p.mode===&#x27;demo&#x27;?&#x27;看看怎么带伙伴&#x27;:p.role===&#x27;customer&#x27;?&#x27;说出伙伴的顾虑&#x27;:&#x27;试着回应伙伴&#x27;):decisionOnly?(p.mode===&#x27;demo&#x27;?&#x27;看看这次怎么处理&#x27;:&#x27;试着说下一步怎么做&#x27;):p.mode===&#x27;demo&#x27;?(p.role===&#x27;customer&#x27;?&#x27;看看怎么提问&#x27;:&#x27;看看怎么接话&#x27;):(p.role===&#x27;customer&#x27;?&#x27;试着问一个问题&#x27;:&#x27;试着回应客户&#x27;);
-      let content=trackOptions(p)+title(heading,subtitle)+(decisionOnly?&#x27;&#x27;:quiet(p.mode===&#x27;demo&#x27;?(isPartner(p)?&#x27;示范：带教者与伙伴的对话&#x27;:p.role===&#x27;customer&#x27;?&#x27;示范：客户怎样提问&#x27;:&#x27;示范：服务商怎样回应客户&#x27;):`${roleLabel(p)} · AI扮演${otherRole(p)}`));
+      let content=trackOptions(p)+title(heading,subtitle);
       if(p.mode===&#x27;demo&#x27;&amp;&amp;p.correctionOpen)return title(&#x27;修改这次练习&#x27;,subtitle)+correctionInput(p);
       if(p.correctionOpen)return title(&#x27;修改这次练习&#x27;,subtitle)+correctionInput(p)+previousTurns(p)+returnButton();
       if(p.mode===&#x27;demo&#x27;){
         const index=Math.min(p.round,2),asCustomer=p.role===&#x27;customer&#x27;;
         return content+panel(`&lt;span class=&quot;gp-eyebrow&quot;&gt;${decisionOnly?&#x27;当前情况&#x27;:isPartner(p)?(asCustomer?&#x27;带教者&#x27;:&#x27;伙伴&#x27;):(asCustomer?&#x27;服务商&#x27;:&#x27;客户&#x27;)}&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(asCustomer?x.answers[index]:x.questions[index])}&lt;/p&gt;&lt;span class=&quot;gp-eyebrow&quot;&gt;${decisionOnly?&#x27;可以这样处理&#x27;:asCustomer?(isPartner(p)?&#x27;伙伴可以这样问&#x27;:&#x27;客户可以这样问&#x27;):&#x27;可以这样回应&#x27;}&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(asCustomer?x.questions[index]:x.answers[index])}&lt;/p&gt;`)+btn(p.input||currentTurns(p).length&amp;&amp;!p.finished?&#x27;继续练习&#x27;:&#x27;换我来试&#x27;,&#x27;practice-begin&#x27;)+`&lt;div class=&quot;gp-actions&quot;&gt;${btn(p.heard?&#x27;暂停示范&#x27;:&#x27;听示范&#x27;,&#x27;practice-listen&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${correctionInput(p)}&lt;/div&gt;`+(p.heard?quiet(&#x27;示范播放中&#x27;):&#x27;&#x27;)+practiceOptions(p)+returnButton();
       }
-      content+=panel(`&lt;span class=&quot;gp-eyebrow&quot;&gt;${decisionOnly?&#x27;当前情况&#x27;:isPartner(p)?&#x27;AI · &#x27;+otherRole(p):p.role===&#x27;customer&#x27;?&#x27;AI · 服务商&#x27;:&#x27;AI · &#x27;+h(practiceName(p))}&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(p.role===&#x27;customer&#x27;?x.answers[Math.min(p.round,2)]:x.questions[Math.min(p.round,2)])}&lt;/p&gt;`)+practiceInput(p);
+      content+=panel(`&lt;span class=&quot;gp-eyebrow&quot;&gt;${decisionOnly?&#x27;当前情况&#x27;:&#x27;AI扮演&#x27;+h(otherRole(p))}&lt;/span&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(p.role===&#x27;customer&#x27;?x.answers[Math.min(p.round,2)]:x.questions[Math.min(p.round,2)])}&lt;/p&gt;`)+practiceInput(p);
       if(p.recording||p.inputMode===&#x27;typing&#x27;)return content+btn(&#x27;先收起&#x27;,&#x27;practice-input-close&#x27;,&#x27;&#x27;,&#x27;text&#x27;);
       return content+`&lt;div class=&quot;gp-actions&quot;&gt;${btn(&#x27;示范一下&#x27;,&#x27;practice-view-demo&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${currentTurns(p).some(t=&gt;t.who===&#x27;me&#x27;)?btn(&#x27;练到这里&#x27;,&#x27;practice-finish&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}&lt;/div&gt;`+previousTurns(p)+practiceOptions(p)+returnButton();
     }
@@ -4205,7 +4277,7 @@ function createLearningUI(ctx) {
       if(p.correctionOpen)return title(&#x27;修改这次练习&#x27;,practiceSubtitle(p))+correctionInput(p)+previousTurns(p)+returnButton();
       const finishedLesson=Boolean(spoken&amp;&amp;p.returnView===&#x27;lesson&#x27;),studyCustomer=p.studyOrigin?.customerId,studyName=studyCustomer?customer(studyCustomer)?.name||&#x27;客户&#x27;:&#x27;&#x27;;
       const primary=finishedLesson?(studyCustomer?btn(canUse?&#x27;存为准备稿，回&#x27;+studyName:&#x27;回&#x27;+studyName+&#x27;的原记录&#x27;,canUse?&#x27;practice-adopt&#x27;:&#x27;practice-return-source&#x27;):btn(&#x27;返回课程&#x27;,&#x27;learn-return&#x27;)):canUse?btn(p.customerId?&#x27;用这段，回原记录&#x27;:&#x27;用这段，回到讲解&#x27;,&#x27;practice-adopt&#x27;):btn(spoken?&#x27;再练一次&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;);
-      const leave=finishedLesson?(studyCustomer?btn(&#x27;回课程继续学&#x27;,&#x27;learn-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;):canUse&amp;&amp;p.customerId?btn(&#x27;先回去，不用这段&#x27;,&#x27;learn-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):returnButton();
+      const leave=finishedLesson?(studyCustomer?btn(&#x27;回课程继续学&#x27;,&#x27;learn-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;):canUse&amp;&amp;p.customerId?btn(&#x27;不用这段，回原记录&#x27;,&#x27;learn-return&#x27;,&#x27;&#x27;,&#x27;text&#x27;):returnButton();
       const feedback=focusedFeedback(p),reference=own&amp;&amp;practiceCoaching(p)&amp;&amp;feedback.example!==own?`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;参考说法&lt;/summary&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(feedback.example)}&lt;/p&gt;&lt;/details&gt;`:&#x27;&#x27;;
       return heading+(own?`&lt;p&gt;${h(feedback.point)}&lt;/p&gt;`:p.role===&#x27;seller&#x27;?quiet(p.revision?&#x27;参考说法已按新情况更新，可以再试说一次。&#x27;:&#x27;你还没试说，下面是参考说法。&#x27;):&#x27;&#x27;)+panel(`&lt;p class=&quot;gp-message&quot;&gt;${h(takeaway())}&lt;/p&gt;`)+reference+primary+leave+correctionInput(p)+previousTurns(p)+`&lt;details&gt;&lt;summary class=&quot;gp-label&quot;&gt;其他练习&lt;/summary&gt;${quiet(x.avoid)}${canContinue?btn(&#x27;接着练下一句&#x27;,&#x27;practice-continue&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${canUse||finishedLesson?btn(own?&#x27;再练一次&#x27;:&#x27;开始练一句&#x27;,&#x27;practice-retry&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${btn(&#x27;以前的练习&#x27;,&#x27;practice-history&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;`;
     }
@@ -4489,7 +4561,7 @@ const initial=()=&gt;({version:6,view:&#x27;home&#x27;,tab:&#x27;assistant&#x27;
  ],
  members:[{id:&#x27;chen-self&#x27;,customerId:&#x27;chen&#x27;,name:&#x27;陈姐&#x27;,relation:&#x27;本人&#x27;,authorization:&#x27;已授权&#x27;,assessment:&#x27;未开始&#x27;},{id:&#x27;chen-mom&#x27;,customerId:&#x27;chen&#x27;,name:&#x27;陈妈妈&#x27;,relation:&#x27;母亲&#x27;,authorization:&#x27;待授权&#x27;,assessment:&#x27;未开始&#x27;}],practiceContext:{customerId:&#x27;&#x27;,topic:&#x27;&#x27;,returnView:&#x27;learning&#x27;},learning:{}});
 const s=initial();
-async function restore(saved){let data=saved?.privateContent?.growthComplete;const packed=saved?.privateContent?.growthPacked;if(packed){try{const bytes=Uint8Array.from(atob(packed),c=&gt;c.charCodeAt(0));data=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream(&#x27;gzip&#x27;))).text());}catch{return;}}if(data?.version===6&amp;&amp;Array.isArray(data.customers)&amp;&amp;Array.isArray(data.tasks)){const pu=s.productUI,learn=s.learning;Object.assign(s,data);s.signalDemoVersion=data.signalDemoVersion||0;ensureSignalDemo();if(pu&amp;&amp;data.productUI){Object.assign(pu,data.productUI);s.productUI=pu;}if(learn&amp;&amp;data.learning){Object.assign(learn,data.learning);s.learning=learn;}}}
+async function restore(saved){let data=saved?.privateContent?.growthComplete;const packed=saved?.privateContent?.growthPacked;if(packed){try{const bytes=Uint8Array.from(atob(packed),c=&gt;c.charCodeAt(0));data=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream(&#x27;gzip&#x27;))).text());}catch{return;}}if(data?.version===6&amp;&amp;Array.isArray(data.customers)&amp;&amp;Array.isArray(data.tasks)){clearRetiredPersonalState(data);const pu=s.productUI,learn=s.learning;Object.assign(s,data);s.signalDemoVersion=data.signalDemoVersion||0;ensureSignalDemo();if(pu&amp;&amp;data.productUI){Object.assign(pu,data.productUI);s.productUI=pu;}if(learn&amp;&amp;data.learning){Object.assign(learn,data.learning);s.learning=learn;}}}
 await restore(window.openai?.widgetState);
 // Fixed example records: these are not live order or device feeds.
 function ensureSignalDemo(){if(!s.signalDemoVersion){
@@ -4559,9 +4631,9 @@ async function save(preserveInput=false){
  ownStateEchoes.add(JSON.stringify(payload));if(ownStateEchoes.size&gt;30)ownStateEchoes.delete(ownStateEchoes.values().next().value);
  window.openai.setWidgetState(payload).catch(()=&gt;{showNotice(&#x27;这次内容暂未保存，请保留当前页面。&#x27;);});
 }
-function capture(){const mine=root.querySelector(&#x27;[data-field=&quot;my-business-question&quot;]&#x27;);if(mine)personalBusiness().draft=mine.value;const input=root.querySelector(&#x27;[data-field=&quot;inputText&quot;]&#x27;);if(input)s.inputText=input.value;const fix=root.querySelector(&#x27;[data-field=&quot;prepCorrection&quot;]&#x27;);if(fix)s.prepCorrection=fix.value;const prep=root.querySelector(&#x27;[data-field=&quot;prepDraft&quot;]&#x27;);if(prep)s.prepDraft=prep.value;const practice=root.querySelector(&#x27;[data-field=&quot;practice-input&quot;]&#x27;);if(practice&amp;&amp;s.learning.practice)s.learning.practice.input=practice.value;const edit=root.querySelector(&#x27;[data-field=&quot;editValue&quot;]&#x27;);if(edit&amp;&amp;s.edit)s.edit.value=edit.value;const inline=root.querySelector(&#x27;[data-field=&quot;inlineValue&quot;]&#x27;);if(inline&amp;&amp;s.inlineEdit)s.inlineEdit.value=inline.value;const family=root.querySelector(&#x27;[data-field=&quot;family-input&quot;]&#x27;);if(family&amp;&amp;s.familyDraft)s.familyDraft.text=family.value;productUI.capture?.();learningUI.capture?.();}
+function capture(){const input=root.querySelector(&#x27;[data-field=&quot;inputText&quot;]&#x27;);if(input)s.inputText=input.value;const fix=root.querySelector(&#x27;[data-field=&quot;prepCorrection&quot;]&#x27;);if(fix)s.prepCorrection=fix.value;const prep=root.querySelector(&#x27;[data-field=&quot;prepDraft&quot;]&#x27;);if(prep)s.prepDraft=prep.value;const practice=root.querySelector(&#x27;[data-field=&quot;practice-input&quot;]&#x27;);if(practice&amp;&amp;s.learning.practice)s.learning.practice.input=practice.value;const edit=root.querySelector(&#x27;[data-field=&quot;editValue&quot;]&#x27;);if(edit&amp;&amp;s.edit)s.edit.value=edit.value;const inline=root.querySelector(&#x27;[data-field=&quot;inlineValue&quot;]&#x27;);if(inline&amp;&amp;s.inlineEdit)s.inlineEdit.value=inline.value;const family=root.querySelector(&#x27;[data-field=&quot;family-input&quot;]&#x27;);if(family&amp;&amp;s.familyDraft)s.familyDraft.text=family.value;productUI.capture?.();learningUI.capture?.();}
 function go(view,params={}){s.history.push({view:s.view,selectedId:s.selectedId,taskId:s.taskId,standalone:s.standalone,memberId:s.memberId,recordId:s.recordId,sourceRecordId:s.sourceRecordId,customerSection:s.customerSection});s.history=s.history.slice(-12);Object.assign(s,params);s.view=view;s.notice=&#x27;&#x27;;s.taskMenu=false;if(view===&#x27;prepare&#x27;){s.prepDraft=preparedDraftFor(s.selectedId,s.sourceRecordId,s.taskId)||makePrep();keepPreparedDraft({customerId:s.selectedId,taskId:s.taskId,recordId:s.sourceRecordId,draft:s.prepDraft});s.prepEditing=false;s.prepFullEditing=false;s.prepCorrection=&#x27;&#x27;;delete s.prepBeforeEdit;s.copyReady=false;}}
-function back(){capture();const from=s.view;if([&#x27;practice&#x27;,&#x27;practice-result&#x27;].includes(from)&amp;&amp;s.history.at(-1)?.view===&#x27;knowledge&#x27;&amp;&amp;learningUI.returnPolicyQuestion())return;const p=s.history.pop();if(p)Object.assign(s,p);else s.view=&#x27;home&#x27;;if([&#x27;knowledge&#x27;,&#x27;income-details&#x27;].includes(from)&amp;&amp;p?.view===&#x27;profile&#x27;)personalBusiness().restoreView=true;if(from===&#x27;knowledge&#x27;&amp;&amp;p?.view===&#x27;income-details&#x27;){personalBusiness().restoreIncomeView=true;s.tab=&#x27;profile&#x27;;}if(s.view===&#x27;introduction&#x27;&amp;&amp;s.standalone&amp;&amp;[&#x27;practice&#x27;,&#x27;practice-result&#x27;,&#x27;practice-settings&#x27;].includes(from)){const practice=s.learning.practice;if(practice&amp;&amp;!practice.customerId)s.practiceReturn={customerId:&#x27;&#x27;,taskId:&#x27;&#x27;,sourceRecordId:&#x27;&#x27;,customerNeed:practice.customerNeed||&#x27;&#x27;,productId:practice.productId||&#x27;&#x27;,introCompareIds:[...(practice.introCompareIds||[])],introDraft:practice.introDraft||&#x27;&#x27;};}if(s.view===&#x27;prepare&#x27;){s.prepDraft=preparedDraftFor(s.selectedId,s.sourceRecordId,s.taskId)||makePrep();s.prepEditing=false;s.prepFullEditing=false;s.prepCorrection=&#x27;&#x27;;delete s.prepBeforeEdit;}if(s.view===&#x27;review&#x27;&amp;&amp;s.composeEdit){s.composeEdit=null;s.inputText=s.flow?.raw||&#x27;&#x27;;s.voiceOriginal=s.inputText;}s.notice=&#x27;&#x27;;s.taskMenu=false;}
+function back(){capture();const from=s.view;if([&#x27;practice&#x27;,&#x27;practice-result&#x27;].includes(from)&amp;&amp;s.history.at(-1)?.view===&#x27;knowledge&#x27;&amp;&amp;learningUI.returnPolicyQuestion())return;const p=s.history.pop();if(p)Object.assign(s,p);else s.view=&#x27;home&#x27;;if(s.view===&#x27;income-details&#x27;){s.view=&#x27;profile&#x27;;s.tab=&#x27;profile&#x27;;}if(s.view===&#x27;introduction&#x27;&amp;&amp;s.standalone&amp;&amp;[&#x27;practice&#x27;,&#x27;practice-result&#x27;,&#x27;practice-settings&#x27;].includes(from)){const practice=s.learning.practice;if(practice&amp;&amp;!practice.customerId)s.practiceReturn={customerId:&#x27;&#x27;,taskId:&#x27;&#x27;,sourceRecordId:&#x27;&#x27;,customerNeed:practice.customerNeed||&#x27;&#x27;,productId:practice.productId||&#x27;&#x27;,introCompareIds:[...(practice.introCompareIds||[])],introDraft:practice.introDraft||&#x27;&#x27;};}if(s.view===&#x27;prepare&#x27;){s.prepDraft=preparedDraftFor(s.selectedId,s.sourceRecordId,s.taskId)||makePrep();s.prepEditing=false;s.prepFullEditing=false;s.prepCorrection=&#x27;&#x27;;delete s.prepBeforeEdit;}if(s.view===&#x27;review&#x27;&amp;&amp;s.composeEdit){s.composeEdit=null;s.inputText=s.flow?.raw||&#x27;&#x27;;s.voiceOriginal=s.inputText;}s.notice=&#x27;&#x27;;s.taskMenu=false;}
 function voiceEntry({mode=&#x27;voice&#x27;,field=&#x27;&#x27;,value=&#x27;&#x27;,voiceAction=&#x27;&#x27;,typeAction=&#x27;&#x27;,sendAction=&#x27;&#x27;,finishAction=sendAction,label=&#x27;点一下，说情况&#x27;,placeholder=&#x27;想到哪里说到哪里…&#x27;,rows=3,paused=false,finishLabel=&#x27;说完了&#x27;,sendLabel=&#x27;发送&#x27;,secondary=false}){
  const side=(text,action,name)=&gt;`&lt;button type=&quot;button&quot; class=&quot;gp-input-side cursor-interaction&quot; data-action=&quot;${h(action)}&quot;&gt;${icon(name)}&lt;span&gt;${h(text)}&lt;/span&gt;&lt;/button&gt;`;
  const primary=(text,action,name)=&gt;`&lt;button type=&quot;button&quot; class=&quot;gp-talk-main${secondary&amp;&amp;mode===&#x27;voice&#x27;?&#x27; gp-talk-secondary&#x27;:&#x27;&#x27;} cursor-interaction&quot; data-action=&quot;${h(action)}&quot;&gt;${icon(name)}&lt;span&gt;${h(text)}&lt;/span&gt;&lt;/button&gt;`;
@@ -4569,44 +4641,14 @@ function voiceEntry({mode=&#x27;voice&#x27;,field=&#x27;&#x27;,value=&#x27;&#x27
  if(mode===&#x27;recording&#x27;)return `&lt;div class=&quot;gp-voice-entry&quot; data-voice-mode=&quot;recording&quot;&gt;&lt;div class=&quot;gp-listening&quot;&gt;${icon(&#x27;audio-lines&#x27;)}${paused?&#x27;已暂停&#x27;:&#x27;正在听&#x27;}&lt;/div&gt;&lt;p class=&quot;gp-transcript&quot;&gt;${h(value)}&lt;/p&gt;&lt;div class=&quot;gp-input-bar&quot;&gt;${primary(finishLabel,finishAction,paused?&#x27;mic&#x27;:&#x27;check&#x27;)}${side(&#x27;打字&#x27;,typeAction,&#x27;keyboard&#x27;)}&lt;/div&gt;&lt;/div&gt;`;
  return `&lt;div class=&quot;gp-voice-entry&quot; data-voice-mode=&quot;voice&quot;&gt;&lt;div class=&quot;gp-input-bar&quot;&gt;${primary(label,voiceAction,&#x27;mic&#x27;)}${side(&#x27;打字&#x27;,typeAction,&#x27;keyboard&#x27;)}&lt;/div&gt;&lt;/div&gt;`;
 }
-function renderBenefitProgress(){
- const d=benefitProgress(),points=n=&gt;n.toLocaleString(&#x27;zh-CN&#x27;),met=d.which===&#x27;met&#x27;,pending=d.which===&#x27;check&#x27;;
- if(d.identityPending)return `&lt;section class=&quot;gp-benefit&quot;&gt;&lt;h2&gt;这月补贴&lt;/h2&gt;&lt;div class=&quot;gp-benefit-status&quot;&gt;&lt;h3 class=&quot;gp-benefit-headline&quot;&gt;先确认您的身份&lt;/h3&gt;&lt;/div&gt;${btn(&#x27;查看我的身份&#x27;,&#x27;identity&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;)}&lt;/section&gt;`;
- const calculation=pending?&#x27;&#x27;:`&lt;div class=&quot;gp-benefit-calculation&quot;&gt;&lt;p&gt;按同样的10,000元模拟计算&lt;/p&gt;&lt;div&gt;&lt;span&gt;原补贴 &lt;strong&gt;1,400元&lt;/strong&gt;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;span&gt;提高后 &lt;strong&gt;1,600元&lt;/strong&gt;&lt;/span&gt;&lt;/div&gt;&lt;p class=&quot;gp-quiet&quot;&gt;比例14% → 16%，差额200元。未计入收入。&lt;/p&gt;&lt;/div&gt;`;
- const headline=pending?&#x27;还要核对一项&#x27;:`预计多拿 &lt;strong&gt;${d.estimate.extra}&lt;/strong&gt;&lt;small&gt;元&lt;/small&gt;`;
- const summary=met?&#x27;怎么算的&#x27;:pending?&#x27;核对什么&#x27;:&#x27;还差什么&#x27;;
- return `&lt;section class=&quot;gp-benefit&quot;&gt;&lt;div class=&quot;gp-business-head&quot;&gt;&lt;h2&gt;这月补贴&lt;/h2&gt;&lt;span class=&quot;gp-benefit-period&quot;&gt;${d.period}&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;gp-benefit-status&quot;&gt;&lt;h3 class=&quot;gp-benefit-headline&quot;&gt;${headline}&lt;/h3&gt;&lt;/div&gt;&lt;p class=&quot;gp-benefit-effect&quot;&gt;${pending?&#x27;核对后，再算能多拿多少&#x27;:met?&#x27;条件已满足 · 尚未计入收入&#x27;:&#x27;还差一项 · 满足条件后可增加&#x27;}&lt;/p&gt;&lt;div class=&quot;gp-benefit-actions&quot;&gt;&lt;details data-benefit-details&gt;&lt;summary&gt;${summary}&lt;/summary&gt;${met?calculation:&#x27;&#x27;}&lt;div class=&quot;gp-benefit-condition&quot;&gt;&lt;span&gt;渠道进货记录&lt;/span&gt;&lt;strong&gt;${pending?&#x27;进货积分待核&#x27;:met?&#x27;进货积分已满足&#x27;:&#x27;还差7,000进货积分&#x27;}&lt;/strong&gt;&lt;/div&gt;${pending?&#x27;&lt;p&gt;需要核对本月是否达到65,000进货积分。&lt;/p&gt;&#x27;:`&lt;p class=&quot;gp-benefit-points&quot;&gt;&lt;span&gt;本月进货积分&lt;/span&gt;&lt;strong&gt;${points(d.direct)} / 要求65,000&lt;/strong&gt;&lt;/p&gt;`}&lt;div class=&quot;gp-benefit-condition&quot;&gt;&lt;span&gt;您本人的进货积分&lt;/span&gt;&lt;strong&gt;25,000 / 要求25,000&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;gp-benefit-condition&quot;&gt;&lt;span&gt;身份及其他条件&lt;/span&gt;&lt;strong&gt;已满足&lt;/strong&gt;&lt;/div&gt;${!met?calculation:&#x27;&#x27;}&lt;details&gt;&lt;summary&gt;查看政策依据&lt;/summary&gt;&lt;p&gt;6+2政策2026版第7页：月度服务补贴中级档，直属市场补贴比例从14%提高到16%。计算金额与名单范围以公司确认口径为准，不能把卖货金额或进货积分直接换算成补贴。&lt;/p&gt;&lt;p&gt;以上为董事服务商模拟数据。增加的200元仅比较同一计算金额下的比例差异，不是已确认收入。本例不计算积分抵扣，也不代表永久身份升级。${s.identity!==&#x27;已办好&#x27;?&#x27;此情境不改变本人的办理状态。&#x27;:&#x27;&#x27;}&lt;/p&gt;&lt;/details&gt;${row(&#x27;游学奖励&#x27;,&#x27;&#x27;,&#x27;my-benefit-question&#x27;,&#x27;我的游学奖励还需要哪些条件？&#x27;)}${row(&#x27;买车补贴&#x27;,&#x27;&#x27;,&#x27;my-benefit-question&#x27;,&#x27;我的购车补贴还需要什么条件？&#x27;)}&lt;/details&gt;${btn(&#x27;问问助理&#x27;,&#x27;my-benefit-question&#x27;,&#x27;我的本月补贴预计能多拿多少？&#x27;)}&lt;/div&gt;&lt;/section&gt;`;
-}
-function renderIncomeDetails(){
- const m=personalBusiness(),data=businessDemoData(businessKey(m)),period=businessPeriod(m);
- return `${top(&#x27;收入明细&#x27;)}&lt;div class=&quot;gp-business-head&quot;&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(period)}&lt;/p&gt;&lt;div class=&quot;gp-chips&quot; aria-label=&quot;收入明细期间&quot;&gt;${chip(&#x27;本月&#x27;,&#x27;my-period&#x27;,&#x27;month&#x27;,m.period===&#x27;month&#x27;&amp;&amp;m.year===2026&amp;&amp;m.month===11)}${chip(&#x27;今年&#x27;,&#x27;my-period&#x27;,&#x27;year&#x27;,m.period===&#x27;year&#x27;&amp;&amp;m.year===2026)}&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;gp-income-total&quot;&gt;&lt;span&gt;已到账&lt;/span&gt;&lt;strong&gt;${data?h(businessMoney(data.received)):&#x27;暂无数据&#x27;}&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;gp-income-ledger&quot;&gt;${data?data.entries.map(x=&gt;`&lt;div class=&quot;gp-income-record&quot;&gt;&lt;div&gt;&lt;strong&gt;${h(x.name)}&lt;/strong&gt;&lt;small&gt;${h(x.date)}&lt;/small&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;${h(businessMoney(x.amount))}&lt;/strong&gt;&lt;small class=&quot;${x.status===&#x27;已到账&#x27;?&#x27;gp-paid-state&#x27;:&#x27;&#x27;}&quot;&gt;${h(x.status)}&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;`).join(&#x27;&#x27;):&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;这段期间还没有记录。&lt;/p&gt;&#x27;}&lt;/div&gt;&lt;details&gt;&lt;summary&gt;数据说明&lt;/summary&gt;&lt;p&gt;模拟公司结算与到账记录。未结算的款项没有发起打款，不属于汇款中；预计可增加的补贴没有加入本明细。&lt;/p&gt;&lt;p&gt;到账收入不等于卖货金额，未扣个人经营费用。年度明细中的1—8月按汇总演示。&lt;/p&gt;&lt;/details&gt;${btn(&#x27;问问收入&#x27;,&#x27;my-income-question&#x27;,&#x27;我的收入明细里，未结算的金额是什么情况？&#x27;,&#x27;secondary&#x27;)}`;
-}
-
 function renderMyBusiness(){
- const m=personalBusiness(),data=businessDemoData(businessKey(m)),goal=m.targets[businessKey(m)],net=data?data.gross-data.refund:null,hasGoal=Number.isFinite(goal),money=n=&gt;n===null?&#x27;暂无数据&#x27;:businessMoney(n);
- const period=businessPeriod(m),active=m.open&amp;&amp;[&#x27;typing&#x27;,&#x27;recording&#x27;].includes(m.mode);
- const controls=active?&#x27;&#x27;:`&lt;div class=&quot;gp-chips&quot; aria-label=&quot;经营数据期间&quot;&gt;${chip(&#x27;本月&#x27;,&#x27;my-period&#x27;,&#x27;month&#x27;,m.period===&#x27;month&#x27;&amp;&amp;m.year===2026&amp;&amp;m.month===11)}${chip(&#x27;今年&#x27;,&#x27;my-period&#x27;,&#x27;year&#x27;,m.period===&#x27;year&#x27;&amp;&amp;m.year===2026)}&lt;/div&gt;`;
- const goalText=hasGoal?`&lt;p&gt;${h(period)}目标 &lt;strong&gt;${h(money(goal))}&lt;/strong&gt;&lt;/p&gt;${net!==null?`&lt;div class=&quot;gp-progress&quot; role=&quot;img&quot; aria-label=&quot;销售${h(money(net))}，目标${h(money(goal))}&quot;&gt;&lt;span style=&quot;width:${goal&gt;0?Math.min(100,net/goal*100):100}%&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${net&gt;=goal?&#x27;已达到自己设定的目标&#x27;:&#x27;已完成 &#x27;+h(money(net))+&#x27;，还差 &#x27;+h(money(goal-net))}&lt;/p&gt;`:&#x27;&#x27;}`:`&lt;p class=&quot;gp-quiet&quot;&gt;还没有设置${m.period===&#x27;year&#x27;?m.year+&#x27;年&#x27;:m.year+&#x27;年&#x27;+m.month+&#x27;月&#x27;}的销售目标&lt;/p&gt;`;
- const answer=m.open&amp;&amp;m.answer?`&lt;section class=&quot;gp-business-answer&quot;&gt;&lt;p class=&quot;gp-eyebrow&quot;&gt;${h(m.question)}&lt;/p&gt;&lt;p class=&quot;gp-message&quot;&gt;${h(m.answer.text)}&lt;/p&gt;${m.answer.detail?`&lt;details&gt;&lt;summary&gt;查看依据&lt;/summary&gt;&lt;p&gt;${h(m.answer.detail)}&lt;/p&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(m.answer.source||&#x27;模拟经营数据&#x27;)}&lt;/p&gt;&lt;/details&gt;`:&#x27;&#x27;}&lt;/section&gt;`:&#x27;&#x27;;
- return `${top(&#x27;我的&#x27;)}&lt;div class=&quot;gp-person gp-business-person&quot;&gt;&lt;span class=&quot;gp-avatar&quot;&gt;${icon(&#x27;user-round&#x27;)}&lt;/span&gt;&lt;div&gt;&lt;h2&gt;${h(s.profileName||&#x27;李老师&#x27;)}&lt;/h2&gt;&lt;small&gt;服务商&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&lt;section class=&quot;gp-income-overview&quot;&gt;&lt;div class=&quot;gp-business-head&quot;&gt;&lt;h2&gt;已到账收入&lt;/h2&gt;${controls}&lt;/div&gt;&lt;button class=&quot;gp-income-hero cursor-interaction&quot; data-action=&quot;my-income-details&quot; aria-label=&quot;已到账收入${h(money(data?.received??null))}，查看收入明细&quot;&gt;&lt;strong&gt;${h(money(data?.received??null))}&lt;/strong&gt;&lt;span&gt;明细 ${icon(&#x27;chevron-right&#x27;)}&lt;/span&gt;&lt;/button&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(period)} · 模拟数据&lt;/p&gt;&lt;/section&gt;${renderBenefitProgress()}${m.topic===&#x27;benefit&#x27;?answer:&#x27;&#x27;}&lt;section class=&quot;gp-business-summary&quot;&gt;&lt;button class=&quot;gp-income-line cursor-interaction&quot; data-action=&quot;my-ask&quot; data-value=&quot;客户销售额怎么算的？&quot;&gt;&lt;span&gt;${m.period===&#x27;year&#x27;?&#x27;今年&#x27;:&#x27;本月&#x27;}卖货金额&lt;/span&gt;&lt;strong&gt;${h(money(net))}&lt;/strong&gt;&lt;/button&gt;&lt;details&gt;&lt;summary&gt;数据怎么算&lt;/summary&gt;&lt;p&gt;${data?`客户已支付${h(money(data.gross))}，减去退款${h(money(data.refund))}。`:&#x27;该期间没有模拟记录。&#x27;}&lt;/p&gt;&lt;p&gt;卖货金额与收入分开计算，不代表您赚到的钱。&lt;/p&gt;&lt;/details&gt;${m.topic===&#x27;business&#x27;?answer:&#x27;&#x27;}&lt;/section&gt;&lt;details class=&quot;gp-personal-goal&quot;${m.open&amp;&amp;m.topic===&#x27;goal&#x27;||m.intent===&#x27;goal&#x27;&amp;&amp;m.open?&#x27; open&#x27;:&#x27;&#x27;}&gt;&lt;summary&gt;销售目标&lt;/summary&gt;${goalText}${m.open&amp;&amp;m.intent===&#x27;goal&#x27;?&#x27;&#x27;:btn(hasGoal?&#x27;说一句，调整目标&#x27;:&#x27;设个销售目标&#x27;,&#x27;my-talk&#x27;,&#x27;goal&#x27;,&#x27;text&#x27;)}${m.topic===&#x27;goal&#x27;?answer:&#x27;&#x27;}&lt;/details&gt;&lt;details class=&quot;gp-account-details&quot;${m.open&amp;&amp;m.topic===&#x27;identity&#x27;?&#x27; open&#x27;:&#x27;&#x27;}&gt;&lt;summary&gt;我的身份 &lt;span&gt;${s.identity===&#x27;已办好&#x27;?&#x27;服务商&#x27;:s.identity===&#x27;待签署&#x27;?&#x27;待签署协议&#x27;:&#x27;待确认身份&#x27;}&lt;/span&gt;&lt;/summary&gt;${btn(&#x27;查看身份与协议&#x27;,&#x27;identity&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${btn(&#x27;了解升董条件&#x27;,&#x27;my-ask&#x27;,&#x27;我离升董还差什么条件？&#x27;,&#x27;text&#x27;)}${m.topic===&#x27;identity&#x27;?answer:&#x27;&#x27;}&lt;/details&gt;${m.open?voiceEntry({mode:m.mode,field:&#x27;my-business-question&#x27;,value:m.draft||&#x27;&#x27;,voiceAction:&#x27;my-voice&#x27;,typeAction:&#x27;my-type&#x27;,sendAction:&#x27;my-send&#x27;,finishAction:&#x27;my-send&#x27;,label:m.intent===&#x27;goal&#x27;?&#x27;说说你的销售目标&#x27;:&#x27;接着问一句&#x27;,placeholder:m.intent===&#x27;goal&#x27;?&#x27;例如：本月销售目标设为3万；先取消目标…&#x27;:&#x27;收入、补贴或目标，直接说…&#x27;,sendLabel:&#x27;发送&#x27;,finishLabel:&#x27;说完了&#x27;,secondary:true})+btn(&#x27;收起&#x27;,&#x27;my-close&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${row(&#x27;使用帮助与建议&#x27;,&#x27;&#x27;,&#x27;settings&#x27;)}`;
-
+ const identity=s.identity===&#x27;已办好&#x27;?&#x27;服务商&#x27;:s.identity===&#x27;待签署&#x27;?&#x27;待签署协议&#x27;:&#x27;待确认身份&#x27;;
+ return `${top(&#x27;我的&#x27;)}&lt;div class=&quot;gp-person gp-my-person&quot;&gt;&lt;span class=&quot;gp-avatar&quot;&gt;${icon(&#x27;user-round&#x27;)}&lt;/span&gt;&lt;div&gt;&lt;h2&gt;${h(s.profileName||&#x27;李老师&#x27;)}&lt;/h2&gt;&lt;small&gt;${h(identity)}&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;${row(&#x27;我的学习记录&#x27;,&#x27;课程、测验与练习&#x27;,&#x27;learn-history&#x27;)}${row(&#x27;身份与协议&#x27;,&#x27;&#x27;,&#x27;identity&#x27;)}${row(&#x27;使用帮助与建议&#x27;,&#x27;&#x27;,&#x27;settings&#x27;)}`;
 }
-function actMyBusiness(action,value){
- if(!action.startsWith(&#x27;my-&#x27;))return false;const m=personalBusiness();
- if(action===&#x27;my-income-details&#x27;){m.returnUI={scroll:main.scrollTop,benefitOpen:Boolean(main.querySelector(&#x27;[data-benefit-details]&#x27;)?.open)};m.open=false;go(&#x27;income-details&#x27;);return true;}
- if(action===&#x27;my-income-question&#x27;){m.incomeReturnUI={scroll:main.scrollTop};openAnsweredQuestion(value);s.productUI.businessContext={period:m.period,year:m.year,month:m.month,scope:&#x27;personal&#x27;,subject:&#x27;income&#x27;,fromMy:true};s.productUI.lastKnowledgeKind=&#x27;business&#x27;;s.tab=&#x27;assistant&#x27;;return true;}
- if(action===&#x27;my-benefit-question&#x27;){m.returnUI={scroll:main.scrollTop,benefitOpen:Boolean(main.querySelector(&#x27;[data-benefit-details]&#x27;)?.open)};m.open=false;openAnsweredQuestion(value);s.productUI.businessContext={period:m.period,year:m.year,month:m.month,scope:&#x27;personal&#x27;,subject:&#x27;sales&#x27;,fromMy:true};s.tab=&#x27;assistant&#x27;;return true;}
- if(action===&#x27;my-period&#x27;){m.period=value;m.year=2026;m.month=11;m.scope=&#x27;personal&#x27;;m.open=false;m.answer=null;m.question=&#x27;&#x27;;s.notice=&#x27;&#x27;;return true;}
- if(action===&#x27;my-close&#x27;){m.open=false;if(m.mode===&#x27;recording&#x27;)m.mode=m.draft?&#x27;typing&#x27;:&#x27;voice&#x27;;return true;}
- if(action===&#x27;my-talk&#x27;){m.open=true;m.intent=value;m.topic=value===&#x27;goal&#x27;?&#x27;goal&#x27;:&#x27;business&#x27;;if(value===&#x27;goal&#x27;)m.scope=&#x27;personal&#x27;;m.answer=null;m.question=&#x27;&#x27;;m.mode=m.draft?&#x27;typing&#x27;:&#x27;voice&#x27;;return true;}
- if(action===&#x27;my-type&#x27;){m.open=true;m.mode=&#x27;typing&#x27;;return true;}
- if(action===&#x27;my-voice&#x27;){m.open=true;m.mode=&#x27;recording&#x27;;if(!m.draft)m.draft=m.intent===&#x27;goal&#x27;?(businessPeriod(m).replace(&#x27;累计&#x27;,&#x27;&#x27;)+(m.period===&#x27;year&#x27;?&#x27;销售目标设为30万。&#x27;:&#x27;销售目标设为3万。&#x27;)):&#x27;我的已到账收入是多少？&#x27;;return true;}
- if(action===&#x27;my-send&#x27;||action===&#x27;my-ask&#x27;){
-  let q=action===&#x27;my-ask&#x27;?value:(m.draft||&#x27;&#x27;).trim();if(!q){showNotice(&#x27;说一句想问的，或想设的目标就好。&#x27;);return true;}if(action===&#x27;my-ask&#x27;)m.scope=&#x27;personal&#x27;;
-  if(action===&#x27;my-send&#x27;&amp;&amp;m.intent===&#x27;goal&#x27;&amp;&amp;!/目标/.test(q)&amp;&amp;/^(?:改成|改为|设为|设成|取消|先不设|暂不设)/.test(q))q=&#x27;个人目标&#x27;+q;
-  m.answer=productUI.answerMyBusiness(q);m.question=q;m.topic=m.answer.kind===&#x27;benefit&#x27;?&#x27;benefit&#x27;:/董事|升董|晋级|身份/.test(q)?&#x27;identity&#x27;:/目标/.test(q)?&#x27;goal&#x27;:&#x27;business&#x27;;m.draft=&#x27;&#x27;;m.open=true;m.mode=&#x27;voice&#x27;;m.intent=&#x27;business&#x27;;s.notice=&#x27;&#x27;;m.scrollAnswer=true;return true;
- }
- return true;
+function renderIncomeDetails(){return renderMyBusiness();}
+function actMyBusiness(action){
+ if(!action.startsWith(&#x27;my-&#x27;))return false;
+ s.view=&#x27;profile&#x27;;s.tab=&#x27;profile&#x27;;s.notice=&#x27;&#x27;;return true;
 }
 function recordPrepKey(customerId,recordId,taskId=&#x27;&#x27;){return `record:${customerId}:${recordId}${taskId?&#x27;:task:&#x27;+taskId:&#x27;&#x27;}`;}
 function preparedDraftFor(customerId,recordId=&#x27;&#x27;,taskId=&#x27;&#x27;){
@@ -4810,7 +4852,7 @@ ctx.resumeStudySnapshot=module=&gt;{
  const core={view:module.view,tab:&#x27;learning&#x27;,selectedId:scope.customerId,standalone:!scope.customerId,taskId:scope.taskId,sourceRecordId:scope.sourceRecordId,recordId:scope.sourceRecordId};
  s.pendingWork[key]={key,owner:workOwner(),kind:&#x27;learning&#x27;,label:&#x27;接着学&#x27;,scope,core,module,updatedAt:Date.now()};return resumeWork(key);
 };
-const leaveWorkActions=new Set([&#x27;back&#x27;,&#x27;nav&#x27;,&#x27;pause-work&#x27;,&#x27;profile&#x27;,&#x27;resume&#x27;,&#x27;open-customer&#x27;,&#x27;open-task&#x27;,&#x27;open-record&#x27;,&#x27;customer-next&#x27;,&#x27;service-prepare&#x27;,&#x27;browse-products&#x27;,&#x27;customer-products&#x27;,&#x27;customer-selection&#x27;,&#x27;customer-practice&#x27;,&#x27;demo-practice&#x27;,&#x27;free-practice&#x27;,&#x27;my-benefit-question&#x27;,&#x27;my-income-details&#x27;,&#x27;my-income-question&#x27;,&#x27;assistant-note&#x27;,&#x27;learning&#x27;,&#x27;learn-return&#x27;,&#x27;product-back&#x27;,&#x27;product-practice&#x27;,&#x27;product-demo&#x27;,&#x27;practice-new&#x27;,&#x27;practice-history&#x27;,&#x27;practice-open-history&#x27;,&#x27;assessment-exit&#x27;,&#x27;learn-course&#x27;,&#x27;learn-category&#x27;,&#x27;learn-product-question&#x27;,&#x27;learn-product-practice&#x27;,&#x27;learn-scenario-practice&#x27;,&#x27;learn-history&#x27;,&#x27;learn-context&#x27;,&#x27;learn-growth&#x27;,&#x27;learn-experience&#x27;,&#x27;learn-after-quiz&#x27;,&#x27;product-learn&#x27;,&#x27;knowledge-study-return&#x27;]);
+const leaveWorkActions=new Set([&#x27;case-preview&#x27;,&#x27;back&#x27;,&#x27;nav&#x27;,&#x27;pause-work&#x27;,&#x27;profile&#x27;,&#x27;resume&#x27;,&#x27;open-customer&#x27;,&#x27;open-task&#x27;,&#x27;open-record&#x27;,&#x27;customer-next&#x27;,&#x27;service-prepare&#x27;,&#x27;browse-products&#x27;,&#x27;customer-products&#x27;,&#x27;customer-selection&#x27;,&#x27;customer-practice&#x27;,&#x27;demo-practice&#x27;,&#x27;free-practice&#x27;,&#x27;my-benefit-question&#x27;,&#x27;my-income-details&#x27;,&#x27;my-income-question&#x27;,&#x27;assistant-note&#x27;,&#x27;learning&#x27;,&#x27;learn-return&#x27;,&#x27;product-back&#x27;,&#x27;product-practice&#x27;,&#x27;product-demo&#x27;,&#x27;practice-new&#x27;,&#x27;practice-history&#x27;,&#x27;practice-open-history&#x27;,&#x27;assessment-exit&#x27;,&#x27;learn-course&#x27;,&#x27;learn-category&#x27;,&#x27;learn-product-question&#x27;,&#x27;learn-product-practice&#x27;,&#x27;learn-scenario-practice&#x27;,&#x27;learn-history&#x27;,&#x27;learn-context&#x27;,&#x27;learn-growth&#x27;,&#x27;learn-experience&#x27;,&#x27;learn-after-quiz&#x27;,&#x27;product-learn&#x27;,&#x27;knowledge-study-return&#x27;]);
 leaveWorkActions.add(&#x27;learn-question-resume&#x27;);leaveWorkActions.add(&#x27;learn-rec-use&#x27;);
 function finishPending(action,before){
  if([&#x27;task-complete&#x27;,&#x27;task-cancel&#x27;].includes(action))for(const [key,work] of Object.entries(s.pendingWork||{}))if(work.owner===workOwner()&amp;&amp;work.scope.customerId===s.selectedId&amp;&amp;work.scope.taskId===s.taskId)delete s.pendingWork[key];
@@ -5137,7 +5179,7 @@ function communicationGuide(c,recordId=&#x27;&#x27;,taskId=&#x27;&#x27;,needOver
  }else if(/怎么用|用法|怎么准备|准备方式|冲调|怎么冲|包装|小袋/.test(direct)&amp;&amp;!/(?:比较|区别|对比)/.test(direct)){
   customerLine=`${name}怎么准备，能说简单一点吗？`;title=&#x27;只讲这次问到的准备方式&#x27;;
   reply=p?`${name}的参考资料写的是${p.form}，${p.preparation}。具体步骤和用量按您手里这版包装核对。`:&#x27;这次先看您手里产品的准备说明，已经说过的用途不用重讲。产品名称或包装还没确认的部分，我再核对。&#x27;;
- }else if(willing&amp;&amp;!/比较|区别|对比|报告|测评/.test(direct)){
+ }else if(willing&amp;&amp;!products.length&amp;&amp;!/比较|区别|对比|报告|测评/.test(direct)){
   customerLine=&#x27;我可以先了解一下。&#x27;;title=&#x27;先听客户最想了解的一点&#x27;;question=&#x27;您现在最想弄清楚的是哪一点？&#x27;;reply=question;
  }else matched=false;
  return {focus,goal:goals[focus],question,reply,customerLine,title,matched,willing,ended,productId:p?.id||&#x27;&#x27;,detail:!!explicit.detail};
@@ -5226,7 +5268,7 @@ function dockPageVoiceEntry(){
  inputDock.hidden=false;inputDock.append(entry);
  if(controls.length){const actions=document.createElement(&#x27;div&#x27;);actions.className=&#x27;gp-inline-actions&#x27;;actions.append(...controls);inputDock.append(actions);}
 }
-function customerStamp(){const current=[&#x27;prepare&#x27;,&#x27;record&#x27;].includes(s.view)?contextChangeFor(s.selectedId,s.sourceRecordId||&#x27;&#x27;,s.taskId||&#x27;&#x27;):null;return `&lt;p class=&quot;gp-eyebrow&quot;&gt;客户：${h(customerLabel())}${current?.topic||currentTask()?.title?&#x27; · &#x27;+h(current?.topic||currentTask()?.title):&#x27;&#x27;}&lt;/p&gt;`;}
+function customerStamp(){const current=[&#x27;prepare&#x27;,&#x27;record&#x27;].includes(s.view)?contextChangeFor(s.selectedId,s.sourceRecordId||&#x27;&#x27;,s.taskId||&#x27;&#x27;):null,topic=current?.topic||currentTask()?.title||&#x27;&#x27;;return `&lt;p class=&quot;gp-eyebrow&quot;&gt;客户：${h(customerLabel())}${topic&amp;&amp;!/^(先回应眼前这一个问题|准备沟通)$/.test(topic)?&#x27; · &#x27;+h(topic):&#x27;&#x27;}&lt;/p&gt;`;}
 function flowCard(item,index){
  const person=s.customers.find(c=&gt;c.id===item.customerId);
  const candidates=(item.candidateIds||[]).map(id=&gt;s.customers.find(c=&gt;c.id===id&amp;&amp;!c.archived)).filter(Boolean);
@@ -5239,6 +5281,7 @@ function flowCard(item,index){
  ${!s.flow.applied?`${s.flow.items.length&gt;1?btn(&#x27;说这条哪里要改&#x27;,&#x27;flow-correct&#x27;,index,&#x27;text&#x27;):&#x27;&#x27;}&lt;details${field?&#x27; open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;直接改文字&lt;/summary&gt;&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;换个人&#x27;,&#x27;flow-person&#x27;,index)}${chip(&#x27;改这段话&#x27;,&#x27;flow-edit&#x27;,&#x27;summary:&#x27;+index)}${item.taskTitle?`${chip(&#x27;改下一步&#x27;,&#x27;flow-edit&#x27;,&#x27;taskTitle:&#x27;+index)}${chip(&#x27;改时间&#x27;,&#x27;flow-edit&#x27;,&#x27;when:&#x27;+index)}`:&#x27;&#x27;}&lt;/div&gt;${field?`&lt;label class=&quot;gp-label&quot; for=&quot;gp-flow-fix&quot;&gt;${labels[field.field]}&lt;/label&gt;&lt;textarea id=&quot;gp-flow-fix&quot; class=&quot;gp-input&quot; rows=&quot;${field.field===&#x27;summary&#x27;?3:1}&quot; data-field=&quot;inlineValue&quot;&gt;${h(field.value)}&lt;/textarea&gt;${btn(&#x27;先不改这一处&#x27;,&#x27;flow-inline-cancel&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}`:&#x27;&#x27;}&lt;/details&gt;`:&#x27;&#x27;}&lt;/section&gt;`;
 }
 function renderCore(){preserveCompletedArrangements();const c=customer();const task=currentTask();
+ if(s.view===&#x27;case-preview&#x27;)return renderRelatedCasePreview();
  if(s.view===&#x27;home&#x27;){
   const next=activeTasks().find(t=&gt;t.reminder===&#x27;今晚&#x27;)||activeTasks()[0],pending=pendingWork(),related=next?pendingWork(next.customerId,next.id,next.sourceRecordId||customer(next.customerId)?.records[0]?.id||&#x27;&#x27;):null;
   const current=next?`&lt;div class=&quot;gp-current&quot;&gt;&lt;small&gt;${next.reminder!==next.appointment?&#x27;提醒我&#x27;:arrangementLabel(next)} · ${h(next.reminder)}&lt;/small&gt;&lt;button class=&quot;cursor-interaction&quot; data-action=&quot;${related?&#x27;resume&#x27;:&#x27;customer-next&#x27;}&quot; data-value=&quot;${h(related?.key||next.id)}&quot;&gt;&lt;span&gt;客户：${h(customerLabel(next.customerId))}&lt;/span&gt;&lt;strong&gt;${h(related?.label||next.title)}&lt;/strong&gt;${icon(&#x27;arrow-right&#x27;)}&lt;/button&gt;&lt;/div&gt;${pending&amp;&amp;pending.key!==related?.key?continueLine(pending,true,pending.scope.customerId===next.customerId):&#x27;&#x27;}`:pending?`&lt;div class=&quot;gp-current&quot;&gt;&lt;small&gt;${h(workCaption(pending))}&lt;/small&gt;&lt;button class=&quot;cursor-interaction&quot; data-action=&quot;resume&quot; data-value=&quot;${h(pending.key)}&quot;&gt;${h(pending.label)} ${icon(&#x27;arrow-right&#x27;)}&lt;/button&gt;&lt;/div&gt;`:&#x27;&#x27;;
@@ -5261,9 +5304,9 @@ function renderCore(){preserveCompletedArrangements();const c=customer();const t
   if(s.filter===&#x27;待跟进&#x27;)list=list.filter(x=&gt;activeTasks(x.id).length);
   if(s.filter===&#x27;服务中&#x27;)list=list.filter(x=&gt;x.stage===&#x27;服务中&#x27;);
   const q=s.customerSearch.trim();if(q)list=list.filter(x=&gt;(x.name+x.relation+x.need).includes(q));
-  return `&lt;div class=&quot;gp-inline&quot;&gt;${top(&#x27;我的客户&#x27;)}&lt;button class=&quot;gp-icon cursor-interaction&quot; data-action=&quot;customer-add&quot; aria-label=&quot;添加客户&quot;&gt;${icon(&#x27;plus&#x27;)}&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;gp-search&quot;&gt;${icon(&#x27;search&#x27;)}&lt;input class=&quot;gp-input&quot; data-field=&quot;customerSearch&quot; aria-label=&quot;查找客户&quot; placeholder=&quot;姓名或你记得的事&quot; value=&quot;${h(s.customerSearch)}&quot;&gt;&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${[[&#x27;全部&#x27;,&#x27;全部&#x27;],[&#x27;待跟进&#x27;,&#x27;有安排&#x27;],[&#x27;服务中&#x27;,&#x27;服务中&#x27;]].map(([value,label])=&gt;chip(label,&#x27;filter&#x27;,value,s.filter===value)).join(&#x27;&#x27;)}&lt;/div&gt;${list.length?list.map(x=&gt;{const pending=pendingWork(x.id),task=activeTasks(x.id).find(t=&gt;t.kind!==&#x27;内部准备&#x27;);return row(x.name,[x.relation,pending?pending.label:task?(arrangementLabel(task)===&#x27;已约好&#x27;?&#x27;约好&#x27;:&#x27;已记&#x27;)+task.appointment:x.purchase?&#x27;有购买记录&#x27;:&#x27;&#x27;].filter(Boolean).join(&#x27; · &#x27;),&#x27;open-customer&#x27;,x.id);}).join(&#x27;&#x27;):`&lt;p class=&quot;gp-panel&quot;&gt;${q?&#x27;没有找到，试试换个称呼。&#x27;:s.filter===&#x27;待跟进&#x27;?&#x27;暂时没有已记安排的客户。&#x27;:s.filter===&#x27;服务中&#x27;?&#x27;暂时没有服务中的客户。&#x27;:s.filter===&#x27;已归档&#x27;?&#x27;还没有归档客户。&#x27;:&#x27;还没有客户，先说一位就可以。&#x27;}&lt;/p&gt;`}&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;客户安排与名单&lt;/summary&gt;${row(&#x27;查看全部安排&#x27;,&#x27;&#x27;,&#x27;tasks&#x27;)}${row(&#x27;带入已有名单&#x27;,&#x27;先整理，再确认重复项&#x27;,&#x27;import&#x27;)}${row(&#x27;已归档客户&#x27;,&#x27;需要时可以恢复&#x27;,&#x27;filter&#x27;,&#x27;已归档&#x27;)}&lt;/details&gt;`;
+  return `&lt;div class=&quot;gp-inline&quot;&gt;${top(&#x27;客户备忘&#x27;)}&lt;button class=&quot;gp-text gp-add-customer cursor-interaction&quot; data-action=&quot;customer-add&quot; aria-label=&quot;记一位客户&quot;&gt;${icon(&#x27;plus&#x27;)}记客户&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;gp-search&quot;&gt;${icon(&#x27;search&#x27;)}&lt;input class=&quot;gp-input&quot; data-field=&quot;customerSearch&quot; aria-label=&quot;查找客户&quot; placeholder=&quot;姓名或你记得的事&quot; value=&quot;${h(s.customerSearch)}&quot;&gt;&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${[[&#x27;全部&#x27;,&#x27;全部&#x27;],[&#x27;待跟进&#x27;,&#x27;有安排&#x27;],[&#x27;服务中&#x27;,&#x27;服务中&#x27;]].map(([value,label])=&gt;chip(label,&#x27;filter&#x27;,value,s.filter===value)).join(&#x27;&#x27;)}&lt;/div&gt;${list.length?list.map(x=&gt;{const pending=pendingWork(x.id),task=activeTasks(x.id).find(t=&gt;t.kind!==&#x27;内部准备&#x27;);return row(x.name,[x.relation,pending?pending.label:task?(arrangementLabel(task)===&#x27;已约好&#x27;?&#x27;约好&#x27;:&#x27;已记&#x27;)+task.appointment:x.purchase?&#x27;有购买记录&#x27;:&#x27;&#x27;].filter(Boolean).join(&#x27; · &#x27;),&#x27;open-customer&#x27;,x.id);}).join(&#x27;&#x27;):`&lt;p class=&quot;gp-panel&quot;&gt;${q?&#x27;没有找到，试试换个称呼。&#x27;:s.filter===&#x27;待跟进&#x27;?&#x27;暂时没有已记安排的客户。&#x27;:s.filter===&#x27;服务中&#x27;?&#x27;暂时没有服务中的客户。&#x27;:s.filter===&#x27;已归档&#x27;?&#x27;还没有归档客户。&#x27;:&#x27;还没有客户，先说一位就可以。&#x27;}&lt;/p&gt;`}&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;客户安排与名单&lt;/summary&gt;${row(&#x27;查看全部安排&#x27;,&#x27;&#x27;,&#x27;tasks&#x27;)}${row(&#x27;带入已有名单&#x27;,&#x27;先整理，再确认重复项&#x27;,&#x27;import&#x27;)}${row(&#x27;已归档客户&#x27;,&#x27;需要时可以恢复&#x27;,&#x27;filter&#x27;,&#x27;已归档&#x27;)}&lt;/details&gt;`;
  }
- if(s.view===&#x27;customer-add&#x27;)return `${top(&#x27;把这位客户的情况说给我&#x27;,&#x27;名字、怎么认识、聊过什么，知道多少说多少。&#x27;)}${btn(`${icon(&#x27;mic&#x27;)} 说一段话`,&#x27;new-customer-voice&#x27;)}${row(&#x27;带入已有名单&#x27;,&#x27;使用名单示例或选择文件&#x27;,&#x27;import&#x27;)}`;
+ if(s.view===&#x27;customer-add&#x27;)return `${top(&#x27;说说这位客户&#x27;,&#x27;称呼、需求、顾虑和聊到哪里，知道多少说多少。&#x27;)}${btn(`${icon(&#x27;mic&#x27;)} 说一段话`,&#x27;new-customer-voice&#x27;)}${row(&#x27;带入已有名单&#x27;,&#x27;使用名单示例或选择文件&#x27;,&#x27;import&#x27;)}`;
  if(s.view===&#x27;customer&#x27;){
   if(!c)return top(&#x27;还没有客户&#x27;);const ts=activeTasks(c.id),preparationRecord=c.records[0]?.id||&#x27;&#x27;,next=ts.find(t=&gt;(t.sourceRecordId||&#x27;&#x27;)===preparationRecord),pending=pendingWork(c.id);
   const preparationTask=next?.id||preparedTaskFor(c.id,preparationRecord);
@@ -5276,12 +5319,12 @@ function renderCore(){preserveCompletedArrangements();const c=customer();const t
   const currentPending=otherPending?.scope.sourceRecordId===preparationRecord?otherPending:null;
   const olderPending=otherPending&amp;&amp;!currentPending?otherPending:null;
   const otherWork=otherTasks.length||olderPending?`&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;其他安排&lt;/summary&gt;${otherTasks.map(t=&gt;row(t.title,t.appointment,&#x27;open-task&#x27;,t.id)).join(&#x27;&#x27;)}${continueLine(olderPending,false,true)}&lt;/details&gt;`:&#x27;&#x27;;
-  const nextBlock=`&lt;section class=&quot;gp-panel&quot;&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${next&amp;&amp;advice.canPrepare!==false?`${arrangementLabel(next)} · ${h(next.appointment)}`:advice.canPrepare===false?&#x27;目前情况&#x27;:&#x27;AI建议&#x27;}&lt;/p&gt;&lt;h3&gt;${h(advice.canPrepare===false?advice.title:nextTitle||advice.title)}&lt;/h3&gt;&lt;p&gt;${h(advice.detail)}&lt;/p&gt;${advice.canPrepare===false?&#x27;&#x27;:btn(related?h(related.label):next?.kind===&#x27;内部准备&#x27;?&#x27;看相关产品&#x27;:hasPreparedDraft?&#x27;接着用准备稿&#x27;:advice.kind===&#x27;report&#x27;?&#x27;准备怎么回访&#x27;:advice.kind===&#x27;product&#x27;?&#x27;准备讲解&#x27;:&#x27;准备怎么说&#x27;,related?&#x27;resume&#x27;:next?&#x27;customer-next&#x27;:&#x27;service-prepare&#x27;,related?.key||next?.id||&#x27;&#x27;,&#x27;secondary&#x27;)}${next?btn(&#x27;查看安排&#x27;,&#x27;open-task&#x27;,next.id,&#x27;text&#x27;):&#x27;&#x27;}&lt;/section&gt;`+continueLine(currentPending,false,true)+otherWork;
+  const nextBlock=`&lt;section class=&quot;gp-next-card&quot;&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${next&amp;&amp;advice.canPrepare!==false?`${arrangementLabel(next)} · ${h(next.appointment)}`:advice.canPrepare===false?&#x27;目前情况&#x27;:&#x27;AI建议&#x27;}&lt;/p&gt;&lt;h3&gt;${h(advice.canPrepare===false?advice.title:nextTitle||advice.title)}&lt;/h3&gt;${advice.canPrepare===false?`&lt;p class=&quot;gp-quiet&quot;&gt;${h(advice.detail)}&lt;/p&gt;`:&#x27;&#x27;}${advice.canPrepare===false?&#x27;&#x27;:btn(related?h(related.label):next?.kind===&#x27;内部准备&#x27;?&#x27;看相关产品&#x27;:hasPreparedDraft?&#x27;接着用准备稿&#x27;:advice.kind===&#x27;report&#x27;?&#x27;准备怎么回访&#x27;:advice.kind===&#x27;product&#x27;?&#x27;准备讲解&#x27;:&#x27;准备怎么说&#x27;,related?&#x27;resume&#x27;:next?&#x27;customer-next&#x27;:&#x27;service-prepare&#x27;,related?.key||next?.id||&#x27;&#x27;,&#x27;secondary&#x27;)}${next?btn(&#x27;查看安排&#x27;,&#x27;open-task&#x27;,next.id,&#x27;text&#x27;):&#x27;&#x27;}${advice.canPrepare!==false?`&lt;details&gt;&lt;summary&gt;${next?&#x27;安排说明&#x27;:&#x27;为什么这样建议&#x27;}&lt;/summary&gt;&lt;p&gt;${h(advice.detail)}&lt;/p&gt;&lt;/details&gt;`:&#x27;&#x27;}&lt;/section&gt;`+continueLine(currentPending,false,true)+otherWork;
   const signal=availableSignal(c),signalFirst=Boolean(signal&amp;&amp;!ts.length&amp;&amp;!related&amp;&amp;!hasPreparedDraft&amp;&amp;advice.canPrepare!==false);
   const priorTasks=!next&amp;&amp;ts.length?`&lt;section class=&quot;gp-panel&quot;&gt;&lt;h3&gt;已记下的安排&lt;/h3&gt;${ts.map(t=&gt;row(t.title,t.appointment,&#x27;open-task&#x27;,t.id)).join(&#x27;&#x27;)}&lt;/section&gt;`:&#x27;&#x27;;
   const nextContent=priorTasks?priorTasks+continueLine(currentPending,false,true)+continueLine(olderPending,false,true)+customerSignalCard(c,true):signalFirst?customerSignalCard(c)+continueLine(currentPending,false,true)+otherWork:nextBlock+customerSignalCard(c,true);
   const memoHistory=`&lt;details class=&quot;gp-memo-history&quot;${s.customerSection===&#x27;记录&#x27;?&#x27; open&#x27;:&#x27;&#x27;}&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;全部备忘 · ${c.records.length}条&lt;/summary&gt;${c.records.map(r=&gt;row(r.when+&#x27; · &#x27;+r.title,r.text,&#x27;open-record&#x27;,r.id)).join(&#x27;&#x27;)||&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;还没有备忘，说一句就能记下来。&lt;/p&gt;&#x27;}&lt;/details&gt;`;
-  const detail=s.customerSection===&#x27;资料&#x27;?`${row(&#x27;基本资料&#x27;,c.relation,&#x27;customer-info&#x27;)}${row(&#x27;健康档案&#x27;,&#x27;本人、家人及测评报告&#x27;,&#x27;family&#x27;)}&lt;section class=&quot;gp-purchase-summary&quot;&gt;&lt;h3 class=&quot;gp-section-title&quot;&gt;购买记录&lt;/h3&gt;${c.purchases?.length?c.purchases.map((p,i)=&gt;p.recordId?row(p.text,&#x27;第&#x27;+(c.purchases.length-i)+&#x27;次购买记录 · 服务商记录&#x27;,&#x27;open-record&#x27;,p.recordId):`&lt;p&gt;${h(p.text)}&lt;/p&gt;`).join(&#x27;&#x27;):`&lt;p&gt;${h(c.purchase||&#x27;还没有购买记录&#x27;)}&lt;/p&gt;`}&lt;/section&gt;${row(&#x27;相关产品资料&#x27;,&#x27;&#x27;,&#x27;customer-products&#x27;)}&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;沟通经验&lt;/summary&gt;${row(&#x27;查看这位客户的经验&#x27;,&#x27;&#x27;,&#x27;customer-experience&#x27;)}&lt;/details&gt;`:`&lt;section class=&quot;gp-memo-summary&quot;&gt;&lt;p class=&quot;gp-eyebrow&quot;&gt;${c.records[0]?.reportMemberId?&#x27;回访准备&#x27;:&#x27;最近聊到&#x27;}&lt;/p&gt;&lt;p class=&quot;gp-record-summary&quot;&gt;${h(currentNeed)}&lt;/p&gt;${c.purchase?`&lt;p class=&quot;gp-quiet&quot;&gt;买过：${h(c.purchase)}&lt;/p&gt;`:&#x27;&#x27;}${c.waiting?&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;资料已发，等待回复&lt;/p&gt;&#x27;:&#x27;&#x27;}${c.contactStopped?&#x27;&#x27;:c.pauseSales&amp;&amp;!c.waiting?&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;这次不追加产品推荐&lt;/p&gt;&#x27;:&#x27;&#x27;}&lt;/section&gt;${nextContent}${c.records.length?btn(&#x27;复盘这次沟通&#x27;,&#x27;customer-review-latest&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${memoHistory}`;
+  const detail=s.customerSection===&#x27;资料&#x27;?`${row(&#x27;基本资料&#x27;,c.relation,&#x27;customer-info&#x27;)}${row(&#x27;健康档案&#x27;,&#x27;本人、家人及测评报告&#x27;,&#x27;family&#x27;)}&lt;section class=&quot;gp-purchase-summary&quot;&gt;&lt;h3 class=&quot;gp-section-title&quot;&gt;购买记录&lt;/h3&gt;${c.purchases?.length?c.purchases.map((p,i)=&gt;p.recordId?row(p.text,&#x27;第&#x27;+(c.purchases.length-i)+&#x27;次购买记录 · 服务商记录&#x27;,&#x27;open-record&#x27;,p.recordId):`&lt;p&gt;${h(p.text)}&lt;/p&gt;`).join(&#x27;&#x27;):`&lt;p&gt;${h(c.purchase||&#x27;还没有购买记录&#x27;)}&lt;/p&gt;`}&lt;/section&gt;${row(&#x27;相关产品资料&#x27;,&#x27;&#x27;,&#x27;customer-products&#x27;)}&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;沟通经验&lt;/summary&gt;${row(&#x27;查看这位客户的经验&#x27;,&#x27;&#x27;,&#x27;customer-experience&#x27;)}&lt;/details&gt;`:`${nextContent}&lt;section class=&quot;gp-memo-summary&quot;&gt;&lt;p class=&quot;gp-eyebrow&quot;&gt;${c.records[0]?.reportMemberId?&#x27;回访准备&#x27;:&#x27;最近聊到&#x27;}&lt;/p&gt;&lt;p class=&quot;gp-record-summary&quot;&gt;${h(currentNeed)}&lt;/p&gt;${c.purchase?`&lt;p class=&quot;gp-quiet&quot;&gt;买过：${h(c.purchase)}&lt;/p&gt;`:&#x27;&#x27;}${c.waiting?&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;资料已发，等待回复&lt;/p&gt;&#x27;:&#x27;&#x27;}${c.contactStopped?&#x27;&#x27;:c.pauseSales&amp;&amp;!c.waiting?&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;这次不追加产品推荐&lt;/p&gt;&#x27;:&#x27;&#x27;}&lt;/section&gt;${c.records.length?btn(&#x27;复盘这次沟通&#x27;,&#x27;customer-review-latest&#x27;,&#x27;&#x27;,&#x27;text&#x27;):&#x27;&#x27;}${memoHistory}`;
   return `&lt;div class=&quot;gp-person&quot;&gt;&lt;span class=&quot;gp-avatar&quot;&gt;${h(c.name.slice(0,1))}&lt;/span&gt;&lt;div&gt;&lt;p class=&quot;gp-person-role&quot;&gt;客户&lt;/p&gt;&lt;h2&gt;${h(c.name)}&lt;/h2&gt;&lt;small&gt;${h(c.relation)}&lt;/small&gt;&lt;/div&gt;&lt;button class=&quot;gp-icon cursor-interaction&quot; data-action=&quot;customer-more&quot; aria-label=&quot;客户的更多操作&quot;&gt;${icon(&#x27;ellipsis&#x27;)}&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;备忘&#x27;,&#x27;customer-section&#x27;,&#x27;近况&#x27;,s.customerSection!==&#x27;资料&#x27;)}${chip(&#x27;资料&#x27;,&#x27;customer-section&#x27;,&#x27;资料&#x27;,s.customerSection===&#x27;资料&#x27;)}&lt;/div&gt;${detail}`;
  }
  if(s.view===&#x27;customer-more&#x27;)return `${top(c.name)}${row(&#x27;修改客户资料&#x27;,&#x27;&#x27;,&#x27;customer-info&#x27;)}${row(c.archived?&#x27;恢复到客户名单&#x27;:&#x27;归档这位客户&#x27;,&#x27;记录会保留&#x27;,&#x27;archive-confirm&#x27;)}`;
@@ -5290,7 +5333,7 @@ function renderCore(){preserveCompletedArrangements();const c=customer();const t
  if(s.view===&#x27;record&#x27;){
   const r=c.records.find(x=&gt;x.id===s.recordId),draft=r?s.preparations[recordPrepKey(c.id,r.id,s.taskId)]||&#x27;&#x27;:&#x27;&#x27;,pending=pendingWork(c.id,s.taskId||&#x27;&#x27;,s.recordId);
   const advice=serviceAdvice(c,s.recordId,s.taskId||&#x27;&#x27;);
-  const prepared=r?.completedTaskId?(r.fromRecordId&amp;&amp;c.records.some(item=&gt;item.id===r.fromRecordId)?btn(&#x27;看原沟通记录&#x27;,&#x27;open-record&#x27;,r.fromRecordId,&#x27;secondary&#x27;):&#x27;&#x27;):advice.canPrepare===false?`&lt;section class=&quot;gp-panel&quot;&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;${h(advice.title)}&lt;/h2&gt;&lt;p&gt;${h(advice.detail)}&lt;/p&gt;&lt;/section&gt;`:draft?`&lt;section class=&quot;gp-panel&quot;&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;准备的话&lt;/h2&gt;${s.recordCopyReady?`&lt;textarea class=&quot;gp-input&quot; rows=&quot;5&quot; readonly data-copy-ready aria-label=&quot;可复制的准备稿&quot;&gt;${h(draft)}&lt;/textarea&gt;`:`&lt;p class=&quot;gp-record-summary&quot;&gt;${h(draft)}&lt;/p&gt;`}${btn(&#x27;选中文字&#x27;,&#x27;record-copy-draft&#x27;)}${pending?btn(h(pending.label),&#x27;resume&#x27;,pending.key,&#x27;text&#x27;):btn(&#x27;修改或再练&#x27;,&#x27;record-open-prep&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/section&gt;`:pending?btn(h(pending.label),&#x27;resume&#x27;,pending.key):btn(&#x27;准备下次沟通&#x27;,&#x27;service-prepare&#x27;);
+  const prepared=r?.completedTaskId?(r.fromRecordId&amp;&amp;c.records.some(item=&gt;item.id===r.fromRecordId)?btn(&#x27;看原沟通记录&#x27;,&#x27;open-record&#x27;,r.fromRecordId,&#x27;secondary&#x27;):&#x27;&#x27;):advice.canPrepare===false?`&lt;section class=&quot;gp-panel&quot;&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;${h(advice.title)}&lt;/h2&gt;&lt;p&gt;${h(advice.detail)}&lt;/p&gt;&lt;/section&gt;`:draft?`&lt;section class=&quot;gp-panel&quot;&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;准备的话&lt;/h2&gt;${s.recordCopyReady?`&lt;textarea class=&quot;gp-input&quot; rows=&quot;5&quot; readonly data-copy-ready aria-label=&quot;可复制的准备稿&quot;&gt;${h(draft)}&lt;/textarea&gt;`:`&lt;p class=&quot;gp-record-summary&quot;&gt;${h(draft)}&lt;/p&gt;`}${btn(&#x27;选中文字&#x27;,&#x27;record-copy-draft&#x27;)}${pending?btn(h(pending.label),&#x27;resume&#x27;,pending.key,&#x27;text&#x27;):btn(&#x27;继续准备&#x27;,&#x27;record-open-prep&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/section&gt;`:pending?btn(h(pending.label),&#x27;resume&#x27;,pending.key):btn(&#x27;准备下次沟通&#x27;,&#x27;service-prepare&#x27;);
   return `${customerStamp()}${top(r?.title||&#x27;这次记录&#x27;)}&lt;p class=&quot;gp-quiet&quot;&gt;${h(r?.when)}&lt;/p&gt;&lt;p class=&quot;gp-transcript&quot;&gt;${h(r?.text)}&lt;/p&gt;${prepared}${draft||r?.completedTaskId?&#x27;&#x27;:btn(&#x27;复盘这次沟通&#x27;,&#x27;review-record&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;原话与记录修改&lt;/summary&gt;${r?.raw?`&lt;p&gt;${h(r.raw)}&lt;/p&gt;`:&#x27;&#x27;}${btn(&#x27;修改这条记录&#x27;,&#x27;record-edit&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${btn(&#x27;删除这条记录&#x27;,&#x27;record-delete-confirm&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/details&gt;`;
  }
  if(s.view===&#x27;record-delete-confirm&#x27;)return `${top(&#x27;删除这条记录？&#x27;)}&lt;p class=&quot;gp-panel&quot;&gt;${h(c.records.find(r=&gt;r.id===s.recordId)?.title)}&lt;br&gt;&lt;span class=&quot;gp-quiet&quot;&gt;只删除这条沟通记录，不更改另外确认过的待办。&lt;/span&gt;&lt;/p&gt;${btn(&#x27;确认删除&#x27;,&#x27;record-delete&#x27;)}${btn(&#x27;保留记录&#x27;,&#x27;back&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}`;
@@ -5310,7 +5353,7 @@ function renderCore(){preserveCompletedArrangements();const c=customer();const t
   const previous=s.history.at(-1),directReturn=previous?.view===(s.sourceRecordId?&#x27;record&#x27;:&#x27;customer&#x27;)&amp;&amp;previous.selectedId===s.selectedId&amp;&amp;(!s.sourceRecordId||(previous.recordId||&#x27;&#x27;)===s.sourceRecordId&amp;&amp;(previous.taskId||&#x27;&#x27;)===(s.taskId||&#x27;&#x27;));
   const text=s.prepFullEditing?&#x27;&#x27;:s.copyReady?`&lt;textarea class=&quot;gp-input gp-copy-text&quot; data-copy-ready readonly rows=&quot;6&quot; aria-label=&quot;可选中复制的话术&quot;&gt;${h(s.prepDraft)}&lt;/textarea&gt;`:`&lt;p class=&quot;gp-speech&quot;&gt;${h(s.prepDraft||makePrep())}&lt;/p&gt;`;
   const editor=s.prepFullEditing?`&lt;textarea class=&quot;gp-input&quot; data-field=&quot;prepDraft&quot; rows=&quot;5&quot; aria-label=&quot;修改讲稿&quot;&gt;${h(s.prepDraft)}&lt;/textarea&gt;${btn(&#x27;保存修改&#x27;,&#x27;prep-full-save&#x27;)}`:voiceEntry({mode:changing?s.prepEditMode||&#x27;voice&#x27;:&#x27;voice&#x27;,field:&#x27;prepCorrection&#x27;,value:s.prepCorrection||&#x27;&#x27;,voiceAction:&#x27;prep-speak&#x27;,typeAction:&#x27;prep-type&#x27;,sendAction:&#x27;prep-edit-done&#x27;,finishAction:&#x27;prep-edit-done&#x27;,label:&#x27;说哪里要改&#x27;,placeholder:&#x27;比如：是给女儿；换成鱼油…&#x27;,finishLabel:&#x27;说完了，更新&#x27;,sendLabel:&#x27;更新&#x27;,secondary:true});
-  return `${customerStamp()}${top(serviceAdvice(c,s.sourceRecordId,s.taskId).kind===&#x27;service-unresolved&#x27;?&#x27;先把问题弄清楚&#x27;:&#x27;可以这样说&#x27;)}${text}${editor}${changing?btn(&#x27;先不改&#x27;,&#x27;prep-edit&#x27;,&#x27;&#x27;,&#x27;text&#x27;):`${btn(&#x27;选中文字&#x27;,&#x27;prep-copy&#x27;)}&lt;div class=&quot;gp-inline-actions&quot;&gt;${btn(&#x27;先练一句&#x27;,&#x27;customer-practice&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${directReturn?&#x27;&#x27;:btn(s.sourceRecordId?&#x27;回原记录&#x27;:&#x27;回客户&#x27;,&#x27;prep-save&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/div&gt;&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;更多讲法与复盘&lt;/summary&gt;${btn(&#x27;编辑整段文字&#x27;,&#x27;prep-full-edit&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${row(&#x27;看一遍示范&#x27;,&#x27;&#x27;,&#x27;demo-practice&#x27;)}${s.sourceRecordId?row(&#x27;复盘这次沟通&#x27;,&#x27;&#x27;,&#x27;review-record&#x27;):&#x27;&#x27;}${row(&#x27;相关产品资料&#x27;,&#x27;&#x27;,&#x27;customer-products&#x27;)}&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;短一点&#x27;,&#x27;prep-short&#x27;)}${chip(&#x27;微信文字版&#x27;,&#x27;prep-wechat&#x27;)}&lt;/div&gt;&lt;/details&gt;`}`;
+  return `${customerStamp()}${top(serviceAdvice(c,s.sourceRecordId,s.taskId).kind===&#x27;service-unresolved&#x27;?&#x27;先把问题弄清楚&#x27;:&#x27;可以这样说&#x27;)}${text}${editor}${changing?btn(&#x27;先不改&#x27;,&#x27;prep-edit&#x27;,&#x27;&#x27;,&#x27;text&#x27;):`&lt;div class=&quot;gp-prep-actions&quot;&gt;${btn(&#x27;选中文字&#x27;,&#x27;prep-copy&#x27;)}${btn(&#x27;先练一句&#x27;,&#x27;customer-practice&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;)}&lt;/div&gt;${directReturn?&#x27;&#x27;:btn(s.sourceRecordId?&#x27;回原记录&#x27;:&#x27;回客户&#x27;,&#x27;prep-save&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${row(&#x27;按客户情况选产品&#x27;,&#x27;&#x27;,&#x27;customer-selection&#x27;)}${relatedCaseCard(relatedCaseContext())}&lt;details&gt;&lt;summary class=&quot;cursor-interaction&quot;&gt;更多讲法与复盘&lt;/summary&gt;${btn(&#x27;编辑整段文字&#x27;,&#x27;prep-full-edit&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}${row(&#x27;看一遍示范&#x27;,&#x27;&#x27;,&#x27;demo-practice&#x27;)}${s.sourceRecordId?row(&#x27;复盘这次沟通&#x27;,&#x27;&#x27;,&#x27;review-record&#x27;):&#x27;&#x27;}&lt;div class=&quot;gp-chips&quot;&gt;${chip(&#x27;短一点&#x27;,&#x27;prep-short&#x27;)}${chip(&#x27;微信文字版&#x27;,&#x27;prep-wechat&#x27;)}&lt;/div&gt;&lt;/details&gt;`}`;
  }
   if(s.view===&#x27;review-record&#x27;){let r=c.records.find(x=&gt;x.id===s.recordId)||c.records[0];return `${customerStamp()}${top(&#x27;这次只改进一点&#x27;)}&lt;p class=&quot;gp-message&quot;&gt;${h(r?.text||c.need)}&lt;/p&gt;&lt;div class=&quot;gp-panel&quot;&gt;&lt;h3&gt;${h(serviceAdvice(c,s.recordId,s.taskId).title)}&lt;/h3&gt;&lt;p&gt;${h(serviceAdvice(c,s.recordId,s.taskId).detail)}&lt;/p&gt;&lt;/div&gt;${btn(&#x27;把这句话练一次&#x27;,&#x27;customer-practice&#x27;)}${serviceAdvice(c,s.recordId,s.taskId).canPrepare===false?&#x27;&#x27;:btn(&#x27;放进下次准备&#x27;,&#x27;prepare&#x27;,&#x27;&#x27;,&#x27;secondary&#x27;)}${btn(&#x27;整理为沟通经验&#x27;,&#x27;customer-experience&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}`;}
  if(s.view===&#x27;attachments&#x27;)return `${top(&#x27;带入材料&#x27;)}&lt;div class=&quot;gp-stack&quot;&gt;${row(&#x27;拍照或选图片&#x27;,&#x27;聊天截图、产品包装&#x27;,&#x27;attachment-demo&#x27;,&#x27;image&#x27;)}${row(&#x27;已有录音&#x27;,&#x27;&#x27;,&#x27;attachment-demo&#x27;,&#x27;audio&#x27;)}${row(&#x27;文件或客户名单&#x27;,&#x27;&#x27;,&#x27;import&#x27;)}${row(&#x27;粘贴文字&#x27;,&#x27;&#x27;,&#x27;voice-text&#x27;)}&lt;/div&gt;`;
@@ -5327,7 +5370,10 @@ function renderCore(){preserveCompletedArrangements();const c=customer();const t
  if(s.view===&#x27;profile&#x27;)return renderMyBusiness();
  if(s.view===&#x27;income-details&#x27;)return renderIncomeDetails();
  if(s.view===&#x27;settings&#x27;)return `${top(&#x27;使用帮助&#x27;)}&lt;div class=&quot;gp-help-list&quot;&gt;&lt;h3&gt;说一段，就能记&lt;/h3&gt;&lt;p&gt;客户是谁、聊了什么、约了什么，一次说清。整理后只改不对的地方。&lt;/p&gt;&lt;h3&gt;离开了，还能接着做&lt;/h3&gt;&lt;p&gt;未说完或未发出的内容，可以从助理或原客户继续。&lt;/p&gt;&lt;h3&gt;讲不顺，就练一次&lt;/h3&gt;&lt;p&gt;产品讲解和客户沟通都能接着练，练完回到原来的事情。&lt;/p&gt;&lt;/div&gt;${row(&#x27;提个使用建议&#x27;,&#x27;&#x27;,&#x27;feedback&#x27;)}`;
- if(s.view===&#x27;identity&#x27;)return `${top(&#x27;服务商身份与协议&#x27;)}&lt;div class=&quot;gp-panel&quot;&gt;&lt;h3&gt;${s.identity===&#x27;已办好&#x27;?&#x27;身份已确认，协议已签署&#x27;:s.identity===&#x27;待签署&#x27;?&#x27;待签署协议&#x27;:&#x27;请先确认身份资料&#x27;}&lt;/h3&gt;&lt;p&gt;${s.identity===&#x27;已办好&#x27;?&#x27;可以开始服务客户。&#x27;:s.identity===&#x27;待签署&#x27;?&#x27;身份资料已确认，请签署服务协议。&#x27;:&#x27;确认本人资料后，再签署服务协议。&#x27;}&lt;/p&gt;&lt;/div&gt;${s.identity!==&#x27;已办好&#x27;?btn(s.identity===&#x27;待签署&#x27;?&#x27;签署服务协议&#x27;:&#x27;确认身份资料&#x27;,&#x27;identity-handoff&#x27;):btn(&#x27;回到助理&#x27;,&#x27;nav&#x27;,&#x27;assistant&#x27;)}&lt;div class=&quot;gp-divider&quot;&gt;&lt;/div&gt;&lt;h3 class=&quot;gp-section-title&quot;&gt;${s.identity===&#x27;已办好&#x27;?&#x27;接下来可以做&#x27;:&#x27;学习可以先开始&#x27;}&lt;/h3&gt;${s.identity===&#x27;已办好&#x27;?&#x27;&#x27;:&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;办理期间也可以先学习、记客户。&lt;/p&gt;&#x27;}${row(&#x27;从一位客户开始&#x27;,&#x27;不必一次整理很多人&#x27;,&#x27;customer-add&#x27;)}${row(&#x27;看新人课程&#x27;,s.identity===&#x27;已办好&#x27;?&#x27;&#x27;: &#x27;随时可以返回继续办理&#x27;,&#x27;learning&#x27;)}`;
+ if(s.view===&#x27;identity&#x27;){
+  const confirmed=s.identity===&#x27;已办好&#x27;||s.identity===&#x27;待签署&#x27;,signed=s.identity===&#x27;已办好&#x27;;
+  return `${top(&#x27;服务商身份&#x27;)}&lt;div class=&quot;gp-identity-status&quot;&gt;&lt;div&gt;&lt;span&gt;身份资料&lt;/span&gt;&lt;strong data-complete=&quot;${confirmed}&quot;&gt;${confirmed?icon(&#x27;check&#x27;):&#x27;&#x27;}${confirmed?&#x27;已确认&#x27;:&#x27;待确认&#x27;}&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;服务协议&lt;/span&gt;&lt;strong data-complete=&quot;${signed}&quot;&gt;${signed?icon(&#x27;check&#x27;):&#x27;&#x27;}${signed?&#x27;已签署&#x27;:&#x27;待签署&#x27;}&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;${signed?&#x27;&#x27;:btn(confirmed?&#x27;签署服务协议&#x27;:&#x27;确认身份资料&#x27;,&#x27;identity-handoff&#x27;)}${signed?&#x27;&#x27;:&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;办理前也可以学习、记客户。&lt;/p&gt;&#x27;}${row(&#x27;去学习&#x27;,&#x27;&#x27;,&#x27;learning&#x27;)}${row(&#x27;记录一位客户&#x27;,&#x27;&#x27;,&#x27;customer-add&#x27;)}`;
+ }
  if(s.view===&#x27;identity-handoff&#x27;)return `${top(&#x27;办理页面演示&#x27;)}&lt;div class=&quot;gp-panel&quot;&gt;&lt;p&gt;${s.identity===&#x27;待签署&#x27;?&#x27;确认服务协议&#x27;:&#x27;确认本人身份资料&#x27;}&lt;/p&gt;&lt;p class=&quot;gp-quiet&quot;&gt;这里演示外部办理后的返回，不提交真实资料或协议。&lt;/p&gt;&lt;/div&gt;${btn(&#x27;演示办理完成并返回&#x27;,&#x27;identity-complete&#x27;)}${btn(&#x27;暂不办理，返回&#x27;,&#x27;identity&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}`;
  if(s.view===&#x27;feedback&#x27;)return `${top(&#x27;哪一点不顺手？&#x27;)}&lt;textarea class=&quot;gp-input&quot; rows=&quot;4&quot; data-field=&quot;suggestion&quot; aria-label=&quot;使用建议&quot; placeholder=&quot;写一句遇到的问题…&quot;&gt;${h(s.suggestion||&#x27;&#x27;)}&lt;/textarea&gt;${btn(&#x27;记下这个建议&#x27;,&#x27;feedback-save&#x27;)}${s.feedbackSaved?&#x27;&lt;p class=&quot;gp-highlight&quot;&gt;建议已留在本次演示中，未发送给外部人员。&lt;/p&gt;&#x27;:&#x27;&#x27;}`;
  if(s.view===&#x27;ka&#x27;)return `${top(&#x27;团队需要哪些支持&#x27;,&#x27;仅查看 · 演示数据&#x27;)}&lt;p class=&quot;gp-quiet&quot;&gt;根据沟通、学习与服务记录整理，无需另行填报。&lt;/p&gt;${row(&#x27;新品的区别讲不清&#x27;,&#x27;查看相关准备和学习情况&#x27;,&#x27;ka-topic&#x27;,&#x27;产品讲解&#x27;)}${row(&#x27;成交后不知道怎么回访&#x27;,&#x27;查看服务阶段的共性问题&#x27;,&#x27;ka-topic&#x27;,&#x27;售后服务&#x27;)}${row(&#x27;资料还缺什么&#x27;,&#x27;包装用法、现售价格等待有效资料&#x27;,&#x27;ka-topic&#x27;,&#x27;资料缺口&#x27;)}${btn(&#x27;回服务商视角&#x27;,&#x27;nav&#x27;,&#x27;assistant&#x27;,&#x27;text&#x27;)}`;
@@ -5335,27 +5381,25 @@ function renderCore(){preserveCompletedArrangements();const c=customer();const t
  if(s.view===&#x27;ka-customer&#x27;){const kc=customer(s.kaCustomer);return `${top(kc.name+&#x27;的进展&#x27;)}&lt;p class=&quot;gp-quiet&quot;&gt;${h(kc.relation)}&lt;/p&gt;&lt;p class=&quot;gp-status&quot;&gt;仅查看&lt;/p&gt;&lt;p class=&quot;gp-summary&quot;&gt;${h(kc.need)}&lt;/p&gt;&lt;h3 class=&quot;gp-section-title&quot;&gt;已记录的下一步&lt;/h3&gt;${activeTasks(kc.id).map(t=&gt;`&lt;p class=&quot;gp-panel&quot;&gt;${h(t.title)} · ${h(t.appointment)}&lt;/p&gt;`).join(&#x27;&#x27;)||&#x27;&lt;p class=&quot;gp-quiet&quot;&gt;暂无已确认事项。&lt;/p&gt;&#x27;}&lt;h3 class=&quot;gp-section-title&quot;&gt;最近记录&lt;/h3&gt;${kc.records.slice(0,2).map(r=&gt;`&lt;div class=&quot;gp-result&quot;&gt;&lt;p&gt;${h(r.title)}&lt;/p&gt;&lt;p class=&quot;gp-quiet&quot;&gt;${h(r.text)}&lt;/p&gt;&lt;/div&gt;`).join(&#x27;&#x27;)}`;}
  return null;
 }
-function renderApp(){const rootTabs={home:&#x27;assistant&#x27;,customers:&#x27;customers&#x27;,learning:&#x27;learning&#x27;,profile:&#x27;profile&#x27;};if(rootTabs[s.view])s.tab=rootTabs[s.view];const pageKey=JSON.stringify([s.view,s.standalone?&#x27;&#x27;:s.selectedId,s.taskId||&#x27;&#x27;,s.recordId||s.sourceRecordId||&#x27;&#x27;,s.view===&#x27;customer&#x27;?s.customerSection:&#x27;&#x27;,s.view===&#x27;product&#x27;?s.productId:&#x27;&#x27;,learningUI.studyPageKey()]),pageChanged=pageKey!==renderedPageKey,previousScroll=main.scrollTop;const isRoot=[&#x27;home&#x27;,&#x27;customers&#x27;,&#x27;learning&#x27;,&#x27;profile&#x27;].includes(s.view),previous=s.history.at(-1),backLabel=({products:&#x27;产品列表&#x27;,product:&#x27;产品详情&#x27;,compare:&#x27;产品比较&#x27;,selection:&#x27;选品&#x27;,knowledge:&#x27;问答&#x27;,tool:&#x27;测评邀请&#x27;,family:&#x27;健康档案&#x27;,member:&#x27;家人资料&#x27;,identity:&#x27;身份与协议&#x27;,tasks:&#x27;客户安排&#x27;,task:&#x27;安排详情&#x27;,customers:&#x27;客户名单&#x27;,customer:&#x27;客户&#x27;,record:&#x27;原记录&#x27;,prepare:&#x27;准备稿&#x27;,introduction:&#x27;讲解&#x27;,review:&#x27;整理结果&#x27;,saved:&#x27;已保存记录&#x27;,voice:&#x27;刚才的话&#x27;,input:&#x27;输入内容&#x27;,learning:&#x27;学习&#x27;,&#x27;learning-category&#x27;:&#x27;课程分类&#x27;,course:&#x27;课程目录&#x27;,lesson:&#x27;课程内容&#x27;,quiz:&#x27;知识测验&#x27;,practice:&#x27;对练&#x27;,&#x27;practice-result&#x27;:&#x27;练习结果&#x27;,profile:&#x27;我的&#x27;,&#x27;income-details&#x27;:&#x27;收入明细&#x27;,home:&#x27;助理&#x27;})[previous?.view]||&#x27;返回&#x27;;header.innerHTML=`&lt;div class=&quot;gp-header-side&quot;&gt;${isRoot?&#x27;&lt;span class=&quot;gp-brand&quot;&gt;AI成长官&lt;/span&gt;&#x27;:`&lt;button class=&quot;gp-header-text cursor-interaction&quot; data-action=&quot;back&quot; aria-label=&quot;${backLabel===&#x27;返回&#x27;?&#x27;返回&#x27;:&#x27;返回&#x27;+h(backLabel)}&quot;&gt;${icon(&#x27;arrow-left&#x27;)}${h(backLabel)}&lt;/button&gt;`}&lt;/div&gt;`;
+function renderApp(){if(s.view===&#x27;income-details&#x27;){s.view=&#x27;profile&#x27;;s.tab=&#x27;profile&#x27;;}const rootTabs={home:&#x27;assistant&#x27;,customers:&#x27;customers&#x27;,learning:&#x27;learning&#x27;,profile:&#x27;profile&#x27;};if(rootTabs[s.view])s.tab=rootTabs[s.view];const pageKey=JSON.stringify([s.view,s.standalone?&#x27;&#x27;:s.selectedId,s.taskId||&#x27;&#x27;,s.recordId||s.sourceRecordId||&#x27;&#x27;,s.view===&#x27;customer&#x27;?s.customerSection:&#x27;&#x27;,s.view===&#x27;product&#x27;?s.productId:&#x27;&#x27;,learningUI.studyPageKey()]),pageChanged=pageKey!==renderedPageKey,previousScroll=main.scrollTop;const isRoot=[&#x27;home&#x27;,&#x27;customers&#x27;,&#x27;learning&#x27;,&#x27;profile&#x27;].includes(s.view),previous=s.history.at(-1),backLabel=({products:&#x27;产品列表&#x27;,product:&#x27;产品详情&#x27;,compare:&#x27;产品比较&#x27;,selection:&#x27;选品&#x27;,knowledge:&#x27;问答&#x27;,tool:&#x27;测评邀请&#x27;,family:&#x27;健康档案&#x27;,member:&#x27;家人资料&#x27;,identity:&#x27;身份与协议&#x27;,tasks:&#x27;客户安排&#x27;,task:&#x27;安排详情&#x27;,customers:&#x27;客户名单&#x27;,customer:&#x27;客户&#x27;,record:&#x27;原记录&#x27;,prepare:&#x27;准备稿&#x27;,introduction:&#x27;讲解&#x27;,review:&#x27;整理结果&#x27;,saved:&#x27;已保存记录&#x27;,voice:&#x27;刚才的话&#x27;,input:&#x27;输入内容&#x27;,learning:&#x27;学习&#x27;,&#x27;learning-category&#x27;:&#x27;课程分类&#x27;,course:&#x27;课程目录&#x27;,lesson:&#x27;课程内容&#x27;,quiz:&#x27;知识测验&#x27;,practice:&#x27;对练&#x27;,&#x27;practice-result&#x27;:&#x27;练习结果&#x27;,profile:&#x27;我的&#x27;,&#x27;case-preview&#x27;:&#x27;案例预览&#x27;,&#x27;income-details&#x27;:&#x27;收入明细&#x27;,home:&#x27;助理&#x27;})[previous?.view]||&#x27;返回&#x27;;header.innerHTML=`&lt;div class=&quot;gp-header-side&quot;&gt;${isRoot?&#x27;&lt;span class=&quot;gp-brand&quot;&gt;AI成长官&lt;/span&gt;&#x27;:`&lt;button class=&quot;gp-header-text cursor-interaction&quot; data-action=&quot;back&quot; aria-label=&quot;${backLabel===&#x27;返回&#x27;?&#x27;返回&#x27;:&#x27;返回&#x27;+h(backLabel)}&quot;&gt;${icon(&#x27;arrow-left&#x27;)}${h(backLabel)}&lt;/button&gt;`}&lt;/div&gt;`;
  const studyReturn=learningUI.studyReturn();if(studyReturn)header.innerHTML=`&lt;div class=&quot;gp-header-side&quot;&gt;&lt;button class=&quot;gp-header-text cursor-interaction&quot; data-action=&quot;${studyReturn.action}&quot; aria-label=&quot;返回${h(studyReturn.label)}的原记录&quot;&gt;${icon(&#x27;arrow-left&#x27;)}${h(studyReturn.label)}&lt;/button&gt;&lt;/div&gt;`;
  let content=renderCore();if(content===null)content=productUI.render(s.view);if(content===null||content===undefined)content=learningUI.render(s.view);if(content===null||content===undefined)content=`${top(&#x27;接着刚才的事&#x27;)}${btn(&#x27;回到助理&#x27;,&#x27;nav&#x27;,&#x27;assistant&#x27;)}`;
  main.innerHTML=(s.notice?`&lt;div class=&quot;gp-notice&quot; role=&quot;status&quot;&gt;${h(s.notice)}&lt;/div&gt;`:&#x27;&#x27;)+content;
  renderInputDock();
  dockPageVoiceEntry();
  main.scrollTop=pageChanged?0:previousScroll;
- if(s.view===&#x27;profile&#x27;&amp;&amp;s.personalBusiness?.restoreView){const m=personalBusiness(),v=m.returnUI;m.restoreView=false;if(v){const detail=main.querySelector(&#x27;[data-benefit-details]&#x27;);if(detail)detail.open=v.benefitOpen;main.scrollTop=v.scroll;}}
- if(s.view===&#x27;income-details&#x27;&amp;&amp;s.personalBusiness?.restoreIncomeView){const m=personalBusiness();m.restoreIncomeView=false;main.scrollTop=m.incomeReturnUI?.scroll||0;}
  if(pageChanged){main.scrollLeft=0;window.scrollTo({top:0,left:0,behavior:&#x27;instant&#x27;});}
  renderedPageKey=pageKey;
  if(s.focusCompose&amp;&amp;s.view===&#x27;input&#x27;){s.focusCompose=false;const input=inputDock.querySelector(&#x27;[data-field=&quot;inputText&quot;]&#x27;);input?.focus();input?.setSelectionRange(input.value.length,input.value.length);}
  const activeEntry=[...root.querySelectorAll(&#x27;[data-voice-mode=&quot;typing&quot;], [data-voice-mode=&quot;recording&quot;]&#x27;)].find(entry=&gt;!entry.closest(&#x27;[hidden]&#x27;)&amp;&amp;!entry.closest(&#x27;details:not([open])&#x27;));
  if(activeEntry){root.dataset.inputState=activeEntry.dataset.voiceMode===&#x27;typing&#x27;?&#x27;typing&#x27;:&#x27;speaking&#x27;;const text=activeEntry.querySelector(&#x27;textarea&#x27;);if(text){text.focus();text.setSelectionRange(text.value.length,text.value.length);}}
  const readyCopy=main.querySelector(&#x27;[data-copy-ready]&#x27;);if(readyCopy){readyCopy.focus();readyCopy.select();}
- nav.hidden=s.view.startsWith(&#x27;ka&#x27;)||[&#x27;input&#x27;,&#x27;voice&#x27;].includes(s.view)||Boolean(activeEntry);nav.innerHTML=[[&#x27;assistant&#x27;,&#x27;message-circle&#x27;,&#x27;助理&#x27;],[&#x27;customers&#x27;,&#x27;users-round&#x27;,&#x27;客户&#x27;],[&#x27;learning&#x27;,&#x27;book-open&#x27;,&#x27;学习&#x27;],[&#x27;profile&#x27;,&#x27;user-round&#x27;,&#x27;我的&#x27;]].map(([id,i,label])=&gt;`&lt;button class=&quot;cursor-interaction&quot; data-action=&quot;nav&quot; data-value=&quot;${id}&quot; ${s.tab===id?&#x27;aria-current=&quot;page&quot;&#x27;:&#x27;&#x27;}&gt;${icon(i)}&lt;span&gt;${label}&lt;/span&gt;&lt;/button&gt;`).join(&#x27;&#x27;);root.querySelector(&#x27;[data-demo]&#x27;).value=([&#x27;profile&#x27;,&#x27;income-details&#x27;].includes(s.view)||s.view===&#x27;knowledge&#x27;&amp;&amp;(s.productUI?.lastKnowledgeKind===&#x27;benefit&#x27;||[&#x27;profile&#x27;,&#x27;income-details&#x27;].includes(s.history.at(-1)?.view)))&amp;&amp;!benefitProgress().identityPending?&#x27;benefit-&#x27;+benefitProgress().which:s.scenario;
+ nav.hidden=s.view.startsWith(&#x27;ka&#x27;)||[&#x27;input&#x27;,&#x27;voice&#x27;].includes(s.view)||Boolean(activeEntry);nav.innerHTML=[[&#x27;assistant&#x27;,&#x27;message-circle&#x27;,&#x27;助理&#x27;],[&#x27;customers&#x27;,&#x27;users-round&#x27;,&#x27;客户&#x27;],[&#x27;learning&#x27;,&#x27;book-open&#x27;,&#x27;学习&#x27;],[&#x27;profile&#x27;,&#x27;user-round&#x27;,&#x27;我的&#x27;]].map(([id,i,label])=&gt;`&lt;button class=&quot;cursor-interaction&quot; data-action=&quot;nav&quot; data-value=&quot;${id}&quot; ${s.tab===id?&#x27;aria-current=&quot;page&quot;&#x27;:&#x27;&#x27;}&gt;${icon(i)}&lt;span&gt;${label}&lt;/span&gt;&lt;/button&gt;`).join(&#x27;&#x27;);root.querySelector(&#x27;[data-demo]&#x27;).value=s.scenario;
  if(globalThis.lucide)lucide.createIcons({attrs:{width:20,height:20}});
- if(s.view===&#x27;profile&#x27;&amp;&amp;s.personalBusiness?.scrollAnswer){s.personalBusiness.scrollAnswer=false;const answer=main.querySelector(&#x27;.gp-business-answer&#x27;);if(answer)main.scrollTop+=answer.getBoundingClientRect().top-main.getBoundingClientRect().top-12;}
 }
 function editOne(title,label,value,type,extra={}){s.edit={title,label,value,original:value,type,mode:&#x27;voice&#x27;,...extra};go(&#x27;edit-one&#x27;);}
 function coreAct(action,value){const c=customer(),t=currentTask();
+ if(relatedCaseAct(action,value))return true;
  if(actMyBusiness(action,value))return true;
  if(action===&#x27;back&#x27;){
   if([&#x27;practice&#x27;,&#x27;practice-result&#x27;,&#x27;practice-settings&#x27;].includes(s.view)&amp;&amp;s.history.at(-1)?.view===&#x27;lesson&#x27;&amp;&amp;s.learning.origin?.view===&#x27;lesson&#x27;){
@@ -5413,12 +5457,14 @@ function coreAct(action,value){const c=customer(),t=currentTask();
   capture();const text=s.inputText.trim();if(!text){showNotice(&#x27;先说一点，或输入一点内容。&#x27;);return true;}
   if(s.composeEdit||s.composeSource===&#x27;record&#x27;||s.voiceScope||text===samples[s.voiceKind]){organize();return true;}
   if(/^(?:请问[，, ]*|我想问[一下，, ]*)?(?:怎么|怎样|如何)/.test(text)&amp;&amp;/测评|报告|认证|签约|办理/.test(text)){openAnsweredQuestion(text);return true;}
+  if(isRelatedCaseRequest(text)){openRelatedCaseQuestion(text);return true;}
   if(isCustomerCommunication(text)){s.voiceScope=&#x27;&#x27;;s.voiceKind=&#x27;custom&#x27;;s.composeSource=&#x27;record&#x27;;organize();return true;}
   if(/加盟|分销|进货|补贴|佣金|返利|激励|奖励|纯利|净利|回本|政策|权益|公司|工具|云创|怎么办理|业绩|销售(?:额|情况|数据|怎么样|多少|目标|完成|统计)|(?:月|年|个人|本人|我的|团队).{0,6}销售|(?:月|年|我).{0,8}卖了多少|营收|营业额|成交额|个人目标|月目标|年目标|完成多少|还差多少|升.*董事|晋级|董事/.test(text)){openAnsweredQuestion(text);}
   else if(/朋友圈|社群|文案/.test(text)){s.standalone=true;s.taskId=&#x27;&#x27;;productUI.enterContext?.();s.contentRequest=text;go(&#x27;content-draft&#x27;);}
   else if(/课程|学习|续学/.test(text)){s.tab=&#x27;learning&#x27;;go(&#x27;learning&#x27;);}
   else if(/对练|陪练|练一句/.test(text)){s.standalone=true;s.taskId=&#x27;&#x27;;s.practiceContext={customerId:&#x27;&#x27;,topic:text,returnView:&#x27;home&#x27;};go(&#x27;practice&#x27;);}
-  else if(/产品|液体钙|脂20|选哪|比较/.test(text)&amp;&amp;!/(今天跟|答应|约好|买了一|说了)/.test(text)){s.standalone=true;s.taskId=&#x27;&#x27;;productUI.enterContext?.();s.selectionPrompt=text;go(&#x27;selection&#x27;);}
+  else if(productUI.mentioned(text).length&amp;&amp;!/选哪|怎么选|如何选|比较|对比|区别|不同|推荐|选品/.test(text)&amp;&amp;!/(今天跟|答应|约好|买了一|说了|记一下|记下来|帮我记|记录|备忘)/.test(text)){openAnsweredQuestion(text);}
+  else if((productUI.mentioned(text).length||/产品|液体钙|脂20|选哪|比较/.test(text))&amp;&amp;!/(今天跟|答应|约好|买了一|说了|记一下|记下来|帮我记|记录|备忘)/.test(text)){s.standalone=true;s.taskId=&#x27;&#x27;;productUI.enterContext?.();s.selectionPrompt=text;go(&#x27;selection&#x27;);}
   else{s.voiceScope=&#x27;&#x27;;s.voiceKind=&#x27;custom&#x27;;organize();}
   return true;
  }
@@ -5608,7 +5654,7 @@ root.addEventListener(&#x27;input&#x27;,e=&gt;{
  // Capture editable draft fields only; their submit actions still apply changes.
  save(true);
 });
-root.addEventListener(&#x27;change&#x27;,e=&gt;{if(e.target.matches(&#x27;[data-local-file]&#x27;)){s.attachmentName=e.target.files?.[0]?.name||&#x27;&#x27;;renderApp();return;}if(e.target.matches(&#x27;[data-demo]&#x27;)){capture();rememberWork();if(e.target.value.startsWith(&#x27;benefit-&#x27;)){const m=personalBusiness();m.benefitCase=e.target.value.slice(8);m.benefitDemo=true;m.open=false;m.answer=null;m.question=&#x27;&#x27;;m.returnUI=null;m.restoreView=false;s.view=&#x27;profile&#x27;;s.tab=&#x27;profile&#x27;;s.notice=&#x27;&#x27;;renderApp();main.scrollTop=0;save();return;}personalBusiness().benefitDemo=false;s.scenario=e.target.value;s.notice=&#x27;&#x27;;s.history=[];s.tab=&#x27;assistant&#x27;;s.inputText=&#x27;&#x27;;s.voicePaused=true;s.voicePlaying=false;if(s.scenario===&#x27;newcomer&#x27;){s.identity=&#x27;待完善&#x27;;s.view=&#x27;identity&#x27;;}else if(s.scenario===&#x27;ka&#x27;)s.view=&#x27;ka&#x27;;else{s.view=&#x27;home&#x27;;if(s.scenario===&#x27;family&#x27;||s.scenario===&#x27;sale&#x27;)s.selectedId=&#x27;chen&#x27;;if(s.scenario===&#x27;change&#x27;)s.selectedId=&#x27;wang&#x27;;s.standalone=true;}renderApp();save();}});
+root.addEventListener(&#x27;change&#x27;,e=&gt;{if(e.target.matches(&#x27;[data-local-file]&#x27;)){s.attachmentName=e.target.files?.[0]?.name||&#x27;&#x27;;renderApp();return;}if(e.target.matches(&#x27;[data-demo]&#x27;)){capture();rememberWork();s.scenario=e.target.value;s.notice=&#x27;&#x27;;s.history=[];s.tab=&#x27;assistant&#x27;;s.inputText=&#x27;&#x27;;s.voicePaused=true;s.voicePlaying=false;if(s.scenario===&#x27;newcomer&#x27;){s.identity=&#x27;待完善&#x27;;s.view=&#x27;identity&#x27;;}else if(s.scenario===&#x27;ka&#x27;)s.view=&#x27;ka&#x27;;else{s.view=&#x27;home&#x27;;if(s.scenario===&#x27;family&#x27;||s.scenario===&#x27;sale&#x27;)s.selectedId=&#x27;chen&#x27;;if(s.scenario===&#x27;change&#x27;)s.selectedId=&#x27;wang&#x27;;s.standalone=true;}renderApp();save();}});
 window.addEventListener(&#x27;openai:set_globals&#x27;,async e=&gt;{const state=e.detail?.globals?.widgetState;if(state){if(ownStateEchoes.has(JSON.stringify(state)))return;await restore(state);renderApp();}});
 renderApp();
 
