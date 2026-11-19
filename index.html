@@ -2416,7 +2416,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #growth-voice-complete .gp-add-customer{flex-shrink:0;white-space:nowrap;margin:0;padding:9px 12px}
 #growth-voice-complete .gp-add-customer svg{width:18px;height:18px}
-#growth-voice-complete .gp-learning-heading{margin-bottom:14px}
+#growth-voice-complete .gp-learning-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
 #growth-voice-complete .gp-learning-heading .gp-title{margin:0}
 #growth-voice-complete .gp-study-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;margin:0 0 18px;background:var(--gp-soft);border-radius:14px}
 #growth-voice-complete .gp-study-switch button{font:inherit;min-height:46px;padding:4px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--gp-muted);font-size:17px;font-weight:550}
@@ -6435,9 +6435,27 @@ function createLearningUI(ctx) {
     }
     return s.view===&#x27;lesson&#x27;&amp;&amp;L.origin?.customerId&amp;&amp;(L.recitation||studyQuestion().active)?{label:customer(L.origin.customerId)?.name||&#x27;原客户&#x27;,action:&#x27;learn-return&#x27;}:null;}
   const studyModes={course:&#x27;学课程&#x27;,quiz:&#x27;做测验&#x27;,practice:&#x27;练对话&#x27;};
+  const courseSearchText=chapters.map(c=&gt;[c.title,categoryName(c.category),...c.units.flat()].join(&#x27; &#x27;).toLowerCase());
+  function searchExpanded(){return L.searchOpen??Boolean(L.searchApplied&amp;&amp;L.search);}
+  function filterCourseList(input){
+    if(!input)return;
+    const query=input.value.trim().toLowerCase(),page=input.closest(&#x27;[data-course-library]&#x27;);
+    if(!page)return;
+    page.querySelector(&#x27;[data-course-browse]&#x27;).hidden=Boolean(query);
+    page.querySelector(&#x27;[data-course-results]&#x27;).hidden=!query;
+    let matches=0;
+    for(const item of page.querySelectorAll(&#x27;[data-course-match]&#x27;)){
+      const match=Boolean(query)&amp;&amp;courseSearchText[Number(item.dataset.courseMatch)].includes(query);
+      item.hidden=!match;
+      if(match)matches++;
+    }
+    page.querySelector(&#x27;[data-course-empty]&#x27;).hidden=!query||matches&gt;0;
+  }
   function studyHubHeader(mode){
     const buttons=Object.entries(studyModes).map(([id,label])=&gt;`&lt;button type=&quot;button&quot; class=&quot;cursor-interaction&quot; data-action=&quot;learn-hub-mode&quot; data-value=&quot;${id}&quot; aria-pressed=&quot;${mode===id}&quot;&gt;${label}&lt;/button&gt;`).join(&#x27;&#x27;);
-    return `&lt;div class=&quot;gp-learning-heading&quot;&gt;${title(&#x27;学习&#x27;)}&lt;/div&gt;&lt;div class=&quot;gp-study-switch&quot; role=&quot;group&quot; aria-label=&quot;学习方式&quot;&gt;${buttons}&lt;/div&gt;`;
+    const open=searchExpanded();
+    const finder=mode===&#x27;course&#x27;?`&lt;button type=&quot;button&quot; class=&quot;gp-customer-find&quot; data-action=&quot;learn-search-toggle&quot; aria-label=&quot;${open?&#x27;关闭课程搜索&#x27;:&#x27;搜索课程&#x27;}&quot; aria-expanded=&quot;${open}&quot;&gt;${icon(open?&#x27;x&#x27;:&#x27;search&#x27;)}&lt;/button&gt;`:&#x27;&#x27;;
+    return `&lt;div class=&quot;gp-learning-heading&quot;&gt;${title(&#x27;学习&#x27;)}${finder}&lt;/div&gt;&lt;div class=&quot;gp-study-switch&quot; role=&quot;group&quot; aria-label=&quot;学习方式&quot;&gt;${buttons}&lt;/div&gt;`;
   }
   function hubContinuation(mode){
     const work=ctx.studyHubWork?.(mode),module=work?.module;
@@ -6501,11 +6519,12 @@ function createLearningUI(ctx) {
       const mode=studyModes[L.hubMode]?L.hubMode:&#x27;course&#x27;,header=studyHubHeader(mode);
       if(mode===&#x27;quiz&#x27;)return header+quizLibrary();
       if(mode===&#x27;practice&#x27;)return header+practiceLibrary();
-      const query=L.search.trim();
-      const results=L.searchApplied&amp;&amp;query?chapters.map((c,i)=&gt;({c,i})).filter(({c})=&gt;[c.title,categoryName(c.category),...c.units.flat()].join(&#x27; &#x27;).toLowerCase().includes(query.toLowerCase())):[];
-      const search=`&lt;div class=&quot;gp-learning-search&quot;&gt;&lt;div class=&quot;gp-search&quot;&gt;${icon(&#x27;search&#x27;)}&lt;input class=&quot;gp-input&quot; data-field=&quot;learn-search&quot; aria-label=&quot;搜索课程或产品&quot; placeholder=&quot;搜索课程或产品&quot; value=&quot;${h(L.search)}&quot;&gt;&lt;/div&gt;&lt;button type=&quot;button&quot; class=&quot;gp-text cursor-interaction&quot; data-action=&quot;learn-search&quot;&gt;搜索&lt;/button&gt;&lt;/div&gt;`;
-      const courses=L.searchApplied&amp;&amp;query?`&lt;div class=&quot;gp-inline&quot;&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;搜索结果&lt;/h2&gt;${btn(&#x27;看全部课程&#x27;,&#x27;learn-search-clear&#x27;,&#x27;&#x27;,&#x27;text&#x27;)}&lt;/div&gt;${results.length?results.map(({c,i})=&gt;row(c.title,courseEntryHint(i,null)||categoryName(c.category)+&#x27; · &#x27;+c.units.length+&#x27;节&#x27;,&#x27;learn-course&#x27;,i)).join(&#x27;&#x27;):quiet(&#x27;暂时没找到，试试产品名或“测评”“用法”等关键词。&#x27;)}`:`&lt;div class=&quot;gp-course-grid&quot;&gt;${categories.map(c=&gt;`&lt;button type=&quot;button&quot; class=&quot;gp-course-tile cursor-interaction&quot; data-action=&quot;learn-category&quot; data-value=&quot;${c.id}&quot;&gt;&lt;span class=&quot;gp-course-icon&quot;&gt;${icon(c.icon)}&lt;/span&gt;&lt;strong&gt;${c.name}&lt;/strong&gt;&lt;small&gt;${c.subtitle}&lt;/small&gt;&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;`;
-      return header+(L.searchApplied&amp;&amp;query?&#x27;&#x27;:hubContinuation(&#x27;course&#x27;)||lastStudyResult(&#x27;course&#x27;))+search+courses;
+      const courses=`&lt;div class=&quot;gp-course-grid&quot;&gt;${categories.map(c=&gt;`&lt;button type=&quot;button&quot; class=&quot;gp-course-tile cursor-interaction&quot; data-action=&quot;learn-category&quot; data-value=&quot;${c.id}&quot;&gt;&lt;span class=&quot;gp-course-icon&quot;&gt;${icon(c.icon)}&lt;/span&gt;&lt;strong&gt;${c.name}&lt;/strong&gt;&lt;small&gt;${c.subtitle}&lt;/small&gt;&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;`;
+      const browse=(hubContinuation(&#x27;course&#x27;)||lastStudyResult(&#x27;course&#x27;))+courses;
+      if(!searchExpanded())return header+browse;
+      const search=`&lt;div class=&quot;gp-search&quot;&gt;${icon(&#x27;search&#x27;)}&lt;input type=&quot;search&quot; enterkeyhint=&quot;search&quot; class=&quot;gp-input&quot; data-field=&quot;learn-search&quot; aria-label=&quot;搜索课程&quot; placeholder=&quot;输入课程名或产品名&quot; value=&quot;${h(L.search)}&quot;&gt;&lt;/div&gt;`;
+      const results=chapters.map((c,i)=&gt;`&lt;div data-course-match=&quot;${i}&quot;&gt;${row(c.title,courseEntryHint(i,null)||categoryName(c.category)+&#x27; · &#x27;+c.units.length+&#x27;节&#x27;,&#x27;learn-course&#x27;,i)}&lt;/div&gt;`).join(&#x27;&#x27;);
+      return header+`&lt;section data-course-library&gt;${search}&lt;div data-course-browse&gt;${browse}&lt;/div&gt;&lt;div data-course-results hidden&gt;&lt;h2 class=&quot;gp-section-title&quot;&gt;搜索结果&lt;/h2&gt;${results}&lt;div data-course-empty&gt;${quiet(&#x27;没有找到相关课程，试试其他关键词。&#x27;)}&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;`;
     }
     if(view===&#x27;learning-category&#x27;){
       const category=categories.find(c=&gt;c.id===L.category)||categories[0];
@@ -6671,8 +6690,10 @@ function createLearningUI(ctx) {
       return true;
     }
     if(action===&#x27;learn-category&#x27;){L.category=value;L.origin=null;s.standalone=true;s.taskId=&#x27;&#x27;;s.sourceRecordId=&#x27;&#x27;;s.practiceContext={customerId:&#x27;&#x27;,taskId:&#x27;&#x27;,sourceRecordId:&#x27;&#x27;,returnView:&#x27;learning&#x27;};s.tab=&#x27;learning&#x27;;const list=categoryChapters(value);if(list.length===1)openCourse(list[0].i);else go(&#x27;learning-category&#x27;);}
-    else if(action===&#x27;learn-search&#x27;)L.searchApplied=Boolean(L.search.trim());
-    else if(action===&#x27;learn-search-clear&#x27;){L.search=&#x27;&#x27;;L.searchApplied=false;}
+    else if(action===&#x27;learn-search-toggle&#x27;){
+      L.searchOpen=!searchExpanded();
+      if(!L.searchOpen){L.search=&#x27;&#x27;;L.searchApplied=false;}
+    }
     else if(action===&#x27;learn-course&#x27;){
       const index=Number(value)||0,independent=[&#x27;learning&#x27;,&#x27;learning-category&#x27;,&#x27;learning-history&#x27;].includes(s.view);
       if(!independent&amp;&amp;index===L.ci){s.tab=&#x27;learning&#x27;;go(&#x27;course&#x27;);}
@@ -6928,7 +6949,7 @@ function createLearningUI(ctx) {
     else return false;
     return true;
   }
-  return {render,act,capture,snapshotWork,restoreWork,openProductCourse,openPolicyPractice,returnPolicyQuestion,productStatus,productCourseHint,workContinuationLabel,studyPageKey,resumeStudy,studyReturn,studyQuestionState:()=&gt;[&#x27;lesson&#x27;,&#x27;quiz&#x27;].includes(s.view)?studyQuestion():null,studyId:()=&gt;chapter().id,studyTitle:()=&gt;chapter().title};
+  return {render,act,capture,filterCourseList,snapshotWork,restoreWork,openProductCourse,openPolicyPractice,returnPolicyQuestion,productStatus,productCourseHint,workContinuationLabel,studyPageKey,resumeStudy,studyReturn,studyQuestionState:()=&gt;[&#x27;lesson&#x27;,&#x27;quiz&#x27;].includes(s.view)?studyQuestion():null,studyId:()=&gt;chapter().id,studyTitle:()=&gt;chapter().title};
 }
 
 const root=document.getElementById(&#x27;growth-voice-complete&#x27;);
@@ -8454,6 +8475,7 @@ function renderApp(){if(s.view===&#x27;income-details&#x27;){s.view=&#x27;profil
  const oldChatStamp=oldChat?.dataset.practiceChat,readingLatest=oldLast&amp;&amp;oldLast.getBoundingClientRect().bottom&lt;=main.getBoundingClientRect().bottom+12;
  const oldPracticeEntry=inputDock.querySelector(&#x27;.gp-voice-entry&#x27;)?.dataset.voiceMode;
  main.innerHTML=(s.notice?`&lt;div class=&quot;gp-notice&quot; role=&quot;status&quot;&gt;${h(s.notice)}&lt;/div&gt;`:&#x27;&#x27;)+content;
+ if(s.view===&#x27;learning&#x27;)learningUI.filterCourseList(main.querySelector(&#x27;[data-field=&quot;learn-search&quot;]&#x27;));
  renderInputDock();
  dockPageVoiceEntry();
  main.scrollTop=pageChanged?0:previousScroll;
@@ -8852,8 +8874,17 @@ renderCore=function(){if(s.view===&#x27;customer-update&#x27;){const c=customer(
   return `&lt;p class=&quot;gp-eyebrow&quot;&gt;${h(customer().name)}的家人&lt;/p&gt;${top(&#x27;这次是哪位家人？&#x27;)}${voiceEntry({mode:f.mode,field:&#x27;family-input&#x27;,value:f.text,voiceAction:&#x27;family-speak&#x27;,typeAction:&#x27;family-type&#x27;,sendAction:&#x27;family-organize&#x27;,finishAction:&#x27;family-organize&#x27;,label:&#x27;说说家人的情况&#x27;,finishLabel:&#x27;说完了，整理一下&#x27;})}`;
  }
  return originalRenderCore();};
-root.addEventListener(&#x27;click&#x27;,e=&gt;{const b=e.target.closest(&#x27;[data-action]&#x27;);if(!b||!root.contains(b)||b.disabled)return;const action=b.dataset.action,value=b.dataset.value||&#x27;&#x27;;if(s.view===&#x27;acquisition&#x27;&amp;&amp;creativeUI.act(action,value)){renderApp();return;}capture();const before=describeWork(action===&#x27;practice-adopt&#x27;);if(leaveWorkActions.has(action))rememberWork();else if(before&amp;&amp;s.pendingWork)delete s.pendingWork[before.key];if(action===&#x27;update-free&#x27;){startVoice(&#x27;custom&#x27;,s.selectedId);}else if(!coreAct(action,value)&amp;&amp;!productUI.act(action,value))learningUI.act(action,value);finishPending(action,before);renderApp();save();});
+root.addEventListener(&#x27;click&#x27;,e=&gt;{const b=e.target.closest(&#x27;[data-action]&#x27;);if(!b||!root.contains(b)||b.disabled)return;const action=b.dataset.action,value=b.dataset.value||&#x27;&#x27;;if(s.view===&#x27;acquisition&#x27;&amp;&amp;creativeUI.act(action,value)){renderApp();return;}capture();const before=describeWork(action===&#x27;practice-adopt&#x27;);if(leaveWorkActions.has(action))rememberWork();else if(before&amp;&amp;s.pendingWork)delete s.pendingWork[before.key];if(action===&#x27;update-free&#x27;){startVoice(&#x27;custom&#x27;,s.selectedId);}else if(!coreAct(action,value)&amp;&amp;!productUI.act(action,value))learningUI.act(action,value);finishPending(action,before);renderApp();
+ if(action===&#x27;learn-search-toggle&#x27;){
+  const finder=main.querySelector(&#x27;[data-field=&quot;learn-search&quot;]&#x27;)||main.querySelector(&#x27;[data-action=&quot;learn-search-toggle&quot;]&#x27;);
+  finder?.focus();
+ }
+ save();});
 root.addEventListener(&#x27;keydown&#x27;,e=&gt;{
+ if(!e.isComposing&amp;&amp;e.keyCode!==229&amp;&amp;e.target.matches(&#x27;[data-field=&quot;learn-search&quot;]&#x27;)){
+  if(e.key===&#x27;Enter&#x27;){e.preventDefault();e.target.blur();}
+  if(e.key===&#x27;Escape&#x27;){e.preventDefault();main.querySelector(&#x27;[data-action=&quot;learn-search-toggle&quot;]&#x27;)?.click();}
+ }
  if(e.key===&#x27;Escape&#x27;&amp;&amp;e.target.matches(&#x27;[data-field=&quot;customerSearch&quot;]&#x27;)){
   e.preventDefault();main.querySelector(&#x27;[data-action=&quot;customer-search-toggle&quot;]&#x27;)?.click();
  }
@@ -8867,6 +8898,7 @@ root.addEventListener(&#x27;input&#x27;,e=&gt;{
  if(s.view===&#x27;acquisition&#x27;&amp;&amp;creativeUI.input(e.target))return;
  if(!e.target.matches(&#x27;[data-field]&#x27;))return;
  capture();
+ if(e.target.matches(&#x27;[data-field=&quot;learn-search&quot;]&#x27;))learningUI.filterCourseList(e.target);
  if(e.target.matches(&#x27;[data-field=&quot;customerSearch&quot;]&#x27;)){const pos=e.target.selectionStart;s.customerSearch=e.target.value;renderApp();const q=root.querySelector(&#x27;[data-field=&quot;customerSearch&quot;]&#x27;);q?.focus();q?.setSelectionRange(pos,pos);}
  if(e.target.matches(&#x27;[data-field=&quot;learn-recitation&quot;]&#x27;)){const example=root.querySelector(&#x27;[data-action=&quot;learn-rec-example&quot;]&#x27;);if(example)example.hidden=Boolean(e.target.value.trim());}
  // Capture editable draft fields only; their submit actions still apply changes.
