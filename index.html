@@ -2278,6 +2278,63 @@ button.primary:not(:disabled):active,.qd-send:not(:disabled):active,.pr-chat-sen
 }
 
 </style>
+<style data-module="welcome-guide.css">
+#welcome-guide {
+  width: min(26rem, calc(100% - 28px));
+  max-height: calc(100dvh - 28px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 16px 52px #32201f33;
+  overscroll-behavior: contain;
+}
+#welcome-guide::backdrop { background: rgb(41 32 29 / 55%); }
+.guide-shell {
+  display: grid; grid-template-rows: auto minmax(0,1fr) auto;
+  height: min(25rem, calc(100dvh - 32px));
+  padding: 12px clamp(16px, 5vw, 26px) 20px;
+}
+.guide-head, .guide-controls, .guide-example-title, .guide-person, .guide-lesson, .guide-record, .guide-voice {
+  display: flex; align-items: center; gap: 10px;
+}
+.guide-head { justify-content: space-between; color: var(--muted); font-size: 1rem; }
+.guide-head b { margin-left: 6px; font-size: .9375rem; font-weight: 550; font-variant-numeric: tabular-nums; }
+.guide-head button, .guide-controls [data-guide="prev"], .guide-replay {
+  color: var(--muted); background: transparent; min-width: 44px; min-height: 44px;
+}
+.guide-content { overflow-y: auto; padding: 8px 0 12px; }
+.guide-content h2 { font-size: clamp(1.375rem, 5.8vw, 1.65rem); line-height: 1.35; outline: none; }
+.guide-content > p { margin: 8px 0 17px; line-height: 1.55; font-size: 1.0625rem; }
+.guide-example {
+  margin: 0; padding: 12px 14px 15px; background: #faf4ef;
+  border: 1px solid var(--line); border-radius: 14px;
+}
+.guide-example figcaption { color: var(--muted); margin-bottom: 8px; font-size: .875rem; }
+.guide-example-title { font-weight: 680; }
+.guide-meeting, .guide-person, .guide-lesson, .guide-question {
+  margin-top: 7px; padding: 10px 12px; background: var(--paper); border-radius: 9px;
+}
+.guide-meeting { display: grid; gap: 3px; }
+.guide-meeting strong, .guide-lesson small { color: var(--accent); }
+.guide-avatar, .guide-lesson > span {
+  display: inline-grid; place-items: center; flex: none; width: 36px; height: 36px;
+  background: var(--tint); color: var(--accent); font-weight: 650; border-radius: 50%;
+}
+.guide-person { flex-wrap: wrap; }
+.guide-record { margin-left: auto; gap: 4px; color: var(--accent); font-weight: 650; }
+.guide-voice { gap: 6px; margin-top: 10px; color: var(--muted); }
+.guide-lesson small { display: block; font-size: .9375rem; }
+.guide-lesson > span { color: white; background: var(--accent); }
+.guide-controls { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 12px; padding-top: 8px; }
+.guide-controls [data-guide="prev"][hidden] { display: inline-block !important; visibility: hidden; }
+.guide-controls [data-guide="next"] { min-height: 48px; font-size: 1.0625rem; }
+.guide-controls [data-guide="prev"] { padding-inline: 8px; }
+.guide-replay { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; }
+
+</style>
 </head>
 <body>
   <div class="workspace">
@@ -8355,7 +8412,101 @@ button.primary:not(:disabled):active,.qd-send:not(:disabled):active,.pr-chat-sen
 })();
 
 </script>
-  <script>
+  <script data-module="welcome-guide.js">
+(() => {
+  'use strict';
+
+  const seenKey = 'yun-chuang:family-service:welcome-seen';
+  const icon = name => window.app.icon(name);
+  const steps = [
+    {
+      page: '客户', title: '今天约了谁？',
+      hint: '客户页上方看约定。生日等近期提醒也在这里。',
+      sample: () => '<div class="guide-example-title">'+icon('calendar')+'今天约好的</div><div class="guide-meeting"><strong>今天下午 · 陈姐</strong><span>聊聊爸爸用营养粉的顾虑</span></div>'
+    },
+    {
+      page: '客户', title: '聊完了，记在哪里？',
+      hint: '在客户名字旁点「记沟通」，说一段就能记。点名字可以看档案。',
+      sample: () => '<div class="guide-example-title">我的客户</div><div class="guide-person"><span class="guide-avatar">陈</span><strong>陈姐</strong><span class="guide-record">'+icon('mic')+'记沟通</span></div>'
+    },
+    {
+      page: '问答', title: '碰到不懂的，直接问',
+      hint: '产品、政策、报告、客户怎么回，都可以在「问答」里说出来。',
+      sample: () => '<div class="guide-example-title">'+icon('box')+'产品知识</div><div class="guide-question">原味营养粉就是无糖的吗？</div><div class="guide-voice">'+icon('mic')+'说出你的问题</div>'
+    },
+    {
+      page: '学习', title: '见客户前，先练一遍',
+      hint: '在「学习」里学课程、练对话，下次回来可以接着练。',
+      sample: () => '<div class="guide-example-title">'+icon('book')+'销售技巧</div><div class="guide-lesson"><span>'+icon('play')+'</span><div><strong>第一次联系，怎么开口</strong><small>开始练</small></div></div>'
+    }
+  ];
+
+  function wasSeen() {
+    for (const store of ['localStorage','sessionStorage']) {
+      try { if (window[store].getItem(seenKey)) return true; } catch {}
+    }
+    return false;
+  }
+
+  function remember() {
+    for (const store of ['localStorage','sessionStorage']) {
+      try { window[store].setItem(seenKey, '1'); return; } catch {}
+    }
+  }
+
+  function open() {
+    if (document.getElementById('welcome-guide')) return;
+    const origin = document.activeElement;
+    const dialog = document.createElement('dialog');
+    dialog.id = 'welcome-guide';
+    dialog.setAttribute('aria-labelledby','guide-title');
+    dialog.setAttribute('aria-describedby','guide-hint');
+    dialog.innerHTML = '<div class="guide-shell"><header class="guide-head"><span>使用引导 <b id="guide-count"></b></span><button type="button" data-guide="skip">跳过</button></header>'+
+      '<div class="guide-content"><h2 id="guide-title" tabindex="-1"></h2><p id="guide-hint"></p><figure class="guide-example"><figcaption></figcaption><div class="guide-sample"></div></figure></div>'+
+      '<footer class="guide-controls"><button type="button" data-guide="prev">上一步</button><button type="button" class="primary" data-guide="next"></button></footer></div>';
+    document.body.append(dialog);
+    const title = dialog.querySelector('h2');
+    const prev = dialog.querySelector('[data-guide="prev"]');
+    const next = dialog.querySelector('[data-guide="next"]');
+    let index = 0;
+
+    function paint() {
+      const step = steps[index];
+      dialog.querySelector('#guide-count').textContent = (index+1)+' / '+steps.length;
+      title.textContent = step.title;
+      dialog.querySelector('#guide-hint').textContent = step.hint;
+      dialog.querySelector('figcaption').textContent = step.page+'页示意';
+      dialog.querySelector('.guide-sample').innerHTML = step.sample();
+      prev.hidden = index === 0;
+      next.textContent = index === steps.length-1 ? '看完了' : '下一步';
+      dialog.querySelector('.guide-content').scrollTop = 0;
+      if (dialog.open) title.focus({preventScroll:true});
+    }
+
+    dialog.addEventListener('click', event => {
+      const action = event.target.closest('[data-guide]')?.dataset.guide;
+      if (action === 'skip' || (action === 'next' && index === steps.length-1)) dialog.close();
+      else if (action === 'next' || action === 'prev') {
+        index += action === 'next' ? 1 : -1;
+        paint();
+      }
+    });
+    dialog.addEventListener('close', () => {
+      dialog.remove();
+      const target = origin && origin !== document.body && origin.isConnected ? origin : document.querySelector('#main');
+      target?.focus({preventScroll:true});
+    }, {once:true});
+    paint();
+    dialog.showModal();
+    remember();
+    title.focus({preventScroll:true});
+  }
+
+  window.WelcomeGuide = {open, firstVisit() { if (!wasSeen()) open(); }};
+})();
+
+</script>
+<script>
 (() => {
   'use strict';
   const storageKey = 'yun-chuang:family-service:phase-one:v1';
@@ -8396,6 +8547,8 @@ button.primary:not(:disabled):active,.qd-send:not(:disabled):active,.pr-chat-sen
     return {version:1,today:startDate,active:'chen',customers:[chen,lin]};
   }
   let state;try{state=JSON.parse(localStorage.getItem(storageKey)||'null')}catch{}
+  let returningVisitor=!!state;
+  try{returningVisitor ||= !!sessionStorage.getItem(storageKey+':route')}catch{}
   if(state?.version!==1 || !Array.isArray(state.customers) || !state.customers.length)state=seed();
   for(const c of state.customers){
     if(c.id==='lin'&&c.introduction===undefined&&c.messages.some(m=>m.id==='l1'&&m.isExample||m.id==='l1'&&m.text==='我上次买的营养粉还有，收到新订单通知了。'))c.introduction='熟人介绍';
@@ -8899,7 +9052,7 @@ button.primary:not(:disabled):active,.qd-send:not(:disabled):active,.pr-chat-sen
     ['salon','book','把一场沙龙变成团队经验','从现场提问做出讲稿、问答和练习']
   ];
   function sceneIndex(){
-    return '<div class="scene-page"><header class="scene-index-heading"><h1>从哪里开始体验？</h1><small>模拟数据</small></header><div class="scene-rows">'+demoScenes.map(([id,ic,title,hint])=>btn('scene-run','<span class="scene-icon">'+icon(ic)+'</span><span class="grow"><strong>'+title+'</strong><small>'+hint+'</small></span>'+icon('chevron'),'scene-row',attr('scene',id))).join('')+'</div></div>';
+    return '<div class="scene-page"><header class="scene-index-heading"><h1>从哪里开始体验？</h1><small>模拟数据</small></header><div class="scene-rows">'+demoScenes.map(([id,ic,title,hint])=>btn('scene-run','<span class="scene-icon">'+icon(ic)+'</span><span class="grow"><strong>'+title+'</strong><small>'+hint+'</small></span>'+icon('chevron'),'scene-row',attr('scene',id))).join('')+'</div>'+btn('welcome-guide',icon('info')+'使用引导','guide-replay')+'</div>';
   }
   function runScene(id){
     if(id==='family'){displayDemo('connected','wx-chen','chen/wecom-example/01');return;}
@@ -9099,6 +9252,7 @@ button.primary:not(:disabled):active,.qd-send:not(:disabled):active,.pr-chat-sen
   const app=window.app={s:state,get page(){return page},get u(){return u},customer,member,go,back,draw,save,saveRoute,toast,esc,icon,date:()=>state.today,receive,addTask,useSignal,forecast,openChat,openCapture,sourcePolicy,openSource,openCustomerRecord,latestCustomerRecord,openUsage,openLearn,openDesk,openQALibrary,returnToReportMetric,practiceFromQA,materialFromQA,learningArea,studyHome,studyBack,studyReturnLabel,practice,practiceClassic,practiceFromRecord,recordPracticeLink,inWecom,returnToWecom,dialog:viewDialog,closeDialog:close,pretty,uid};
   function handle(a,el){
     const data=el.dataset;
+    if(a==='welcome-guide'){window.WelcomeGuide.open();return true;}
     if(a.startsWith('match-'))return window.MatchStudio.act(a,el);
     if(a==='open-linked-report'){
       const c=customer(),m=c.members.find(person=>person.id===data.member);
@@ -9257,6 +9411,7 @@ button.primary:not(:disabled):active,.qd-send:not(:disabled):active,.pr-chat-sen
     }
   }
   draw(true);
+  if(!returningVisitor && page==='home')window.WelcomeGuide.firstVisit();
 })();
 
 </script>
