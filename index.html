@@ -979,7 +979,6 @@ button.phone-bubble{text-align:left;display:flex;align-items:baseline;gap:8px;wi
 .cm-directions button small {font-size:.96rem;line-height:1.5;color:#636363}
 .cm-directions button>.icon {width:16px;height:16px;color:#636363}
 .cm-directions button:active,.cm-change:active {background:#f7f7f7}
-.cm-choose>.cm-tools {margin-top:20px}
 .cm-choose .cm-product-choices {border-top:1px solid var(--map-line)}
 .cm-product-choices+.cm-course-group {margin-top:20px}
 .cm-course-group { margin-top: 10px }
@@ -1115,7 +1114,20 @@ button.phone-bubble{text-align:left;display:flex;align-items:baseline;gap:8px;wi
 .cm-direction-count {display:flex;align-items:center;gap:2px;white-space:nowrap;font-size:.91rem;color:#636363}
 .cm-direction-count .icon {width:14px;height:14px}
 .cm-tools {flex-wrap:wrap;gap:8px 10px}
-.cm-choose>.cm-tools,.cm-support {border:0;margin:20px 0 4px;padding:0}
+.cm-support {border:0;margin:20px 0 4px;padding:0}
+.cm-catalog-actions {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(8.1rem,100%),1fr));
+  gap:10px;margin-top:16px;
+}
+.cm-catalog-actions button {
+  display:flex;align-items:center;justify-content:center;gap:.4em;min-height:56px;
+  padding:10px 8px;border:1px solid #784035;border-radius:14px;
+  background:var(--study-accent,#894539);color:white;font-size:1.06rem;
+  font-weight:650;line-height:1.45;box-shadow:0 2px 4px #60382c16;
+}
+.cm-catalog-actions [data-act="open-salon"] {background:#f0f5ed;border-color:#96a991;color:#344f3d}
+.cm-catalog-actions button .icon {width:21px;height:21px}
+.cm-catalog-actions button:active {filter:brightness(.94)}
 .cm-tools button {background:#f7f7f7;padding:7px 12px;border-radius:12px;color:#333}
 .cm-focus-head {padding:14px 0 18px;gap:14px}
 .cm-map-progress {position:relative;flex-direction:row-reverse;justify-content:space-between;gap:15px}
@@ -1692,22 +1704,8 @@ button,summary,a,input,textarea,select{touch-action:manipulation}
 .meeting-actions{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:12px;align-items:center}
 .meeting-actions .record-rehearse{background:transparent;font-size:.9375rem;color:#553e37}
 .service-home .next-meeting .primary{min-height:46px;font-size:1rem;padding:8px 15px}
-.service-home .client-list{display:grid;gap:12px;background:transparent;border:0;border-radius:0;overflow:visible}
-.service-home .client-line{display:block;border:1px solid var(--line);border-radius:16px;background:white;padding:6px 12px}
-.home-person{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
-.home-actions{display:flex;align-items:center;gap:8px;margin-inline-start:auto}
-.home-person .customer-open{width:auto;max-width:100%;min-width:0;gap:7px;min-height:48px;flex:1 1 auto}
-.home-person .customer-open strong{overflow-wrap:anywhere}
-.home-person .customer-open>.icon,.home-clue>.icon{width:16px;height:16px;flex:none}
-.home-actions .home-last{padding:4px;min-height:44px;background:transparent;color:var(--muted);font-size:1rem;white-space:nowrap}
-.client-line .home-clue{display:flex;align-items:center;gap:9px;width:100%;min-height:44px;margin-top:2px;padding:7px 2px;border-top:1px solid var(--line);background:transparent;text-align:left;font-size:1rem;color:var(--ink)}
-.home-clue span{flex:1;overflow-wrap:anywhere}.home-clue>.icon{color:var(--muted)}
+.service-home .client-list{display:grid;gap:0;background:transparent;border:0;border-radius:0;overflow:visible}
 .home-no-plan{margin:0;padding:2px 0 4px;color:var(--muted);font-size:1rem}
-.client-line .customer-open strong{font-weight:690;font-size:1.17rem}
-.client-line .customer-open small{font-size:.87rem;color:var(--muted)}
-.client-line .avatar{width:40px;height:40px;border-radius:50%;background:#ffe2d9;color:#823c30}
-.client-line .avatar.sage{color:#415c42;background:#e1ebdc}
-.client-line .record-short{background:white;color:var(--ink);border:1px solid var(--line);border-radius:100px;min-height:44px;padding:6px 10px;font-size:.9375rem}
 .client-history{color:var(--ink);font-size:.9375rem}
 .client-history span:first-child,.client-history span:nth-child(2){font-size:.9375rem}
 .clue-summary .clue-row,.reminder-group .taskrow{border-color:var(--line);border-radius:12px}
@@ -1762,13 +1760,133 @@ button,summary,a,input,textarea,select{touch-action:manipulation}
   .service-home .schedule{grid-area:agenda}.service-home .roster{grid-area:roster}.service-home .clue-summary{grid-area:clues}
   #main>:is(.family-module,.yc-chat,.ms-page,.salon-studio,.ln-page,.qa-desk){max-width:800px;margin-inline:auto}
 }
-@media(max-width:350px){#main{padding-inline:12px}.date-leaf{min-width:47px}.next-meeting .meeting-actions{gap:5px}.service-home .client-line{padding-inline:11px}.meeting-layout{gap:8px}}
+@media(max-width:350px){#main{padding-inline:12px}.date-leaf{min-width:47px}.next-meeting .meeting-actions{gap:5px}.meeting-layout{gap:8px}}
 @media(prefers-reduced-motion:no-preference){
   #notice.show{animation:yc-notice .16s ease-out}
   @keyframes yc-notice{from{opacity:0;translate:0 3px}to{opacity:1;translate:0 0}}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 @media(prefers-contrast:more){:root{--muted:#43403e;--line:#96908b}.record-short,.fm-person,.ms-direct-action{outline:1px solid currentColor}}
+
+/* The customer landing page uses one warm accent for the next conversation. */
+.workspace:has(> #main[data-page="home"]) {
+  --ink:#342e2c; --muted:#655b56; --paper:#fffdfb; --soft:#f7f0ec;
+  --line:#e9dfd9; --accent:#8d4438; --pressed:#70352c; --tint:#f6e8e1;
+}
+.workspace:has(> #main[data-page="home"]) #top .brand {gap:9px;font-weight:665;letter-spacing:0}
+.workspace:has(> #main[data-page="home"]) #top .demo-entry {background:transparent;color:var(--muted);font-weight:550;gap:5px}
+#main[data-page="home"] .section-head {min-height:44px;margin:0 0 9px}
+#main[data-page="home"] .section-head h2 {font-size:1.29rem;line-height:1.4;letter-spacing:.025em;font-weight:650}
+#main[data-page="home"] .section-head .plain {font-weight:500;color:var(--muted)}
+#main[data-page="home"] .next-meeting {
+  position:relative; isolation:isolate; overflow:hidden; padding:19px 18px 17px;
+  border:0; border-radius:20px; background:linear-gradient(108deg,#f9ecdf 2%,#fae9e2 58%,#f4dfd7 100%);
+  box-shadow:inset 0 1px 0 #fffc, inset 0 0 0 1px #cb9f9038, 0 3px 9px #65322409;
+}
+#main[data-page="home"] .next-meeting::before {
+  content:"";position:absolute;z-index:-1;right:-85px;top:-100px;width:154px;height:154px;
+  border:1px solid #ffffff80;border-radius:50%;box-shadow:0 0 0 13px #ffffff17,0 0 0 26px #ffffff17;pointer-events:none;
+}
+#main[data-page="home"] .meeting-time {
+  color:#6f4e43; font-weight:520; font-size:1rem; line-height:1.5; margin:0 0 9px;gap:7px;
+}
+#main[data-page="home"] .meeting-layout h3 {
+  font-size:clamp(1.35rem,5.9vw,1.55rem);font-weight:650;line-height:1.42;letter-spacing:.012em;color:#352b28;
+}
+#main[data-page="home"] .meeting-layout h3 span {display:inline-block;max-width:100%;overflow-wrap:anywhere}
+#main[data-page="home"] .meeting-actions {gap:6px 14px;margin-top:15px}
+#main[data-page="home"] .meeting-actions .primary {
+  min-height:46px; padding:8px 17px; gap:9px; font-size:1.0625rem; font-weight:630; border-radius:12px;
+}
+#main[data-page="home"] .meeting-actions .record-rehearse {
+  min-height:44px; padding:6px 2px; font-size:1rem; color:#5e4640; white-space:normal; font-weight:530;
+}
+#main[data-page="home"] .home-upcoming {
+  display:flex; align-items:center; gap:10px; width:100%; min-height:48px;
+  margin-top:5px; padding:11px 1px 10px; color:var(--ink); text-align:start; background:transparent;
+}
+#main[data-page="home"] .home-upcoming > .icon:first-child {color:#875c46}
+#main[data-page="home"] .upcoming-copy {
+  flex:1; min-width:0; display:grid; gap:2px;
+  font-size:1rem; line-height:1.55;
+}
+#main[data-page="home"] .upcoming-copy strong {font-weight:620}
+#main[data-page="home"] .upcoming-action {
+  display:inline-flex;align-items:center;justify-content:center;gap:4px;
+  min-height:44px;padding:4px 11px;border-radius:10px;background:#f6ede7;
+  color:#754337;font-size:.94rem;font-weight:650;
+}
+#main[data-page="home"] .upcoming-action .icon {width:.9em;height:.9em}
+body:has(#main[data-page="home"]) #sheet {--accent:#8d4438;--pressed:#70352c}
+.birthday-date-form {display:grid;gap:8px}
+.birthday-date-form > p {margin:0 0 6px;color:var(--muted);font-size:1rem}
+.birthday-date-form .birthday-choice {
+  display:flex;align-items:center;gap:8px;width:100%;min-height:52px;padding:8px 12px;
+  text-align:start;color:var(--ink);background:var(--soft);border-radius:12px;font-size:1.04rem;
+}
+.birthday-choice strong {flex:1}.birthday-choice span {font-size:.94rem}
+.birthday-choice .icon {width:18px;height:18px}
+.birthday-date-form summary {display:list-item;min-height:44px;padding:10px 2px;cursor:pointer}
+.birthday-date-form > .plain {justify-self:start;min-height:44px}
+#main[data-page="home"] .schedule {margin-bottom:0}
+#main[data-page="home"] .roster .section-head {margin:0 0 1px}
+#main[data-page="home"] .client-line {
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;
+  padding:10px 0;border:0;background:transparent;
+}
+#main[data-page="home"] .client-line + .client-line {border-top:1px solid var(--line)}
+#main[data-page="home"] .client-line .avatar {
+  flex:none;width:40px;height:40px;border-radius:50%;align-self:start;
+  color:#804a40;background:#f3e1db;font-weight:570;
+}
+#main[data-page="home"] .client-line .avatar.sage {color:#48634f;background:#e5ebe4}
+#main[data-page="home"] .customer-open {
+  display:flex;align-items:center;gap:10px;min-width:0;min-height:54px;height:auto;
+  padding:4px 0;text-align:start;background:transparent;
+}
+#main[data-page="home"] .customer-open:not(:has(.client-preview:not(:empty))) .avatar {align-self:center}
+#main[data-page="home"] .client-copy {min-width:0;display:grid;gap:3px}
+#main[data-page="home"] .client-name {
+  display:flex;align-items:center;gap:4px;color:var(--ink);font-size:1.22rem;
+  line-height:1.35;font-weight:650;overflow-wrap:anywhere;
+}
+#main[data-page="home"] .client-name .icon {width:14px;height:14px;color:#80736c;flex:none}
+#main[data-page="home"] .customer-open .client-preview {
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;overflow-wrap:anywhere;color:var(--muted);font-size:1rem;line-height:1.5;
+}
+#main[data-page="home"] .client-preview:empty {display:none}
+#main[data-page="home"] .record-short {
+  min-height:46px;padding:6px 10px;gap:4px;white-space:nowrap;
+  background:var(--paper);border:1px solid #d9c7bc;border-radius:12px;
+  color:#664940;font-size:.97rem;font-weight:600;
+}
+@media (max-width:919px) {
+  .workspace:has(> #main[data-page="home"]) #top {padding-inline:20px}
+  #main[data-page="home"] {--home-gutter:20px;padding:16px var(--home-gutter) 26px}
+  #main[data-page="home"] .service-home {max-width:none}
+  #main[data-page="home"] .roster::before {
+    content:"";display:block;height:8px;margin:15px calc(-1 * var(--home-gutter)) 12px;
+    background:#f2ede9;border-block:1px solid #e9e0da;
+  }
+}
+@media (min-width:920px) {
+  #main[data-page="home"] .roster {
+    align-self:stretch;padding-inline-start:20px;border-inline-start:1px solid #e3d9d1;
+  }
+}
+@media (max-width:350px) {
+  #main[data-page="home"] {--home-gutter:14px}
+  #main[data-page="home"] .next-meeting {padding:16px 14px}
+  #main[data-page="home"] .meeting-actions {column-gap:5px}
+  #main[data-page="home"] .client-line {gap:8px}
+  #main[data-page="home"] .customer-open {gap:7px}
+  #main[data-page="home"] .client-line .avatar {width:36px;height:36px}
+  #main[data-page="home"] .record-short {padding-inline:8px}
+}
+@media (prefers-contrast:more) {
+  .workspace:has(> #main[data-page="home"]) {--line:#8c817a;--muted:#483e39}
+}
 
 </style>
 <!-- Embedded Source Han Sans font license
@@ -1870,6 +1988,296 @@ FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
 
 -->
+<style data-module="service-surfaces.css">
+/* Warm edges distinguish working areas from the source material beneath them. */
+#main {
+  --service-edge: #e3d7ce;
+  --service-rule: #d4bba9;
+  --service-surface-shadow: inset 0 1px 0 rgb(255 255 255 / 88%), 0 3px 10px rgb(80 49 35 / 4%);
+}
+
+#main :is(.fm-latest, .fm-quick-cart, .ms-product, .yc-chat-intake, .yc-chat-compose, .arrangement-card, .clue-detail) {
+  border: 1px solid var(--service-edge);
+  border-radius: 16px;
+  background-color: #fffaf7;
+  background-image: linear-gradient(145deg, rgb(255 255 255 / 72%), rgb(248 232 220 / 41%));
+  box-shadow: var(--service-surface-shadow);
+}
+#main :is(.fm-latest, .ms-product) {
+  background-image:
+    radial-gradient(ellipse 84px 90px at 101% -36px, transparent 77%, rgb(213 173 148 / 19%) 78%, transparent 80%),
+    radial-gradient(ellipse 109px 113px at 101% -36px, transparent 77%, rgb(213 173 148 / 14%) 78%, transparent 80%),
+    linear-gradient(115deg, #fffcf8 4%, #f9e9df);
+}
+#main :is(.ms-product select, .yc-chat-area) {
+  background-color: #fff;
+  border-color: #b5a295;
+}
+#main .yc-chat .yc-chat-tabs { background-color: #f2e9e2; }
+#main .yc-chat .yc-chat-tabs button.selected {
+  background-color: white;
+  box-shadow: inset 0 0 0 1px #d9c8bb, 0 1px 3px #6d4a3012;
+}
+
+#main :is(.yc-chat-quote, .case-context) {
+  color: var(--ink);
+  background: #fffdfb;
+  border: 1px solid var(--service-edge);
+  border-inline-start: 3px solid var(--service-rule);
+  border-radius: 12px;
+}
+#main :is(.case-sheet, .fm-facts, .fm-services, .ms-items, .ms-group, .use-detail, .yc-chat-result-card) {
+  background-color: #fff;
+  border-color: var(--service-edge);
+}
+#main :is(.dg-speech, .case-sheet blockquote) {
+  background-color: #f7f1eb;
+  border-color: var(--service-rule);
+}
+
+/* The report image and its readings keep an opaque white reading surface. */
+#main :is(.rg-panel, .store-reports) {
+  background: white;
+  border-color: var(--service-edge);
+}
+#main .rg-panel > .rg-head {
+  padding-block-end: 8px;
+  border-block-end: 1px solid var(--service-edge);
+}
+#main .store-value strong {
+  font-variant-numeric: tabular-nums;
+  color: #312b29;
+}
+#main :is(.store-report-switch, .store-section-tabs, .dg-topics, .case-people, .list-switch) [aria-pressed="true"] {
+  background-color: #f7e7dd;
+  color: #703c30;
+  box-shadow: inset 0 0 0 1px #caab9c;
+}
+#main .fm-people .fm-person.on { border-bottom-color: #935242; }
+#main .scene-row .scene-icon,
+#main .ss-session-visual {
+  background-color: #f7eae0;
+  color: #774537;
+}
+#main .ss-session-visual.ss-color-1 { background: #ebeee7; color: #465f4a; }
+#main .salon-studio {
+  --ss-accent: #864735;
+  --ss-rule: #e6dbd2;
+}
+
+@media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+  #main :is(.fm-latest, .fm-quick-cart, .ms-product, .yc-chat-intake, .yc-chat-compose, .arrangement-card, .clue-detail) {
+    background: #fffaf7;
+    border-color: #938376;
+    box-shadow: none;
+  }
+}
+@media (forced-colors: active) {
+  #main :is(.fm-latest, .fm-quick-cart, .ms-product, .yc-chat-intake, .yc-chat-compose, .arrangement-card, .clue-detail, .yc-chat-quote, .case-context) {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+  #main :is(.store-report-switch, .store-section-tabs, .dg-topics, .case-people, .list-switch) [aria-pressed="true"] {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}
+
+</style>
+<style data-module="learning-surfaces.css">
+/* Reading and conversation surfaces. Controls keep their existing position and hit area. */
+.qd-screen, .career-page, .kb-directory, .pr-chat-live, .pr-review-page {
+  --study-ink: #352d29;
+  --study-muted: #665b56;
+  --study-accent: #894539;
+  --study-line: #e6dcd5;
+  --study-blush: #f6e9e1;
+  --study-wash: #fbf7f3;
+  --map-blue: var(--study-accent);
+  --map-line: var(--study-line);
+  --map-muted: var(--study-muted);
+}
+.qd-welcome:has(.qd-topic) .qd-samples, .cm-choose .cm-directions, .ln-page.kb-directory .kb-shelves {
+  background: #fffdfb;
+  border: 1px solid var(--study-line);
+  border-radius: 17px;
+  box-shadow: inset 0 1px #fff, 0 3px 10px #593a2106;
+}
+.qd-welcome:has(.qd-topic) .qd-samples, .cm-choose .cm-directions {padding-inline: 12px}
+.qd-samples .qd-topic {border-bottom-color: var(--study-line)}
+.qd-samples .qd-topic:last-child {border-bottom: 0}
+.qd-samples .qd-topic:active, .cm-directions button:active {background: var(--study-blush)}
+.qd-topic-text strong {color: var(--study-ink)}
+.qd-icon-box, .cm-directions [data-direction="selling"] .cm-dir-icon {background: #f5e4d8; color: #864a31}
+.qd-icon-chat {background: #f5e6e2; color: #8d493d}
+.qd-icon-book {background: #eee9f0; color: #66516b}
+.qd-icon-report, .cm-directions [data-direction="products"] .cm-dir-icon {background: #e8efe7; color: #48634e}
+.cm-directions [data-direction="service"] .cm-dir-icon {background: #efeae0; color: #6c5942}
+.qd-screen .qd-compose {background: #fffdfb; border-color: #d8cbc3; box-shadow: inset 0 1px #fff, 0 3px 12px #4e30230d}
+.qd-screen .qd-compose:focus-within {border-color: var(--study-accent)}
+.qd-compose:has(.qd-send:disabled) .qd-voice, .qd-controls .qd-send:not(:disabled) {background: var(--study-accent); color: white}
+.qd-user, .qd-screen .qd-record-intro p {background: var(--study-wash); color: var(--study-ink)}
+.qd-response blockquote {background: var(--study-wash); border-left-color: #bc8b77; color: var(--study-ink)}
+.qd-actions :is(.qd-source, .qd-rehearse), .qd-quote-head .qd-copy {color: var(--study-accent)}
+.qd-actions :is(.qd-source, .qd-rehearse) {background: var(--study-blush)}
+.qd-reference {color: #744b40}
+.ln-page.kb-directory .kb-icon {background: var(--study-blush); color: #77483b}
+.kb-directory .kb-shelf summary {padding-inline: 12px}
+.kb-directory .kb-rows .ln-docrow {background: var(--study-wash); border-color: var(--study-line)}
+
+/* A course title and its progress sit on one quiet cover; the path below stays open. */
+.career-page .cm-focus-head, .cm-picker:has(.cm-directions) .cm-browse {
+  background: linear-gradient(112deg, #faf2e8, #f6e7de);
+  border: 1px solid #e8d9ce;
+  border-radius: 17px;
+  padding: 15px 14px;
+  color: var(--study-ink);
+}
+.cm-choose .cm-directions button {background: transparent; padding-inline: 1px}
+.cm-choose .cm-directions button + button {border-top-color: var(--study-line)}
+.career-page :is(.cm-browse button, .cm-change) {background: #fffcf9; color: var(--study-ink); border-color: #d8c7bb}
+.career-page .cm-stage.cm-active {background: var(--study-blush)}
+.career-page .cm-active .cm-coin {background: var(--study-accent); box-shadow: 0 4px #6c3d34}
+.career-page .cm-active .cm-coin::before {border-color: #d6aa99}
+.career-page .cm-challenge .cm-coin {background: #f2e4db; color: #7a4438; box-shadow: 0 4px #d4b4a5}
+.career-page :is(.cm-active, .cm-challenge) .cm-stop-action, .career-page .cm-chapters button[aria-current] {color: var(--study-accent)}
+@media (min-width: 24em) and (min-height: 35em) {
+  .cm-picker:has(.cm-directions) .cm-browse {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(44px, 13vw, 66px) auto;
+    gap: 7px;
+  }
+  .cm-picker:has(.cm-directions) .cm-browse::before {
+    content: "";
+    grid-area: 1 / 2;
+    height: 48px;
+    background: url('data:image/webp;base64,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') center / contain no-repeat;
+    pointer-events: none;
+  }
+  .cm-picker:has(.cm-directions) .cm-browse h2 {grid-area: 1 / 1}
+  .cm-picker:has(.cm-directions) .cm-browse button {grid-area: 1 / 3}
+}
+
+.pr-chat-live .pr-chat-head {
+  padding: 8px 12px;
+  background: var(--study-wash);
+  border: 1px solid var(--study-line);
+  border-radius: 14px;
+}
+.pr-practice-progress progress {background: #e2d8d0; color: var(--study-accent)}
+.pr-practice-progress progress::-webkit-progress-bar {background: #e2d8d0}
+.pr-practice-progress progress::-webkit-progress-value {background: var(--study-accent)}
+.pr-practice-progress progress::-moz-progress-bar {background: var(--study-accent)}
+.pr-chat-bubble p {background: #f3efea; color: var(--study-ink)}
+.pr-chat-bubble.mine p {background: var(--study-blush)}
+.pr-chat-footer {border-top-color: var(--study-line); background: #fffdfb}
+.pr-chat-voice {background: var(--study-accent)}
+.pr-review-card {background: #fffdfb; border-color: var(--study-line)}
+.pr-review-example {background: var(--study-wash)}
+.pr-review-picker button[aria-pressed=true], .pr-review-example h3, .pr-review-original summary {color: var(--study-accent)}
+@media (max-height: 33em) {
+  .pr-chat-live .pr-chat-head {padding: 3px 7px}
+}
+@media (prefers-contrast: more) {
+  .qd-screen, .career-page, .kb-directory, .pr-chat-live, .pr-review-page {--study-line: #91847c; --study-muted: #49413d}
+}
+
+</style>
+<style data-module="surface-motion.css">
+/* The same glaze, ink and button feedback follow the user across the three tabs. */
+:root {
+  --paper:#fffdfb;
+  --wash:#f7f1ed;
+  --soft:#f5eeea;
+  --ink:#352e2b;
+  --muted:#655b55;
+  --line:#e6dbd4;
+  --accent:#894538;
+  --pressed:#71372d;
+  --coral:#a45747;
+  --tint:#f5e6df;
+  --key-shadow:inset 0 1px 0 #ffffff29, 0 2px 4px #5e352331, 0 4px 10px #5e352314;
+}
+.workspace {
+  background:radial-gradient(ellipse at 100% 0%,#f4e5da,transparent 28rem),var(--paper);
+}
+#main[data-page="home"],#main[data-page="learn"] {
+  background:linear-gradient(165deg,#fcf6f0 0, #fffdfb 12rem);
+}
+#top,#tabs {
+  background-color:#fffcf8;
+  border-color:#ddcfc5;
+}
+#sheet {
+  border:1px solid #e2d6cd;
+  box-shadow:inset 0 1px 0 white,0 9px 34px #38251930;
+}
+#main[data-page="home"] .next-meeting {
+  background-color:#fae7dc;
+  background-image:linear-gradient(112deg,#fff5e980,#f4dcd699);
+}
+@supports ((backdrop-filter:blur(4px)) or (-webkit-backdrop-filter:blur(4px))) {
+  #top,#tabs {
+    background-color:rgb(255 253 249 / 87%);
+    -webkit-backdrop-filter:blur(9px);
+    backdrop-filter:blur(9px);
+  }
+  #main[data-page="home"] .next-meeting {
+    background-color:rgb(249 230 218 / 77%);
+    -webkit-backdrop-filter:blur(5px);
+    backdrop-filter:blur(5px);
+  }
+  #sheet::backdrop {
+    background:rgb(58 45 38 / 24%);
+    -webkit-backdrop-filter:blur(3px);
+    backdrop-filter:blur(3px);
+  }
+}
+button.primary:not(:disabled),.qd-send:not(:disabled),.pr-chat-send:not(:disabled) {
+  box-shadow:var(--key-shadow);
+}
+button.primary:not(:disabled):active,.qd-send:not(:disabled):active,.pr-chat-send:not(:disabled):active {
+  box-shadow:inset 0 1px 2px #48221e42;
+}
+:is(button,summary,input,select,textarea):focus-visible {outline-color:#863e30}
+
+@media(prefers-reduced-motion:no-preference) {
+  button:not(:disabled) {
+    transition:translate 110ms ease-out,background-color 110ms ease-out,box-shadow 110ms ease-out;
+  }
+  button:not(:disabled):active {translate:0 1px}
+  #main[data-enter="forward"] > :first-child {animation:yc-forward 165ms cubic-bezier(.22,.76,.28,1)}
+  #main[data-enter="back"] > :first-child {animation:yc-back 140ms cubic-bezier(.22,.76,.28,1)}
+  #main[data-enter="tab"] > :first-child {animation:yc-tab 145ms ease-out}
+  #tabs[data-switched] .navitem.active > span:first-child {animation:yc-select 160ms ease-out}
+  #sheet[open] {animation:yc-sheet 150ms ease-out}
+  @keyframes yc-forward {from {opacity:.88;translate:5px 0} to {opacity:1;translate:0}}
+  @keyframes yc-back {from {opacity:.9;translate:-4px 0} to {opacity:1;translate:0}}
+  @keyframes yc-tab {from {opacity:.88} to {opacity:1}}
+  @keyframes yc-select {from {scale:.92} to {scale:1}}
+  @keyframes yc-sheet {from {opacity:.9;translate:0 5px} to {opacity:1;translate:0}}
+}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more),(forced-colors:active) {
+  #top,#tabs,#main[data-page="home"],#main[data-page="learn"] {
+    background:var(--paper);-webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+  #main[data-page="home"] .next-meeting {
+    background:#f7e8dc;-webkit-backdrop-filter:none;backdrop-filter:none;
+    border:1px solid #958374;
+  }
+  #main[data-page="home"] .next-meeting::before {display:none}
+  #sheet::backdrop {background:#30261e70;-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+@media(prefers-contrast:more) {
+  :root {--muted:#483f3a;--line:#8d827a}
+}
+@media(forced-colors:active) {
+  #main[data-page="home"] .next-meeting,#sheet {border:1px solid CanvasText}
+  .navitem[aria-current="page"] {outline:1px solid Highlight;outline-offset:-2px}
+}
+
+</style>
 </head>
 <body>
   <div class="workspace">
@@ -1917,6 +2325,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   function drafts(customer) {
     if (!customer.chatDraft) customer.chatDraft = { mode: 'reply', incoming: '', note: '', replies: {} };
     return customer.chatDraft;
+  }
+  function homeEntryMode(customer) {
+    const draft=customer.chatDraft;
+    if(!draft?.incoming?.trim())return 'note';
+    const previous=draft.lastEditedField||draft.mode;
+    return !draft.note?.trim()||previous==='incoming'?'incoming':'note';
   }
   function captureDraft(draft) {
     const {memberId,relatedSourceId,relatedTaskId}=app().u;
@@ -2553,7 +2967,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     const tabs = canPaste&&!transfer ? '<div class="yc-chat-tabs" role="group" aria-label="记录方式">' +
       [['note','自己记'],['incoming','客户原话']].map(([v,label])=>button('mode',label,mode===v?'selected':'','data-mode="'+v+'" aria-pressed="'+(mode===v)+'"')).join('') + '</div>' : '';
     const entry='<button type="button" class="yc-entry-start" data-act="chat-'+(note?'voice':'paste')+'">'+app().icon(note?'mic':'file')+'<span>'+(note?'说一段':'从剪贴板粘贴')+'</span></button>';
-    const prompt=transfer?'和'+customer.name+'聊完，结果怎样？':person&&person.id!=='self'?customer.name+'提到'+subject+'什么近况？':'刚和'+customer.name+'聊了什么？';
+    const hasOpenDraft=!app().u.relatedSourceId&&!app().u.relatedTaskId&&!person&&draft[mode]?.trim();
+    const prompt=transfer?'和'+customer.name+'聊完，结果怎样？':person&&person.id!=='self'?customer.name+'提到'+subject+'什么近况？':hasOpenDraft?'接着记'+customer.name+'的沟通':'刚和'+customer.name+'聊了什么？';
     return '<section class="card yc-chat-intake"><h1>'+esc(prompt)+'</h1>'+tabs+
       (!canPaste?'<p class="yc-chat-help">客户未同意存档，可记随访要点。</p>':'')+
       '<textarea aria-label="'+esc(customer.name)+(note?'的随访备忘':'的沟通原话')+'" id="yc-chat-input" class="yc-chat-area" data-chat-field="' + mode + '" rows="3" maxlength="1800" placeholder="' + (note?'也可以在这里打字':'粘贴'+esc(customer.name)+'说的那段话') + '">' + esc(draft[mode] || '') + '</textarea>' +
@@ -2811,6 +3226,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     else if(field==='incoming' || field==='note'){
       const intake=captureDraft(d);
       intake[field]=event.target.value;
+      if(intake===d&&event.target.value.trim())d.lastEditedField=field;
       if(!event.target.value.trim() || event.inputType==='insertFromPaste')intake.exampleMode='';
       const submit=document.querySelector('[data-act="chat-'+(field==='note'?'record':'receive')+'"]');
       if(submit)submit.disabled=!event.target.value.trim();
@@ -2833,7 +3249,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     openFamilyPage('reports',customer,src,src?undefined:app().u.memberId,{pendingReport:file,pendingReportCustomerId:customer.id});
   });
 
-  window.Chat = {render,afterRender,act,derive,setReply,appendReply,setMaterial,requestedQty,memberQuestion,recordContext,suggestion,sourceLabel,sourceForMember,dictateInto,practiceContext,canRehearse,tagKind:factKind};
+  window.Chat = {render,afterRender,act,derive,setReply,appendReply,setMaterial,requestedQty,memberQuestion,recordContext,suggestion,sourceLabel,sourceForMember,dictateInto,practiceContext,canRehearse,homeEntryMode,tagKind:factKind};
 })();
 
 </script>
@@ -3469,7 +3885,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   }
   function familyHeading(){
     const c=customer(),intro=c.introduction?' · '+c.introduction:'';
-    return '<div class="fm-household-title"><div><h2>'+h(c.name)+'的家庭档案</h2><p>'+A().icon('chat')+'日常联系人 · '+h(c.name+intro)+'</p></div>'+(chatOrigin()?chatButton('fm-link'):'')+'</div>';
+    const last=A().latestCustomerRecord(c);
+    const recordLink=chatOrigin()?chatButton('fm-link'):last?btn('source','上次沟通','fm-link',{id:last.id,member:last.recordedFor||''}):'';
+    return '<div class="fm-household-title"><div><h2>'+h(c.name)+'的家庭档案</h2><p>'+A().icon('chat')+'日常联系人 · '+h(c.name+intro)+'</p></div>'+recordLink+'</div>';
   }
   function profile() {
     const hasReports=memberReports().length>0;
@@ -4050,6 +4468,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   }
   window.Family = { render, act, afterRender, currentReportContext, reportsFromRecord };
 })();
+
 </script>
   <script>
 (() => {
@@ -4516,7 +4935,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const first=track.nodes.find(n=>!completed.has(n.id));
       const nodes=track.nodes.map(n=>{
         const active=records[key(n.id)]?.active;
-        const started=!!(active&&(active.turns.length||active.draft)&&!['achieved','lost','paused'].includes(terminal(active)));
+        const started=!!(active?.careerNode===n.id&&!['achieved','lost','paused'].includes(terminal(active)));
         return {id:n.id,title:n.title,goal:n.goal,final:n.comprehensive,started,status:completed.has(n.id)?'done':n===first?'current':n.comprehensive?'open':'locked'};
       });
       const relatedSkills=track.relatedSkills||[];
@@ -4580,6 +4999,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     return '<button type="button"'+action('career-free',trackId)+'>'+icon('chat')+'练我的情况</button>';
   }
 
+  function courseBack(name,label,value='') {
+    return '<button type="button" class="phone-back" data-course-back'+action(name,value)+'>'+icon('back')+esc(label)+'</button>';
+  }
+
   function relatedCourses(t,tracks) {
     const ownIds=new Set([t.id,...t.nodes.map(n=>n.id)]);
     const from=[], into=[];
@@ -4625,12 +5048,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     const mark = done ? icon('check') : locked ? lock : end ? icon('flag') : activeMark;
     let verb = n.started ? '继续练' : '开始练';
     if (done) verb = '已完成 · 再练';
-    else if (locked) verb = '待解锁';
     else if (end && !n.started) verb = '直接挑战';
     const before = t.nodes[i-1];
+    const actionLabel = locked ? '' : '<span class="cm-stop-action">'+verb+icon('chevron')+'</span>';
     const inner = '<span class="cm-coin" aria-hidden="true">'+mark+'</span><span class="cm-stop-copy">'+
-      '<strong>'+esc(n.title)+'</strong><span class="cm-stop-action">'+verb+(locked ? icon('down') : icon('chevron'))+'</span></span>';
-    const title = n.title+'，'+(locked?'查看解锁条件':verb);
+      '<strong>'+esc(n.title)+'</strong>'+actionLabel+'</span>';
+    const title = n.title+'，'+(locked?'尚未解锁，查看解锁条件':verb);
     const control = locked
       ? '<details class="cm-preview"><summary class="cm-stop" aria-label="'+esc(title)+'">'+inner+'</summary><div>'+
         (n.goal ? '<p>'+esc(n.goal)+'</p>' : '')+'完成「'+esc(before?.title || '上一项')+'」后解锁</div></details>'
@@ -4642,28 +5065,35 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   function chapterSelector(t,courses,yours) {
     if(courses.length<2)return '';
     const number=courses.findIndex(course=>course.id===t.id)+1;
-    return '<details class="cm-chapters"><summary><span>第 '+number+' / '+courses.length+' 课</span><strong>'+esc(t.title)+'</strong>'+icon('down')+'</summary><ol>'+
+    return '<details class="cm-chapters"><summary><span>第 '+number+' 课</span><strong>'+esc(t.title)+'</strong>'+icon('down')+'</summary><ol>'+
       courses.map((course,i)=>'<li><button type="button"'+action(yours?'career-chapter':'career-track',course.id)+(course.id===t.id?' aria-current="true"':'')+'><span>'+String(i+1).padStart(2,'0')+'</span><strong>'+esc(course.title)+'</strong>'+
         (progress(course)===course.nodes.length?icon('check'):icon('chevron'))+'</button></li>').join('')+'</ol></details>';
+  }
+
+  function currentNode(track,last) {
+    const unfinished=n=>n.started&&n.status!=='done'&&n.status!=='locked';
+    return track.nodes.find(n=>n.id===last?.nodeId&&unfinished(n))||track.nodes.find(unfinished)||
+      track.nodes.find(n=>n.status==='current')||track.nodes.find(n=>n.status==='open');
   }
 
   function focus(t,d) {
     const yours=journeyFor(t.id)===d.journeyId;
     const group=chapters(d.tracks,journeyFor(t.id));
-    const next=t.nodes.find(n=>n.started&&n.status!=='done')||t.nodes.find(n=>n.status==='current')||t.nodes.find(n=>n.status==='open');
+    const next=currentNode(t,d.last);
     const before=next?Math.max(0,t.nodes.indexOf(next)):0;
     const rows=t.nodes.map((n,i)=>mapStop(t,n,i,next));
     const earlier=before?'<details class="cm-earlier"><summary>前面 '+before+' 关'+icon('down')+'</summary><ol class="cm-path">'+rows.slice(0,before).join('')+'</ol></details>':'';
     const allNodes=group.flatMap(course=>course.nodes);
     const done=allNodes.filter(n=>n.status==='done').length;
     const title=group.length>1?plans[t.categoryId].name:t.title;
-    const returnButton=yours?'<button type="button" class="cm-change"'+action('career-choose')+'>'+(done===allNodes.length?'选新路线':'换课')+icon('down')+'</button>':
-      '<button type="button" class="cm-change"'+action('career-return-journey')+'>回我的路线'+icon('chevron')+'</button>';
+    const routeProgress=done?'<div class="cm-map-progress"><progress aria-label="路线进度" max="'+allNodes.length+'" value="'+done+'"></progress><span>已练 '+done+' / '+allNodes.length+' 关</span></div>':'';
+    const catalogButton=yours?'<button type="button" class="cm-change"'+action('career-choose')+'>全部课程'+icon('down')+'</button>':'';
     const nextT=group[group.findIndex(course=>course.id===t.id)+1];
     const after=nextT?'<button type="button" class="cm-next-chapter"'+action(yours?'career-chapter':'career-track',nextT.id)+'><span>下一课</span><strong>'+esc(nextT.title)+'</strong>'+icon('chevron')+'</button>':'';
     return '<section class="career-page cm-focus cm-map" data-inline-track="'+esc(t.id)+'" data-journey="'+esc(journeyFor(t.id))+'" aria-labelledby="cm-title-'+esc(t.id)+'">'+
-      '<header class="cm-focus-head"><div>'+(!yours?'<p>相关课程</p>':'')+'<h2 tabindex="-1" id="cm-title-'+esc(t.id)+'">'+esc(title)+'</h2></div>'+returnButton+
-      '<div class="cm-map-progress"><progress aria-label="路线进度" max="'+allNodes.length+'" value="'+done+'"></progress><span>已练 '+done+' / '+allNodes.length+' 关</span></div></header>'+
+      (yours?'':courseBack('career-return-journey','回我的路线'))+
+      '<header class="cm-focus-head"><div>'+(!yours?'<p>相关课程</p>':'')+'<h2 tabindex="-1" id="cm-title-'+esc(t.id)+'">'+esc(title)+'</h2></div>'+catalogButton+
+      routeProgress+'</header>'+
       '<div class="cm-lesson-toolbar">'+chapterSelector(t,group,yours)+'<button class="cm-ask-lesson" type="button"'+action('career-ask',t.id)+'>'+icon('chat')+'问这门课</button></div>'+
       earlier+'<ol class="cm-path" aria-label="'+esc(t.title)+'的练习">'+rows.slice(before).join('')+'</ol>'+after+
       '<nav class="cm-tools cm-support" aria-label="课程学习工具">'+freePractice(t.id)+'</nav>'+
@@ -4704,12 +5134,14 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           '<span><strong>'+esc(plan.title)+'</strong><small>'+esc(plan.hint)+'</small></span><span class="cm-direction-count">'+count+' 门'+icon('chevron')+'</span></button>';
       }).join('')+'</div>';
     }
-    const title=search?'搜课程':products?'想先学哪款产品？':d.finished?'接下来想学什么？':d.journeyId?'换一个学习方向':'想先学什么？';
-    return '<div class="career-page cm-home cm-choose'+(search?' cm-searching':'')+'"><section class="cm-picker"><header class="cm-browse"><h2>'+esc(title)+'</h2>'+
+    const title=search?'搜索课程':products?'产品课程':d.finished?'接下来学什么？':'全部课程';
+    const back=products&&!search?courseBack('career-category','回全部课程','directions'):
+      d.journeyId?courseBack('career-return-journey','回我的路线'):'';
+    const tools=search?'':'<nav class="cm-catalog-actions" aria-label="其他学习方式">'+freePractice()+
+      (products?'':'<button type="button" data-act="open-salon">'+icon('people')+'沙龙经验</button>')+'</nav>';
+    return '<div class="career-page cm-home cm-choose'+(search?' cm-searching':'')+'">'+back+'<section class="cm-picker"><header class="cm-browse"><h2>'+esc(title)+'</h2>'+
       '<button type="button"'+action('career-search-toggle')+' aria-expanded="'+search+'" aria-label="'+(search?'取消搜索':'搜索全部课程')+'">'+(search?'取消搜索':icon('search')+'搜索')+'</button></header>'+inside+'</section>'+
-      '<nav class="cm-tools" aria-label="其他学习方式">'+(products&&!search?'<button type="button"'+action('career-category','directions')+'>'+icon('back')+'选其他方向</button>':
-        d.journeyId?'<button type="button"'+action('career-return-journey')+'>'+icon('back')+(d.finished?'回看学完的路线':'回我的路线')+'</button>':'')+(!search?freePractice():'')+
-        (!products&&!search?'<button type="button" data-act="open-salon">'+icon('people')+'沙龙经验</button>':'')+'</nav></div>';
+      tools+'</div>';
   }
   function home(d) {
     const t=currentChapter(d);
@@ -4738,7 +5170,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     apply();
   }
 
-  window.CareerView={home,afterRender,journeyFor,chapters,currentChapter,matches:(track,query)=>matchesText(indexedText(track,track.categoryTitle),query||'')};
+  window.CareerView={home,afterRender,journeyFor,chapters,currentChapter,currentNode,matches:(track,query)=>matchesText(indexedText(track,track.categoryTitle),query||'')};
 })();
 
 </script>
@@ -6240,6 +6672,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const previous=window.CareerContent.findNode(career.lastNode);
       if(previous)career.journeyId=window.CareerView.journeyFor(previous.trackId);
     }
+    career.journeyId ||= 'selling';
     career.positions||={};
     return career;
   }
@@ -6620,8 +7053,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     if(action==='career-ask'){
       const track=window.CareerContent.tracks.find(t=>t.id===id);
       if(track){
-        const route=window.CareerPath.model(learning).tracks.find(t=>t.id===id);
-        const node=route.nodes.find(n=>n.started&&n.status!=='done')||route.nodes.find(n=>n.status==='current')||route.nodes[0];
+        const view=window.CareerPath.model(learning);
+        const route=view.tracks.find(t=>t.id===id);
+        const node=window.CareerView.currentNode(route,view.last)||route.nodes[0];
         app.openDesk({courseId:id,courseTitle:track.title,doc:courseDoc(id),nodeId:node.id});
       }
       return true;
@@ -7380,14 +7814,19 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     const html='<section class="ms-direct ms-direct-'+mode+'" aria-label="'+esc(heading)+'"><div class="ms-direct-head"><span>'+esc(heading)+'</span>'+select+'</div><div class="ms-direct-title"><strong>'+esc(products[key].title)+'</strong><span>'+status+'</span></div><p>'+esc(shortReason(c,person,r))+'</p>'+(action||more?'<div class="ms-direct-tools">'+action+more+'</div>':'')+'</section>';
     return mode==='record'?{html,canReply:!!lead}:html;
   }
-  function customerInterests(c,excluded,list=false){
+  function customerInterests(c,excluded){
     seedExamples();
     const picks=choices(c,c.members).filter(({m,key,r})=>r.id&&(r.refill||r.status==='offer')&&!excluded.some(t=>t.sourceId===r.id&&(!t.memberId||t.memberId===m.id)&&(!['产品咨询','补货意向'].includes(t.kind)||products[key].terms.test(t.title+' '+t.reason))));
-    return (list?picks:picks.slice(0,1)).map(({m,key,r})=>{
+    return picks.map(({m,key,r})=>{
       const who=m.id==='self'?'':m.id==='father'?'爸爸':m.id==='mother'?'妈妈':m.name;
       const label=who+(r.refill?'想补':'想了解')+products[key].title;
-      const content=list?'<span class="rowicon">'+app().icon('chat')+'</span><span class="grow"><strong>'+esc(label)+'</strong><small>'+esc(c.name)+'</small></span>':app().icon('chat')+'<span>'+esc(label)+'</span>';
-      return button('prepare',content+app().icon('chevron'),list?'clue-row':'home-clue',personAttrs(c,m)+' '+attr('key',key)+' aria-label="'+esc(label+'，准备回复'+c.name)+'"');
+      return {member:m,key,label,sourceId:r.id};
+    });
+  }
+  function interestRows(c,excluded){
+    return customerInterests(c,excluded).map(({member,key,label})=>{
+      const content='<span class="rowicon">'+app().icon('chat')+'</span><span class="grow"><strong>'+esc(label)+'</strong><small>'+esc(c.name)+'</small></span>';
+      return button('prepare',content+app().icon('chevron'),'clue-row',personAttrs(c,member)+' '+attr('key',key)+' aria-label="'+esc(label+'，准备回复'+c.name)+'"');
     }).join('');
   }
   const inlineMember=(c,m)=>inline(c,'member',m);
@@ -7487,7 +7926,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     if(!select||!Object.hasOwn(products,select.value)||app().page!=='family')return;
     app().u.inlineProduct={scope:select.dataset.scope,key:select.value};app().draw();
   });
-  window.MatchStudio={render,act,afterRender,customerInterests,inlineMember,inlineRecord};
+  window.MatchStudio={render,act,afterRender,customerInterests,interestRows,inlineMember,inlineRecord};
 })();
 
 </script>
@@ -7729,7 +8168,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   }
   const line = (name, text) => '<span class="ss-line">'+icon(name)+esc(text)+'</span>';
   const sectionTitle = (text, detail='') => '<div class="ss-section-title"><h2>'+esc(text)+'</h2>'+(detail?'<span>'+esc(detail)+'</span>':'')+'</div>';
-  const back = (action,label,id) => button(action,icon('back')+esc(label),{id,style:'ss-back'});
+  function back(action,label,id){
+    const u=app().u;
+    if(action==='home' && u.salonView==='experience' && u.salonItemId===u.salonEntryItemId){
+      return button('home','全部沙龙经验'+icon('chevron'),{style:'ss-overview'});
+    }
+    return button(action,icon('back')+esc(label),{id,style:'ss-back'});
+  }
   const publicLink = item => button('experience','<span><strong>'+esc(item.title)+'</strong><small>'+esc(item.source)+'</small></span>'+icon('chevron'),{id:item.id,style:'ss-list-link'});
   function home(){
     const library = libraryItems();
@@ -7818,6 +8263,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   }
   function render(){
     const u = app().u, item = fragmentFor(u.salonItemId), session = sessionFor(u.salonSessionId);
+    u.salonEntryItemId ??= u.salonView==='experience'?u.salonItemId:'';
     let page;
     if(u.salonView==='source' && session) page=material(session);
     else if(u.salonView==='review' && item) page=review(item);
@@ -7836,6 +8282,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   }
   function afterRender(){
     const u = app().u;
+    const pageBack=document.querySelector('.salon-studio > .ss-back');
+    if(pageBack){
+      pageBack.className='phone-back';
+      document.querySelector('#top .top-left').replaceChildren(pageBack);
+    }
     const draft = document.getElementById('ss-draft'), check = document.getElementById('ss-check');
     if(draft && check){
       const submit=document.querySelector('[data-act="salon-adopt"]');
@@ -8030,20 +8481,20 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     if(!titles[dest])return;
     if(dest!==page){history.push({page,u:{...u},id:state.active,scroll:$('#main').scrollTop});if(history.length>18)history.shift()}
     if(page==='messenger'&&dest!=='messenger')u=u.wecomVisit?{wecomVisit:u.wecomVisit}:{};
-    page=dest;u=fresh?{...fields}:Object.assign(u,fields);draw(true);
+    page=dest;u=fresh?{...fields}:Object.assign(u,fields);draw(true,'forward');
   }
-  function rootPage(dest){
+  function rootPage(dest,direction='tab'){
     const c=customer();c.pageContexts||={};
     if(page!=='home'&&page!=='messenger'&&!u.wecomVisit)c.pageContexts[page]=cleanContext(u);
     history=[];page=dest;
     if(dest==='learn'||dest==='qa')u={};
     else u=dest==='home'||dest==='tasks'?{}:{...(c.pageContexts[dest]||{})};
-    save();draw(true)
+    save();draw(true,direction)
   }
   function back(){
     const prev=history.pop();
-    if(prev&&prev.id===state.active){page=prev.page;u=prev.u;draw(true);$('#main').scrollTop=prev.scroll||0}
-    else rootPage('home');
+    if(prev&&prev.id===state.active){page=prev.page;u=prev.u;draw(true,'back');$('#main').scrollTop=prev.scroll||0}
+    else rootPage('home','back');
   }
   function openChat(){const m=customer().messages.findLast(m=>m.role!=='provider');if(m)openSource(m.id);else openCapture()}
   function openSource(sourceId,memberId,options={}){
@@ -8055,7 +8506,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     // An explicit return ends the excursion. Back should not re-open the report or practice just closed.
     const at=history.findLastIndex(step=>step.page==='chat'&&step.id===c.id);
     if(at>=0&&page!=='chat'){
-      const from=history[at];history.length=at;page='chat';u={...from.u,...fields};draw(true);
+      const from=history[at];history.length=at;page='chat';u={...from.u,...fields};draw(true,'back');
     }else go('chat',fields);
   }
   function openCustomerRecord(cid,sourceId,memberId,options={}){
@@ -8093,7 +8544,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     const prior=origin>=0?history[origin].u:{};
     const view={...prior.familyView,owner:ctx.customerId,selectedReport:ctx.reportId,metricReportId:ctx.reportId,reportMetric:key,reportSection:section??0,paperOpen:section==null,form:''};
     if(origin>=0)history.length=origin;
-    page='reports';u={...prior,memberId:ctx.memberId,familyView:view};draw(true);
+    page='reports';u={...prior,memberId:ctx.memberId,familyView:view};draw(true,'back');
     const row=$('#main').querySelector('[data-report-reading="'+CSS.escape(key)+'"]');
     if(row){row.focus({preventScroll:true});row.scrollIntoView({block:'nearest'});}
   }
@@ -8117,7 +8568,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       const at=history.findLastIndex(step=>step.id===state.active&&courseScreen(step.page,step.u));
       const origin=at>=0?history[at]:null;
       if(origin)history.length=at;
-      page='learn';u={...origin?.u,learnArea:'home',...fields};draw(true);
+      page='learn';u={...origin?.u,learnArea:'home',...fields};draw(true,'back');
       if(origin)$('#main').scrollTop=origin.scroll||0;
       return;
     }
@@ -8189,8 +8640,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     if(kind==='customer'||kind==='note')window.FamilyProfile?.ingest(c,msg);
     save();return msg;
   }
-  function addTask(spec){
-    const c=customer();
+  function addTask(spec,c=customer()){
     const key=spec.key||[spec.kind,spec.memberId||'self',spec.title].join('|');
     let old=c.tasks.find(t=>t.id===spec.id || t.key===key || (spec.sourceId && t.sourceId===spec.sourceId && t.title===spec.title));
     if(old){Object.assign(old,spec,{key});save();return old}
@@ -8283,6 +8733,44 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   }
   function foldedClue(t){const c=state.customers.find(c=>c.id===t.cid);return c.foldedClues?.[t.id]===clueInfo(t).stamp}
   function chosenArrangement(c,t){return c.tasks.find(item=>item.fromClue===t.id&&isLive(item))}
+  function birthdayLabel(c,t){
+    const person=c.members.find(m=>m.id===t.memberId);
+    if(!person)return t.title;
+    const relation=({母亲:'妈妈',父亲:'爸爸'})[person.relation];
+    const name=relation?c.name+'的'+relation:person.name;
+    return name+'过生日';
+  }
+  function birthdayDateChoices(c,birthday,selected,saveAction,attrs,more=''){
+    const dates=[[plusDays(birthday.when,-1),'提前一天提醒'],[birthday.when,'生日当天提醒']];
+    const options=dates.filter(([date])=>date>=state.today).map(([date,label])=>{
+      const chosen=date===selected;
+      return btn(saveAction,'<strong>'+label+'</strong><span>'+pretty(date)+'</span>'+icon(chosen?'check':'chevron'),'birthday-choice',attrs+' '+attr('when',date)+' aria-label="'+label+'，'+pretty(date)+(chosen?'，已选':'')+'"');
+    }).join('');
+    const initial=selected||birthday.when;
+    const date=initial>=state.today?initial:state.today;
+    const custom='<label>提醒日期<input id="birthday-date" type="date" min="'+esc(state.today)+'" value="'+esc(date)+'"></label>'+btn(saveAction,'保存日期','primary',attrs);
+    viewDialog(selected?'改提醒日期':'哪天提醒我？','<div class="birthday-date-form"><p>'+esc(pretty(birthday.when)+' · '+birthdayLabel(c,birthday))+'</p>'+options+
+      (options?'<details><summary>选其他日期</summary><div class="date-form">'+custom+'</div></details>':'<div class="date-form">'+custom+'</div>')+more+'</div>');
+  }
+  function handledBirthday(c,t){
+    return t.kind==='生日'&&c.tasks.some(item=>item.fromClue===t.id&&!isLive(item)&&(!item.clueVersion||item.clueVersion===t.when));
+  }
+  function upcomingBirthday(clues,first){
+    const lastDay=plusDays(state.today,6);
+    for(const clue of clues){
+      if(clue.kind!=='生日'||clue.when>lastDay||foldedClue(clue))continue;
+      const c=state.customers.find(item=>item.id===clue.cid);
+      const plan=chosenArrangement(c,clue);
+      if(plan&&first?.cid===c.id&&first.id===plan.id)continue;
+      if(!plan&&handledBirthday(c,clue))continue;
+      const text=pretty(clue.when)+' · '+birthdayLabel(c,clue);
+      const action=plan?pretty(plan.snooze||plan.when)+'提醒':'提醒我';
+      const actionLabel=plan?esc(action)+icon('edit'):icon('bell')+esc(action);
+      const html=btn(plan?'task-later':'clue-plan',icon('calendar')+'<span class="upcoming-copy"><strong>近期提醒</strong><span>'+esc(text)+'</span></span><span class="upcoming-action">'+actionLabel+'</span>','home-upcoming',attr('cid',c.id)+' '+attr('id',plan?.id||clue.id));
+      return {clue,html};
+    }
+    return null;
+  }
   function clueButton(t){
     const clue=clueInfo(t);
     const note=t.kind==='生日'?pretty(t.when):t.kind==='订单'?state.customers.find(c=>c.id===t.cid)?.pendingOrder?.product:['产品咨询','补货意向'].includes(t.kind)?clue.label:clue.detail;
@@ -8426,36 +8914,57 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       if(record&&openCustomerRecord('chen',record.id,memberId))window.PracticeTransfer.open(record.id,memberId);
     }
   }
+  function latestCustomerRecord(c){
+    return c.messages.findLast(m=>m.role==='customer'||m.role==='note'&&m.intakeSource!=='arrangement-update'&&
+      (m.intakeSource||!/^(?:已完成|已取消|已暂停|已恢复|提醒已延至[^·]+|订单(?:已付款|已取消))\s*·/.test(m.text)));
+  }
+  function clientPreview(c,last,clue){
+    if(c.contactPaused)return '已暂停主动联系';
+    if(last?.attachmentOnly)return last.chatMaterial?.name||'上次沟通附有资料';
+    const text=last?.text?.trim().replace(/\s+/g,' ');
+    if(text)return text.split(/(?<=[。！？])/u,1)[0];
+    if(!clue)return '还没有沟通记录';
+    if(clue.kind==='生日')return pretty(clue.when)+' · '+birthdayLabel(c,clue);
+    const info=clueInfo(clue);
+    return clue.kind==='用量预估'?info.title+' · '+info.detail:info.title;
+  }
   function home(){
     const plans=allTasks().filter(t=>arranged(t)&&isLive(t));
     const first=plans[0],owner=first&&state.customers.find(c=>c.id===first.cid);
     const original=first&&owner?.messages.find(m=>m.id===first.sourceId);
     const canPrepare=first?.kind==='约定'&&original?.role==='customer';
     const rehearsal=canPrepare&&recordPracticeLink(owner,original,first.memberId,first.id);
-    const who=first&&!first.title.includes(owner.name)?owner.name+' · ':'';
-    const focus=first?'<section class="next-meeting"><div class="meeting-layout"><p class="meeting-time">'+esc(meetingTime(first)+' · '+taskTag(first))+'</p><h3>'+esc(who+first.title)+'</h3></div>'+
-      '<div class="meeting-actions">'+btn(canPrepare?'prepare-task':'task-open',(canPrepare?'准备回复':'查看安排')+icon('arrow'),'primary',attr('cid',first.cid)+' '+attr('id',first.id))+(rehearsal||'')+'</div></section>':'<p class="home-no-plan">暂无约好的跟进</p>';
+    const todayMeeting=first?.kind==='约定'&&first.effective===state.today;
+    const birthday=first?.fromClue&&owner.tasks.find(t=>t.id===first.fromClue&&t.kind==='生日');
+    const heading=birthday?'给自己的提醒':todayMeeting?'今天约好的':'跟进安排';
+    const title=first?.title||'';
+    const subject=owner&&title.startsWith(owner.name+'想')?title.slice(owner.name.length):title;
+    const dateLine=birthday?(first.effective<state.today?'原定'+pretty(first.effective):hint(first))+'提醒':first&&[meetingTime(first),owner.name,!todayMeeting&&taskTag(first)].filter(Boolean).join(' · ');
+    const firstAttrs=first?attr('cid',first.cid)+' '+attr('id',first.id):'';
+    const focusTitle=birthday?pretty(birthday.when)+' · '+birthdayLabel(owner,birthday):subject;
+    const phrases=focusTitle.split(/(?<=[，。！？；])/u).map(phrase=>'<span>'+esc(phrase)+'</span>').join('');
+    const focus=first?'<section class="next-meeting"><div class="meeting-layout"><p class="meeting-time">'+icon('calendar')+esc(dateLine)+'</p><h3>'+phrases+'</h3></div>'+
+      '<div class="meeting-actions">'+btn(canPrepare?'prepare-task':'task-open',(canPrepare?'准备回复':birthday?'查看提醒':'查看安排')+icon('arrow'),'primary',firstAttrs)+(birthday?btn('task-later','改提醒日期','record-rehearse',firstAttrs):rehearsal||'')+'</div></section>':'<p class="home-no-plan">暂无跟进安排</p>';
     const clues=activeClues();
+    const upcoming=upcomingBirthday(clues,first);
     const customers=state.customers.map(c=>{
-      const last=c.messages.findLast(m=>m.role==='customer'||m.role==='note'&&m.intakeSource!=='arrangement-update'&&(m.intakeSource||!/^(?:已完成|已取消|已暂停|已恢复|提醒已延至[^·]+|订单(?:已付款|已取消))\s*·/.test(m.text)));
       const cid=attr('cid',c.id);
-      const recent=last?btn('latest-record','上次记录','home-last',cid+' '+attr('id',last.id)+' aria-label="查看'+esc(c.name)+'的上次记录"'):'';
       const personalPlans=plans.filter(t=>t.cid===c.id);
-      const personalClues=clues.filter(t=>t.cid===c.id);
-      const folded=personalClues.filter(foldedClue);
-      const clue=personalClues.find(t=>!folded.includes(t)&&!personalPlans.some(plan=>plan.fromClue===t.id||t.sourceId&&t.sourceId===plan.sourceId&&t.memberId===plan.memberId));
-      let signal=window.MatchStudio.customerInterests(c,[...personalPlans,...folded]);
-      if(!signal&&clue){
-        const info=clueInfo(clue);
-        const title=info.title.startsWith(c.name+'的')?info.title.slice(c.name.length+1):info.title;
-        const label=clue.kind==='生日'?pretty(clue.when)+' · '+title:clue.kind==='用量预估'?title+' · '+info.detail:title;
-        signal=btn('task-open',icon(clue.kind==='生日'?'calendar':clue.kind==='用量预估'?'box':'chat')+'<span>'+esc(label)+'</span>'+icon('chevron'),'home-clue',cid+' '+attr('id',clue.id));
-      }
-      return '<article class="client-line"><div class="home-person">'+btn('family-open','<span class="avatar '+(c.id==='lin'?'sage':'')+'" aria-hidden="true">'+esc(c.name[0])+'</span><strong>'+esc(c.name)+'</strong>'+icon('chevron'),'customer-open',cid+' aria-label="查看'+esc(c.name)+'的家庭档案"')+
-        '<div class="home-actions">'+recent+btn('chat-open',icon('mic')+'记沟通','record-short',cid+' aria-label="记'+esc(c.name)+'的沟通"')+'</div></div>'+signal+'</article>';
+      const last=latestCustomerRecord(c);
+      const alreadyFeatured=first?.cid===c.id&&last&&first.sourceId===last.id;
+      const interest=alreadyFeatured&&!c.contactPaused
+        ?window.MatchStudio.customerInterests(c,[...personalPlans,...clues.filter(t=>t.cid===c.id&&foldedClue(t))]).find(item=>item.sourceId!==last.id)
+        :null;
+      const clue=clues.find(t=>t.cid===c.id&&t!==upcoming?.clue&&!foldedClue(t)&&!handledBirthday(c,t)&&!personalPlans.some(plan=>plan.fromClue===t.id||t.sourceId&&t.sourceId===plan.sourceId&&t.memberId===plan.memberId));
+      const preview=interest?interest.label:clientPreview(c,last,clue);
+      const personAttrs=cid+' '+attr('member',interest?.member.id||last?.recordedFor||'self')+(interest?' '+attr('product',interest.key):'');
+      const person='<span class="avatar '+(c.id==='lin'?'sage':'')+'" aria-hidden="true">'+esc(c.name[0])+'</span>'+
+        '<span class="client-copy"><strong class="client-name">'+esc(c.name)+icon('chevron')+'</strong><small class="client-preview" id="preview-'+esc(c.id)+'">'+esc(preview)+'</small></span>';
+      return '<article class="client-line">'+btn('family-open',person,'customer-open',personAttrs+' aria-label="查看'+esc(c.name)+'的家庭档案" aria-describedby="preview-'+esc(c.id)+'"')+
+        btn('chat-open',icon('mic')+'记沟通','record-short',cid+' aria-label="记'+esc(c.name)+'的沟通"')+'</article>';
     }).join('');
-    const agenda='<div class="section-head"><h2>跟进安排</h2>'+btn('all-tasks','看全部'+icon('chevron'),'plain','aria-label="查看全部跟进安排"')+'</div>';
-    return '<div class="service-home"><section class="home-section schedule">'+agenda+focus+'</section><section class="home-section roster"><div class="section-head"><h2>我的客户</h2>'+btn('all-clues','看线索'+icon('chevron'),'plain','aria-label="查看全部销售线索"')+'</div><div class="client-list">'+customers+'</div></section></div>';
+    const agenda='<div class="section-head"><h2>'+heading+'</h2>'+btn('all-tasks','全部安排'+icon('chevron'),'plain','aria-label="查看全部跟进安排"')+'</div>';
+    return '<div class="service-home"><section class="home-section schedule">'+agenda+focus+(upcoming?.html||'')+'</section><section class="home-section roster"><div class="section-head"><h2>我的客户</h2>'+btn('all-clues','看线索'+icon('chevron'),'plain','aria-label="查看全部销售线索"')+'</div><div class="client-list">'+customers+'</div></section></div>';
   }
   function taskList(){
     const mode=['arranged','closed'].includes(u.taskFilter)?'arranged':'clues';
@@ -8464,7 +8973,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     if(mode==='clues'){
       const all=activeClues(),shown=all.filter(t=>!foldedClue(t)),folded=all.filter(foldedClue);
       const known=[...allTasks().filter(t=>arranged(t)&&isLive(t)),...all.filter(t=>['产品咨询','补货意向'].includes(t.kind))];
-      const interests=state.customers.map(c=>window.MatchStudio.customerInterests(c,known.filter(t=>t.cid===c.id),true)).join('');
+      const interests=state.customers.map(c=>window.MatchStudio.interestRows(c,known.filter(t=>t.cid===c.id))).join('');
       content=(shown.length||interests?'<div class="clue-group">'+interests+shown.map(clueButton).join('')+'</div>':'<p class="empty">暂时没有新的客户线索。</p>')+(folded.length?'<details class="clue-choice"><summary>已收起的线索</summary><div class="clue-group">'+folded.map(clueButton).join('')+'</div></details>':'');
     }else{
       const all=allTasks().filter(arranged),open=all.filter(isLive),closed=all.filter(t=>!isLive(t));
@@ -8493,9 +9002,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     if(!arranged(t))return clueDetail(t,c);
     const status=t.contactPaused?'已暂停主动联系':({done:'已完成',cancelled:'已取消',paused:'已暂停'})[t.status]||'';
     const original=c.messages.find(m=>m.id===t.sourceId),latest=c.messages.findLast(m=>m.relatedTaskId===t.id),direct=original?.role==='customer'&&isLive(t)&&t.kind==='约定';
-    const dateText='<div class="arrangement-time">'+icon('calendar')+'<span>'+esc(meetingTime(t))+'</span>'+(t.snooze?'<small>原约 '+esc(pretty(t.when))+'</small>':'')+'</div>';
+    const dateText='<div class="arrangement-time">'+icon('calendar')+'<span>'+esc(meetingTime(t))+'</span>'+(t.snooze?'<small>'+esc((t.kind==='自己安排'?'原提醒 ':'原约 ')+pretty(t.when))+'</small>':'')+'</div>';
     const preview=original?btn('task-chat','<span class="grow"><small>'+esc(original.role==='customer'?c.name+'的原话':'当时的记录')+'</small><span>'+esc(original.text)+'</span></span>'+icon('chevron'),'arrangement-source'):'';
-    const management=isLive(t)?'<details class="manage-reminder"><summary>管理提醒</summary><div class="actions">'+btn('task-done','标为完成','secondary')+btn('task-later','延期','secondary')+btn('task-pause','暂停','plain')+btn('task-cancel','取消提醒','plain')+'</div></details>':t.contactPaused?'':btn('task-resume','恢复提醒','secondary');
+    const management=isLive(t)?'<details class="manage-reminder"><summary>管理提醒</summary><div class="actions">'+btn('task-done','标为完成','secondary')+btn('task-later',t.fromClue&&c.tasks.some(item=>item.id===t.fromClue&&item.kind==='生日')?'改提醒日期':'延期','secondary')+btn('task-pause','暂停','plain')+btn('task-cancel','取消提醒','plain')+'</div></details>':t.contactPaused?'':btn('task-resume','恢复提醒','secondary');
     return '<div class="section"><div class="card stack arrangement-card"><div class="label">'+esc([taskTag(t),status].filter(Boolean).join(' · '))+'</div><h1 class="detail-title">'+esc(t.title)+'</h1>'+dateText+
       (latest?'<p class="task-result"><strong>最近一次跟进</strong>'+esc(latest.text)+'</p>':'')+
       '<div class="actions">'+(direct?btn('prepare-task','准备回复','primary',attr('cid',c.id)+' '+attr('id',t.id)):'')+btn('record-result','记跟进结果',direct?'secondary':'primary')+'</div>'+preview+(!original&&t.reason&&t.title!==t.reason?'<details class="evidence-fold"><summary>查看备注</summary><p>'+esc(t.reason)+'</p></details>':'')+'</div>'+management+'</div>';
@@ -8518,9 +9027,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     }).join(''):'<p class="empty">这位成员暂无已签收的商品。</p>')+'</div>';
   }
   function persistNote(c,text){c.messages.push({...message(uid(),'note',text,state.today),intakeSource:'arrangement-update'})}
-  function editTask(change,detail){
-    const t=currentTask();if(!t)return;
-    const c=customer();
+  function editTask(change,detail,t=currentTask()){
+    if(!t)return;
+    const c=state.customers.find(item=>item.id===t.cid);
     if(t.orderId){const o=c.orders.find(x=>x.id===t.orderId);o.reminder={...o.reminder,...change}}
     else Object.assign(c.tasks.find(x=>x.id===t.id),change);
     persistNote(c,detail+' · '+t.title);save();draw();toast(detail);
@@ -8529,8 +9038,15 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     viewDialog('切换客户',state.customers.map(c=>btn('switch-to','<span class="avatar">'+esc(c.name[0])+'</span><span class="grow"><strong>'+esc(c.name)+'</strong><small>'+c.members.length+' 位家庭成员</small></span>'+(c.id===state.active?icon('check'):arrow),'sheet-opt',attr('cid',c.id))).join(''));
   }
   const moduleFor=()=>({qa:window.QADesk,chat:window.Chat,matching:window.MatchStudio,cases:window.SimilarCases,device:window.DeviceGuide,salon:window.SalonStudio})[page]||(['family','reports','cart'].includes(page)?window.Family:['learn','practice'].includes(page)?window.Learning:null);
-  function draw(resetScroll=false){
+  function draw(resetScroll=false,direction){
     const main=$('#main'),top=$('#top');const pos=resetScroll?0:main.scrollTop;
+    const previousPage=main.dataset.page;
+    if(previousPage&&previousPage!==page){
+      clearTimeout(timer);
+      $('#notice').classList.remove('show');
+    }
+    if(previousPage&&(direction||previousPage!==page))main.dataset.enter=direction||'forward';
+    else delete main.dataset.enter;
     const globalStudy=['learn','practice'].includes(page)&&!u.sourceId&&!u.memberId;
     const external=page==='messenger',embedded=inWecom(),backToPhone=history.at(-1)?.page==='messenger';
     main.dataset.page=page;
@@ -8554,8 +9070,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       else if(!['tasks','qa','scenes','salon','device'].includes(page)&&!(page==='matching'&&u.matchMode==='launch')&&!globalStudy)top.innerHTML+=btn('switch-customer',icon('user')+esc(customer().name)+icon('down'),'who-btn','aria-label="切换客户"');
     }
     const base=page==='qa'||page==='learn'&&u.qaBrowse||page==='practice'&&u.tempPractice?.origin==='qa'?'qa':['learn','practice','salon'].includes(page)?'learn':'home';
-    $('#tabs').innerHTML='<div class="navbrand">云创 <span>AI</span></div>'+[['home','people','客户'],['qa','chat','问答'],['learn','book','学习']].map(([id,ic,t])=>btn('tab','<span>'+icon(ic)+'</span><span>'+t+'</span>','navitem '+(base===id?'active':''),attr('page',id)+(base===id?' aria-current="page"':''))).join('');
+    const tabs=$('#tabs');
+    tabs.toggleAttribute('data-switched',!!tabs.dataset.active&&tabs.dataset.active!==base);
+    tabs.dataset.active=base;
+    tabs.innerHTML='<div class="navbrand">云创 <span>AI</span></div>'+[['home','people','客户'],['qa','chat','问答'],['learn','book','学习']].map(([id,ic,t])=>btn('tab','<span>'+icon(ic)+'</span><span>'+t+'</span>','navitem '+(base===id?'active':''),attr('page',id)+(base===id?' aria-current="page"':''))).join('');
     const mod=moduleFor();main.innerHTML=mod?mod.render():({home,scenes:sceneIndex,task:taskDetail,tasks:taskList,usage,messenger}[page]||home)();
+    const courseBack=page==='learn'&&main.querySelector('.career-page > [data-course-back]');
+    if(courseBack)top.querySelector('.top-left').replaceChildren(courseBack);
     const live=page==='practice'?main.querySelector('.pr-chat-live,.pr-review-page,.career-result'):null;
     document.querySelector('.workspace').classList.toggle('in-practice',!!live);
     if(live){
@@ -8575,7 +9096,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     }
     saveRoute();
   }
-  const app=window.app={s:state,get page(){return page},get u(){return u},customer,member,go,back,draw,save,saveRoute,toast,esc,icon,date:()=>state.today,receive,addTask,useSignal,forecast,openChat,openCapture,sourcePolicy,openSource,openCustomerRecord,openUsage,openLearn,openDesk,openQALibrary,returnToReportMetric,practiceFromQA,materialFromQA,learningArea,studyHome,studyBack,studyReturnLabel,practice,practiceClassic,practiceFromRecord,recordPracticeLink,inWecom,returnToWecom,dialog:viewDialog,closeDialog:close,pretty,uid};
+  const app=window.app={s:state,get page(){return page},get u(){return u},customer,member,go,back,draw,save,saveRoute,toast,esc,icon,date:()=>state.today,receive,addTask,useSignal,forecast,openChat,openCapture,sourcePolicy,openSource,openCustomerRecord,latestCustomerRecord,openUsage,openLearn,openDesk,openQALibrary,returnToReportMetric,practiceFromQA,materialFromQA,learningArea,studyHome,studyBack,studyReturnLabel,practice,practiceClassic,practiceFromRecord,recordPracticeLink,inWecom,returnToWecom,dialog:viewDialog,closeDialog:close,pretty,uid};
   function handle(a,el){
     const data=el.dataset;
     if(a.startsWith('match-'))return window.MatchStudio.act(a,el);
@@ -8616,8 +9137,15 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       page=customer().lastPage&&customer().lastPage!=='home'?customer().lastPage:(dest==='learn'?'learn':dest==='chat'?'chat':'family');
       if(page==='chat'&&u.sourceId)u.focusSourceId=u.sourceId;draw(true);return true
     }
-    if(a==='family-open'||a==='chat-open'||a==='latest-record'){
-      switchCustomer(data.cid);u={};if(a==='chat-open')openCapture();else if(a==='latest-record')openSource(data.id);else go('family',{memberId:'self'});return true
+    if(a==='family-open'||a==='chat-open'){
+      switchCustomer(data.cid);u={};
+      if(a==='chat-open')openCapture(window.Chat.homeEntryMode(customer()));
+      else{
+        const memberId=customer().members.find(m=>m.id===data.member)?.id||'self';
+        const selection=data.product?{inlineProduct:{key:data.product,scope:[data.cid,memberId,''].join('/')}}:{};
+        go('family',{memberId,...selection});
+      }
+      return true
     }
     if(a==='source-info'){sourceInfo();return true}
     if(a==='demo-start'){close();displayDemo(data.mode,data.thread);return true}
@@ -8661,11 +9189,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       if(t.orderId){const o=c.orders.find(o=>o.id===t.orderId);o.reminder={...o.reminder,status:'done'}}else c.tasks.find(item=>item.id===t.id).status='done';
       save();draw();toast('这次安排已完成');return true
     }
-    if(a==='task-open'){openTask(data.cid,data.id);return true}
+    if(a==='task-open'){if(el.closest('#sheet'))close();openTask(data.cid,data.id);return true}
     if(a==='all-tasks'||a==='all-clues'){go('tasks',{taskFilter:a==='all-clues'?'clues':'arranged'});return true}
     if(a==='clue-family'){const t=currentTask();if(t)go('family',{memberId:t.memberId,sourceId:t.sourceId,taskId:undefined,familyOrigin:undefined});return true}
     if(a==='clue-fold'||a==='clue-plan'||a==='clue-plan-save'){
-      const c=customer(),t=currentTask();if(!t||arranged(t)||!isLive(t)||!clueInfo(t).surface)return true;
+      const t=data.cid&&data.id?allTasks().find(item=>item.cid===data.cid&&item.id===data.id):currentTask();
+      if(!t||arranged(t)||!isLive(t)||!clueInfo(t).surface)return true;
+      const c=state.customers.find(item=>item.id===t.cid);
       const clue=clueInfo(t);
       if(a==='clue-fold'){
         c.foldedClues||={};const wasFolded=foldedClue(t);
@@ -8674,21 +9204,36 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       }
       if(chosenArrangement(c,t))return true;
       if(a==='clue-plan'){
+        const attrs=attr('cid',c.id)+' '+attr('id',t.id);
+        if(t.kind==='生日'){birthdayDateChoices(c,t,'','clue-plan-save',attrs);return true}
         const date=t.when&&t.when>=state.today?t.when:plusDays(state.today,1);
-        viewDialog('哪天提醒我？','<div class="date-form"><label>提醒日期<input id="clue-date" type="date" min="'+esc(state.today)+'" value="'+esc(date)+'"></label>'+btn('clue-plan-save','保存提醒','primary')+'</div>');return true;
+        viewDialog('哪天提醒我？','<div class="date-form"><label>提醒日期<input id="clue-date" type="date" min="'+esc(state.today)+'" value="'+esc(date)+'"></label>'+btn('clue-plan-save','保存提醒','primary',attrs)+'</div>');return true;
       }
-      const when=$('#clue-date')?.value;if(!when||when<state.today){toast('请选择今天或以后的日期');return true}
-      close();addTask({kind:'自己安排',title:t.title,when,reason:clue.detail,memberId:t.memberId,sourceId:t.sourceId,fromClue:t.id,clueVersion:clue.stamp,key:'clue|'+t.id+'|'+clue.stamp+'|'+uid()});draw();toast('已加入我的安排');return true;
+      const when=data.when||$('#birthday-date, #clue-date')?.value;if(!when||when<state.today){toast('请选择今天或以后的日期');return true}
+      close();addTask({kind:'自己安排',title:t.title,when,reason:clue.detail,memberId:t.memberId,sourceId:t.sourceId,fromClue:t.id,clueVersion:clue.stamp,key:'clue|'+t.id+'|'+clue.stamp+'|'+uid()},c);draw();toast('已设好'+pretty(when)+'的提醒');return true;
     }
     if(a==='task-filter'){u.taskFilter=data.filter;draw(true);return true}
     if(a==='task-chat'){const t=currentTask();if(t)openSource(t.sourceId,t.memberId);return true}
     if(a==='usage'){const t=currentTask();if(t)openUsage(t.orderId,t.sourceId,t.memberId);return true}
     if(a==='usage-chat'){openSource(data.source,data.member);return true}
     if(a==='usage-note'){openCapture('note',data.member);return true}
-    if(a==='task-later'){
-      const t=currentTask();viewDialog('调整提醒日期','<div class="date-form"><label>哪天提醒我<input id="res-date" type="date" min="'+esc(state.today)+'" value="'+esc(plusDays(t.effective>state.today?t.effective:state.today,1))+'"></label>'+btn('task-later-save','保存提醒','primary')+'</div>');return true
+    if(a==='task-later'||a==='task-later-save'){
+      const t=data.cid&&data.id?allTasks().find(item=>item.cid===data.cid&&item.id===data.id):currentTask();
+      if(!t||!arranged(t)||!isLive(t))return true;
+      const attrs=attr('cid',t.cid)+' '+attr('id',t.id);
+      const c=state.customers.find(item=>item.id===t.cid);
+      if(a==='task-later'){
+        const birthday=t.fromClue&&c.tasks.find(item=>item.id===t.fromClue&&item.kind==='生日');
+        const homeEdit=page==='home';
+        const current=t.effective>=state.today?t.effective:state.today;
+        const date=homeEdit?current:plusDays(current,1);
+        const manage=homeEdit?btn('task-open','查看这条安排','plain',attrs):'';
+        if(birthday){birthdayDateChoices(c,birthday,t.effective,'task-later-save',attrs,manage);return true}
+        viewDialog('改提醒日期','<div class="date-form"><label>提醒日期<input id="res-date" type="date" min="'+esc(state.today)+'" value="'+esc(date)+'"></label>'+btn('task-later-save','保存日期','primary',attrs)+manage+'</div>');return true;
+      }
+      const value=data.when||$('#birthday-date, #res-date')?.value;if(!value||value<state.today){toast('请选择今天或以后的日期');return true}
+      close();if(value!==t.effective)editTask({snooze:value===t.when?null:value},'提醒已改到'+pretty(value),t);return true;
     }
-    if(a==='task-later-save'){const value=$('#res-date').value;if(!value||value<state.today){toast('请选择今天或以后的日期');return true}close();editTask({snooze:value,status:'active'},'提醒已延至'+pretty(value));return true}
     if(a==='task-done'||a==='task-pause'||a==='task-cancel'||a==='task-resume'){
       const to={'task-done':['done','已完成'],'task-pause':['paused','已暂停'],'task-cancel':['cancelled','已取消'],'task-resume':['active','已恢复']}[a];
       editTask({status:to[0]},to[1]);return true;
