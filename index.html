@@ -3140,27 +3140,27 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
 .cm-launch-progress {grid-column:1 / -1; display:flex; align-items:center; gap:12px; color:#555747; font-size:.87rem; line-height:1.35; font-variant-numeric:tabular-nums;}
 .cm-meter {flex:1; height:5px; border-radius:8px; overflow:hidden; background:#d5d4c8;}
 .cm-meter i {display:block; height:100%; background:#5c7356; transform:scaleX(var(--cm-fraction)); transform-origin:left;}
-.career-page .cm-path.cm-launch-route {margin:8px 0 7px; padding:0; border:0; list-style:none;}
-.cm-launch-route .cm-stage,.cm-launch-route .cm-stage.cm-active {padding:0; margin:0; background:transparent; border:0;}
-.cm-launch-route .cm-stage .cm-stop { display:flex; position:relative; box-sizing:border-box; align-items:center; justify-content:center; width:100%; min-height:84px; margin:0; border:0; border-radius:14px; background:transparent; box-shadow:none; text-align:left; padding:11px 3% 11px 31%; color:var(--study-ink); }
-.cm-launch-route .cm-stage.cm-right .cm-stop {padding:11px 31% 11px 3%; text-align:right;}
-.cm-launch-route .cm-stage .cm-stop-copy {display:grid; flex:1; gap:1px; justify-items:start; align-content:center;}
-.cm-launch-route .cm-stage.cm-right .cm-stop-copy {justify-items:end;}
-.cm-launch-route .cm-stop-copy strong {font-size:1.03rem; line-height:1.4; color:var(--study-ink); text-wrap:pretty;}
-.cm-launch-route .cm-stage .cm-coin {display:grid; position:absolute; top:50%; left:19%; translate:-50% -50%; order:0; width:40px; height:37px; border-radius:50%; border:1px solid #d4cbbb; background:#f1ede4; color:#746e60; box-shadow:0 3px 0 #d3cabb;}
-.cm-launch-route .cm-stage.cm-right .cm-coin {left:81%;}
-.cm-launch-route .cm-stage .cm-connector,.cm-launch-route .cm-stage:has(.cm-preview[open])>.cm-connector {height:100%; stroke:#d9d3c3; stroke-width:3;}
-.cm-launch-route .cm-stage:has(.cm-preview[open]) .cm-stop {min-height:84px;}
-.cm-launch-route .cm-line-done {stroke:#8ca083;}
-.cm-launch-route .cm-stage.cm-active .cm-stop {color:var(--study-ink); background:linear-gradient(105deg,#f4e8dddb,#f7ede49c); }
-.cm-launch-route .cm-stage.cm-active .cm-coin {width:48px; height:44px; background:#934c35; border:1px solid #8a402d; color:white; box-shadow:0 4px 0 #713e2f,0 5px 12px #8450391d;}
-.cm-launch-route .cm-stage.cm-active .cm-coin::before {inset:-5px -5px -8px; border:1.5px solid #c29078;}
-.cm-launch-route .cm-stage.cm-active .cm-stop-copy strong {font-size:1.1rem;}
-.cm-launch-route .cm-stage.cm-active .cm-stop-action {color:#86432f;font-size:.99rem;font-weight:700;}
-.cm-launch-route .cm-stage.cm-done .cm-coin {background:#dfe8d5;color:#456044;border-color:#b9c6ac;box-shadow:0 3px 0 #b8c6ab;}
-.cm-launch-route .cm-stage.cm-done .cm-stop-action {color:#4c6147;}
-.cm-launch-route .cm-stage.cm-challenge .cm-coin {color:#85503b;background:#f2e5d9;}
-.cm-launch-route .cm-stage.cm-locked .cm-stop-copy strong {color:#645f55;}
+.career-page .cm-path.cm-journey-route {margin:8px 0 7px; padding:0; border:0; list-style:none;}
+.cm-journey-route .cm-stage,.cm-journey-route .cm-stage.cm-active {padding:0; margin:0; background:transparent; border:0;}
+.cm-journey-route .cm-stage .cm-stop { display:flex; position:relative; box-sizing:border-box; align-items:center; justify-content:center; width:100%; min-height:84px; margin:0; border:0; border-radius:14px; background:transparent; box-shadow:none; text-align:left; padding:11px 3% 11px 31%; color:var(--study-ink); }
+.cm-journey-route .cm-stage.cm-right .cm-stop {padding:11px 31% 11px 3%; text-align:right;}
+.cm-journey-route .cm-stage .cm-stop-copy {display:grid; grid-template-columns:minmax(0,1fr); flex:1; gap:1px; justify-content:stretch; justify-items:start; align-content:center;}
+.cm-journey-route .cm-stage.cm-right .cm-stop-copy {justify-items:end;}
+.cm-journey-route .cm-stop-copy strong {font-size:1.03rem; line-height:1.4; color:var(--study-ink); text-wrap:pretty;}
+.cm-journey-route .cm-stage .cm-coin {display:grid; position:absolute; top:50%; left:19%; translate:-50% -50%; order:0; width:40px; height:37px; border-radius:50%; border:1px solid #d4cbbb; background:#f1ede4; color:#746e60; box-shadow:0 3px 0 #d3cabb;}
+.cm-journey-route .cm-stage.cm-right .cm-coin {left:81%;}
+.cm-journey-route .cm-stage .cm-connector,.cm-journey-route .cm-stage:has(.cm-preview[open])>.cm-connector {height:100%; stroke:#d9d3c3; stroke-width:3;}
+.cm-journey-route .cm-stage:has(.cm-preview[open]) .cm-stop {min-height:84px;}
+.cm-journey-route .cm-line-done {stroke:#8ca083;}
+.cm-journey-route .cm-stage.cm-active .cm-stop {color:var(--study-ink); background:linear-gradient(105deg,#f4e8dddb,#f7ede49c); }
+.cm-journey-route .cm-stage.cm-active .cm-coin {width:48px; height:44px; background:#934c35; border:1px solid #8a402d; color:white; box-shadow:0 4px 0 #713e2f,0 5px 12px #8450391d;}
+.cm-journey-route .cm-stage.cm-active .cm-coin::before {inset:-5px -5px -8px; border:1.5px solid #c29078;}
+.cm-journey-route .cm-stage.cm-active .cm-stop-copy strong {font-size:1.1rem;}
+.cm-journey-route .cm-stage.cm-active .cm-stop-action {color:#86432f;font-size:.99rem;font-weight:700;}
+.cm-journey-route .cm-stage.cm-done .cm-coin {background:#dfe8d5;color:#456044;border-color:#b9c6ac;box-shadow:0 3px 0 #b8c6ab;}
+.cm-journey-route .cm-stage.cm-done .cm-stop-action {color:#4c6147;}
+.cm-journey-route .cm-stage.cm-challenge .cm-coin {color:#85503b;background:#f2e5d9;}
+.cm-journey-route .cm-stage.cm-locked .cm-stop-copy strong {color:#645f55;}
 .cm-launch-resources {border-block:1px solid #dcd5c7; margin:1px 2px 0;}
 .cm-launch-resources>details+details,.cm-launch-resources>.cm-ask-lesson {border-top:1px solid #e4ded2;}
 .cm-launch-resources>details>summary,.cm-launch-resources>.cm-ask-lesson {display:flex; align-items:center; gap:10px; width:100%; padding:9px 6px; min-height:46px; color:#393b32; font:inherit; font-size:1rem; font-weight:615; text-align:left; background:transparent; border-radius:0; cursor:pointer;}
@@ -3173,7 +3173,37 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
 .cm-launch-resources .cm-product-customers {margin:0 0 8px; padding:5px 10px 2px; border-radius:10px;}
 .cm-launch-resources .cm-reference>div {padding:0 8px 13px; line-height:1.55;}
 .cm-launch-map .cm-support {margin-top:4px;}
-@media(max-height:710px){.cm-launch-route .cm-stage .cm-stop {min-height:75px;}}
+.cm-course-preview .cm-focus-head {display:block; padding:16px;}
+.cm-course-preview .cm-focus-head p {margin:0 0 4px; font-size:.92rem; color:var(--study-muted);}
+.cm-course-preview .cm-focus-head h2 {margin:0 0 6px;}
+.cm-course-preview .cm-focus-head .cm-preview-goal {margin:0; font-size:1rem; line-height:1.55; color:var(--study-ink);}
+.cm-preview-outline {margin:18px 6px 12px;}
+.cm-preview-outline h3 {margin:0 0 5px; font-size:1.07rem;}
+.cm-preview-outline ol {list-style:none; padding:0; margin:0;}
+.cm-preview-outline li {display:flex; gap:12px; align-items:baseline; min-height:42px; padding:9px 0; border-bottom:1px solid var(--study-line); line-height:1.5;}
+.cm-preview-outline li span {flex:none; color:var(--study-muted); font-size:.9rem;}
+.cm-preview-confirm {padding:4px 4px 15px;}
+.cm-preview-confirm p {margin:0 0 8px; color:var(--study-muted); font-size:.94rem; line-height:1.5;}
+.cm-preview-confirm button {display:block; width:100%; min-height:46px; padding:10px 14px; border:0; border-radius:12px; font:inherit; font-weight:670; color:white; background:var(--study-accent);}
+@media(max-height:710px){.cm-journey-route .cm-stage .cm-stop {min-height:75px;}}
+
+.cm-standard-map .cm-focus-head {grid-template-columns:44px minmax(0,1fr) auto;gap:7px 10px;padding:12px 15px 11px;}
+.cm-standard-map .cm-focus-head>.cm-course-art {width:44px;height:44px;}
+.cm-standard-map .cm-focus-head h2 {font-size:1.42rem;line-height:1.3;}
+.cm-standard-map .cm-change {padding:3px 10px;min-height:44px;white-space:nowrap;}
+.cm-standard-map .cm-map-progress {grid-column:1/-1;display:flex;gap:12px;align-items:center;font-size:.9rem;line-height:1.4;}
+.cm-standard-map .cm-map-progress progress {flex:1;width:auto;height:5px;}
+.cm-standard-map>.cm-chapters {margin:5px 2px 0;display:block;max-width:none;}
+.cm-standard-map>.cm-chapters>summary {width:100%;min-height:44px;gap:8px;}
+.cm-standard-map>.cm-chapters>summary>.icon {margin-left:0;}
+.cm-standard-map .cm-journey-route {margin:0 0 8px;}
+.cm-standard-map .cm-challenge .cm-stop-action {color:#665e52;font-weight:530;}
+.cm-standard-map>.cm-launch-lesson {border:none;border-block:1px solid var(--study-line);border-radius:0;background:transparent;box-shadow:none;margin:5px 0 0;padding:9px 6px;}
+.cm-standard-map>.cm-route-tools {display:flex;align-items:center;justify-content:flex-start;gap:16px;margin:0;padding:4px 3px;border-top:1px solid var(--study-line);}
+.cm-standard-map>.cm-launch-lesson+.cm-route-tools {border-top:0;}
+.cm-standard-map .cm-route-tools button {display:inline-flex;align-items:center;gap:5px;min-height:44px;min-width:44px;white-space:normal;padding:4px 2px;color:#625648;font-size:.98rem;font-weight:550;}
+.cm-standard-map .cm-route-tools .icon {height:18px;width:18px;}
+.cm-journey-route .cm-stop:focus-visible,.cm-journey-route summary:focus-visible {outline:2px solid var(--study-accent);outline-offset:-2px;}
 </style>
 
 <style id="yc-four-mobile-tabs">
@@ -6014,18 +6044,18 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
     return row('这门课会用到',from)+row('学会后还能用在',into);
   }
 
-  function productReference(ref,ask) {
+  function productReference(ref) {
     if (!ref?.steps?.length) return '';
-    return '<section class="cm-product-brief"><h3>先认识这款产品</h3><p>'+esc(ref.steps[0])+'</p>'+
-      '<div class="cm-product-tools"><details class="cm-reference"><summary>看产品资料'+icon('down')+'</summary><div>'+
-      ref.steps.slice(1).map(s => '<p>'+esc(s)+'</p>').join('')+(ref.source ? '<small>'+esc(ref.source)+'</small>' : '')+'</div></details>'+ask+'</div></section>';
+    return '<details class="cm-reference"><summary>'+icon('book')+'产品资料'+icon('down')+'</summary><div>'+
+      ref.steps.map(s=>'<p>'+esc(s)+'</p>').join('')+(ref.source?'<small>'+esc(ref.source)+'</small>':'')+'</div></details>';
   }
 
-  function latestProductLesson(tracks) {
+  function latestProductLesson(tracks,preview=false) {
     const track=tracks.find(t=>t.launchLabel&&t.kind==='product');
     if(!track)return '';
-    return '<button type="button" class="cm-launch-lesson cm-launch-cover"'+launchFill(track)+action('career-select',journeyFor(track.id),track.id)+'>'+
-      '<i class="cm-fill-ink" aria-hidden="true"></i><span>'+esc(track.launchLabel)+'</span><strong>'+esc(track.title)+'</strong><small>'+progress(track)+' / '+track.nodes.length+'</small>'+icon('chevron')+'</button>';
+    const open=preview?action('career-preview',track.id):action('career-select',journeyFor(track.id),track.id);
+    return '<button type="button" class="cm-launch-lesson cm-launch-cover"'+launchFill(track)+open+'>'+
+      '<i class="cm-fill-ink" aria-hidden="true"></i><span>'+esc(track.launchLabel)+'</span><strong>'+esc(track.title)+'</strong><small>'+(preview?'预览':progress(track)+' / '+track.nodes.length)+'</small>'+icon('chevron')+'</button>';
   }
 
   function productCustomers(track,folded=false) {
@@ -6061,12 +6091,12 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
 
   function mapStop(t,n,i,current,first,last) {
     const end = finalNode(n), done = n.status === 'done', locked = n.status === 'locked' && !end;
-    const state = done ? 'done' : locked ? 'locked' : n === current ? 'active' : 'challenge';
+    const state = done ? 'done' : locked ? 'locked' : n === current ? 'active' : end ? 'challenge' : 'available';
     const left = i%2 === 0;
     const mark = done ? icon('check') : locked ? lock : end ? icon('flag') : activeMark;
     let verb = n.started ? '继续练' : '开始练';
-    if (done) verb = '已完成 · 再练';
-    else if (end && !n.started) verb = '直接挑战';
+    if (done) verb = '已学 · 复习';
+    else if (end && !n.started) verb = n === current ? '开始挑战' : '提前挑战';
     if(t.launchLabel){
       if(done)verb='已学 · 复习';
       else if(n===current)verb=lessonAction(t,n);
@@ -6076,11 +6106,12 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
     const inner = '<span class="cm-coin" aria-hidden="true">'+mark+'</span><span class="cm-stop-copy">'+
       '<strong>'+esc(n.title)+'</strong>'+actionLabel+'</span>';
     const title = n.title+'，'+(locked?'尚未解锁，查看解锁条件':verb);
+    const here=n===current?' aria-current="step"':'';
     const control = locked
       ? '<details class="cm-preview"><summary class="cm-stop" aria-label="'+esc(title)+'">'+inner+'</summary><div>'+
         (n.goal ? '<p>'+esc(n.goal)+'</p>' : '')+'完成「'+esc(before?.title || '上一项')+'」后解锁</div></details>'
-      : '<button class="cm-stop" type="button"'+action('career-start',n.id,t.id)+' aria-label="'+esc(title)+'">'+inner+'</button>';
-    return '<li data-map-node="'+esc(n.id)+'" class="cm-stage cm-'+state+(t.launchLabel&&n===current?' cm-current-lesson':'')+(left?' cm-left':' cm-right')+'">'+
+      : '<button class="cm-stop" type="button"'+action('career-start',n.id,t.id)+' aria-label="'+esc(title)+'"'+here+'>'+inner+'</button>';
+    return '<li data-map-node="'+esc(n.id)+'" class="cm-stage cm-'+state+(n===current?' cm-current-lesson':'')+(left?' cm-left':' cm-right')+'">'+
       connector(left,before?.status === 'done' ? 'cm-line-done' : '',done?'cm-line-done':'',first,last)+control+'</li>';
   }
 
@@ -6108,49 +6139,57 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
     return (node.started?'继续':index===1?'开始':'学')+'第'+index+'节';
   }
 
+  function launchResources(t,ref,ask) {
+    return '<div class="cm-launch-resources">'+productCustomers(t,true)+productReference(ref)+ask+'</div>';
+  }
+
+  function launchPreview(t,ref) {
+    const lessons=t.nodes.map((n,i)=>'<li><span>第 '+(i+1)+' 节</span><strong>'+esc(n.title)+'</strong></li>').join('');
+    const ask='<button class="cm-ask-lesson" type="button"'+action('career-ask',t.id)+'>'+icon('chat')+'问这门课</button>';
+    return '<section class="career-page cm-focus cm-map cm-course-preview" data-preview-course="'+esc(t.id)+'" aria-labelledby="cm-preview-title">'+
+      courseBack('career-close-preview','回原路线')+'<header class="cm-focus-head"><p>新品课预览</p><h2 id="cm-preview-title" tabindex="-1">'+esc(t.title)+'</h2><p class="cm-preview-goal">'+esc(t.description)+'</p></header>'+
+      '<section class="cm-preview-outline"><h3>课程内容</h3><ol>'+lessons+'</ol></section>'+
+      '<div class="cm-preview-confirm"><p>开始后，这门课会成为你的当前学习路线。</p><button type="button"'+action('career-select',journeyFor(t.id),t.id)+'>开始学这门课</button></div>'+
+      launchResources(t,ref,ask)+'</section>';
+  }
+
   function launchMap(t,next,d,ask,catalogButton,yours) {
     const done=progress(t),total=t.nodes.length;
     const meter='<div class="cm-launch-progress" role="progressbar" aria-label="课程进度" aria-valuemin="0" aria-valuenow="'+done+'" aria-valuemax="'+total+'"><span class="cm-meter" aria-hidden="true"><i></i></span><span>'+(done===total?'已学完':'已学')+' '+done+' / '+total+' 节</span></div>';
-    const ref=d.reference;
-    const info=ref?.steps?.length?'<details class="cm-reference"><summary>'+icon('book')+'产品资料'+icon('down')+'</summary><div>'+ref.steps.map(s=>'<p>'+esc(s)+'</p>').join('')+(ref.source?'<small>'+esc(ref.source)+'</small>':'')+'</div></details>':'';
     return '<section class="career-page cm-focus cm-map cm-launch-map" data-inline-track="'+esc(t.id)+'" data-journey="'+esc(journeyFor(t.id))+'" aria-labelledby="cm-title-'+esc(t.id)+'">'+
       (yours?'':courseBack('career-return-journey','回我的路线'))+
       '<header class="cm-focus-head cm-launch-cover"'+launchFill(t)+'><i class="cm-fill-ink" aria-hidden="true"></i><div class="cm-launch-title"><p>'+esc(t.launchLabel)+'</p><h2 tabindex="-1" id="cm-title-'+esc(t.id)+'">'+esc(t.title)+'</h2></div>'+catalogButton+meter+'</header>'+
-      '<ol class="cm-path cm-launch-route" aria-label="学习路线">'+t.nodes.map((n,i)=>mapStop(t,n,i,next,i===0,i===total-1)).join('')+'</ol>'+
-      '<div class="cm-launch-resources">'+productCustomers(t,true)+info+ask+'</div>'+
+      coursePath(t,next)+
+      launchResources(t,d.reference,ask)+
       '<nav class="cm-tools cm-support" aria-label="课程学习工具">'+freePractice(t.id)+'</nav><div class="cm-course-more">'+relatedCourses(t,d.tracks)+'</div></section>';
+  }
+
+  function coursePath(t,next){
+    return '<ol class="cm-path cm-journey-route'+(t.launchLabel?' cm-launch-route':'')+'" aria-label="学习路线">'+
+      t.nodes.map((n,i)=>mapStop(t,n,i,next,i===0,i===t.nodes.length-1)).join('')+'</ol>';
   }
 
   function focus(t,d) {
     const yours=journeyFor(t.id)===d.journeyId;
     const group=chapters(d.tracks,journeyFor(t.id));
     const next=currentNode(t,d.last);
-    const completed=t.nodes.filter(n=>n.status==='done');
-    const remaining=t.nodes.filter(n=>n.status!=='done'&&n!==next);
-    const stops=nodes=>nodes.map((n,i)=>mapStop(t,n,t.nodes.indexOf(n),next,i===0,i===nodes.length-1)).join('');
-    const launch=!!t.launchLabel;
-    const earlier=completed.length?'<details class="cm-earlier"><summary>'+(launch?'复习已学的 '+completed.length+' 节':'已练过的 '+completed.length+' 关')+icon('down')+'</summary><ol class="cm-path">'+stops(completed)+'</ol></details>':'';
+    const catalogButton=yours?'<button type="button" class="cm-change"'+action('career-choose')+' aria-label="换课，查看全部课程">换课'+icon('down')+'</button>':'';
+    const ask='<button class="cm-ask-lesson" type="button"'+action('career-ask',t.id)+'>'+icon('chat')+'问这门课</button>';
+    if(t.launchLabel)return launchMap(t,next,d,ask,catalogButton,yours);
     const allNodes=group.flatMap(course=>course.nodes);
     const done=allNodes.filter(n=>n.status==='done').length;
     const title=group.length>1?plans[t.categoryId].name:t.title;
-    const cover=' class="cm-focus-head"';
-    const routeProgress=done?'<div class="cm-map-progress"><progress aria-label="路线进度" max="'+allNodes.length+'" value="'+done+'"></progress><span>已练 '+done+' / '+allNodes.length+' 关</span></div>':'';
-    const catalogButton=yours?'<button type="button" class="cm-change"'+action('career-choose')+'>全部课程'+icon('down')+'</button>':'';
+    const routeProgress='<div class="cm-map-progress"><progress aria-label="整条路线进度" max="'+allNodes.length+'" value="'+done+'"></progress><span>已练 '+done+' / '+allNodes.length+' 关</span></div>';
     const nextT=group[group.findIndex(course=>course.id===t.id)+1];
     const after=!next&&nextT?'<button type="button" class="cm-next-chapter cm-chapter-ready"'+action(yours?'career-chapter':'career-track',nextT.id)+'><span>接着学</span><strong>'+esc(nextT.title)+'</strong>'+icon('chevron')+'</button>':'';
-    const ask='<button class="cm-ask-lesson" type="button"'+action('career-ask',t.id)+'>'+icon('chat')+'问这门课</button>';
-    if(launch)return launchMap(t,next,d,ask,catalogButton,yours);
-    const currentLesson=next?'<ol class="cm-path cm-current-lesson" aria-label="当前练习">'+stops([next])+'</ol>':after;
-    const otherLessons=remaining.length?'<ol class="cm-path cm-upcoming-lessons" aria-label="'+esc(t.title)+'的其他练习">'+stops(remaining)+'</ol>':'';
-    return '<section class="career-page cm-focus cm-map" data-inline-track="'+esc(t.id)+'" data-journey="'+esc(journeyFor(t.id))+'" aria-labelledby="cm-title-'+esc(t.id)+'">'+
+    const product=t.kind==='product';
+    return '<section class="career-page cm-focus cm-map cm-standard-map" data-inline-track="'+esc(t.id)+'" data-journey="'+esc(journeyFor(t.id))+'" aria-labelledby="cm-title-'+esc(t.id)+'">'+
       (yours?'':courseBack('career-return-journey','回我的路线'))+
-      '<header'+cover+'>'+courseArt(t.kind==='product'?'selling':t.categoryId)+'<div>'+(t.launchLabel?'<p>'+esc(t.launchLabel)+'</p>':!yours?'<p>相关课程</p>':'')+'<h2 tabindex="-1" id="cm-title-'+esc(t.id)+'">'+esc(title)+'</h2></div>'+catalogButton+
+      '<header class="cm-focus-head">'+courseArt(product?'products':t.categoryId)+'<div>'+(!yours?'<p>相关课程</p>':'')+'<h2 tabindex="-1" id="cm-title-'+esc(t.id)+'">'+esc(title)+'</h2></div>'+catalogButton+
       routeProgress+'</header>'+
-      (t.kind==='product'&&d.reference?productReference(d.reference,ask):
-        '<div class="cm-lesson-toolbar">'+chapterSelector(t,group,yours)+ask+'</div>')+
-      currentLesson+(t.kind==='product'?productCustomers(t):latestProductLesson(d.tracks))+
-      otherLessons+earlier+
-      '<nav class="cm-tools cm-support" aria-label="课程学习工具">'+freePractice(t.id)+'</nav>'+
+      chapterSelector(t,group,yours)+coursePath(t,next)+after+
+      (product?'<div class="cm-launch-resources">'+productCustomers(t,true)+productReference(d.reference)+'</div>':latestProductLesson(d.tracks,true))+
+      '<nav class="cm-tools cm-support cm-route-tools" aria-label="课程学习工具">'+ask+freePractice(t.id)+'</nav>'+
       '<div class="cm-course-more">'+relatedCourses(t,d.tracks)+'</div></section>';
   }
 
@@ -6238,7 +6277,7 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
     apply();
   }
 
-  window.CareerView={home,afterRender,journeyFor,chapters,currentChapter,currentNode,lessonAction,matches:(track,query)=>matchesText(indexedText(track,track.categoryTitle),query||'')};
+  window.CareerView={home,launchPreview,afterRender,journeyFor,chapters,currentChapter,currentNode,lessonAction,matches:(track,query)=>matchesText(indexedText(track,track.categoryTitle),query||'')};
 })();
 
 </script>
@@ -7826,6 +7865,8 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
     if(!s.message&&!s.member&&!s.original&&current().u.learnArea!=='library'){
       const learning=store(),view=window.CareerPath.model(learning),career=journeyState(learning);
       const u=current().u;
+      const preview=u.previewCourse&&view.tracks.find(t=>t.id===u.previewCourse&&t.launchLabel);
+      if(preview)return window.CareerView.launchPreview(preview,docs[preview.id]);
       const stored=view.tracks.find(t=>t.id===career.positions[career.journeyId]);
       const chapter=u.careerTrack||(stored?.nodes.some(n=>n.status!=='done')?stored.id:null);
       const chapters=window.CareerView.chapters(view.tracks,career.journeyId);
@@ -8148,6 +8189,17 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
     }
     if(action==='career-return'){app.studyBack();return true;}
     const main=document.getElementById('main');
+    if(action==='career-preview'){
+      app.studyHome({previewCourse:id,previewOriginScroll:main.scrollTop,previewPanels:[]});
+      main.scrollTop=0;main.querySelector('#cm-preview-title')?.focus({preventScroll:true});
+      return true;
+    }
+    if(action==='career-close-preview'){
+      const scroll=app.u.previewOriginScroll||0;
+      app.studyHome({previewCourse:undefined,previewOriginScroll:undefined,previewPanels:undefined});
+      main.scrollTop=scroll;main.querySelector('[data-act="career-preview"]')?.focus({preventScroll:true});
+      return true;
+    }
     if(action==='career-choose'){
       app.studyHome({chooseJourney:true,careerTrack:'',catalogCategory:'',searchOpen:false,catalogQuery:'',openStudyPanels:[]});
       main.scrollTop=0;
@@ -8174,7 +8226,7 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
       const requested=el.dataset.track;
       if(tracks.some(t=>t.id===requested))career.positions[id]=requested;
       app.save();
-      app.studyHome({chooseJourney:false,reviewFinished:true,careerTrack:requested||'',catalogCategory:'',catalogQuery:'',searchOpen:false,openStudyPanels:[]});
+      app.studyHome({chooseJourney:false,reviewFinished:true,careerTrack:requested||'',catalogCategory:'',catalogQuery:'',searchOpen:false,openStudyPanels:[],previewCourse:undefined,previewOriginScroll:undefined,previewPanels:undefined});
       main.scrollTop=0;main.querySelector('.cm-focus h2')?.focus({preventScroll:true});
       return true;
     }
@@ -8237,11 +8289,12 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
       });
       search?.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing&&e.keyCode!==229){e.preventDefault();search.blur();}});
     }
+    const panelState=app.u.previewCourse?'previewPanels':'openStudyPanels';
     for(const panel of document.querySelectorAll('.cm-map details')){
-      if(app.u.openStudyPanels?.includes(mapPanelKey(panel)))panel.open=true;
+      if(app.u[panelState]?.includes(mapPanelKey(panel)))panel.open=true;
       panel.addEventListener('toggle',()=>{
         if(!panel.isConnected)return;
-        app.u.openStudyPanels=[...document.querySelectorAll('.cm-map details[open]')].map(mapPanelKey);
+        app.u[panelState]=[...document.querySelectorAll('.cm-map details[open]')].map(mapPanelKey);
         app.saveRoute();
       });
     }
@@ -10916,7 +10969,7 @@ body:has(#welcome-guide[open]) #main > :first-child {animation: none}
       back();return true;
     }
     if(a==='tab'&&data.page==='qa'&&page==='qa'&&(u.qaContext?.courseId||u.qaContext?.materialId||u.qaContext?.reportId||u.qaContext?.salonItemId||u.qaContext?.sourceId)){rootPage('qa');return true}
-    if(a==='tab'){if(page!==data.page||data.page==='tasks'&&['arranged','closed'].includes(u.taskFilter)||data.page==='learn'&&(u.sourceId||u.memberId||u.question||u.learnArea&&u.learnArea!=='home'))rootPage(data.page);return true}
+    if(a==='tab'){if(page!==data.page||data.page==='tasks'&&['arranged','closed'].includes(u.taskFilter)||data.page==='learn'&&(u.previewCourse||u.sourceId||u.memberId||u.question||u.learnArea&&u.learnArea!=='home'))rootPage(data.page);return true}
     if(a==='switch-customer'){customerSheet();return true}
     if(a==='switch-to'){
       close();if(data.cid===state.active)return true;
